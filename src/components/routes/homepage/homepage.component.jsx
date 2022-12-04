@@ -1,5 +1,6 @@
-import Navigation from "../../navigation/navigation.component";
+import Navigation from "../navigation/navigation.component";
 import Directory from "../../directory/directory.component";
+import { Outlet } from "react-router-dom";
 
 // Our homepage displayed at '/'
 const Homepage = () => {
@@ -7,27 +8,27 @@ const Homepage = () => {
   const categories = [
     {
       id: 1,
-      title: "Shirts",
+      title: "SHIRTS",
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
       id: 2,
-      title: "Pants",
+      title: "PANTS",
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
       id: 3,
-      title: "Jackets",
+      title: "JACKETS",
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
       id: 4,
-      title: "Hats",
+      title: "HATS",
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
       id: 5,
-      title: "Shoes",
+      title: "SHOES",
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     // {
@@ -39,8 +40,10 @@ const Homepage = () => {
 
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
       <Directory categories={categories} />
+      {/* Displays the test route content */}
+      <Outlet />
     </>
   );
 };

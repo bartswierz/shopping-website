@@ -11,4 +11,15 @@
 .nav-items {
   display: flex;
   column-gap: 2rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.home-logo-container {
+  cursor: pointer;
+
+  .home-logo {
+    width: 24px;
+    height: 24px;
+  }
 }
