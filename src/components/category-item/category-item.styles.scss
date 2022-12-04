@@ -22,12 +22,18 @@
     }
     .background-image {
       transform: scale(1.1);
-      transition: 400ms;
+      transition: 700ms;
     }
   }
 
   .category-text {
     font-weight: 600;
+    font-size: 22px;
+    padding-bottom: 6px;
+  }
+
+  .shop-text {
+    font-size: 16px;
   }
 
   .background-image {
@@ -46,11 +52,6 @@
 
     border: 2px solid rgb(42, 42, 42);
     background-color: rgba(255, 255, 255, 0.5);
-    font-size: 16px;
-    padding: 8px;
-
-    // &:hover {
-    //   background-color: rgba(255, 255, 255, 0.7);
-    // }
+    padding: 12px 24px;
   }
 }
