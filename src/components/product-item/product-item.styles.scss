@@ -1,6 +1,8 @@
 .product-item-container {
   min-width: 30%;
   border: 1px solid grey;
+  // background-color: #edece9;
+  // padding: 10px;
 
   .product-image {
     height: 200px;
@@ -11,9 +13,23 @@
 
   .product-item-description {
     font-size: 1.5rem;
+    font-weight: 600;
   }
 
   .product-item-price {
     font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  .product-text-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 5px;
+  }
+
+  .quantity-color-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
   }
 }
