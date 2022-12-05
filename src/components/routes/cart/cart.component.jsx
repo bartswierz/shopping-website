@@ -1,6 +1,8 @@
 import "./cart.styles.scss";
 import { useContext } from "react";
 import { CartContext } from "../../../contexts/cart.context";
+import { ReactComponent as RemoveBtn } from "../../../assets/trash-outline.svg";
+
 const Cart = () => {
   const { cartItems } = useContext(CartContext);
 
@@ -27,10 +29,19 @@ const Cart = () => {
               <div className="cart-color">Color</div>
               <div className="cart-quantity">Quantity</div>
               <div className="cart-price">${item.price}</div>
-              <div className="cart-remove">X</div>
+              {/* <div className="cart-remove">X</div> */}
+              <RemoveBtn className="cart-remove" />
             </div>
           );
         })}
+
+        <div className="cart-footer">
+          <div>Items (#): $0</div>
+          <div>Tax: $0</div>
+          <div className="order-total">
+            Order Total: <span className="order-total-value">$0</span>
+          </div>
+        </div>
       </div>
     </div>
   );
