@@ -40,13 +40,13 @@ const Jackets = () => {
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
-      id: 5,
+      id: 7,
       description: "Jacket 7",
       price: 15,
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
-      id: 6,
+      id: 8,
       description: "Jacket 8",
       price: 15,
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
