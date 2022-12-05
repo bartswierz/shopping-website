@@ -1,0 +1,19 @@
+.product-item-container {
+  min-width: 30%;
+  border: 1px solid grey;
+
+  .product-image {
+    height: 200px;
+    // max-width: 230px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .product-item-description {
+    font-size: 1.5rem;
+  }
+
+  .product-item-price {
+    font-size: 1.6rem;
+  }
+}
