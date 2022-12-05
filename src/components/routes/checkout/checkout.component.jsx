@@ -1,7 +1,7 @@
 import "./checkout.styles.scss";
 
 const Checkout = () => {
-  return <h1>Inside Checkout Page</h1>;
+  return <h1 className="checkout-header">Inside Checkout Page</h1>;
 };
 
 export default Checkout;
