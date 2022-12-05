@@ -1,9 +1,9 @@
-import "./product-item.styles.scss";
+import "./product-card.styles.scss";
 import CartButton from "../buttons/cart-button/cart-button.component";
 import SelectColor from "../select-color/select-color.component";
 import Quantity from "../quantity/quantity.component";
 
-const ProductItem = ({ product }) => {
+const ProductCard = ({ product }) => {
   // Return image, description, url
   const { description, price, imageUrl } = product;
   console.log("productItem: ", product);
@@ -22,4 +22,4 @@ const ProductItem = ({ product }) => {
     </div>
   );
 };
-export default ProductItem;
+export default ProductCard;

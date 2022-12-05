@@ -1,5 +1,5 @@
 import "./product-list.styles.scss";
-import ProductItem from "../product-item/product-item.component";
+import ProductCard from "../product-card/product-card.component";
 // Pass in product list from shirt component
 const ProductList = ({ products }) => {
   console.log("products: ", products);
@@ -7,7 +7,7 @@ const ProductList = ({ products }) => {
   return (
     <div className="product-list-container">
       {products.map((product) => {
-        return <ProductItem product={product} key={product.id} />;
+        return <ProductCard product={product} key={product.id} />;
       })}
     </div>
   );
