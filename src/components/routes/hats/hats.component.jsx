@@ -4,49 +4,49 @@ import ProductList from "../../product-list/product-list.component";
 const Hats = () => {
   const hatList = [
     {
-      id: 1,
+      id: 31,
       description: "Hat 1",
       price: 15,
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
-      id: 2,
+      id: 32,
       description: "Hat 2",
       price: 15,
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
-      id: 3,
+      id: 33,
       description: "Hat 3",
       price: 15,
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
-      id: 4,
+      id: 34,
       description: "Hat 4",
       price: 15,
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
-      id: 5,
+      id: 35,
       description: "Hat 5",
       price: 15,
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
-      id: 6,
+      id: 36,
       description: "Hat 6",
       price: 15,
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
-      id: 7,
+      id: 37,
       description: "Hat 7",
       price: 15,
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
-      id: 8,
+      id: 38,
       description: "Hat 8",
       price: 15,
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",

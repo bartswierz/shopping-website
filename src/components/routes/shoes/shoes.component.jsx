@@ -4,49 +4,49 @@ import ProductList from "../../product-list/product-list.component";
 const Shoes = () => {
   const shoeList = [
     {
-      id: 1,
+      id: 41,
       description: "Shoes 1",
       price: 15,
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
-      id: 2,
+      id: 42,
       description: "Shoes 2",
       price: 15,
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
-      id: 3,
+      id: 43,
       description: "Shoes 3",
       price: 15,
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
-      id: 4,
+      id: 44,
       description: "Shoes 4",
       price: 15,
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
-      id: 5,
+      id: 45,
       description: "Shoes 5",
       price: 15,
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
-      id: 6,
+      id: 46,
       description: "Shoes 6",
       price: 15,
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
-      id: 7,
+      id: 47,
       description: "Shoes 7",
       price: 15,
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
-      id: 8,
+      id: 48,
       description: "Shoes 8",
       price: 15,
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",

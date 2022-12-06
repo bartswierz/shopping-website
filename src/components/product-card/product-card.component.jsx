@@ -1,20 +1,29 @@
 import "./product-card.styles.scss";
 import CartButton from "../buttons/cart-button/cart-button.component";
 import SelectColor from "../select-color/select-color.component";
-import Quantity from "../quantity/quantity.component";
-import { useContext } from "react";
+// import Quantity from "../quantity/quantity.component";
+import { useContext, useState } from "react";
+import { ReactComponent as Decrease } from "../../assets/remove-outline.svg";
+import { ReactComponent as Increase } from "../../assets/add-outline.svg";
 
 const ProductCard = ({ product }) => {
   // Return image, description, url
   const { description, price, imageUrl } = product;
+  const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState("Black");
 
-  // Push card information to Cart Context in here onClick
-  // i.e. onClick => add description, price, imageUrl, color(from SelectColor Component), Quantity(from Quantity Component)
-  const addItemHandler = () => {};
+  // const quantityHandler = () => {
+  //   console.log("Quantity Changed! ");
+  // };
 
-  const quantityHandler = () => {
-    console.log("Quantity Changed! ");
+  const colorHandler = (event) => {
+    // console.log("event: ", event);
+    const value = event.target.value;
+    // console.log("Color Changed! Event:", event);
+    console.log("Color Changed! Value:", value);
+    setColor(value);
   };
+
   return (
     <div className="product-item-container">
       <div className="product-image" style={{ backgroundImage: `url(${imageUrl})` }}></div>
@@ -23,11 +32,31 @@ const ProductCard = ({ product }) => {
         <div className="product-item-price">${price}</div>
       </div>
       <div className="quantity-color-container">
-        <Quantity onChange={() => quantityHandler()} />
-        <SelectColor />
+        {/* Quantity */}
+        <div className="quantity-container">
+          <Decrease className="decrement-button" onClick={() => setQuantity(quantity - 1)}>
+            Dec
+          </Decrease>
+          <div className="quantity-value">{quantity}</div>
+          <Increase className="increment-button" onClick={() => setQuantity(quantity + 1)}>
+            Inc
+          </Increase>
+        </div>
+
+        {/* Select Color */}
+        <select className="select-container" onChange={(event) => colorHandler(event)}>
+          <option value="Black">Black</option>
+          <option value="Grey">Grey</option>
+          <option value="White">White</option>
+          <option value="Navy">Navy</option>
+          <option value="Red">Red</option>
+          <option value="Green">Green</option>
+          <option value="Purple">Purple</option>
+          <option value="Yellow">Yellow</option>
+        </select>
       </div>
       {/* Pass product details to button */}
-      <CartButton product={product} />
+      <CartButton product={product} quantity={quantity} color={color} />
     </div>
   );
 };
