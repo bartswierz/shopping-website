@@ -30,6 +30,8 @@ const removeFromCart = (cartItems, itemToRemove) => {
 export const CartContext = createContext({
   cartItems: [],
   cartCount: 0,
+  cartTotal: 0,
+  taxTotal: 0,
   addItemToCart: () => {},
   removeItemFromCart: () => {},
 });
@@ -37,6 +39,8 @@ export const CartContext = createContext({
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [cartCount, setCartCount] = useState(0);
+  const [cartTotal, setCartTotal] = useState(0);
+  const [taxTotal, setTaxTotal] = useState(0);
 
   const addItemToCart = (itemToAdd) => {
     setCartItems(addToCart(cartItems, itemToAdd));
@@ -58,14 +62,24 @@ export const CartProvider = ({ children }) => {
     const newCartCount = cartItems.reduce((totalItems, currentItem) => totalItems + currentItem.quantity, 0);
     console.log("current Cart Count: ", newCartCount);
     setCartCount(newCartCount);
-  }, [cartCount]);
+  }, [cartCount, cartTotal, cartItems]);
 
-  // useEffect(() => {
+  // Updates total cost using reducer
+  useEffect(() => {
+    //Updates Cart Total Cost
+    const newCartTotal = cartItems.reduce((totalCost, currentItem) => totalCost + currentItem.price * currentItem.quantity, 0);
+    console.log("Updated Cart Total Cost: ", newCartTotal);
+    setCartTotal(newCartTotal);
+  }, [cartCount, cartTotal]);
 
-  // })
+  // Updates tax by total cost multiplied by 10%
+  useEffect(() => {
+    console.log("updating tax total: ", taxTotal);
+    setTaxTotal(cartTotal * 0.1);
+  }, [cartCount, cartTotal, taxTotal]);
 
   // Passing our context values to access in child components
-  const value = { cartItems, cartCount, addItemToCart, removeItemFromCart, updateCartCount };
+  const value = { cartItems, cartCount, cartTotal, addItemToCart, removeItemFromCart, updateCartCount, taxTotal };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
