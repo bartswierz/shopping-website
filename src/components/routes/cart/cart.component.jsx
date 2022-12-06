@@ -2,9 +2,11 @@ import "./cart.styles.scss";
 import { useContext } from "react";
 import { CartContext } from "../../../contexts/cart.context";
 import { ReactComponent as RemoveBtn } from "../../../assets/trash-outline.svg";
+import { ReactComponent as DecreaseIcon } from "../../../assets/chevron-back-outline.svg";
+import { ReactComponent as IncreaseIcon } from "../../../assets/chevron-forward-outline.svg";
 
 const Cart = () => {
-  const { cartItems, removeItemFromCart, cartCount, cartTotal, taxTotal, updateCartCount } = useContext(CartContext);
+  const { cartItems, removeItemFromCart, cartCount, cartTotal, taxTotal, updateCartCount, updateCartItem } = useContext(CartContext);
   console.log("cartItems in cart: ", cartItems);
 
   // const tax = cartTotal * 0.08;
@@ -12,6 +14,10 @@ const Cart = () => {
   const removeItem = (itemToRemove) => {
     console.log("removeItem, idToRemove: ", itemToRemove);
     removeItemFromCart(itemToRemove);
+  };
+
+  const updateCart = (itemToUpdate, newQuantity) => {
+    updateCartItem(itemToUpdate, newQuantity);
   };
 
   return (
@@ -35,7 +41,16 @@ const Cart = () => {
               <div className="cart-image" style={{ backgroundImage: `url(${item.imageUrl})` }}></div>
               <div className="cart-description">{item.description}</div>
               <div className="cart-color">{item.color}</div>
-              <div className="cart-quantity">{item.quantity}</div>
+              <div className="cart-quantity">
+                {/* If qty is greater than 1, then allow user to decrease quantity on click. Else, display icon without updating quantity */}
+                {item.quantity > 1 ? (
+                  <DecreaseIcon className="decrease-icon" onClick={() => updateCart(item, item.quantity - 1)} />
+                ) : (
+                  <DecreaseIcon className="decrease-icon" />
+                )}
+                {item.quantity}
+                <IncreaseIcon className="increase-icon" onClick={() => updateCart(item, item.quantity + 1)} />
+              </div>
               <div className="cart-price">${item.price}</div>
               {/* <div className="cart-remove">X</div> */}
               <RemoveBtn className="cart-remove" onClick={() => removeItem(item)} />

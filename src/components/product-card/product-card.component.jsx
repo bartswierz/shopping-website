@@ -34,13 +34,9 @@ const ProductCard = ({ product }) => {
       <div className="quantity-color-container">
         {/* Quantity */}
         <div className="quantity-container">
-          <Decrease className="decrement-button" onClick={() => setQuantity(quantity - 1)}>
-            Dec
-          </Decrease>
+          <Decrease className="decrement-button" onClick={() => setQuantity(quantity - 1)}></Decrease>
           <div className="quantity-value">{quantity}</div>
-          <Increase className="increment-button" onClick={() => setQuantity(quantity + 1)}>
-            Inc
-          </Increase>
+          <Increase className="increment-button" onClick={() => setQuantity(quantity + 1)}></Increase>
         </div>
 
         {/* Select Color */}

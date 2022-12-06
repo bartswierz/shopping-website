@@ -34,6 +34,7 @@ export const CartContext = createContext({
   taxTotal: 0,
   addItemToCart: () => {},
   removeItemFromCart: () => {},
+  updateCartItem: () => {},
 });
 
 export const CartProvider = ({ children }) => {
@@ -55,12 +56,26 @@ export const CartProvider = ({ children }) => {
     setCartCount({ cartCount: cartCount + numberOfItems });
   };
 
+  const updateCartItem = (cartItemToUpdate, newQuantity) => {
+    //set item quantity to new quantity
+    //find the cart item
+    //setCartItem({...cartItem, quantity: newQuantity})
+    //if cartItem id matches our passed parameter item, then give it a new quantity
+    console.log("UpdateCartItem - cartItemToUpdate: ", cartItemToUpdate);
+    console.log("UpdateCartItem - newQuantity: ", newQuantity);
+    // return cartItems.map((cartItem) => (cartItem.id === cartItemToUpdate.id ? { ...cartItem, quantity: newQuantity } : cartItem));
+    const updatedCartItems = cartItems.map((cartItem) =>
+      cartItem.id === cartItemToUpdate.id ? { ...cartItem, quantity: newQuantity } : cartItem
+    );
+    setCartItems(updatedCartItems);
+  };
+
   // Updates cart item count using reducer that adds up item.quantity value
   useEffect(() => {
     //Each time we add item to cart using the "add to cart" button, we will run this reducer that will add up all quantity of items and set that to our current cart count
     //reduce(accumulator value, currentValue in list) => accumulator + currentValue, initial value of 0(starting point)
     const newCartCount = cartItems.reduce((totalItems, currentItem) => totalItems + currentItem.quantity, 0);
-    console.log("current Cart Count: ", newCartCount);
+    // console.log("current Cart Count: ", newCartCount);
     setCartCount(newCartCount);
   }, [cartCount, cartTotal, cartItems]);
 
@@ -68,18 +83,18 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     //Updates Cart Total Cost
     const newCartTotal = cartItems.reduce((totalCost, currentItem) => totalCost + currentItem.price * currentItem.quantity, 0);
-    console.log("Updated Cart Total Cost: ", newCartTotal);
+    // console.log("Updated Cart Total Cost: ", newCartTotal);
     setCartTotal(newCartTotal);
   }, [cartCount, cartTotal]);
 
   // Updates tax by total cost multiplied by 10%
   useEffect(() => {
-    console.log("updating tax total: ", taxTotal);
+    // console.log("updating tax total: ", taxTotal);
     setTaxTotal(cartTotal * 0.1);
   }, [cartCount, cartTotal, taxTotal]);
 
   // Passing our context values to access in child components
-  const value = { cartItems, cartCount, cartTotal, addItemToCart, removeItemFromCart, updateCartCount, taxTotal };
+  const value = { cartItems, cartCount, cartTotal, addItemToCart, removeItemFromCart, updateCartCount, updateCartItem, taxTotal };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

@@ -9,7 +9,7 @@ const CartButton = ({ product, quantity, color }) => {
   const handleClick = (product, quantity, color) => {
     // ...product = id, description, imageUrl, price
     const itemToAdd = { ...product, quantity, color };
-    console.log("button clicked! ", itemToAdd);
+    // console.log("button clicked! ", itemToAdd);
     addItemToCart(itemToAdd);
 
     //Passing the quantity value of our item to update our current cart count inside cart context using a reducer
