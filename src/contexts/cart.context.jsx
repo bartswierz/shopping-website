@@ -46,14 +46,26 @@ export const CartProvider = ({ children }) => {
     setCartItems(removeFromCart(cartItems, itemToRemove));
   };
 
+  const updateCartCount = (numberOfItems) => {
+    // console.log("updating cart Count, current: ", cartCount);
+    setCartCount({ cartCount: cartCount + numberOfItems });
+  };
+
+  // Updates cart item count using reducer that adds up item.quantity value
   useEffect(() => {
-    // Holds # of items
-    const newCartCount = cartItems.length;
+    //Each time we add item to cart using the "add to cart" button, we will run this reducer that will add up all quantity of items and set that to our current cart count
+    //reduce(accumulator value, currentValue in list) => accumulator + currentValue, initial value of 0(starting point)
+    const newCartCount = cartItems.reduce((totalItems, currentItem) => totalItems + currentItem.quantity, 0);
     console.log("current Cart Count: ", newCartCount);
     setCartCount(newCartCount);
   }, [cartCount]);
+
+  // useEffect(() => {
+
+  // })
+
   // Passing our context values to access in child components
-  const value = { cartItems, cartCount, addItemToCart, removeItemFromCart };
+  const value = { cartItems, cartCount, addItemToCart, removeItemFromCart, updateCartCount };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
