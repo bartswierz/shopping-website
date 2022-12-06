@@ -52,8 +52,8 @@ export const CartProvider = ({ children }) => {
   };
 
   const updateCartCount = (numberOfItems) => {
-    // console.log("updating cart Count, current: ", cartCount);
-    setCartCount({ cartCount: cartCount + numberOfItems });
+    // setCartCount({ cartCount: cartCount + numberOfItems });
+    setCartCount(cartCount + numberOfItems);
   };
 
   const updateCartItem = (cartItemToUpdate, newQuantity) => {

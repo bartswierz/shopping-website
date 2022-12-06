@@ -4,8 +4,20 @@ import { Fragment } from "react";
 import Checkout from "../checkout/checkout.component";
 import Cart from "../cart/cart.component";
 import { ReactComponent as HomeLogo } from "../../../assets/home-outline.svg";
+import { ReactComponent as CartIcon } from "../../../assets/cart-outline.svg";
+import { useContext } from "react";
+import { CartContext } from "../../../contexts/cart.context";
 
 const Navigation = () => {
+  const { cartCount } = useContext(CartContext);
+
+  console.log("cartCount: ", cartCount);
+  // console.log("typeof cartCount: ", typeof cartCount);
+  // console.log("cartCount: ", cartCount);
+  // console.log("typeof cartCount: ", typeof cartCount);
+  // const currentValue = cartCount;
+  // console.log("currentValue", currentValue);
+
   return (
     <Fragment>
       <div className="navbar">
@@ -18,7 +30,11 @@ const Navigation = () => {
             Checkout
           </Link>
           <Link to="/cart" element={<Cart />}>
-            Cart
+            {/* Cart */}
+            <div className="cart-icon-container">
+              <CartIcon className="cart-icon" />
+              <div className="cart-item-count">{cartCount}</div>
+            </div>
           </Link>
         </div>
       </div>
