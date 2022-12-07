@@ -57,7 +57,8 @@ const Checkout = () => {
           <br /> */}
           <div className="form-item-container">
             <label className="form-label">State</label>
-            <select>
+            <select className="select-box">
+              <option value="SelectState">Select State</option>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
               <option value="AZ">Arizona</option>
@@ -113,7 +114,22 @@ const Checkout = () => {
           </div>
           <br />
 
-          {/* Radio - Select Delivery Method - 2 options - standard or express */}
+          {/* Delivery Method */}
+          <div className="form-radio-container">
+            <h3 className="form-radio-header">Select Delivery Method</h3>
+            <div className="form-radio-item">
+              <input type="radio" value="FREE" name="FREE" />
+              <label className="form-label">
+                <span className="shipping-type">Standard</span> <span className="shipping-price">FREE</span>
+              </label>
+            </div>
+            <div className="form-radio-item">
+              <input type="radio" value="Express" name="Express" />
+              <label className="form-label">
+                <span className="shipping-type">Express</span> <span className="shipping-price">$20</span>
+              </label>
+            </div>
+          </div>
 
           <div className="form-item-container">
             <label className="form-label">
@@ -131,8 +147,15 @@ const Checkout = () => {
           </div>
           <br />
 
-          {/* Submit - Go to Billing */}
-          <input type="submit" value="CONTINUE TO BILLING" className="checkout-submit-btn" />
+          <div className="form-footer">
+            <label>
+              <span className="asterisk">*</span>
+              <span>Required Fields</span>
+            </label>
+
+            {/* Submit - Go to Billing */}
+            <input type="submit" value="CONTINUE TO BILLING" className="checkout-submit-btn" />
+          </div>
         </form>
       </div>
 
