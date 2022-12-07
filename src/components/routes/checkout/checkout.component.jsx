@@ -1,6 +1,7 @@
 import "./checkout.styles.scss";
 import { useContext } from "react";
 import { CartContext } from "../../../contexts/cart.context";
+import { Link } from "react-router-dom";
 
 const Checkout = () => {
   const { cartTotal, cartCount, taxTotal, cartItems } = useContext(CartContext);
@@ -151,10 +152,19 @@ const Checkout = () => {
           </div>
           <br />
 
+          <div className="checkout-member-text">
+            <span>
+              Already a member?
+              <Link to="/checkout">
+                <span className="checkout-sign-in-link">Sign In</span>
+              </Link>
+            </span>
+          </div>
+
           <div className="form-footer">
             <label>
               <span className="highlight">*</span>
-              <span className="required-text">Required Fields</span>
+              <span className="required-text"> Required Fields</span>
             </label>
 
             {/* Submit - Go to Billing */}
@@ -183,16 +193,53 @@ const Checkout = () => {
             </div>
             <div className="checkout-summary-item">
               <span>Total</span>
-              <span>${cartTotal + taxTotal}</span>
+              <span className="highlight">${cartTotal + taxTotal}</span>
             </div>
           </div>
         </div>
 
         {/* In Your Cart */}
-        <div className="checkout-cart-container">IN YOUR CART</div>
+        <div className="checkout-cart-container">
+          {cartCount > 0 ? (
+            <div className="checkout-cart-header">IN YOUR CART ({cartCount})</div>
+          ) : (
+            <div className="checkout-cart-header">Empty Cart</div>
+          )}
+
+          {cartCount > 0 ? <div className="checkout-cart-arrival">ARRIVES 2/1 - 2/9</div> : null}
+
+          {/* Cart Items go here */}
+          <div className="checkout-cart-item-container">
+            {cartItems.map((item) => {
+              return (
+                <div className="checkout-item" key={item.id}>
+                  <div>
+                    <div className="checkout-cart-image" style={{ backgroundImage: `url(${item.imageUrl})` }}></div>
+                  </div>
+                  <div className="checkout-cart-text">
+                    <div>{item.description}</div>
+                    <div>Size: Large</div>
+                    <div>Qty: {item.quantity}</div>
+                    <div>${item.price}</div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Link back to Cart Page */}
+          {cartCount > 0 ? (
+            <div className="checkout-cart-link">
+              <Link to="/cart">Edit Cart</Link>
+            </div>
+          ) : null}
+        </div>
 
         {/* Shipping & Delivery */}
-        <div className="checkout-delivery-container">SHIPPING & DELIVERY</div>
+        <div className="checkout-delivery-container">
+          <div className="checkout-delivery-header">SHIPPING & DELIVERY</div>
+          <p className="checkout-delivery-text">Orders are delivered on business days (Monday-Friday) excluding major holidays.</p>
+        </div>
       </div>
     </div>
   );
