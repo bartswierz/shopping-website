@@ -1,0 +1,142 @@
+$headerColor: rgb(42, 42, 42);
+$borderColor: #e1e1e1;
+$primaryColor: #7c00f9;
+$hoverColor: #7200e4;
+$size: 1.6rem;
+$fontColor: #333;
+
+// Shipping form - left side
+.checkout-shipping-container {
+  // border: 1px solid #777;
+  min-width: 52rem;
+
+  .checkout-header {
+    color: white;
+    font-size: 2rem;
+    padding: 0.8rem;
+
+    background-color: $headerColor;
+    height: 4rem;
+  }
+
+  .checkout-form-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1.2rem;
+    background-color: white;
+    // border: 10px solid #eeeeee;
+    border: 10px solid $borderColor;
+    // min-width: 52rem;
+
+    .checkout-submit-btn {
+      background-color: $primaryColor;
+      border: 1px solid $primaryColor;
+      color: white;
+      font-weight: bold;
+      padding: 0.8rem 1.2rem;
+      font-size: 1.2rem;
+      width: 170px;
+      text-align: center;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $hoverColor;
+      }
+    }
+
+    .form-item-container {
+      display: flex;
+      font-size: $size;
+
+      .form-label {
+        width: 16rem;
+        align-self: center;
+        font-weight: bold;
+
+        .highlight {
+          color: $primaryColor;
+          font-size: $size;
+          font-weight: bold;
+        }
+      }
+
+      .select-box {
+        width: 15rem;
+        padding: 0.4rem;
+        border: 1px solid rgb(220, 220, 220);
+        border-radius: 4px;
+
+        color: #666;
+      }
+
+      input {
+        width: 15rem;
+        padding: 0.4rem;
+        border: 1px solid rgb(220, 220, 220);
+        border-radius: 4px;
+      }
+    }
+
+    .checkout-member-text {
+      font-size: $size;
+      margin: 1rem 0rem 1.5rem 0rem;
+      color: #333;
+      font-weight: 700;
+
+      .checkout-sign-in-link {
+        text-decoration: underline;
+        // text-decoration: double;
+        color: $fontColor;
+        font-weight: 600;
+        padding-left: 4px;
+
+        &:hover {
+          color: black;
+        }
+      }
+    }
+
+    .form-footer {
+      display: flex;
+      justify-content: space-between;
+
+      .highlight {
+        color: $primaryColor;
+        font-size: $size;
+        font-weight: bold;
+      }
+
+      .required-text {
+        font-size: 1.2rem;
+      }
+    }
+
+    .form-radio-container {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+
+      .form-radio-header {
+        font-size: $size;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-radio-item {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 7px;
+
+        .shipping-type {
+          font-weight: 700;
+          font-size: 1.2rem;
+        }
+
+        .shipping-price {
+          color: $primaryColor;
+          font-size: 1.2rem;
+          font-weight: 800;
+        }
+      }
+    }
+  }
+}

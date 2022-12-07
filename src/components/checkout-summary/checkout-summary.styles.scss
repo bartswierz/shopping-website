@@ -1,0 +1,33 @@
+$primaryColor: #7c00f9;
+$size: 1.6rem;
+$sideContainerColor: rgb(223, 223, 223);
+
+.checkout-summary-container {
+  border: 1px solid $sideContainerColor;
+  min-width: 29rem;
+  min-height: 100px;
+
+  .checkout-summary-header {
+    color: #333;
+    font-weight: 700;
+    font-size: 2rem;
+    padding: 0.8rem;
+
+    background-color: $sideContainerColor;
+    height: 4rem;
+  }
+
+  .checkout-summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-weight: 700;
+    font-size: $size;
+
+    .highlight {
+      color: $primaryColor;
+      font-size: $size;
+      font-weight: bold;
+    }
+  }
+}

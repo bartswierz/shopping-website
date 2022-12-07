@@ -1,0 +1,27 @@
+$borderColor: #e1e1e1;
+$sideContainerColor: rgb(223, 223, 223);
+$size: 1.6rem;
+$fontColor: #333;
+
+.checkout-delivery-container {
+  border: 1px solid $borderColor;
+  width: 100%;
+  min-height: 12.5rem;
+
+  .checkout-delivery-header {
+    color: #333;
+    font-weight: 700;
+    font-size: 1.6rem;
+    padding: 0.8rem;
+
+    background-color: $sideContainerColor;
+    height: 4rem;
+  }
+
+  .checkout-delivery-text {
+    font-size: $size;
+    padding: 15px;
+    color: $fontColor;
+    font-weight: 500;
+  }
+}
