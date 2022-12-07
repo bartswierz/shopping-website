@@ -1,6 +1,10 @@
 import "./checkout.styles.scss";
+import { useContext } from "react";
+import { CartContext } from "../../../contexts/cart.context";
 
 const Checkout = () => {
+  const { cartTotal, cartCount, taxTotal, cartItems } = useContext(CartContext);
+
   return (
     <div className="checkout-container">
       {/* <h1 className="checkout-header">Inside Checkout Page</h1> */}
@@ -13,7 +17,7 @@ const Checkout = () => {
         <form className="checkout-form-container">
           <div className="form-item-container">
             <label className="form-label">
-              First Name<span className="asterisk">*</span>
+              First Name<span className="highlight">*</span>
             </label>
             <input type="text" id="firstName" className="form-input" required />
           </div>
@@ -21,7 +25,7 @@ const Checkout = () => {
 
           <div className="form-item-container">
             <label className="form-label">
-              Last Name<span className="asterisk">*</span>
+              Last Name<span className="highlight">*</span>
             </label>
             <input type="text" id="lastName" className="form-input" required />
           </div>
@@ -29,7 +33,7 @@ const Checkout = () => {
 
           <div className="form-item-container">
             <label className="form-label">
-              Postal Code<span className="asterisk">*</span>
+              Postal Code<span className="highlight">*</span>
             </label>
             <input type="text" id="postalCode" className="form-input" required />
           </div>
@@ -37,7 +41,7 @@ const Checkout = () => {
 
           <div className="form-item-container">
             <label className="form-label">
-              Address Line 1<span className="asterisk">*</span>
+              Address Line 1<span className="highlight">*</span>
             </label>
             <input type="text" id="address1" className="form-input" required />
           </div>
@@ -133,7 +137,7 @@ const Checkout = () => {
 
           <div className="form-item-container">
             <label className="form-label">
-              Phone<span className="asterisk">*</span>
+              Phone<span className="highlight">*</span>
             </label>
             <input type="text" id="phone" className="form-input" required />
           </div>
@@ -141,7 +145,7 @@ const Checkout = () => {
 
           <div className="form-item-container">
             <label className="form-label">
-              Email<span className="asterisk">*</span>
+              Email<span className="highlight">*</span>
             </label>
             <input type="text" id="email" className="form-input" required />
           </div>
@@ -149,8 +153,8 @@ const Checkout = () => {
 
           <div className="form-footer">
             <label>
-              <span className="asterisk">*</span>
-              <span>Required Fields</span>
+              <span className="highlight">*</span>
+              <span className="required-text">Required Fields</span>
             </label>
 
             {/* Submit - Go to Billing */}
@@ -162,7 +166,27 @@ const Checkout = () => {
       {/* Right Container*/}
       <div className="checkout-side-container">
         {/* Summary - Display Subtotal, Shipping & Handling Cost, Taxes, Total */}
-        <div className="checkout-summary-container">SUMMARY</div>
+        <div className="checkout-summary-container">
+          <div className="checkout-summary-header">SUMMARY</div>
+          <div>
+            <div className="checkout-summary-item">
+              <span>Subtotal</span>
+              <span>${cartTotal}</span>
+            </div>
+            <div className="checkout-summary-item">
+              <span>Shipping & Handling</span>
+              <span className="highlight">FREE</span>
+            </div>
+            <div className="checkout-summary-item">
+              <span>Taxes</span>
+              <span>${taxTotal}</span>
+            </div>
+            <div className="checkout-summary-item">
+              <span>Total</span>
+              <span>${cartTotal + taxTotal}</span>
+            </div>
+          </div>
+        </div>
 
         {/* In Your Cart */}
         <div className="checkout-cart-container">IN YOUR CART</div>
