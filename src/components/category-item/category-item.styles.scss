@@ -55,3 +55,15 @@
     padding: 12px 24px;
   }
 }
+
+@media (max-width: 768px) {
+  .category-item-container {
+    min-width: 35%;
+  }
+}
+
+@media (max-width: 450px) {
+  .category-item-container {
+    min-width: 50%;
+  }
+}

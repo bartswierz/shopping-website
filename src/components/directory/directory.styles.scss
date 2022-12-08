@@ -8,4 +8,11 @@
   flex-wrap: wrap;
   column-gap: 14px;
   row-gap: 14px;
+  margin-bottom: 50px;
+}
+
+@media (min-width: 1200px) {
+  .directory-container {
+    width: 70%;
+  }
 }

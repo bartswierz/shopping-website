@@ -11,12 +11,7 @@ import { CartContext } from "../../../contexts/cart.context";
 const Navigation = () => {
   const { cartCount } = useContext(CartContext);
 
-  console.log("cartCount: ", cartCount);
-  // console.log("typeof cartCount: ", typeof cartCount);
   // console.log("cartCount: ", cartCount);
-  // console.log("typeof cartCount: ", typeof cartCount);
-  // const currentValue = cartCount;
-  // console.log("currentValue", currentValue);
 
   return (
     <Fragment>

@@ -1,6 +1,6 @@
 import "./product-card.styles.scss";
 import CartButton from "../buttons/cart-button/cart-button.component";
-import SelectColor from "../select-color/select-color.component";
+import Select from "../select/select.component";
 // import Quantity from "../quantity/quantity.component";
 import { useContext, useState } from "react";
 import { ReactComponent as Decrease } from "../../assets/remove-outline.svg";
@@ -39,17 +39,8 @@ const ProductCard = ({ product }) => {
           <Increase className="increment-button" onClick={() => setQuantity(quantity + 1)}></Increase>
         </div>
 
-        {/* Select Color */}
-        <select className="select-container" onChange={(event) => colorHandler(event)}>
-          <option value="Black">Black</option>
-          <option value="Grey">Grey</option>
-          <option value="White">White</option>
-          <option value="Navy">Navy</option>
-          <option value="Red">Red</option>
-          <option value="Green">Green</option>
-          <option value="Purple">Purple</option>
-          <option value="Yellow">Yellow</option>
-        </select>
+        {/* Pass in type, shirt-pants-jacket-jeans-shoes, depending which one we pass in, will determine which of the 2-4 select options we render */}
+        <Select productType={product.productType} />
       </div>
       {/* Pass product details to button */}
       <CartButton product={product} quantity={quantity} color={color} />
