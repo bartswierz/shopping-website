@@ -74,6 +74,18 @@ $fontColor: #333;
         padding: 0.4rem;
         border: 1px solid rgb(220, 220, 220);
         border-radius: 4px;
+
+        &:focus {
+          border: 2px solid $primaryColor;
+          outline: $primaryColor;
+        }
+      }
+
+      select {
+        &:focus {
+          border: 2px solid $primaryColor;
+          outline: $primaryColor;
+        }
       }
     }
 

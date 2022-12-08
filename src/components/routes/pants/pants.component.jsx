@@ -5,46 +5,40 @@ const Pants = () => {
   const pantsList = [
     {
       id: 11,
-      description: "Pants 1",
+      description: "Straight Jeans",
       price: 15,
-      imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
+      imageUrl: "https://i.ibb.co/tQtwP9f/pants2.jpg",
     },
     {
       id: 12,
-      description: "Pants 2",
+      description: "Skinny Jeans",
       price: 15,
-      imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
+      imageUrl: "https://i.ibb.co/tQtwP9f/pants2.jpg",
     },
     {
       id: 13,
-      description: "Pants 3",
+      description: "Slim Jeans",
       price: 15,
-      imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
+      imageUrl: "https://i.ibb.co/tQtwP9f/pants2.jpg",
     },
     {
       id: 14,
-      description: "Pants 4",
+      description: "Athletic Jeans",
       price: 15,
-      imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
+      imageUrl: "https://i.ibb.co/tQtwP9f/pants2.jpg",
     },
     {
       id: 15,
-      description: "Pants 5",
+      description: "Bootcut Jeans",
       price: 15,
-      imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
+      imageUrl: "https://i.ibb.co/tQtwP9f/pants2.jpg",
     },
     {
       id: 16,
-      description: "Pants 6",
+      description: "Sweatpants",
       price: 15,
-      imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
+      imageUrl: "https://i.ibb.co/tQtwP9f/pants2.jpg",
     },
-    // {
-    //   id: 17,
-    //   description: "Tanks",
-    //   price: 15,
-    //   imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
-    // },
   ];
 
   return <ProductList products={pantsList} />;

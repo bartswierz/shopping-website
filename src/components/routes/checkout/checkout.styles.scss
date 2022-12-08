@@ -36,6 +36,9 @@ $fontColor: #333;
   .checkout-container {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    max-width: 52rem;
+    // max-width: 80vw;
   }
 
   .checkout-summary-container {
@@ -48,24 +51,35 @@ $fontColor: #333;
   }
 }
 
+@media (max-width: 768px) {
+  .checkout-container {
+    margin: 0 auto;
+    .checkout-shipping-container {
+      // min-width: 90vw;
+      // margin: 0 5vw;
+    }
+  }
+}
+
 // @media (max-width: 576px) {
 @media (max-width: 576px) {
-  .checkout-form-container {
-    // min-width: 29rem;
+  .checkout-container {
     max-width: 95vw;
-    display: block;
+
+    .checkout-form-container {
+      // min-width: 29rem;
+      max-width: 95vw;
+      display: block;
+    }
   }
 
   .checkout-container {
-    min-width: 96vw;
-    margin-left: 2vw;
-    margin-right: 2vw;
-    min-width: 29rem;
+    // min-width: 96vw;
+    // margin-left: 2vw;
+    // margin-right: 2vw;
+    // min-width: 29rem;
 
     .checkout-shipping-container {
-      max-width: 95vw;
-      // width: 95%;
-
       .checkout-header {
         max-width: 95vw;
       }

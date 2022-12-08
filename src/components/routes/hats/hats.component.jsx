@@ -5,51 +5,39 @@ const Hats = () => {
   const hatList = [
     {
       id: 31,
-      description: "Hat 1",
+      description: "Baseball Cap",
       price: 15,
-      imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
+      imageUrl: "https://i.ibb.co/SmyzmXM/hat.jpg",
     },
     {
       id: 32,
-      description: "Hat 2",
+      description: "Beanie",
       price: 15,
-      imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
+      imageUrl: "https://i.ibb.co/SmyzmXM/hat.jpg",
     },
     {
       id: 33,
-      description: "Hat 3",
+      description: "Snapback Cap",
       price: 15,
-      imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
+      imageUrl: "https://i.ibb.co/SmyzmXM/hat.jpg",
     },
     {
       id: 34,
-      description: "Hat 4",
+      description: "Mesh Cap",
       price: 15,
-      imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
+      imageUrl: "https://i.ibb.co/SmyzmXM/hat.jpg",
     },
     {
       id: 35,
-      description: "Hat 5",
+      description: "Visor Hat",
       price: 15,
-      imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
+      imageUrl: "https://i.ibb.co/SmyzmXM/hat.jpg",
     },
     {
       id: 36,
-      description: "Hat 6",
+      description: "Cowboy Hat",
       price: 15,
-      imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
-    },
-    {
-      id: 37,
-      description: "Hat 7",
-      price: 15,
-      imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
-    },
-    {
-      id: 38,
-      description: "Hat 8",
-      price: 15,
-      imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
+      imageUrl: "https://i.ibb.co/SmyzmXM/hat.jpg",
     },
   ];
 

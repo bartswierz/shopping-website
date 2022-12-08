@@ -14,22 +14,22 @@ const Homepage = () => {
     {
       id: 2,
       title: "PANTS",
-      imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
+      imageUrl: "https://i.ibb.co/qkV6Szh/pants.jpg",
     },
     {
       id: 3,
       title: "JACKETS",
-      imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
+      imageUrl: "https://i.ibb.co/bFXrZWV/jacket.jpg",
     },
     {
       id: 4,
       title: "HATS",
-      imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
+      imageUrl: "https://i.ibb.co/SmyzmXM/hat.jpg",
     },
     {
       id: 5,
       title: "SHOES",
-      imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
+      imageUrl: "https://i.ibb.co/txNp8Gr/shoes.jpg",
     },
     // {
     //   id: 6,
