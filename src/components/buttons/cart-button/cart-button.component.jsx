@@ -8,6 +8,7 @@ const CartButton = ({ product, quantity, color }) => {
   // Adds the item to our CartItems array within our Cart Context
   const handleClick = (product, quantity, color) => {
     // ...product = id, description, imageUrl, price
+    console.log("in handleClick, color: ", color);
     const itemToAdd = { ...product, quantity, color };
     // console.log("button clicked! ", itemToAdd);
     addItemToCart(itemToAdd);

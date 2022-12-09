@@ -17,11 +17,11 @@ const ProductCard = ({ product }) => {
   // };
 
   const colorHandler = (event) => {
-    // console.log("event: ", event);
-    const value = event.target.value;
+    console.log("PRODUCT_CARD event: ", event);
+    const color = event.target.value;
     // console.log("Color Changed! Event:", event);
-    console.log("Color Changed! Value:", value);
-    setColor(value);
+    console.log("Color Changed! color:", color);
+    setColor(color);
   };
 
   return (
@@ -40,10 +40,11 @@ const ProductCard = ({ product }) => {
         </div>
 
         {/* Pass in type, shirt-pants-jacket-jeans-shoes, depending which one we pass in, will determine which of the 2-4 select options we render */}
-        <Select productType={product.productType} />
+        <Select productType={product.productType} onChange={(event) => colorHandler(event)} setColor={setColor} />
       </div>
       {/* Pass product details to button */}
       <CartButton product={product} quantity={quantity} color={color} />
+      {/* <CartButton product={product} quantity={quantity} color={color} onClick={() => colorHandler(color)} /> */}
     </div>
   );
 };
