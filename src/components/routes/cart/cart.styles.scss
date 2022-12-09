@@ -1,4 +1,6 @@
 $borderColor: rgb(192, 192, 192);
+$primaryColor: #7c00f9;
+$hoverColor: #7200e4;
 
 .cart-heading {
   text-align: center;
@@ -44,7 +46,7 @@ $borderColor: rgb(192, 192, 192);
       font-size: 16px;
       gap: 7px;
 
-      width: 50%;
+      width: 40%;
 
       .footer-item {
         display: flex;
@@ -53,6 +55,30 @@ $borderColor: rgb(192, 192, 192);
         border-bottom: 1px solid $borderColor;
         padding-bottom: 10px;
         padding-top: 10px;
+
+        .order-total-value {
+          font-size: 24px;
+          font-weight: 700;
+        }
+      }
+
+      .cart-checkout-button {
+        width: 40%;
+        padding: 10px 5px;
+        margin-top: 12px;
+        background-color: black;
+        color: white;
+        text-align: center;
+        border: 1px solid black;
+        font-size: 12px;
+        font-weight: 700;
+
+        &:hover {
+          cursor: pointer;
+          background-color: white;
+          color: black;
+          transition: 100ms ease-in;
+        }
       }
     }
   }
@@ -147,6 +173,15 @@ $borderColor: rgb(192, 192, 192);
   }
 }
 
+@media screen and (max-width: 768px) {
+  .cart-container {
+    .cart-footer-container {
+      .cart-footer {
+        width: 50%;
+      }
+    }
+  }
+}
 // Small screen Tilt image/Desc
 @media screen and (max-width: 568px) {
   .image-desc-container {
@@ -158,6 +193,14 @@ $borderColor: rgb(192, 192, 192);
     .cart-image,
     .cart-description {
       align-self: start;
+    }
+  }
+
+  .cart-container {
+    .cart-footer-container {
+      .cart-footer {
+        width: 70%;
+      }
     }
   }
 

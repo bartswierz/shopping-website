@@ -96,12 +96,8 @@ const Cart = () => {
               <span>Order Total: </span>
               <span className="order-total-value">${cartTotal + taxTotal}</span>
             </div>
-            {/* <div className="order-total">
-            Order Total: <span className="order-total-value">${cartTotal + taxTotal}</span>
-          </div> */}
-            {/* <button>Checkout</button> */}
-            <Link to="/checkout">
-              <span className="checkout-sign-in-link">Checkout</span>
+            <Link to="/checkout" className="cart-checkout-button">
+              Checkout
             </Link>
           </div>
         </div>
