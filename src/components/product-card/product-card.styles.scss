@@ -1,6 +1,5 @@
 .product-item-container {
   min-width: 30%;
-  border: 1px solid grey;
 
   .product-image {
     height: 200px;
@@ -8,20 +7,24 @@
     background-position: center;
   }
 
-  .product-item-description {
-    font-size: 1.5rem;
-    font-weight: 600;
-  }
+  .info-container {
+    background-color: #eaeaea;
 
-  .product-item-price {
-    font-size: 1.6rem;
-    font-weight: 600;
-  }
+    .product-text-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 5px;
 
-  .product-text-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 5px;
+      .product-item-description {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .product-item-price {
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+    }
   }
 
   .quantity-color-container {
