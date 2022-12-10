@@ -2,14 +2,14 @@ import "./cart-button.styles.scss";
 import { CartContext } from "../../../contexts/cart.context";
 import { useContext } from "react";
 
-const CartButton = ({ product, quantity, color }) => {
+const CartButton = ({ product, quantity, color, size }) => {
   const { addItemToCart, cartItems, cartCount, updateCartCount } = useContext(CartContext);
 
   // Adds the item to our CartItems array within our Cart Context
-  const handleClick = (product, quantity, color) => {
+  const handleClick = (product, quantity, color, size) => {
     // ...product = id, description, imageUrl, price
     console.log("in handleClick, color: ", color);
-    const itemToAdd = { ...product, quantity, color };
+    const itemToAdd = { ...product, quantity, color, size };
     // console.log("button clicked! ", itemToAdd);
     addItemToCart(itemToAdd);
 
@@ -18,7 +18,7 @@ const CartButton = ({ product, quantity, color }) => {
   };
 
   return (
-    <button className="cart-button" onClick={() => handleClick(product, quantity, color)}>
+    <button className="cart-button" onClick={() => handleClick(product, quantity, color, size)}>
       Add to Cart
     </button>
   );

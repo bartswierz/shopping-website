@@ -55,7 +55,7 @@ const Cart = () => {
                     Color: <strong>{item.color}</strong>
                   </span>
                   <span>
-                    Size: <strong>{item.size}N/A</strong>
+                    Size: <strong>{item.size}</strong>
                   </span>
                 </div>
               </div>

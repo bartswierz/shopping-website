@@ -31,6 +31,7 @@ $hoverColor: #7200e4;
     .cart-header-total {
       display: flex;
       justify-content: end;
+      width: 100%;
     }
   }
 
@@ -181,6 +182,10 @@ $hoverColor: #7200e4;
       }
     }
   }
+
+  .cart-description {
+    padding-right: 30px;
+  }
 }
 // Small screen Tilt image/Desc
 @media screen and (max-width: 568px) {
@@ -204,7 +209,7 @@ $hoverColor: #7200e4;
     }
   }
 
-  .cart-total-remove {
-    // flex-direction: column-reverse;
-  }
+  // .cart-total-remove {
+  //   // flex-direction: column-reverse;
+  // }
 }
