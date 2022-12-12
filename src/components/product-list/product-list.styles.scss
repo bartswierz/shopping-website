@@ -35,7 +35,8 @@
 @media (max-width: 510px) {
   .product-list-container {
     grid-template-columns: repeat(1, 1fr);
-    max-width: 70vw;
+    max-width: 90vw;
+    // max-width: 70vw;
   }
 }
 

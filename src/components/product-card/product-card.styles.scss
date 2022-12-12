@@ -84,3 +84,15 @@
     }
   }
 }
+
+@media (max-width: 510px) {
+  .product-item-container {
+    // min-width: 30%;
+
+    .product-image {
+      height: 250px;
+      background-size: cover;
+      background-position: center;
+    }
+  }
+}
