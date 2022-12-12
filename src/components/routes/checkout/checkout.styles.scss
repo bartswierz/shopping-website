@@ -21,6 +21,8 @@ $fontColor: #333;
   margin: 0 auto;
   color: $fontColor;
 
+  overflow: hidden;
+
   /**************************************************************/
   // Additional Content - right side - Summary, In Your Cart, Shipping & Delivery
   .checkout-side-container {

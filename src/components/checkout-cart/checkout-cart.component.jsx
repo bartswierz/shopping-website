@@ -40,6 +40,7 @@ const CheckoutCart = () => {
               </div>
               <div className="checkout-cart-text">
                 <div>{item.description}</div>
+                <div>Color: {item.color}</div>
                 <div>Size: Large</div>
                 <div>Qty: {item.quantity}</div>
                 <div>${item.price}</div>
