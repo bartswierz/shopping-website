@@ -4,7 +4,7 @@
   grid-template-columns: repeat(4, 1fr);
   width: 90%;
   margin: 0 auto;
-  gap: 25px;
+  gap: 20px;
   min-width: 260px;
   margin-top: 24px;
   margin-bottom: 20px;
@@ -12,7 +12,8 @@
 }
 
 // Large devices (desktops, 992px and up)
-@media (max-width: 992px) {
+// @media (max-width: 992px) {
+@media (max-width: 1050px) {
   .product-list-container {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -31,7 +32,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 510px) {
   .product-list-container {
     grid-template-columns: repeat(1, 1fr);
     max-width: 70vw;

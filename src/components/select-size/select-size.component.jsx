@@ -8,6 +8,7 @@ const SelectSize = ({ productType, onChange, setSize }) => {
   const sizes = ["Size", "S", "M", "L", "XL", "XXL"];
 
   const pantSizes = [
+    "Size",
     "26 X 28",
     "26 X 30",
     "28 X 28",
@@ -49,6 +50,8 @@ const SelectSize = ({ productType, onChange, setSize }) => {
     "44 X 32",
   ];
 
+  const shoeSizes = ["Size", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5", "11", "11.5", "12", "12.5", "13"];
+
   const sizeHandler = (event) => {
     console.log("SELECT event: ", event);
     const size = event.target.value;
@@ -61,6 +64,67 @@ const SelectSize = ({ productType, onChange, setSize }) => {
   else console.log("not pants, productType: ", productType);
 
   return (
+    <div>
+      {/* If product is Pants, display pants selection options  */}
+      {productType == "pants" ? (
+        <select className="select-container" onChange={(event) => sizeHandler(event)}>
+          {pantSizes.map((pantSize) => {
+            return <option key={pantSize}>{pantSize}</option>;
+          })}
+        </select>
+      ) : productType == "shoes" ? (
+        //Else If product is Shoes, display Shoes selection options
+        <select className="select-container" onChange={(event) => sizeHandler(event)}>
+          {shoeSizes.map((shoeSize) => {
+            return <option key={shoeSize}>{shoeSize}</option>;
+          })}
+        </select>
+      ) : (
+        //Not Shoes OR Pants, display normal size selection options
+        <select className="select-container" onChange={(event) => sizeHandler(event)}>
+          {sizes.map((size) => {
+            return <option key={size}>{size}</option>;
+          })}
+        </select>
+      )}
+    </div>
+  );
+};
+
+export default SelectSize;
+
+/*
+return (
+    <div>
+      {
+      if(productType == "pants")  (
+        <select className="select-container" onChange={(event) => sizeHandler(event)}>
+          {pantSizes.map((pantSize) => {
+            return <option key={pantSize}>{pantSize}</option>;
+          })}
+        </select>
+      ) 
+      else if(productType == "shoes") (
+        // Product is NOT pants, render Colors list
+        <select className="select-container" onChange={(event) => sizeHandler(event)}>
+          {shoeSizes.map((shoeSize) => {
+            return <option key={shoeSize}>{shoeSize}</option>;
+          })}
+        </select>
+      )
+      else 
+        <select className="select-container" onChange={(event) => sizeHandler(event)}>
+          {sizes.map((size) => {
+            return <option key={size}>{size}</option>;
+          })}
+        </select>
+      }
+    </div>
+  );
+*/
+
+/*
+return (
     <div>
       {productType == "pants" ? (
         <select className="select-container" onChange={(event) => sizeHandler(event)}>
@@ -78,9 +142,7 @@ const SelectSize = ({ productType, onChange, setSize }) => {
       )}
     </div>
   );
-};
-
-export default SelectSize;
+*/
 
 // import "./select.styles.scss";
 
