@@ -60,8 +60,8 @@ const SelectSize = ({ productType, onChange, setSize }) => {
     setSize(size);
   };
 
-  if (productType === "pants") console.log("pants");
-  else console.log("not pants, productType: ", productType);
+  // if (productType === "pants") console.log("pants");
+  // else console.log("not pants, productType: ", productType);
 
   return (
     <div>

@@ -3,7 +3,10 @@ import { createContext, useState, useEffect } from "react";
 // Adds item to our cart
 const addToCart = (cartItems, itemToAdd) => {
   //If already inside our cart then increment quantity only
-  const alreadyInCart = cartItems.find((cartItem) => cartItem.id === itemToAdd.id);
+  // const alreadyInCart = cartItems.find((cartItem) => cartItem.id === itemToAdd.id);
+  const alreadyInCart = cartItems.find(
+    (cartItem) => cartItem.id === itemToAdd.id && cartItem.color === itemToAdd.color && cartItem.size === itemToAdd.size
+  );
 
   //if in cart then increase its quanity
   if (alreadyInCart) {

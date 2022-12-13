@@ -20,6 +20,7 @@ const Navigation = () => {
           <HomeLogo className="home-logo" />
         </Link>
 
+        <div></div>
         <div className="nav-items">
           <Link to="/checkout" element={<Checkout />}>
             Checkout

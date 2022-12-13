@@ -32,7 +32,7 @@
     // justify-content: space-between;
 
     display: grid;
-    grid-template-columns: 0.4fr 0.6fr;
+    grid-template-columns: 0.5fr 1fr;
     gap: 20px;
 
     padding: 6px 10px 8px;
@@ -45,7 +45,7 @@
       .increment-button {
         // width: 24px;
         // width: 30%;
-        width: 28%;
+        width: 30%;
         height: 24px;
         padding: 2px;
         align-items: center;
@@ -79,7 +79,7 @@
         height: 100%;
         // width: 34px;
         // width: 40%;
-        width: 44%;
+        width: 40%;
       }
     }
   }
@@ -93,6 +93,18 @@
       height: 250px;
       background-size: cover;
       background-position: center;
+    }
+
+    .quantity-color-container {
+      // display: flex;
+      // justify-content: space-between;
+
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+    }
+
+    .quantity-container {
+      max-height: 40px;
     }
   }
 }

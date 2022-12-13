@@ -12,13 +12,17 @@ const Select = ({ productType, onChange, setColor }) => {
   const colorHandler = (event) => {
     console.log("SELECT event: ", event);
     const color = event.target.value;
-    // console.log("Color Changed! Event:", event);
-    console.log("Color Changed! color:", color);
-    setColor(color);
+    // console.log("Color Picked:", color);
+
+    // Checking if user chose color before updating state of color
+    if (color !== "Color" && color !== "") {
+      console.log("Color set, color: ", color);
+      setColor(color);
+    }
   };
 
-  if (productType === "pants") console.log("pants");
-  else console.log("not pants, productType: ", productType);
+  // if (productType === "pants") console.log("pants");
+  // else console.log("not pants, productType: ", productType);
 
   return (
     <div>

@@ -11,8 +11,8 @@ const ProductCard = ({ product }) => {
   // Return image, description, url
   const { description, price, imageUrl } = product;
   const [quantity, setQuantity] = useState(1);
-  const [color, setColor] = useState("Black");
-  const [size, setSize] = useState("Test");
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
   // const quantityHandler = () => {
   //   console.log("Quantity Changed! ");
   // };

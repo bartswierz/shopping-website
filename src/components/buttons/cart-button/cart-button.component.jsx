@@ -1,6 +1,7 @@
 import "./cart-button.styles.scss";
 import { CartContext } from "../../../contexts/cart.context";
 import { useContext } from "react";
+import { type } from "@testing-library/user-event/dist/type";
 
 const CartButton = ({ product, quantity, color, size }) => {
   const { addItemToCart, cartItems, cartCount, updateCartCount } = useContext(CartContext);
@@ -9,12 +10,17 @@ const CartButton = ({ product, quantity, color, size }) => {
   const handleClick = (product, quantity, color, size) => {
     // ...product = id, description, imageUrl, price
     console.log("in handleClick, color: ", color);
-    const itemToAdd = { ...product, quantity, color, size };
-    // console.log("button clicked! ", itemToAdd);
-    addItemToCart(itemToAdd);
+    if (color !== "" && color !== "Color") {
+      const itemToAdd = { ...product, quantity, color, size };
+      // console.log("button clicked! ", itemToAdd);
+      addItemToCart(itemToAdd);
 
-    //Passing the quantity value of our item to update our current cart count inside cart context using a reducer
-    updateCartCount(quantity);
+      //Passing the quantity value of our item to update our current cart count inside cart context using a reducer
+      updateCartCount(quantity);
+    } else {
+      alert("Cart BTN: Please select a size and color.");
+      console.log("WRONG");
+    }
   };
 
   return (
