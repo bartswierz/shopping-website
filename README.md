@@ -14,13 +14,13 @@ https://alpha-clothing.netlify.app/
 ## Features ##
 Feature  | Description
 ------------- | -------------
-Add to Cart     | User can <b>add</b> an item to their cart
-Remove From Cart    | User can add an item to their cart
+Add to Cart     | User can **add** an item to their cart by selecting an item with various combinations within the product page
+Remove From Cart    | User can **remove** an item to their cart by clicking on the trash icon within the cart page
+Cart Icon Counter | Cart Icon displayed within the Navigation Bar indicating user's current cart item count
+Product Selection Combinations | App includes multiple selection options for products such as common size(Small, Medium, Large, ...), Shoe size(9, 9.5, 10, ...), and Pant sizes(30 x 32, 32 X 30, ...)
 
 ## Future Features ##
 Feature  | Description
 ------------- | -------------
-Save employees to be viewed in a list   | User will be able to save any displayed potential hire by clicking the "save" icon located at the top right corner of the card.
-Dynamically change card button text when clicked | Upon user click, button will change text from, "Hire Me" to, "You're Hired!". 
-Close icon located on card to remove that card from the screen | User will be able to click a "close" icon to remove a specific card of the screen. 
-Add a "Build-a-Bot" feature that will allow users to create their own | User will be able to input custom text for: Name, title, key skill, email, phone, location, and robot image from a wide array of robot pictures.
+   | 
+
