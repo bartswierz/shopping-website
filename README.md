@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+<h1>Alpha Clothing</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Launch ##
+Project can be launched without any installations directly on your device. Project is hosted on netlify, simply click the link below to launch.
 
-## Available Scripts
+https://alpha-clothing.netlify.app/
 
-In the project directory, you can run:
+## Built With ##
+ 
+* React
+* SCSS
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features ##
+Feature  | Description
+------------- | -------------
+Cart Page | Cart Page displayed product image, price, quantity, remove item button, subtotal, sales tax, order total, and a checkout button routing user to the checkout page upon click.
+Add to Cart       | User can **add** an item to their cart by selecting an item with various combinations within the product page.
+Remove From Cart  | User can **remove** an item to their cart by clicking on the trash icon within the cart page.
+Cart Icon Counter | Cart Icon displayed within the Navigation Bar indicating user's current cart item count.
+Product Selection Combinations | App includes multiple selection options for products such as common size(Small, Medium, Large, ...), Shoe size(9, 9.5, 10, ...), and Pant sizes(30 x 32, 32 X 30, ...).
+Directory | Homepage includes a directory including all five types of products available accessed via Routes. User has an option to be navigated to the following: Shirts, Pants, Jackets, Hats, and Shoes. More products will be available in the future as the project grows.
+Shipping Form | Checkout page includes a shipment form that asks user for name, address, delivery method, phone number, email, form button that submits and routes user to billing section(future addition). User is also given a link to login to speed up billing(future addition).
+Cost Summary | A cost summary overview is displayed within the Checkout page showing the user the following information: Subtotal , Shipping & Handling Cost, Taxes, and Total Cost.
+Cart View Component | Checkout page includes a cart component that displayed the Product Arrival Date(Earliest: 3 Days from current date and Latest: 8 Days after current date). This component also includes an "edit cart" link that navigates the user back to the cart page.
+Shipping & Delivery Disclaimer | Checkout page includes a small Shipping & Delivery component notifying the user that Alpha Clothing only delivers during business days(Monday-Friday).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Future Features ##
+Feature  | Description
+------------- | -------------
+Create Account   | User will be able to create an account for quicker checkout and other future benefits
+Database Storage | Firebase will be implemented for Account information storage and possibly product information
+Account Authentication | Google Authentication will be implemented for account authentication
+Billing Page | Billing Page will be added as the second step after user fills out the shipping information within the Checkout page
