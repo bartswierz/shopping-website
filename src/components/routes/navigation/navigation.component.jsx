@@ -7,6 +7,7 @@ import { ReactComponent as HomeLogo } from "../../../assets/home-outline.svg";
 import { ReactComponent as CartIcon } from "../../../assets/cart-outline.svg";
 import { useContext } from "react";
 import { CartContext } from "../../../contexts/cart.context";
+import SignIn from "../sign-in/sign-in.component";
 
 const Navigation = () => {
   const { cartCount } = useContext(CartContext);
@@ -22,6 +23,9 @@ const Navigation = () => {
 
         <div></div>
         <div className="nav-items">
+          <Link to="/sign-in" element={<SignIn />}>
+            Sign In
+          </Link>
           <Link to="/checkout" element={<Checkout />}>
             Checkout
           </Link>
