@@ -4,8 +4,8 @@ import Select from "../select/select.component";
 import SelectSize from "../select-size/select-size.component";
 // import Quantity from "../quantity/quantity.component";
 import { useContext, useState } from "react";
-import { ReactComponent as Decrease } from "../../assets/remove-outline.svg";
-import { ReactComponent as Increase } from "../../assets/add-outline.svg";
+import { ReactComponent as DecreaseIcon } from "../../assets/remove-outline.svg";
+import { ReactComponent as IncreaseIcon } from "../../assets/add-outline.svg";
 
 const ProductCard = ({ product }) => {
   // Return image, description, url
@@ -25,6 +25,14 @@ const ProductCard = ({ product }) => {
     setColor(color);
   };
 
+  const sizeHandler = (event) => {
+    console.log("PRODUCT_CARD event: ", event);
+    const size = event.target.value;
+    // console.log("Color Changed! Event:", event);
+    console.log("Size Changed! size:", size);
+    setSize(size);
+  };
+
   return (
     <div className="product-item-container">
       <div className="product-image" style={{ backgroundImage: `url(${imageUrl})` }}></div>
@@ -35,18 +43,18 @@ const ProductCard = ({ product }) => {
         </div>
         <div className="quantity-color-container">
           {/* Pass in type, shirt-pants-jacket-jeans-shoes, depending which one we pass in, will determine which of the 2-4 select options we render */}
-          <SelectSize productType={product.productType} onChange={(event) => colorHandler(event)} setSize={setSize} />
+          <SelectSize productType={product.productType} onChange={(event) => sizeHandler(event)} setSize={setSize} />
           <Select productType={product.productType} onChange={(event) => colorHandler(event)} setColor={setColor} />
 
           {/* Quantity */}
           <div className="quantity-container">
             {quantity > 1 ? (
-              <Decrease className="decrement-button" onClick={() => setQuantity(quantity - 1)}></Decrease>
+              <DecreaseIcon className="decrement-button" onClick={() => setQuantity(quantity - 1)}></DecreaseIcon>
             ) : (
-              <Decrease className="decrement-button"></Decrease>
+              <DecreaseIcon className="decrement-button"></DecreaseIcon>
             )}
             <div className="quantity-value">{quantity}</div>
-            <Increase className="increment-button" onClick={() => setQuantity(quantity + 1)}></Increase>
+            <IncreaseIcon className="increment-button" onClick={() => setQuantity(quantity + 1)}></IncreaseIcon>
           </div>
           <CartButton product={product} quantity={quantity} color={color} size={size} />
         </div>

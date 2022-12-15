@@ -10,7 +10,7 @@ const CartButton = ({ product, quantity, color, size }) => {
   const handleClick = (product, quantity, color, size) => {
     // ...product = id, description, imageUrl, price
     console.log("in handleClick, color: ", color);
-    if (color !== "" && color !== "Color") {
+    if (color !== "" && color !== "Color" && (size !== "") & (size !== "Size")) {
       const itemToAdd = { ...product, quantity, color, size };
       // console.log("button clicked! ", itemToAdd);
       addItemToCart(itemToAdd);
