@@ -65,22 +65,22 @@ const SelectSize = ({ productType, onChange, setSize }) => {
 
   return (
     <div>
-      {/* If product is Pants, display pants selection options  */}
-      {productType == "pants" ? (
+      {/* Product is Pants, display pants selection options  */}
+      {productType === "pants" ? (
         <select className="select-container" onChange={(event) => sizeHandler(event)}>
           {pantSizes.map((pantSize) => {
             return <option key={pantSize}>{pantSize}</option>;
           })}
         </select>
-      ) : productType == "shoes" ? (
-        //Else If product is Shoes, display Shoes selection options
+      ) : productType === "shoes" ? (
+        //Product is Shoes, display Shoes selection options
         <select className="select-container" onChange={(event) => sizeHandler(event)}>
           {shoeSizes.map((shoeSize) => {
             return <option key={shoeSize}>{shoeSize}</option>;
           })}
         </select>
       ) : (
-        //Not Shoes OR Pants, display normal size selection options
+        //NOT Shoes OR Pants, display normal size selection options
         <select className="select-container" onChange={(event) => sizeHandler(event)}>
           {sizes.map((size) => {
             return <option key={size}>{size}</option>;
@@ -92,95 +92,3 @@ const SelectSize = ({ productType, onChange, setSize }) => {
 };
 
 export default SelectSize;
-
-/*
-return (
-    <div>
-      {
-      if(productType == "pants")  (
-        <select className="select-container" onChange={(event) => sizeHandler(event)}>
-          {pantSizes.map((pantSize) => {
-            return <option key={pantSize}>{pantSize}</option>;
-          })}
-        </select>
-      ) 
-      else if(productType == "shoes") (
-        // Product is NOT pants, render Colors list
-        <select className="select-container" onChange={(event) => sizeHandler(event)}>
-          {shoeSizes.map((shoeSize) => {
-            return <option key={shoeSize}>{shoeSize}</option>;
-          })}
-        </select>
-      )
-      else 
-        <select className="select-container" onChange={(event) => sizeHandler(event)}>
-          {sizes.map((size) => {
-            return <option key={size}>{size}</option>;
-          })}
-        </select>
-      }
-    </div>
-  );
-*/
-
-/*
-return (
-    <div>
-      {productType == "pants" ? (
-        <select className="select-container" onChange={(event) => sizeHandler(event)}>
-          {pantSizes.map((pantSize) => {
-            return <option key={pantSize}>{pantSize}</option>;
-          })}
-        </select>
-      ) : (
-        // Product is NOT pants, render Colors list
-        <select className="select-container" onChange={(event) => sizeHandler(event)}>
-          {sizes.map((size) => {
-            return <option key={size}>{size}</option>;
-          })}
-        </select>
-      )}
-    </div>
-  );
-*/
-
-// import "./select.styles.scss";
-
-// const Select = ({ productType, onChange, setColor }) => {
-//   // Product Type = shirt, pants, jacket, shoes, hats / Passed in from product-card
-//   // console.log("productType = ", productType);
-
-//   // Color options
-//   const colors = ["Choose Color", "Black", "Grey", "White", "Navy", "Red", "Green", "Purple", "Yellow"];
-
-//   const pantColors = ["Choose Color", "Dark Wash", "White", "Black", "Grey"];
-
-//   const colorHandler = (event) => {
-//     console.log("SELECT event: ", event);
-//     const color = event.target.value;
-//     // console.log("Color Changed! Event:", event);
-//     console.log("Color Changed! color:", color);
-//     setColor(color);
-//   };
-
-//   return (
-//     <div>
-//       {productType == "pants" ? (
-//         <select className="select-container" onChange={(event) => colorHandler(event)}>
-//           {pantColors.map((pantColor) => {
-//             return <option key={pantColor}>{pantColor}</option>;
-//           })}
-//         </select>
-//       ) : (
-//         // Product is NOT pants, render Colors list
-//         <select className="select-container" onChange={(event) => colorHandler(event)}>
-//           {colors.map((color) => {
-//             return <option>{color}</option>;
-//           })}
-//         </select>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Select;

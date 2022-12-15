@@ -2,8 +2,7 @@ import "./product-card.styles.scss";
 import CartButton from "../buttons/cart-button/cart-button.component";
 import Select from "../select/select.component";
 import SelectSize from "../select-size/select-size.component";
-// import Quantity from "../quantity/quantity.component";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { ReactComponent as DecreaseIcon } from "../../assets/remove-outline.svg";
 import { ReactComponent as IncreaseIcon } from "../../assets/add-outline.svg";
 

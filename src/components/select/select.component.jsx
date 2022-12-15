@@ -26,7 +26,7 @@ const Select = ({ productType, onChange, setColor }) => {
 
   return (
     <div>
-      {productType == "pants" ? (
+      {productType === "pants" ? (
         <select className="select-container" onChange={(event) => colorHandler(event)}>
           {pantColors.map((pantColor) => {
             return <option key={pantColor}>{pantColor}</option>;
@@ -45,44 +45,3 @@ const Select = ({ productType, onChange, setColor }) => {
 };
 
 export default Select;
-
-// import "./select.styles.scss";
-
-// const Select = ({ productType, onChange, setColor }) => {
-//   // Product Type = shirt, pants, jacket, shoes, hats / Passed in from product-card
-//   // console.log("productType = ", productType);
-
-//   // Color options
-//   const colors = ["Choose Color", "Black", "Grey", "White", "Navy", "Red", "Green", "Purple", "Yellow"];
-
-//   const pantColors = ["Choose Color", "Dark Wash", "White", "Black", "Grey"];
-
-//   const colorHandler = (event) => {
-//     console.log("SELECT event: ", event);
-//     const color = event.target.value;
-//     // console.log("Color Changed! Event:", event);
-//     console.log("Color Changed! color:", color);
-//     setColor(color);
-//   };
-
-//   return (
-//     <div>
-//       {productType == "pants" ? (
-//         <select className="select-container" onChange={(event) => colorHandler(event)}>
-//           {pantColors.map((pantColor) => {
-//             return <option key={pantColor}>{pantColor}</option>;
-//           })}
-//         </select>
-//       ) : (
-//         // Product is NOT pants, render Colors list
-//         <select className="select-container" onChange={(event) => colorHandler(event)}>
-//           {colors.map((color) => {
-//             return <option>{color}</option>;
-//           })}
-//         </select>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Select;
