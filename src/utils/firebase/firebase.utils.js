@@ -5,6 +5,9 @@ import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider } from
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
+//Use 'doc' to get the doc instance, getDoc gets the 'doc data', ...
+import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyD1BNATztbvx_wtjXV4POi7JpLAx1e-PlI",
@@ -30,3 +33,34 @@ export const auth = getAuth();
 
 // We are passing in auth and provider that we have created above
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+
+//Using to access our database by pointing directly at our database inside the console on firebase site
+export const db = getFirestore();
+
+export const createUserDocumentFromAuth = async (userAuth) => {
+  //(our database, collections, some unique id in this case we want uid when we attempt to login using google popup)
+  const userDocRef = doc(db, "users", userAuth.uid);
+  console.log("userDocRef: ", userDocRef);
+
+  const userSnapshot = await getDoc(userDocRef);
+  console.log("userSnapshot: ", userSnapshot);
+  console.log("userSnapshot exists: ", userSnapshot.exists());
+
+  //if USER DATA does NOT EXIST then this returns true and does this
+  if (!userSnapshot.exists()) {
+    const { displayName, email } = userAuth;
+
+    //Time so we know WHEN user SIGNS IN
+    const createdAt = new Date();
+
+    try {
+      //Pass in our document reference AND the data we want to SET it with
+      await setDoc(userDocRef, { displayName, email, createdAt });
+    } catch (error) {
+      console.log("error creating the user", error.message);
+    }
+  }
+
+  //If USER DATA does EXIST simply returns it
+  return userDocRef;
+};
