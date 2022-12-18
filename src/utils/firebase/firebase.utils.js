@@ -22,17 +22,19 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 
 // Will create a GoogleAuthProvider instance
-const provider = new GoogleAuthProvider();
+const googleProvider = new GoogleAuthProvider();
 
 // Everytime someone interacts with provider, we want to Select an account
-provider.setCustomParameters({
+googleProvider.setCustomParameters({
   prompt: "select_account",
 });
 
 export const auth = getAuth();
 
 // We are passing in auth and provider that we have created above
-export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider);
+
+export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider);
 
 //Using to access our database by pointing directly at our database inside the console on firebase site
 export const db = getFirestore();
