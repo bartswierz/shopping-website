@@ -1,7 +1,7 @@
 // THIS CODE(firebaseconfig = {...} & firebaseApp = initializeApp(...)) is given from: firebase -> Web Link -> Create name -> Firebase will then generate the code below for us to use.
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -39,8 +39,11 @@ export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googlePro
 //Using to access our database by pointing directly at our database inside the console on firebase site
 export const db = getFirestore();
 
-export const createUserDocumentFromAuth = async (userAuth) => {
-  //(our database, collections, some unique id in this case we want uid when we attempt to login using google popup)
+export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
+  //If userAuth is NOT PROVIDED then we will exit the function
+  if (!userAuth) return;
+
+  //(our database, collection name, some unique id in this case we want uid when we attempt to login using google popup)
   const userDocRef = doc(db, "users", userAuth.uid);
   console.log("userDocRef: ", userDocRef);
 
@@ -56,8 +59,8 @@ export const createUserDocumentFromAuth = async (userAuth) => {
     const createdAt = new Date();
 
     try {
-      //Pass in our document reference AND the data we want to SET it with
-      await setDoc(userDocRef, { displayName, email, createdAt });
+      //Pass in our document reference AND the data we want to SET it with. additionalInformation will overwrite the NULL displayName upon user signing up
+      await setDoc(userDocRef, { displayName, email, createdAt, ...additionalInformation });
     } catch (error) {
       console.log("error creating the user", error.message);
     }
@@ -65,4 +68,12 @@ export const createUserDocumentFromAuth = async (userAuth) => {
 
   //If USER DATA does EXIST simply returns it
   return userDocRef;
+};
+
+//We want a email and password string
+export const createAuthUserWithEmailAndPassword = async (email, password) => {
+  //If either Email or Password is NOT PROVIDED then we will exit the function
+  if (!email || !password) return;
+
+  return await createUserWithEmailAndPassword(auth, email, password);
 };

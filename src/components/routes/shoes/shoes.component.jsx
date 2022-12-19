@@ -1,4 +1,3 @@
-import "./shoes.styles.scss";
 import ProductList from "../../product-list/product-list.component";
 
 const Shoes = () => {

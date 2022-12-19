@@ -29,8 +29,8 @@ const SignIn = () => {
       <SignUpForm />
 
       {/* signInWithGoogleRedirect imported from firebase.utils */}
-      <button onClick={signInWithGoogleRedirect}>Sign in with Google Redirect</button>
-      <SignUpForm />
+      {/* <button onClick={signInWithGoogleRedirect}>Sign in with Google Redirect</button>
+      <SignUpForm /> */}
     </div>
   );
 };

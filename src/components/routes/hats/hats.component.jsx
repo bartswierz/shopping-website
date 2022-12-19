@@ -1,4 +1,3 @@
-import "./hats.styles.scss";
 import ProductList from "../../product-list/product-list.component";
 
 const Hats = () => {
