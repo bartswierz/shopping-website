@@ -1,7 +1,7 @@
 .sign-in-form-container {
   font-size: 16px;
   border: 1px solid grey;
-  max-width: 400px;
+  min-width: 450px;
   max-height: 323px;
   padding: 10px;
 
@@ -23,8 +23,6 @@
 
     input {
       font-size: 16px;
-      // margin-top: 5px;
-      // margin-bottom: 10px;
       padding: 5px;
       background-color: rgba(255, 255, 255, 0);
       border: none;
@@ -74,5 +72,28 @@
         }
       }
     }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+}
+
+@media screen and (max-width: 992px) {
+  .sign-in-form-container {
+    min-width: 370px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .sign-in-form-container {
+    min-width: 500px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .sign-in-form-container {
+    width: 99%;
+    max-height: 400px;
+    min-width: 220px;
   }
 }

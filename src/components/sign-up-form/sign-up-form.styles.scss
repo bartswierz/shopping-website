@@ -1,7 +1,7 @@
 .sign-up-form-container {
   font-size: 16px;
   border: 1px solid grey;
-  max-width: 400px;
+  min-width: 450px;
   padding: 10px;
 
   .sign-up-form-header {
@@ -50,5 +50,24 @@
         border: 1px solid black;
       }
     }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .sign-up-form-container {
+    min-width: 370px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .sign-up-form-container {
+    min-width: 500px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .sign-up-form-container {
+    width: 99%;
+    min-width: 220px;
   }
 }
