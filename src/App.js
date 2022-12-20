@@ -9,7 +9,7 @@ import Pants from "./components/routes/pants/pants.component";
 import Jackets from "./components/routes/jackets/jackets.component";
 import Hats from "./components/routes/hats/hats.component";
 import Shoes from "./components/routes/shoes/shoes.component";
-import SignIn from "./components/routes/sign-in/sign-in.component";
+import Authentication from "./components/routes/authentication/authentication.component";
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
       <Route path="/" element={<Navigation />}>
         {/* using index: if you are at the '/' path then render this Homepage Component */}
         <Route index element={<Homepage />} />
-        <Route path="sign-in" element={<SignIn />} />
+        <Route path="Authentication" element={<Authentication />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="cart" element={<Cart />} />
 

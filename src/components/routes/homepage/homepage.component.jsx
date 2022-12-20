@@ -31,11 +31,6 @@ const Homepage = () => {
       title: "SHOES",
       imageUrl: "https://i.ibb.co/txNp8Gr/shoes.jpg",
     },
-    // {
-    //   id: 6,
-    //   title: "Ties",
-    //   imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
-    // },
   ];
 
   return (

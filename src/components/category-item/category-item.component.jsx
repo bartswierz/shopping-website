@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 const CategoryItem = ({ category }) => {
   // const { id, title, imageUrl } = item;
   const { id, title, imageUrl } = category;
+  // const lowercaseTitle = title.toLowercase();
+  // console.log("lowercaseTitle: ", lowercaseTitle);
 
   return (
     // to={`${title}`} takes us to specific route depending on category title(i.e. "/shirts")

@@ -148,7 +148,7 @@ const ShippingForm = () => {
         <div className="checkout-member-text">
           <span>
             Already a member?
-            <Link to="/checkout">
+            <Link to="/sign-in">
               <span className="checkout-sign-in-link">Sign In</span>
             </Link>
           </span>
