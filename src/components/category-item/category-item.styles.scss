@@ -78,13 +78,18 @@
 //   }
 // }
 
-@media (max-width: 1201px) {
+//Width wider than or equal to 1201px
+@media screen and (min-width: 1201px) {
   .category-item-container {
-    height: 35vh;
+    height: 30vh;
   }
 }
 
+//width less than or equal to 1200px
 @media screen and (max-width: 1200px) {
+  .category-item-container {
+    height: 30vh;
+  }
 }
 
 @media (max-width: 768px) {
