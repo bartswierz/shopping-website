@@ -1,7 +1,14 @@
 // THIS CODE(firebaseconfig = {...} & firebaseApp = initializeApp(...)) is given from: firebase -> Web Link -> Create name -> Firebase will then generate the code below for us to use.
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  signInWithRedirect,
+  signInWithPopup,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -76,4 +83,12 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
 
   return await createUserWithEmailAndPassword(auth, email, password);
+};
+
+//We want a email and password string
+export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+  //If either Email or Password is NOT PROVIDED then we will exit the function
+  if (!email || !password) return;
+
+  return await signInWithEmailAndPassword(auth, email, password);
 };

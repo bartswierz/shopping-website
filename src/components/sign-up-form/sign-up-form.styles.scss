@@ -1,7 +1,7 @@
 .sign-up-form-container {
   font-size: 16px;
-  border: 1px solid rgb(203, 203, 203);
-  min-width: 450px;
+  // border: 1px solid rgb(203, 203, 203);
+  max-width: 380px;
   padding: 10px;
 
   .sign-up-form-header {
@@ -55,19 +55,22 @@
 
 @media screen and (max-width: 992px) {
   .sign-up-form-container {
-    min-width: 370px;
+    min-width: 380px;
   }
 }
 
 @media screen and (max-width: 800px) {
   .sign-up-form-container {
-    min-width: 500px;
+    min-width: 400px;
   }
 }
 
 @media screen and (max-width: 576px) {
   .sign-up-form-container {
-    width: 99%;
-    min-width: 220px;
+    // width: 99%;
+    // min-width: 220px;
+    width: 80%;
+    max-height: 400px;
+    min-width: 275px;
   }
 }
