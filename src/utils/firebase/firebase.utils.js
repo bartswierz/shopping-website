@@ -8,12 +8,16 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-//Use 'doc' to get the doc instance, getDoc gets the 'doc data', ...
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+/*Use 'doc' to get the doc instance, getDoc gets the 'doc data', ...
+collection & writeBatch methods will be used to get our shop-data.js product data into our firebase DB
+*/
+import { getFirestore, doc, getDoc, setDoc, collection, writeBatch } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -45,6 +49,30 @@ export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googlePro
 
 //Using to access our database by pointing directly at our database inside the console on firebase site
 export const db = getFirestore();
+
+/*This is for ADDING IN our COLLECTION and DOCUMENTS into firebase DB. 
+collection key is the name in our db(users, categories, etc.), in this case we want our key to be named 'categories'.
+objectsToAdd - this is our json objects of product item information that we want to add. (shirts {...}, hats {...}, jackets{...}, ...)
+*/
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+  const collectionRef = collection(db, collectionKey);
+
+  //we are making a batch and it calls 'writeBatch' that returns us a batch and we need to PASS it the DB
+  const batch = writeBatch(db);
+
+  //we will have 5 objects: hats, pants, jackets, hats, shoes({title: "Shirts", items: [...] }, {title: Pants", items: [...] }), ...)
+  objectsToAdd.forEach((object) => {
+    //this tells the doc method WHICH DB we are using
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+
+    //object is our ENTIRE Batch, we are setting it with the object
+    batch.set(docRef, object);
+  });
+
+  //we need to await the batch because we are iterating through the 40+ products
+  await batch.commit();
+  console.log("Collection has been imported into Firebase DB");
+};
 
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
   //If userAuth is NOT PROVIDED then we will exit the function

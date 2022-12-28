@@ -1,6 +1,9 @@
 import "./App.scss";
-import Navigation from "./components/routes/navigation/navigation.component";
 import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import SHOP_DATA from "./shop-data";
+import { addCollectionAndDocuments } from "./utils/firebase/firebase.utils";
+import Navigation from "./components/routes/navigation/navigation.component";
 import Homepage from "./components/routes/homepage/homepage.component";
 import Checkout from "./components/routes/checkout/checkout.component";
 import Cart from "./components/routes/cart/cart.component";
@@ -12,6 +15,11 @@ import Shoes from "./components/routes/shoes/shoes.component";
 import Authentication from "./components/routes/authentication/authentication.component";
 
 const App = () => {
+  //Adding collection into our firebase DB - Only ran once
+  // useEffect(() => {
+  //   addCollectionAndDocuments("collections", SHOP_DATA);
+  // }, []);
+
   return (
     <Routes>
       {/* At the default path, display The navigation, inside our navigation we will use Outlet to display Home Page and/or any of the other paths we use */}
@@ -21,14 +29,14 @@ const App = () => {
         <Route path="Authentication" element={<Authentication />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="cart" element={<Cart />} />
-
-        {/* Paths will be taken from  CategoryItem component using category.title */}
-        <Route path="shirts" element={<Shirts />} />
-        <Route path="pants" element={<Pants />} />
-        <Route path="jackets" element={<Jackets />} />
-        <Route path="hats" element={<Hats />} />
-        <Route path="shoes" element={<Shoes />} />
       </Route>
+
+      {/* Paths will be taken from  CategoryItem component using category.title */}
+      <Route path="shirts" element={<Shirts />} />
+      <Route path="pants" element={<Pants />} />
+      <Route path="jackets" element={<Jackets />} />
+      <Route path="hats" element={<Hats />} />
+      <Route path="shoes" element={<Shoes />} />
     </Routes>
   );
 };
