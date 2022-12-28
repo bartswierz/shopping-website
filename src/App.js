@@ -17,7 +17,7 @@ import Authentication from "./components/routes/authentication/authentication.co
 const App = () => {
   //Adding collection into our firebase DB - Only ran once
   // useEffect(() => {
-  //   addCollectionAndDocuments("collections", SHOP_DATA);
+  //   addCollectionAndDocuments("categories", SHOP_DATA);
   // }, []);
 
   return (
@@ -29,14 +29,14 @@ const App = () => {
         <Route path="Authentication" element={<Authentication />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="cart" element={<Cart />} />
-      </Route>
 
-      {/* Paths will be taken from  CategoryItem component using category.title */}
-      <Route path="shirts" element={<Shirts />} />
-      <Route path="pants" element={<Pants />} />
-      <Route path="jackets" element={<Jackets />} />
-      <Route path="hats" element={<Hats />} />
-      <Route path="shoes" element={<Shoes />} />
+        {/* Paths will be taken from  CategoryItem component using category.title */}
+        <Route path="shirts" element={<Shirts />} />
+        <Route path="pants" element={<Pants />} />
+        <Route path="jackets" element={<Jackets />} />
+        <Route path="hats" element={<Hats />} />
+        <Route path="shoes" element={<Shoes />} />
+      </Route>
     </Routes>
   );
 };

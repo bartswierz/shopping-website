@@ -77,18 +77,22 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
   console.log("Collection has been imported into Firebase DB");
 };
 
-//We are doing a retrieval to the firebase db
+//FETCH product data from our firebase db
 export const getCategoriesAndDocuments = async () => {
   //passing in db and our collectionKey name we created in firebase to store all of our five product types, 'categories'. This connects to our database and returns back the collection in our firebase named 'categories'
   const collectRef = collection(db, "categories");
-
+  const q = query(collectRef);
   //getDocs = FETCH the document Snapshots that we want. Snapshot is the actual data itself
   const querySnapshot = await getDocs(q);
 
-  //We are doing a reduce to end up with an object of all the products
+  //We are doing a reduce to end up with an object of all the products. There will be 5 iterations because we have 5 TYPES of clothing(shirts, pants, jackets, hats, and shoes). we are passing in a empty object as the initial value
   const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    //collecting individual objects each iteration and placing it into our object. Once complete we return it in the categoryMap variable
     const { title, items } = docSnapshot.data();
+
+    // i.e. hats: array(6)
     acc[title.toLowerCase()] = items;
+    // console.log("acc: ", acc);
     return acc;
   }, {});
 

@@ -1,5 +1,6 @@
 import "./product-list.styles.scss";
 import ProductCard from "../product-card/product-card.component";
+
 // Pass in product list from shirt component
 const ProductList = ({ products }) => {
   return (
