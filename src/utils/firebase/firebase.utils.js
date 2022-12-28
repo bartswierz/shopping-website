@@ -16,8 +16,9 @@ import {
 
 /*Use 'doc' to get the doc instance, getDoc gets the 'doc data', ...
 collection & writeBatch methods will be used to get our shop-data.js product data into our firebase DB
+* query, setDocs - Used to get our documents from firebase for our product information
 */
-import { getFirestore, doc, getDoc, setDoc, collection, writeBatch } from "firebase/firestore";
+import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -50,6 +51,8 @@ export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googlePro
 //Using to access our database by pointing directly at our database inside the console on firebase site
 export const db = getFirestore();
 
+/*****************************************************************/
+
 /*This is for ADDING IN our COLLECTION and DOCUMENTS into firebase DB. 
 collection key is the name in our db(users, categories, etc.), in this case we want our key to be named 'categories'.
 objectsToAdd - this is our json objects of product item information that we want to add. (shirts {...}, hats {...}, jackets{...}, ...)
@@ -73,6 +76,50 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
   await batch.commit();
   console.log("Collection has been imported into Firebase DB");
 };
+
+//We are doing a retrieval to the firebase db
+export const getCategoriesAndDocuments = async () => {
+  //passing in db and our collectionKey name we created in firebase to store all of our five product types, 'categories'. This connects to our database and returns back the collection in our firebase named 'categories'
+  const collectRef = collection(db, "categories");
+
+  //getDocs = FETCH the document Snapshots that we want. Snapshot is the actual data itself
+  const querySnapshot = await getDocs(q);
+
+  //We are doing a reduce to end up with an object of all the products
+  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    const { title, items } = docSnapshot.data();
+    acc[title.toLowerCase()] = items;
+    return acc;
+  }, {});
+
+  return categoryMap;
+};
+
+/* JSON Object Structure
+{
+  shirts: {
+    title: "Shirts",
+    items: [
+      {
+        id: ...,
+        description: "...",
+        price: ...,
+        imageUrl: "....jpg",
+      },
+      {...},
+    ]
+  },
+  pants: {
+    title: ...
+    items: [
+      {...},
+      {...},
+    ]
+  }
+  ...
+}
+*/
+/*****************************************************************/
 
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
   //If userAuth is NOT PROVIDED then we will exit the function
