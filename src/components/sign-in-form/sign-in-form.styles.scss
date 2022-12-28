@@ -85,14 +85,14 @@
 
 @media screen and (max-width: 800px) {
   .sign-in-form-container {
-    min-width: 400px;
+    // min-width: 400px;
+    min-width: 75vw;
   }
 }
 
 @media screen and (max-width: 576px) {
   .sign-in-form-container {
-    width: 80%;
-    min-width: 275px;
+    min-width: 90vw;
     max-height: 400px;
   }
 }
