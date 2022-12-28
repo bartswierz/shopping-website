@@ -8,27 +8,27 @@ const Homepage = () => {
   const categories = [
     {
       id: 1,
-      title: "SHIRTS",
+      title: "Shirts",
       imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
     },
     {
       id: 2,
-      title: "PANTS",
+      title: "Pants",
       imageUrl: "https://i.ibb.co/qkV6Szh/pants.jpg",
     },
     {
       id: 3,
-      title: "JACKETS",
+      title: "Jackets",
       imageUrl: "https://i.ibb.co/bFXrZWV/jacket.jpg",
     },
     {
       id: 4,
-      title: "HATS",
+      title: "Hats",
       imageUrl: "https://i.ibb.co/SmyzmXM/hat.jpg",
     },
     {
       id: 5,
-      title: "SHOES",
+      title: "Shoes",
       imageUrl: "https://i.ibb.co/txNp8Gr/shoes.jpg",
     },
   ];

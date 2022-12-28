@@ -88,7 +88,7 @@ export const CartProvider = ({ children }) => {
     const newCartTotal = cartItems.reduce((totalCost, currentItem) => totalCost + currentItem.price * currentItem.quantity, 0);
     // console.log("Updated Cart Total Cost: ", newCartTotal);
     setCartTotal(newCartTotal);
-  }, [cartCount, cartTotal]);
+  }, [cartItems, cartCount, cartTotal]);
 
   // Updates tax by total cost multiplied by 10%
   useEffect(() => {
