@@ -85,12 +85,12 @@ export const getCategoriesAndDocuments = async () => {
   //getDocs = FETCH the document Snapshots that we want. Snapshot is the actual data itself
   const querySnapshot = await getDocs(q);
 
-  //We are doing a reduce to end up with an object of all the products. There will be 5 iterations because we have 5 TYPES of clothing(shirts, pants, jackets, hats, and shoes). we are passing in a empty object as the initial value
+  //We are doing a reduce to end up with ONE object of all the products collected. There will be 5 iterations because we have 5 TYPES of clothing(shirts, pants, jackets, hats, and shoes). we are passing in a empty object as the initial value
   const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
     //collecting individual objects each iteration and placing it into our object. Once complete we return it in the categoryMap variable
     const { title, items } = docSnapshot.data();
 
-    // i.e. hats: array(6)
+    // i.e. hats: array(6) - Collecting each object based on its title
     acc[title.toLowerCase()] = items;
     // console.log("acc: ", acc);
     return acc;
@@ -171,3 +171,6 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 
   return await signInWithEmailAndPassword(auth, email, password);
 };
+
+//auth is keeping track of what users are signed in right now. This is an async because we will be returning a promise upon user clicking the 'Sign Out' button in our navigation. 'signOut' is a firebase method which will return us back a promise
+export const signOutUser = async () => await signOut(auth);

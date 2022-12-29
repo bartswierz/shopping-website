@@ -1,7 +1,8 @@
 import "./sign-up-form.styles.scss";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
+import { UserContext } from "../../contexts/user.context";
 
 //Bundling the four form items together instead of four separate states because form has these grouped together
 const defaultFormFields = {
@@ -16,6 +17,7 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
+  const { currentUser, setCurrentUser } = useContext(UserContext);
   // console.log("formFields: ", formFields);
 
   //Clears the form input fields from the page
@@ -36,11 +38,11 @@ const SignUpForm = () => {
     try {
       const response = await createAuthUserWithEmailAndPassword(email, password);
       const { user } = response;
-
       console.log(response);
 
       const data = await createUserDocumentFromAuth(user, { displayName });
 
+      setCurrentUser(user);
       //Calls function to reset user input text from page
       resetFromFields();
     } catch (error) {

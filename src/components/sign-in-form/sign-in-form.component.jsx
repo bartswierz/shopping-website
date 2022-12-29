@@ -1,7 +1,9 @@
 import "./sign-in-form.styles.scss";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 // import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
+
+import { UserContext } from "../../contexts/user.context";
 
 import {
   // auth,
@@ -22,8 +24,10 @@ const SignInForm = () => {
   //passing in the default form OBJECT
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-
   // console.log("formFields: ", formFields);
+
+  const { currentUser, setCurrentUser } = useContext(UserContext);
+  console.log();
 
   const signInWithGoogle = async () => {
     // With this response we can see we get back UserCredentialImpl object, inside it we look inside user -> accessToken. This is what we are looking for, this access token was from the flow from our app to firebase and google checking to see that we are who we say we are and giving us back the acessToken. This response is waiting on user to click on their google account inside the popup
@@ -51,6 +55,13 @@ const SignInForm = () => {
       //awaiting user's input for email and password fields
       const response = await signInAuthUserWithEmailAndPassword(email, password);
       console.log("response: ", response);
+
+      //Destructuring user data off response once user input email and address inside the Sign In Form
+      const { user } = response;
+      console.log("user: ", user);
+
+      //setting currentUser state to the user credentials given by user into our Sign In Form
+      setCurrentUser(user);
 
       //Calls function to reset user input text from page
       resetFromFields();
