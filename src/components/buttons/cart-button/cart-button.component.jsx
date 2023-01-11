@@ -1,7 +1,6 @@
 import "./cart-button.styles.scss";
 import { CartContext } from "../../../contexts/cart.context";
 import { useContext } from "react";
-import { type } from "@testing-library/user-event/dist/type";
 
 const CartButton = ({ product, quantity, color, size }) => {
   const { addItemToCart, cartItems, cartCount, updateCartCount } = useContext(CartContext);
@@ -10,7 +9,7 @@ const CartButton = ({ product, quantity, color, size }) => {
   const handleClick = (product, quantity, color, size) => {
     // ...product = id, description, imageUrl, price
     console.log("in handleClick, color: ", color);
-    if (color !== "" && color !== "Color" && (size !== "") & (size !== "Size")) {
+    if (color !== "" && color !== "Color" && size !== "" && size !== "Size") {
       const itemToAdd = { ...product, quantity, color, size };
       // console.log("button clicked! ", itemToAdd);
       addItemToCart(itemToAdd);

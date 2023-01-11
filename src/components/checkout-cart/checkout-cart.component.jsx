@@ -41,7 +41,7 @@ const CheckoutCart = () => {
               <div className="checkout-cart-text">
                 <div>{item.description}</div>
                 <div>Color: {item.color}</div>
-                <div>Size: Large</div>
+                <div>Size: {item.size}</div>
                 <div>Qty: {item.quantity}</div>
                 <div>${item.price}</div>
               </div>
