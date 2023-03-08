@@ -1,0 +1,35 @@
+.authentication-header {
+  font-size: 24px;
+  text-align: center;
+}
+
+.authentication-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 900px;
+  // max-height: 100vh;
+  // padding-left: 20px;
+  // padding-right: 20px;
+  margin: 50px auto;
+  // margin-top: 50px;
+  // margin-bottom: 50px;
+  // justify-items: auto;
+  gap: 20px;
+}
+
+@media screen and (max-width: 800px) {
+  .authentication-container {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 50px;
+    width: 95vw;
+    max-height: 100rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .authentication-container {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}

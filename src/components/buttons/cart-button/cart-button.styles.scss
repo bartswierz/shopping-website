@@ -1,0 +1,23 @@
+.cart-button {
+  width: 100%;
+  padding: 10px 5px;
+
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  font-weight: 700;
+  // background-color: black;
+
+  &:hover {
+    cursor: pointer;
+    // background-color: black;
+    // color: white;
+    background-color: white;
+    color: black;
+    transition: 100ms ease-in;
+  }
+
+  &:active {
+    background-color: rgb(215, 215, 215);
+  }
+}
