@@ -43,4 +43,25 @@ html {
   // background-color: #f5f4f2;
   background-color: #e8e8e7;
   font-size: 62.5%;
+
+  // font size to scale between 16px to 26px starting from screen width of 768px to 1600px
+  // font-size: calc(16px + (26 - 16) * ((100vw - 768px) / (1600 - 768)));
+
+  // font size for widths 768px(min) to 1920px(max)
+  //                 max - min *  100vw  - minVW  / maxVW - minVW
+  // font-size: calc(16px + (32 - 16) * ((100vw - 768px) / (1920 - 768)));
+
+  // font-size: calc(16px + (36 - 16) * ((100vw - 300px) / (2000 - 300)));
+
+  //min() function chooses the MINIMUM OF THE TWO VALUES at a given time. On larger screens, our container would be 500px because 500px > 70% on large screens. On Smaller screens, 70% would be smaller so we would use 70% instead
+  //Small Screen -> 70% / Large Screen -> 500px
+  // width: min(500px, 70%);
+  //Equal to writing:
+  // width: 70%
+  // max-width: 500px;
+
+  //CLAMP - use for font-size min and max / not as useful for widths
+  //CLAMP requires 3 values: min, max, preferred value. Order doesn't matter it will calculate min and max
+  // font-size: clamp(300px, 50%, 20rem);
+  // font-size: 1vw;
 }
