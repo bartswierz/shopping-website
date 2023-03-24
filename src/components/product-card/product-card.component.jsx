@@ -5,6 +5,10 @@ import SelectSize from "../select-size/select-size.component";
 import { useState } from "react";
 import { ReactComponent as DecreaseIcon } from "../../assets/remove-outline.svg";
 import { ReactComponent as IncreaseIcon } from "../../assets/add-outline.svg";
+import NikeShoeRed from "./../../assets/nike-shoe-red.png";
+import NikeShoeWhite from "./../../assets/nike-shoe-white.png";
+import NikeShoeGreen from "./../../assets/nike-shoe-green.png";
+
 import NikeShoe from "./../../assets/nike-shoe.png";
 import NikeShoe2 from "./../../assets/nike-shoe2.png";
 
@@ -18,7 +22,6 @@ const ProductCard = ({ products }) => {
   return (
     <>
       <div className="product-card-container">
-        <div className="product-card-background"></div>
         {/* LEFT */}
         <div className="product-card-left-container">
           {/* HEADER */}
@@ -69,8 +72,8 @@ const ProductCard = ({ products }) => {
               {/* COST */}
               <div className="product-card-cost">
                 <p>
-                  <span>$220</span>
-                  <span>$119</span>
+                  <s className="product-card-cost-slash">$220</s>
+                  <span className="product-card-cost-discount">$119</span>
                 </p>
               </div>
 
@@ -79,10 +82,11 @@ const ProductCard = ({ products }) => {
           </div>
         </div>
         {/* RIGHT */}
-        <div className="product-card-right-container">
-          <div className="product-card-img-container">
-            <img src={NikeShoe2} alt="shoe" />
-          </div>
+        {/* <div className="product-card-right-container"> */}
+        <div className="product-card-img-container">
+          {/* <img src={NikeShoeRed} className="product-img" alt="shoe" /> */}
+          {/* <img src={NikeShoeGreen} className="product-img" alt="shoe" /> */}
+          <img src={NikeShoeWhite} className="product-img" alt="shoe" />
         </div>
       </div>
     </>
