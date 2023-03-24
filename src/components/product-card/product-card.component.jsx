@@ -5,62 +5,107 @@ import SelectSize from "../select-size/select-size.component";
 import { useState } from "react";
 import { ReactComponent as DecreaseIcon } from "../../assets/remove-outline.svg";
 import { ReactComponent as IncreaseIcon } from "../../assets/add-outline.svg";
+import NikeShoe from "./../../assets/nike-shoe.png";
+import NikeShoe2 from "./../../assets/nike-shoe2.png";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ products }) => {
   // Return image, description, url
-  const { description, price, imageUrl } = product;
+  // const { description, price, imageUrl } = products;
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
-  // const quantityHandler = () => {
-  //   console.log("Quantity Changed! ");
-  // };
-
-  const colorHandler = (event) => {
-    console.log("PRODUCT_CARD event: ", event);
-    const color = event.target.value;
-    // console.log("Color Changed! Event:", event);
-    console.log("Color Changed! color:", color);
-    setColor(color);
-  };
-
-  const sizeHandler = (event) => {
-    console.log("PRODUCT_CARD event: ", event);
-    const size = event.target.value;
-    // console.log("Color Changed! Event:", event);
-    console.log("Size Changed! size:", size);
-    setSize(size);
-  };
 
   return (
-    <div className="product-item-container">
-      <div className="product-image" style={{ backgroundImage: `url(${imageUrl})` }}></div>
-      <div className="info-container">
-        <div className="product-text-container">
-          <div className="product-item-description">{description}</div>
-          <div className="product-item-price">${price}</div>
-        </div>
-        <div className="quantity-color-container">
-          {/* Pass in type, shirt-pants-jacket-jeans-shoes, depending which one we pass in, will determine which of the 2-4 select options we render */}
-          <SelectSize productType={product.productType} onChange={(event) => sizeHandler(event)} setSize={setSize} />
-          <Select productType={product.productType} onChange={(event) => colorHandler(event)} setColor={setColor} />
-
-          {/* Quantity */}
-          <div className="quantity-container">
-            {quantity > 1 ? (
-              <DecreaseIcon className="decrement-button" onClick={() => setQuantity(quantity - 1)}></DecreaseIcon>
-            ) : (
-              <DecreaseIcon className="decrement-button"></DecreaseIcon>
-            )}
-            <div className="quantity-value">{quantity}</div>
-            <IncreaseIcon className="increment-button" onClick={() => setQuantity(quantity + 1)}></IncreaseIcon>
+    <>
+      <div className="product-card-container">
+        <div className="product-card-background"></div>
+        {/* LEFT */}
+        <div className="product-card-left-container">
+          {/* HEADER */}
+          <div className="product-card-header-container">
+            <p className="product-card-header">ADIDAS</p>
+            <p className="product-card-subheader">IMPOSSIBLE IS NOTHING</p>
           </div>
-          <CartButton product={product} quantity={quantity} color={color} size={size} />
+
+          {/* PRODUCT NAME */}
+          <div className="product-card-details-container">
+            <span className="product-card-details-name">ULTRA ADIDAS 4D RUNNING</span>
+
+            {/* PRODUCT COLOR & RATING */}
+            <div>
+              <p>CORE BLACK / CARBON</p>
+              <span>STAR RATING (249 REVIEWS)</span>
+            </div>
+          </div>
+
+          {/* PRODUCT FEATURES LIST */}
+          <ul className="product-card-features-list">
+            <li>LACE CLOSURE</li>
+            <li>ADIDAS PRIMEKNIT TEXTILE UPPER</li>
+            <li>TEXTITLE LINING</li>
+            <li>3D-PRINTED 4D MIDSOLE</li>
+            <li>RUBBER OUTSOLE</li>
+          </ul>
+
+          {/* Contains Size, Color, Cost, Cart Button */}
+          <div className="product-card-options-container">
+            {/* SIZE & COLOR*/}
+            <div className="product-card-options-left">
+              {/* SIZE */}
+              <div className="product-card-size">
+                <span>SIZE</span>
+                <SelectSize />
+              </div>
+
+              {/* COLOR */}
+              <div className="product-card-color">
+                <span>COLOR</span>
+                <Select />
+              </div>
+            </div>
+
+            {/* COST & CART BTN CONTAINER */}
+            <div className="product-card-options-right">
+              {/* COST */}
+              <div className="product-card-cost">
+                <p>
+                  <span>$220</span>
+                  <span>$119</span>
+                </p>
+              </div>
+
+              <CartButton />
+            </div>
+          </div>
+        </div>
+        {/* RIGHT */}
+        <div className="product-card-right-container">
+          <div className="product-card-img-container">
+            <img src={NikeShoe2} alt="shoe" />
+          </div>
         </div>
       </div>
-      {/* Pass product details to button */}
-      {/* <CartButton product={product} quantity={quantity} color={color} size={size} /> */}
-    </div>
+    </>
   );
 };
 export default ProductCard;
+
+// const quantityHandler = () => {
+//   console.log("Quantity Changed! ");
+// };
+
+// const colorHandler = (event) => {
+//   console.log("PRODUCT_CARD event: ", event);
+//   const color = event.target.value;
+//   // console.log("Color Changed! Event:", event);
+//   console.log("Color Changed! color:", color);
+//   setColor(color);
+// };
+
+// const sizeHandler = (event) => {
+//   console.log("PRODUCT_CARD event: ", event);
+//   const size = event.target.value;
+//   // console.log("Color Changed! Event:", event);
+//   console.log("Size Changed! size:", size);
+//   setSize(size);
+// };

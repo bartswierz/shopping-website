@@ -8,6 +8,7 @@ import Cart from "./components/routes/cart/cart.component";
 import Authentication from "./components/routes/authentication/authentication.component";
 import { CategoriesContext } from "./contexts/categories.context";
 import ProductList from "./components/product-list/product-list.component";
+import ProductCard from "./components/product-card/product-card.component";
 // import Shirts from "./components/routes/shirts/shirts.component";
 // import Pants from "./components/routes/pants/pants.component";
 // import Jackets from "./components/routes/jackets/jackets.component";
@@ -34,7 +35,9 @@ const App = () => {
         <Route path="pants" element={<ProductList products={categoriesMap.pants} />} />
         <Route path="jackets" element={<ProductList products={categoriesMap.jackets} />} />
         <Route path="hats" element={<ProductList products={categoriesMap.hats} />} />
-        <Route path="shoes" element={<ProductList products={categoriesMap.shoes} />} />
+        <Route path="shoes" element={<ProductCard products={categoriesMap.shoes} />} />
+        {/* PREVIOUS PRODUCT LAYOUT */}
+        {/* <Route path="shoes" element={<ProductList products={categoriesMap.shoes} />} /> */}
       </Route>
     </Routes>
   );

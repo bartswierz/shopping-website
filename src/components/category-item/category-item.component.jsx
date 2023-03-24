@@ -7,7 +7,7 @@ const CategoryItem = ({ category }) => {
   // console.log("lowercaseTitle: ", lowercaseTitle);
 
   return (
-    // to={`${title}`} takes us to specific route depending on category title(i.e. "/shirts")
+    // to={`${title}`} takes us to specific route depending on category title(i.e. "/Shirts")
     <Link to={`${title}`} className="category-item-container" key={id}>
       <div className="background-image" style={{ backgroundImage: `url(${imageUrl})` }} alt="dress-shirt"></div>
       <div className="category-text-container">

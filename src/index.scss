@@ -1,6 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
+
+$primaryColor: #7c00f9;
+$hoverColor: #7200e4;
+$sideContainerColor: rgb(223, 223, 223);
+$headerColor: rgb(42, 42, 42);
+$borderColor: #e1e1e1;
+$size: 1.6rem;
+$fontColor: #333;
 
 body {
   margin: 0;
