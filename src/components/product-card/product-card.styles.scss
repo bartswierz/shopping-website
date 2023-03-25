@@ -140,6 +140,12 @@ $primaryColor: #7c00f9;
         }
       }
     }
+
+    // For testing purposes - move to button component once complete
+    .prev-btn,
+    .next-btn {
+      padding: 3rem;
+    }
   }
 
   // IMAGE
