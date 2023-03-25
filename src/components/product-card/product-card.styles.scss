@@ -1,12 +1,15 @@
+$primaryColor: #7c00f9;
+
 .product-card-container {
   position: relative;
   // position: relative;
   display: flex;
-  width: 100%;
-  height: 100vh;
+  min-width: 100%;
+  max-height: 100vh;
   // font-size: 1.8rem;
-  padding: 2rem;
+  padding: 4rem;
   z-index: 1;
+  // border-right: 5px solid #7c00f9;
 
   //calc(minFont + (maxFont - minFont) * ((100vw - minVW) / (maxVW - minVW)))
   //screenwidth 768 to 1920px
@@ -16,7 +19,7 @@
   //clamp(minFont, middleGround, maxFont);
   // font-size: clamp(1.6rem, 3.2rem, 1.8rem);
   // font-size: clamp(1.6rem, 3.2rem, 5vw);
-  font-size: clamp(1.6rem, 1vw, 2.1rem);
+  // font-size: clamp(1.6rem, 1vw, 2.1rem);
   // font-size: calc(1vw + 0.3rem);
 
   // font-size: calc(16px + (26 - 16) * ((100vw - 768px) / (1600 - 768)));
@@ -27,23 +30,30 @@
     width: 50%;
 
     .product-card-header-container {
-      margin-top: 8rem;
+      // margin-top: 8rem;
+      margin-top: 7rem;
       margin-bottom: 3rem;
       display: flex;
       flex-direction: column;
       width: 74%;
 
       .product-card-header {
-        font-size: 6rem;
+        // font-size: 6rem;
+        // font-size: 8.4rem;
+        font-size: clamp(3.2rem, 5vw, 6.4rem);
         font-weight: 700;
         z-index: 30;
         letter-spacing: 1rem;
+        max-height: 90px;
+        color: $primaryColor;
       }
 
       .product-card-subheader {
-        font-size: 2.4rem;
+        // font-size: 2.4rem;
+        font-size: clamp(1.6rem, 1.5vw, 2.1rem);
         letter-spacing: 0.3rem;
         font-weight: 600;
+        color: $primaryColor;
       }
     }
 
@@ -58,6 +68,8 @@
       .product-card-details-name {
         font-weight: 700;
         font-size: 3.2rem;
+        font-size: clamp(2.1rem, 1.8vw, 3.2rem);
+        letter-spacing: 0.025rem;
       }
     }
 
@@ -74,29 +86,56 @@
     .product-card-options-container {
       width: 100%;
       display: grid;
-      grid-template-columns: 0.8fr 1fr;
+      grid-template-columns: 1fr 1fr;
       column-gap: 8rem;
+      min-width: 50rem;
 
       .product-card-options-left {
         display: flex;
         flex-direction: column;
         row-gap: 1rem;
         justify-content: space-between;
+        align-self: center;
 
         .product-card-size,
         .product-card-color {
           display: flex;
           justify-content: space-between;
           color: #ffffff;
+          letter-spacing: 0.05rem;
+          font-weight: 600;
+          column-gap: 3rem;
+          align-items: center;
         }
       }
 
       .product-card-options-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-width: 30rem;
+        // border: 1px solid blue;
+
         .product-card-cost {
+          display: flex;
+          column-gap: 1.5rem;
+          align-items: center;
+
           .product-card-cost-slash {
+            // font-size: clamp(1.6rem, 1.2vw, 2.1rem);
+            color: #595959;
+            text-decoration: line-through;
+            text-decoration-color: $primaryColor;
+            font-size: 1.2rem;
+            align-content: center;
           }
 
           .product-card-cost-discount {
+            // font-size: clamp(1.6rem, 1.2vw, 2.1rem);
+            color: #ffffff;
+            font-weight: 900;
+            font-size: 2.1rem;
+            align-content: center;
           }
         }
       }
@@ -111,11 +150,11 @@
     max-width: 500px;
 
     .product-img {
-      // border: 2px solid red;
-      max-width: 40vw;
+      max-width: 25vw;
       height: auto;
       object-fit: cover;
       object-position: center;
+      // border: 2px solid red;
     }
   }
 }
@@ -151,16 +190,12 @@
 //   }
 // }
 
-//0-768px - we stay at 16px, past we grow
+//0-768px - Stay at 16px, past we grow - Turns into mobile screen under 768px
 @media screen and (max-width: 768px) {
   .product-card-container {
     // font-size: 16px;
-    font-size: 16px;
-    background-color: red;
-
-    li {
-      background-color: red;
-    }
+    // font-size: 16px;
+    background-color: #7c00f9;
   }
 }
 
@@ -173,6 +208,6 @@
 // //0-1920px max = 32px
 // @media screen and (min-width: 768px) {
 //   .product-card-container {
-//     font-size: 16px;
+//     font-size: 21px;
 //   }
 // }

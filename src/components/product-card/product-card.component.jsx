@@ -26,7 +26,7 @@ const ProductCard = ({ products }) => {
         <div className="product-card-left-container">
           {/* HEADER */}
           <div className="product-card-header-container">
-            <p className="product-card-header">ADIDAS</p>
+            <h1 className="product-card-header">ADIDAS</h1>
             <p className="product-card-subheader">IMPOSSIBLE IS NOTHING</p>
           </div>
 
@@ -71,10 +71,10 @@ const ProductCard = ({ products }) => {
             <div className="product-card-options-right">
               {/* COST */}
               <div className="product-card-cost">
-                <p>
-                  <s className="product-card-cost-slash">$220</s>
-                  <span className="product-card-cost-discount">$119</span>
-                </p>
+                {/* <p> */}
+                <s className="product-card-cost-slash">$220</s>
+                <span className="product-card-cost-discount">$199</span>
+                {/* </p> */}
               </div>
 
               <CartButton />

@@ -24,7 +24,7 @@ const CartButton = ({ product, quantity, color, size }) => {
 
   return (
     <button className="cart-button" onClick={() => handleClick(product, quantity, color, size)}>
-      Add to Cart
+      ADD TO CART
     </button>
   );
 };

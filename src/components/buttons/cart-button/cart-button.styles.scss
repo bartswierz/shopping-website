@@ -1,21 +1,33 @@
+$primaryColor: #7c00f9;
+$hoverColor: #7200e4;
+$activeColor: #6900d2;
+
+// $primaryColor: #000000;
+// $hoverColor: #FFFFFF;
+// $activeColor: rgb(215, 215, 215);
+
 .cart-button {
   width: 100%;
-  padding: 10px 5px;
+  max-width: 16rem;
+  padding: 12px 24px;
 
-  background-color: black;
-  color: white;
-  border: 1px solid black;
-  font-weight: 700;
-  // background-color: black;
+  background-color: $primaryColor;
+  color: #ffffff;
+  border: 1px solid $primaryColor;
+  font-weight: 900;
+  font-size: 1.2rem;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.1rem;
 
   &:hover {
     cursor: pointer;
-    background-color: white;
-    color: black;
+    background-color: $hoverColor;
+    color: #ffffff;
     transition: 100ms ease-in;
   }
 
   &:active {
-    background-color: rgb(215, 215, 215);
+    background-color: $activeColor;
+    // background-color: rgb(215, 215, 215);
   }
 }

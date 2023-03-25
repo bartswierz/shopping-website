@@ -27,16 +27,32 @@ const Select = ({ productType, onChange, setColor }) => {
   return (
     <div>
       {productType === "pants" ? (
-        <select className="select-container" onChange={(event) => colorHandler(event)}>
-          {pantColors.map((pantColor) => {
-            return <option key={pantColor}>{pantColor}</option>;
-          })}
-        </select>
+        <div>
+          <select onChange={(event) => colorHandler(event)}>
+            {pantColors.map((pantColor) => {
+              return <option key={pantColor}>{pantColor}</option>;
+            })}
+          </select>
+          {/* <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg> */}
+        </div>
       ) : (
         // Product is NOT pants, render Colors list
-        <select className="select-container" onChange={(event) => colorHandler(event)}>
+        <select onChange={(event) => colorHandler(event)}>
           {colors.map((color) => {
-            return <option key={color}>{color}</option>;
+            return (
+              <option key={color} className="option">
+                {color}
+              </option>
+            );
           })}
         </select>
       )}
