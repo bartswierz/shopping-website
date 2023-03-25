@@ -31,13 +31,15 @@ const App = () => {
         <Route path="Authentication" element={<Authentication />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="cart" element={<Cart />} />
-        {/* Paths will be taken from  CategoryItem component using category.title */}
-        <Route path="basketball" element={<ProductCard products={categoriesMap.basketball} />} />
-        <Route path="pants" element={<ProductCard products={categoriesMap.pants} />} />
-        <Route path="jackets" element={<ProductCard products={categoriesMap.jackets} />} />
-        <Route path="hats" element={<ProductCard products={categoriesMap.hats} />} />
+        {/* Paths will be taken from  CategoryItem component using category.title - using conditional so that we will render component when our async function completes fetching our categoriesMap from firebase DB */}
+        <Route path="casual" element={categoriesMap.basketball ? <ProductCard products={categoriesMap.basketball} /> : null} />
+        <Route path="work" element={categoriesMap.basketball ? <ProductCard products={categoriesMap.basketball} /> : null} />
+        <Route path="outdoor" element={categoriesMap.basketball ? <ProductCard products={categoriesMap.basketball} /> : null} />
+        <Route path="basketball" element={categoriesMap.basketball ? <ProductCard products={categoriesMap.basketball} /> : null} />
+        {/* <Route path="basketball" element={<ProductCard products={categoriesMap.basketball} />} /> */}
         {/* <Route path="shoes" element={<ProductCard products={categoriesMap.shoes} />} /> */}
-        <Route path="shoes" element={<ProductCard products={categoriesMap.basketball} />} />
+        <Route path="soccer" element={categoriesMap.basketball ? <ProductCard products={categoriesMap.basketball} /> : null} />
+        {/* <Route path="shoes" element={<ProductCard products={categoriesMap.basketball} />} /> */}
         {/* PREVIOUS PRODUCT LAYOUT TODO - Replace Product List with one ProductCard that will switch between shoes */}
         {/* <Route path="shoes" element={<ProductList products={categoriesMap.shoes} />} /> */}
       </Route>

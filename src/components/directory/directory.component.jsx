@@ -1,6 +1,7 @@
 import "./directory.styles.scss";
 import CategoryItem from "../category-item/category-item.component";
 
+//Categories is the shoe types
 const Directory = ({ categories }) => {
   return (
     <div className="directory-container ">

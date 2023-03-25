@@ -10,31 +10,31 @@ const Homepage = () => {
     {
       id: 1,
       // title: "Basketball",
-      title: "Basketball",
+      title: "Casual",
       imageUrl: "https://i.ibb.co/txNp8Gr/shoes.jpg",
     },
     {
       id: 2,
       // title: "Soccer",
-      title: "Shoes",
+      title: "Work",
       imageUrl: "https://i.ibb.co/txNp8Gr/shoes.jpg",
     },
     {
       id: 3,
       // title: "Outdoor",
-      title: "Shoes",
+      title: "Outdoor",
       imageUrl: "https://i.ibb.co/txNp8Gr/shoes.jpg",
     },
     {
       id: 4,
       // title: "Iconic",
-      title: "Shoes",
+      title: "Basketball",
       imageUrl: "https://i.ibb.co/txNp8Gr/shoes.jpg",
     },
     {
       id: 5,
       // title: "Casual",
-      title: "Shoes",
+      title: "Soccer",
       imageUrl: "https://i.ibb.co/txNp8Gr/shoes.jpg",
     },
   ];

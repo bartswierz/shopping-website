@@ -1,5 +1,7 @@
 import "./category-item.styles.scss";
 import { Link } from "react-router-dom";
+
+//Builds each of the five directory components (Basketball, Soccer, ...) on the homepage
 const CategoryItem = ({ category }) => {
   // const { id, title, imageUrl } = item;
   const { id, title, imageUrl } = category;
