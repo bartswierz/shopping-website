@@ -4,30 +4,36 @@ import { Outlet } from "react-router-dom";
 
 // Our homepage displayed at '/'
 const Homepage = () => {
+  //TODO - change image icons with shoes - use the previous images before removing the background
   // Holds our directory categories for routes
   const categories = [
     {
       id: 1,
-      title: "Shirts",
-      imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
+      // title: "Basketball",
+      title: "Basketball",
+      imageUrl: "https://i.ibb.co/txNp8Gr/shoes.jpg",
     },
     {
       id: 2,
-      title: "Pants",
-      imageUrl: "https://i.ibb.co/qkV6Szh/pants.jpg",
+      // title: "Soccer",
+      title: "Shoes",
+      imageUrl: "https://i.ibb.co/txNp8Gr/shoes.jpg",
     },
     {
       id: 3,
-      title: "Jackets",
-      imageUrl: "https://i.ibb.co/bFXrZWV/jacket.jpg",
+      // title: "Outdoor",
+      title: "Shoes",
+      imageUrl: "https://i.ibb.co/txNp8Gr/shoes.jpg",
     },
     {
       id: 4,
-      title: "Hats",
-      imageUrl: "https://i.ibb.co/SmyzmXM/hat.jpg",
+      // title: "Iconic",
+      title: "Shoes",
+      imageUrl: "https://i.ibb.co/txNp8Gr/shoes.jpg",
     },
     {
       id: 5,
+      // title: "Casual",
       title: "Shoes",
       imageUrl: "https://i.ibb.co/txNp8Gr/shoes.jpg",
     },

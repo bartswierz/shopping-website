@@ -20,7 +20,8 @@ const App = () => {
   collection: categories -> Documents: hats, jackets, pants, shirts, shoes */
   const { categoriesMap } = useContext(CategoriesContext);
   // console.log("shirts - CategoriesMap: ", categoriesMap.shirts);
-
+  console.log("categoriesMap in App.js: ", categoriesMap);
+  console.log("categoriesMap.basketball in App.js: ", categoriesMap.basketball);
   return (
     <Routes>
       {/* At the default path, display The navigation, inside our navigation we will use Outlet to display Home Page and/or any of the other paths we use */}
@@ -31,12 +32,13 @@ const App = () => {
         <Route path="checkout" element={<Checkout />} />
         <Route path="cart" element={<Cart />} />
         {/* Paths will be taken from  CategoryItem component using category.title */}
-        <Route path="shirts" element={<ProductList products={categoriesMap.shirts} />} />
-        <Route path="pants" element={<ProductList products={categoriesMap.pants} />} />
-        <Route path="jackets" element={<ProductList products={categoriesMap.jackets} />} />
-        <Route path="hats" element={<ProductList products={categoriesMap.hats} />} />
-        <Route path="shoes" element={<ProductCard products={categoriesMap.shoes} />} />
-        {/* PREVIOUS PRODUCT LAYOUT */}
+        <Route path="basketball" element={<ProductCard products={categoriesMap.basketball} />} />
+        <Route path="pants" element={<ProductCard products={categoriesMap.pants} />} />
+        <Route path="jackets" element={<ProductCard products={categoriesMap.jackets} />} />
+        <Route path="hats" element={<ProductCard products={categoriesMap.hats} />} />
+        {/* <Route path="shoes" element={<ProductCard products={categoriesMap.shoes} />} /> */}
+        <Route path="shoes" element={<ProductCard products={categoriesMap.basketball} />} />
+        {/* PREVIOUS PRODUCT LAYOUT TODO - Replace Product List with one ProductCard that will switch between shoes */}
         {/* <Route path="shoes" element={<ProductList products={categoriesMap.shoes} />} /> */}
       </Route>
     </Routes>

@@ -19,6 +19,13 @@ const ProductCard = ({ products }) => {
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
 
+  console.log("products: ", products);
+  /*
+  {description: 'Basketball Shoes', price: 15, id: 41, imageUrl: 'link'}
+   */
+  // const { description, price, id, imageUrl } = products;
+  // console.log("description: ", description);
+
   return (
     <>
       <div className="product-card-container">
@@ -26,13 +33,13 @@ const ProductCard = ({ products }) => {
         <div className="product-card-left-container">
           {/* HEADER */}
           <div className="product-card-header-container">
-            <h1 className="product-card-header">ADIDAS</h1>
-            <p className="product-card-subheader">IMPOSSIBLE IS NOTHING</p>
+            <h1 className="product-card-header">AIR JORDAN</h1>
+            <p className="product-card-subheader">ICONIC SHOES FOR LESS</p>
           </div>
 
           {/* PRODUCT NAME */}
           <div className="product-card-details-container">
-            <span className="product-card-details-name">ULTRA ADIDAS 4D RUNNING</span>
+            <span className="product-card-details-name">AIR JORDAN 1 RETRO HIGH</span>
 
             {/* PRODUCT COLOR & RATING */}
             <div>
@@ -74,7 +81,7 @@ const ProductCard = ({ products }) => {
               <div className="product-card-cost">
                 {/* <p> */}
                 <s className="product-card-cost-slash">$220</s>
-                <span className="product-card-cost-discount">$199</span>
+                <span className="product-card-cost-discount">$179</span>
                 {/* </p> */}
               </div>
 
