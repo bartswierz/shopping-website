@@ -1,5 +1,3 @@
-import "./select.styles.scss";
-
 const Select = ({ productType, onChange, setColor }) => {
   // Product Type = shirt, pants, jacket, shoes, hats / Passed in from product-card
   // console.log("productType = ", productType);
@@ -33,16 +31,16 @@ const Select = ({ productType, onChange, setColor }) => {
               return <option key={pantColor}>{pantColor}</option>;
             })}
           </select>
-          {/* <svg
+          <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            strokeWidth={1.5}
+            stroke-width="1.5"
             stroke="currentColor"
-            className="w-6 h-6"
+            class="w-6 h-6"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg> */}
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
         </div>
       ) : (
         // Product is NOT pants, render Colors list

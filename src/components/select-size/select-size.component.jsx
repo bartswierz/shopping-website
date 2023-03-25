@@ -1,5 +1,3 @@
-import "./select-size.styles.scss";
-
 const SelectSize = ({ productType, onChange, setSize }) => {
   // Product Type = shirt, pants, jacket, shoes, hats / Passed in from product-card
   // console.log("productType = ", productType);
