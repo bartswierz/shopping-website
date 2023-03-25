@@ -43,11 +43,12 @@ const ProductCard = ({ products }) => {
 
           {/* PRODUCT FEATURES LIST */}
           <ul className="product-card-features-list">
-            <li>LACE CLOSURE</li>
-            <li>ADIDAS PRIMEKNIT TEXTILE UPPER</li>
-            <li>TEXTITLE LINING</li>
-            <li>3D-PRINTED 4D MIDSOLE</li>
-            <li>RUBBER OUTSOLE</li>
+            <li>PREMIUM LIGHTWEIGHT MATERIALS</li>
+            <li>PREMIUM INSOLES FOR SHOCK ABSORPTION & COMFORT</li>
+            <li>RUBBER OUTSOLE FOR ADDED TRACTION</li>
+            <li>STRUCTURED FIT & ICONIC LOOK</li>
+            <li>PERCISE FIT TO PREVENT SLIPPING</li>
+            <li>ANKLE SUPPORT</li>
           </ul>
 
           {/* Contains Size, Color, Cost, Cart Button */}
