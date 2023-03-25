@@ -24,7 +24,7 @@ const ProductCard = ({ products }) => {
   const [featureList, setFeatureList] = useState(featuresList);
 
   //Will use this to - Set to first shoe on initial render
-  const [currentShoe, setCurrentShoe] = useState(shoesList[1]);
+  const [currentShoe, setCurrentShoe] = useState(shoesList[0]);
 
   //will use this to update our current shoe & increment/decrement as needed
   const [index, setIndex] = useState(0);
@@ -66,6 +66,7 @@ const ProductCard = ({ products }) => {
   //Go to next shoe
   const handleNext = () => {
     //TODO: if user is at last shoe, SET TO shoe1
+    //THREE SHOES shoesList[0] = white, [1] = red, [2] = green
     console.log("handleNext Clicked");
     console.log("Current Shoe: ", currentShoe);
 
@@ -74,6 +75,8 @@ const ProductCard = ({ products }) => {
     if (index === listLength) {
       console.log("AT END OF LIST - GO BACK TO FIRST: ", index);
       setIndex(0);
+      // setCurrentShoe(shoeList[index]);
+      // setCurrentShoe(shoeList[index]);
     } else {
       console.log("NOT AT END INCREASE INDEX BY 1: ", index);
       setIndex(index + 1);
