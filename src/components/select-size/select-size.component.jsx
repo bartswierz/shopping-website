@@ -63,30 +63,41 @@ const SelectSize = ({ productType, onChange, setSize }) => {
 
   return (
     <div>
-      {/* Product is Pants, display pants selection options  */}
-      {productType === "pants" ? (
-        <select className="select-container" onChange={(event) => sizeHandler(event)}>
-          {pantSizes.map((pantSize) => {
-            return <option key={pantSize}>{pantSize}</option>;
-          })}
-        </select>
-      ) : productType === "shoes" ? (
-        //Product is Shoes, display Shoes selection options
-        <select className="select-container" onChange={(event) => sizeHandler(event)}>
-          {shoeSizes.map((shoeSize) => {
-            return <option key={shoeSize}>{shoeSize}</option>;
-          })}
-        </select>
-      ) : (
-        //NOT Shoes OR Pants, display normal size selection options
-        <select className="select-container" onChange={(event) => sizeHandler(event)}>
-          {sizes.map((size) => {
-            return <option key={size}>{size}</option>;
-          })}
-        </select>
-      )}
+      {/* //Product is Shoes, display Shoes selection options */}
+      <select className="select-container" onChange={(event) => sizeHandler(event)}>
+        {shoeSizes.map((shoeSize) => {
+          return <option key={shoeSize}>{shoeSize}</option>;
+        })}
+      </select>
     </div>
   );
 };
 
 export default SelectSize;
+
+// return (
+//   <div>
+//     {/* Product is Pants, display pants selection options  */}
+//     {productType === "pants" ? (
+//       <select className="select-container" onChange={(event) => sizeHandler(event)}>
+//         {pantSizes.map((pantSize) => {
+//           return <option key={pantSize}>{pantSize}</option>;
+//         })}
+//       </select>
+//     ) : productType === "shoes" ? (
+//       //Product is Shoes, display Shoes selection options
+//       <select className="select-container" onChange={(event) => sizeHandler(event)}>
+//         {shoeSizes.map((shoeSize) => {
+//           return <option key={shoeSize}>{shoeSize}</option>;
+//         })}
+//       </select>
+//     ) : (
+//       //NOT Shoes OR Pants, display normal size selection options
+//       <select className="select-container" onChange={(event) => sizeHandler(event)}>
+//         {sizes.map((size) => {
+//           return <option key={size}>{size}</option>;
+//         })}
+//       </select>
+//     )}
+//   </div>
+// );

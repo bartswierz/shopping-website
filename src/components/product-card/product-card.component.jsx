@@ -1,6 +1,6 @@
 import "./product-card.styles.scss";
 import CartButton from "../buttons/cart-button/cart-button.component";
-import Select from "../select/select.component";
+import Select from "../select-color/select-color.component";
 import SelectSize from "../select-size/select-size.component";
 import { useEffect, useState, useContext } from "react";
 import { ReactComponent as DecreaseIcon } from "../../assets/remove-outline.svg";
@@ -11,78 +11,76 @@ import NikeShoeGreen from "./../../assets/nike-shoe-green.png";
 
 import NikeShoe from "./../../assets/nike-shoe.png";
 import NikeShoe2 from "./../../assets/nike-shoe2.png";
+import Button from "@mui/material/Button";
 
 const ProductCard = ({ products }) => {
   const { shoeList, featuresList } = products[0];
-  // console.log("shoeList passed: ", shoeList);
-  // console.log("featuresList passed: ", featuresList);
 
-  // Object containing each shoe
-  const [shoesList, setShoesList] = useState(shoeList);
-
-  // ARRAY list of shoe features
+  //USED TO DISPLAY SHOE DETAILS ON SCREEN, SET TO FIRST PRODUCT FETCHED FROM OUR FIREBASE DB
+  const [currentShoe, setCurrentShoe] = useState(shoeList[0]);
+  // ARRAY LIST OF SHOE FEATURES
   const [featureList, setFeatureList] = useState(featuresList);
-
-  //Will use this to - Set to first shoe on initial render
-  const [currentShoe, setCurrentShoe] = useState(shoesList[0]);
-
-  //will use this to update our current shoe & increment/decrement as needed
+  //USED TO RENDER PREV/NEXT SHOE
   const [index, setIndex] = useState(0);
-  // console.log("index: ", index);
 
-  // console.log("currentShoe: ", currentShoe);
-
-  /*
-  TODO
-  -need shoe position to be increment in 
-  */
-
+  const maxIndex = shoeList.length - 1;
   // Will find the number of shoes we have, will be used for navigating to prev/next shoe
-  // const [listLength, setListLength] = useState(shoeList.length());
-  const [listLength, setListLength] = useState(shoeList.length);
-  console.log("listLength: ", listLength);
-
-  // Return image, description, url
-  // const { description, price, imageUrl } = products;
-  // const [quantity, setQuantity] = useState(1);
-  // const [color, setColor] = useState("");
-  // const [size, setSize] = useState("");
-
-  // console.log("categoriesMap: ", categoriesMap);
-
+  // const [maxIndex, setMaxIndex] = useState(shoeList.length - 1);
   console.log("products: ", products);
-  // // console.log("products.basketball: ", products.basketball);
-  // const { shoeList, featuresList } = products;
-  // console.log("shoeList: ", shoeList);
-  // console.log("featuresList: ", featuresList);
-  // // console.log("products.featuresList: ", products[0]);
 
-  //Go to previous shoe
+  //DECREMENT INDEX OR RESET TO maxIndex(LAST ITEM) TO RENDER CURRENT SHOE
   const handlePrevious = () => {
-    //TODO: IF user is first shoe, SET TO shoe`${numberOfShoes}`
-    console.log("handlePrevious Clicked");
-  };
-
-  //Go to next shoe
-  const handleNext = () => {
-    //TODO: if user is at last shoe, SET TO shoe1
-    //THREE SHOES shoesList[0] = white, [1] = red, [2] = green
-    console.log("handleNext Clicked");
-    console.log("Current Shoe: ", currentShoe);
-
-    console.log("INDEX: ", index, "AND listLength: ", listLength);
-    //TODO - IF USER IS AT last index, set it to 0 to go back to first shoe option
-    if (index === listLength) {
+    //USER IS AT START - SET INDEX TO LAST(maxIndex)
+    if (index === 0) {
       console.log("AT END OF LIST - GO BACK TO FIRST: ", index);
-      setIndex(0);
+      setIndex(maxIndex);
+      setCurrentShoe(shoeList[index]);
       // setCurrentShoe(shoeList[index]);
-      // setCurrentShoe(shoeList[index]);
-    } else {
-      console.log("NOT AT END INCREASE INDEX BY 1: ", index);
-      setIndex(index + 1);
+    }
+    //USER IS AT LAST ITEM - DECREMENT BY 1
+    else if (index === maxIndex) {
+      setIndex(index - 1);
+      setCurrentShoe(shoeList[index]);
+    }
+    //USER IS IN MIDDLE - DECREMENT INDEX BY 1
+    else if (index < maxIndex) {
+      setIndex(index - 1);
       setCurrentShoe(shoeList[index]);
     }
   };
+
+  //INCREMENT INDEX OR RESET TO 0(FIRST ITEM) TO RENDER CURRENT SHOE
+  const handleNext = () => {
+    //USER IS AT START - WORKS: 0
+    if (index === 0) {
+      setIndex(index + 1);
+      setCurrentShoe(shoeList[index]);
+      // setCurrentShoe(shoeList[index]);
+    }
+    //USER IS IN MIDDLE - WORK: 1
+    else if (index < maxIndex) {
+      //TODO - works, 0, 1, 2(NO)
+      setIndex(index + 1);
+      setCurrentShoe(shoeList[index]);
+    }
+    // ELSE USER IS AT END, RESET TO START
+    else {
+      setIndex(0);
+      setCurrentShoe(shoeList[index]);
+    }
+  };
+
+  // if (index === shoeList.length - 1) {
+  //   console.log("AT END OF LIST - GO BACK TO FIRST: ", index);
+  //   setIndex(0);
+  //   setCurrentShoe(shoeList[index]);
+  //   // setCurrentShoe(shoeList[index]);
+  // } else {
+  //   console.log("NOT AT END INCREASE INDEX BY 1: ", index);
+  //   // setIndex(index + 1);
+  //   setIndex(index + 1);
+  //   setCurrentShoe(shoeList[index]);
+  // }
 
   return (
     <>
@@ -91,8 +89,6 @@ const ProductCard = ({ products }) => {
         <div className="product-card-left-container">
           {/* HEADER */}
           <div className="product-card-header-container">
-            {/* <h1 className="product-card-header">AIR JORDAN</h1>
-            <p className="product-card-subheader">ICONIC SHOES FOR LESS</p> */}
             <h1 className="product-card-header">{currentShoe.brandName}</h1>
             <p className="product-card-subheader">{currentShoe.subheader}</p>
           </div>
@@ -144,8 +140,28 @@ const ProductCard = ({ products }) => {
             </div>
           </div>
 
+          {/* Temp buttons for testing 
+          <div className="product-card-button-container">
+            <button className="prev-btn" onClick={handlePrevious}>
+              Previous
+            </button>
+            <button className="next-btn" onClick={handleNext}>
+              Next
+            </button>
+          </div> */}
+        </div>
+        {/* RIGHT */}
+        <div className="product-card-right-container">
+          <div className="product-card-img-container">
+            {/* <img src={NikeShoeRed} className="product-img" alt="shoe" /> */}
+            {/* <img src={NikeShoeGreen} className="product-img" alt="shoe" /> */}
+            {/* <img src={NikeShoeWhite} className="product-img" alt="shoe" /> */}
+            <img src={currentShoe.imageUrl} className="product-img" alt="shoe" />
+          </div>
+
+          {/* BUTTONS */}
           {/* Temp buttons for testing  */}
-          <div>
+          <div className="product-card-button-container">
             <button className="prev-btn" onClick={handlePrevious}>
               Previous
             </button>
@@ -153,14 +169,6 @@ const ProductCard = ({ products }) => {
               Next
             </button>
           </div>
-        </div>
-        {/* RIGHT */}
-        {/* <div className="product-card-right-container"> */}
-        <div className="product-card-img-container">
-          {/* <img src={NikeShoeRed} className="product-img" alt="shoe" /> */}
-          {/* <img src={NikeShoeGreen} className="product-img" alt="shoe" /> */}
-          {/* <img src={NikeShoeWhite} className="product-img" alt="shoe" /> */}
-          <img src={currentShoe.imageUrl} className="product-img" alt="shoe" />
         </div>
       </div>
     </>

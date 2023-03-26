@@ -1,6 +1,21 @@
+import Button from "@mui/material/Button";
 import "./cart-button.styles.scss";
 import { CartContext } from "../../../contexts/cart.context";
 import { useContext } from "react";
+
+const buttonSX = {
+  backgroundColor: "#7c00f9",
+  fontWeight: 900,
+  fontSize: "1.2rem",
+  fontFamily: "Bebas Neue, sans-serif",
+  ":hover": {
+    backgroundColor: "#7200e4",
+  },
+  ":active": {
+    backgroundColor: "#6900d2",
+  },
+  padding: "12px 24px",
+};
 
 const CartButton = ({ product, quantity, color, size }) => {
   const { addItemToCart, cartItems, cartCount, updateCartCount } = useContext(CartContext);
@@ -23,10 +38,17 @@ const CartButton = ({ product, quantity, color, size }) => {
   };
 
   return (
-    <button className="cart-button" onClick={() => handleClick(product, quantity, color, size)}>
-      ADD TO CART
-    </button>
+    <div>
+      <Button variant="contained" sx={buttonSX} className="cart-button" onClick={() => handleClick(product, quantity, color, size)}>
+        ADD TO CART
+      </Button>
+    </div>
   );
 };
 
 export default CartButton;
+{
+  /* <button className="cart-button" onClick={() => handleClick(product, quantity, color, size)}>
+        ADD TO CART
+      </button> */
+}

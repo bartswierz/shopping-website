@@ -144,27 +144,58 @@ $primaryColor: #7c00f9;
     }
 
     // For testing purposes - move to button component once complete
-    .prev-btn,
-    .next-btn {
-      padding: 3rem;
+  }
+
+  .product-card-right-container {
+    position: relative;
+    width: 50%;
+    // IMAGE
+    .product-card-img-container {
+      position: absolute;
+      top: 12%;
+      right: 12%;
+      max-width: 500px;
+
+      .product-img {
+        max-width: 25vw;
+        height: auto;
+        object-fit: cover;
+        object-position: center;
+        // border: 2px solid red;
+      }
+    }
+
+    .product-card-button-container {
+      // display: flex;
+      // align-items: end;
+      // justify-content: end;
+      bottom: 0%;
+      right: 0%;
+      // left: 50%;
+
+      position: absolute;
+      .prev-btn,
+      .next-btn {
+        padding: 3rem;
+      }
     }
   }
 
   // IMAGE
-  .product-card-img-container {
-    position: absolute;
-    top: 12%;
-    right: 12%;
-    max-width: 500px;
+  // .product-card-img-container {
+  //   position: absolute;
+  //   top: 12%;
+  //   right: 12%;
+  //   max-width: 500px;
 
-    .product-img {
-      max-width: 25vw;
-      height: auto;
-      object-fit: cover;
-      object-position: center;
-      // border: 2px solid red;
-    }
-  }
+  //   .product-img {
+  //     max-width: 25vw;
+  //     height: auto;
+  //     object-fit: cover;
+  //     object-position: center;
+  //     // border: 2px solid red;
+  //   }
+  // }
 }
 
 .product-card-container::after {
