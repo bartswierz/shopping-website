@@ -44,7 +44,7 @@ const CheckoutCart = () => {
                 <div>Color: {item.color}</div>
                 <div>Size: {item.size}</div>
                 <div>Qty: {item.quantity}</div>
-                <div>${item.discountPrice}</div>
+                <div>${parseFloat(item.discountPrice).toFixed(2)}</div>
               </div>
             </div>
           );

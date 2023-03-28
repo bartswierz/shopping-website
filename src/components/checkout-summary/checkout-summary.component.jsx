@@ -11,7 +11,7 @@ const CostSummary = () => {
       <div>
         <div className="checkout-summary-item">
           <span>Subtotal</span>
-          <span>${cartTotal}</span>
+          <span>${parseFloat(cartTotal).toFixed(2)}</span>
         </div>
         <div className="checkout-summary-item">
           <span>Shipping & Handling</span>
@@ -19,11 +19,11 @@ const CostSummary = () => {
         </div>
         <div className="checkout-summary-item">
           <span>Taxes</span>
-          <span>${taxTotal}</span>
+          <span>${parseFloat(taxTotal).toFixed(2)}</span>
         </div>
         <div className="checkout-summary-item">
           <span>Total</span>
-          <span className="highlight">${cartTotal + taxTotal}</span>
+          <span className="highlight">${parseFloat(cartTotal + taxTotal).toFixed(2)}</span>
         </div>
       </div>
     </div>
