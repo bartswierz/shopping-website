@@ -44,7 +44,8 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [cartCount, setCartCount] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
-  const [taxTotal, setTaxTotal] = useState(0);
+  const [taxTotal, setTaxTotal] = useState(0.0);
+  console.log("TAX TOTAL: ", typeof taxTotal);
 
   const addItemToCart = (itemToAdd) => {
     setCartItems(addToCart(cartItems, itemToAdd));
@@ -85,14 +86,21 @@ export const CartProvider = ({ children }) => {
   // Updates total cost using reducer
   useEffect(() => {
     //Updates Cart Total Cost
+    // const newCartTotal = cartItems.reduce((totalCost, currentItem) => totalCost + currentItem.discountPrice * currentItem.quantity, 0);
     const newCartTotal = cartItems.reduce((totalCost, currentItem) => totalCost + currentItem.discountPrice * currentItem.quantity, 0);
-    // console.log("Updated Cart Total Cost: ", newCartTotal);
+    console.log("Updated Cart Total Cost: ", newCartTotal);
+    // setCartTotal(newCartTotal);
     setCartTotal(newCartTotal);
+    // setCartTotal(parseInt(newCartTotal).toFixed(0));
   }, [cartItems, cartCount, cartTotal]);
 
   // Updates tax by total cost multiplied by 10%
   useEffect(() => {
-    // console.log("updating tax total: ", taxTotal);
+    console.log("updating tax total: ", taxTotal);
+    console.log("cartTotal type: ", typeof cartTotal);
+    console.log("taxTotal type: ", typeof taxTotal, "and value: ", taxTotal);
+
+    // setTaxTotal(parseFloat(cartTotal * 0.1).toFixed(2));
     setTaxTotal(cartTotal * 0.1);
   }, [cartCount, cartTotal, taxTotal]);
 

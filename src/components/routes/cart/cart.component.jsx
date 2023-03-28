@@ -13,6 +13,9 @@ const Cart = () => {
   const { cartItems, removeItemFromCart, cartCount, cartTotal, taxTotal, updateCartCount, updateCartItem } = useContext(CartContext);
   console.log("cartItems in cart: ", cartItems);
 
+  const subtotalFixed = parseFloat(cartTotal).toFixed(2);
+  const taxTotalFixed = parseFloat(taxTotal).toFixed(2);
+  const cartTotalFixed = parseFloat(cartTotal + taxTotal).toFixed(2);
   // const tax = cartTotal * 0.08;
 
   const removeItem = (itemToRemove) => {
@@ -43,7 +46,6 @@ const Cart = () => {
             <strong>Remove</strong>
           </div>
         </div>
-
         {/* Cart Items Rendered here */}
         {cartItems.map((item) => {
           return (
@@ -52,11 +54,9 @@ const Cart = () => {
                 <div className="cart-image" style={{ backgroundImage: `url(${item.imageUrl})` }}></div>
                 <div className="cart-description">
                   <span>
-                    {/* <strong>{item.description}</strong> */}
                     <strong>{item.brandName}</strong>
                   </span>
                   <span>
-                    {/* <strong>{item.description}</strong> */}
                     <strong>{item.productName}</strong>
                   </span>
                   <span>
@@ -67,7 +67,7 @@ const Cart = () => {
                   </span>
                 </div>
               </div>
-              <div className="cart-price">${item.discountPrice}</div>
+              <div className="cart-price">${parseFloat(item.discountPrice).toFixed(2)}</div>
               <div className="cart-quantity">
                 {/* If qty is greater than 1, then allow user to decrease quantity on click. Else, display icon without updating quantity */}
                 {item.quantity > 1 ? (
@@ -79,10 +79,6 @@ const Cart = () => {
                 <IncreaseIcon className="increase-icon" onClick={() => updateCart(item, item.quantity + 1)} />
               </div>
               <div className="cart-total-remove">
-                {/* <div className="cart-price">
-                  <strong>${item.price}</strong>
-                </div> */}
-                {/* <div className="cart-remove">X</div> */}
                 <RemoveBtn className="cart-remove" onClick={() => removeItem(item)} />
               </div>
             </div>
@@ -94,15 +90,15 @@ const Cart = () => {
           <div className="cart-footer">
             <div className="footer-item">
               <span>Subtotal: </span>
-              <span>${cartTotal}</span>
+              <span>${parseFloat(cartTotal).toFixed(2)}</span>
             </div>
             <div className="footer-item">
               <span>Sales Tax: </span>
-              <span>${taxTotal}</span>
+              <span>${parseFloat(taxTotal).toFixed(2)}</span>
             </div>
             <div className="footer-item">
               <span>Order Total: </span>
-              <span className="order-total-value">${cartTotal + taxTotal}</span>
+              <span className="order-total-value">${parseFloat(cartTotal + taxTotal).toFixed(2)}</span>
             </div>
             <Link to="/checkout" className="cart-checkout-button">
               Checkout
