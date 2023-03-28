@@ -12,6 +12,8 @@ import NikeShoeGreen from "./../../assets/nike-shoe-green.png";
 import NikeShoe from "./../../assets/nike-shoe.png";
 import NikeShoe2 from "./../../assets/nike-shoe2.png";
 import Button from "@mui/material/Button";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 const ProductCard = ({ products }) => {
   const { shoeList, featuresList } = products[0];
@@ -139,34 +141,27 @@ const ProductCard = ({ products }) => {
               <CartButton />
             </div>
           </div>
-
-          {/* Temp buttons for testing 
-          <div className="product-card-button-container">
-            <button className="prev-btn" onClick={handlePrevious}>
-              Previous
-            </button>
-            <button className="next-btn" onClick={handleNext}>
-              Next
-            </button>
-          </div> */}
         </div>
         {/* RIGHT */}
         <div className="product-card-right-container">
           <div className="product-card-img-container">
-            {/* <img src={NikeShoeRed} className="product-img" alt="shoe" /> */}
-            {/* <img src={NikeShoeGreen} className="product-img" alt="shoe" /> */}
-            {/* <img src={NikeShoeWhite} className="product-img" alt="shoe" /> */}
             <img src={currentShoe.imageUrl} className="product-img" alt="shoe" />
           </div>
 
           {/* BUTTONS */}
           {/* Temp buttons for testing  */}
           <div className="product-card-button-container">
-            <button className="prev-btn" onClick={handlePrevious}>
-              Previous
+            <button className="prev-btn">
+              <ArrowBackIosIcon onClick={handlePrevious} className="prev-btn-icon" />
             </button>
-            <button className="next-btn" onClick={handleNext}>
-              Next
+            <div className="product-card-image-index">
+              <p>
+                {index + 1} / {maxIndex + 1}
+              </p>
+            </div>
+            <button className="next-btn">
+              <ArrowForwardIosIcon onClick={handleNext} className="next-btn-icon" />
+              {/* <ArrowBackIosIcon onClick={handlePrevious} className="prev-btn-icon" /> */}
             </button>
           </div>
         </div>
