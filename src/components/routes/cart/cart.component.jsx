@@ -52,7 +52,12 @@ const Cart = () => {
                 <div className="cart-image" style={{ backgroundImage: `url(${item.imageUrl})` }}></div>
                 <div className="cart-description">
                   <span>
-                    <strong>{item.description}</strong>
+                    {/* <strong>{item.description}</strong> */}
+                    <strong>{item.brandName}</strong>
+                  </span>
+                  <span>
+                    {/* <strong>{item.description}</strong> */}
+                    <strong>{item.productName}</strong>
                   </span>
                   <span>
                     Color: <strong>{item.color}</strong>
@@ -62,7 +67,7 @@ const Cart = () => {
                   </span>
                 </div>
               </div>
-              <div className="cart-price">${item.price}</div>
+              <div className="cart-price">${item.discountPrice}</div>
               <div className="cart-quantity">
                 {/* If qty is greater than 1, then allow user to decrease quantity on click. Else, display icon without updating quantity */}
                 {item.quantity > 1 ? (

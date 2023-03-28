@@ -1,6 +1,6 @@
 import "./product-card.styles.scss";
 import CartButton from "../buttons/cart-button/cart-button.component";
-import Select from "../select-color/select-color.component";
+import SelectColor from "../select-color/select-color.component";
 import SelectSize from "../select-size/select-size.component";
 import { useEffect, useState, useContext } from "react";
 import { ReactComponent as DecreaseIcon } from "../../assets/remove-outline.svg";
@@ -17,18 +17,44 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 const ProductCard = ({ products }) => {
   const { shoeList, featuresList } = products[0];
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
 
+  //TODO - Add a product containing: description, discountPrice, imageUrl
+  //USE: currentShoe.imageUrl
+  //When user clicks next or previous button, we run the function, that has three parameters, description, discountPrice, imageUrl
   //USED TO DISPLAY SHOE DETAILS ON SCREEN, SET TO FIRST PRODUCT FETCHED FROM OUR FIREBASE DB
   const [currentShoe, setCurrentShoe] = useState(shoeList[0]);
   // ARRAY LIST OF SHOE FEATURES
   const [featureList, setFeatureList] = useState(featuresList);
+
+  //OBJECT CONTAINS: HOLDS INFORMATION FOR THE CURRENT SHOE DISPLAYED. WILL BE PASSED TO CARTBUTTON
+  const [product, setProduct] = useState(shoeList[0]);
+  console.log("product: ", product);
+
   //USED TO RENDER PREV/NEXT SHOE
   const [index, setIndex] = useState(0);
 
   const maxIndex = shoeList.length - 1;
   // Will find the number of shoes we have, will be used for navigating to prev/next shoe
   // const [maxIndex, setMaxIndex] = useState(shoeList.length - 1);
-  console.log("products: ", products);
+  // console.log("products: ", products);
+
+  const colorHandler = (event) => {
+    console.log("PRODUCT_CARD event: ", event);
+    const color = event.target.value;
+    // console.log("Color Changed! Event:", event);
+    console.log("Color Changed! color:", color);
+    setColor(color);
+  };
+
+  const sizeHandler = (event) => {
+    console.log("PRODUCT_CARD event: ", event);
+    const size = event.target.value;
+    // console.log("Color Changed! Event:", event);
+    console.log("Size Changed! size:", size);
+    setSize(size);
+  };
 
   //DECREMENT INDEX OR RESET TO maxIndex(LAST ITEM) TO RENDER CURRENT SHOE
   const handlePrevious = () => {
@@ -37,17 +63,21 @@ const ProductCard = ({ products }) => {
       console.log("AT END OF LIST - GO BACK TO FIRST: ", index);
       setIndex(maxIndex);
       setCurrentShoe(shoeList[index]);
+      console.log("shoeList[index]: ", shoeList[index]);
+      setProduct(shoeList[index]);
       // setCurrentShoe(shoeList[index]);
     }
     //USER IS AT LAST ITEM - DECREMENT BY 1
     else if (index === maxIndex) {
       setIndex(index - 1);
       setCurrentShoe(shoeList[index]);
+      setProduct(shoeList[index]);
     }
     //USER IS IN MIDDLE - DECREMENT INDEX BY 1
     else if (index < maxIndex) {
       setIndex(index - 1);
       setCurrentShoe(shoeList[index]);
+      setProduct(shoeList[index]);
     }
   };
 
@@ -57,18 +87,20 @@ const ProductCard = ({ products }) => {
     if (index === 0) {
       setIndex(index + 1);
       setCurrentShoe(shoeList[index]);
-      // setCurrentShoe(shoeList[index]);
+      setProduct(shoeList[index]);
     }
     //USER IS IN MIDDLE - WORK: 1
     else if (index < maxIndex) {
       //TODO - works, 0, 1, 2(NO)
       setIndex(index + 1);
       setCurrentShoe(shoeList[index]);
+      setProduct(shoeList[index]);
     }
     // ELSE USER IS AT END, RESET TO START
     else {
       setIndex(0);
       setCurrentShoe(shoeList[index]);
+      setProduct(shoeList[index]);
     }
   };
 
@@ -120,13 +152,13 @@ const ProductCard = ({ products }) => {
               {/* SIZE */}
               <div className="product-card-size">
                 <span>SIZE</span>
-                <SelectSize />
+                <SelectSize setSize={setSize} onChange={(event) => sizeHandler(event)} />
               </div>
 
               {/* COLOR */}
               <div className="product-card-color">
                 <span>COLOR</span>
-                <Select />
+                <SelectColor setColor={setColor} onChange={(event) => colorHandler(event)} />
               </div>
             </div>
 
@@ -138,7 +170,9 @@ const ProductCard = ({ products }) => {
                 <span className="product-card-cost-discount">${currentShoe.discountPrice}</span>
               </div>
 
-              <CartButton />
+              {/* OnClick, we will pass color and size as props to CartButton 
+              TODO - MUST PASS PRODUCT */}
+              <CartButton product={product} color={color} size={size} />
             </div>
           </div>
         </div>

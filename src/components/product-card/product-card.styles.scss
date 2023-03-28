@@ -180,6 +180,7 @@ $primaryColor: #7c00f9;
         border: none;
         display: flex;
         transform: all;
+        color: #222;
         // border: 1px solid red;
 
         .prev-btn-icon,
@@ -197,6 +198,7 @@ $primaryColor: #7c00f9;
             height: 52px;
             cursor: pointer;
             transition: all 200ms ease-in-out;
+            color: #000;
           }
 
           &:active {

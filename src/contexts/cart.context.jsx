@@ -85,7 +85,7 @@ export const CartProvider = ({ children }) => {
   // Updates total cost using reducer
   useEffect(() => {
     //Updates Cart Total Cost
-    const newCartTotal = cartItems.reduce((totalCost, currentItem) => totalCost + currentItem.price * currentItem.quantity, 0);
+    const newCartTotal = cartItems.reduce((totalCost, currentItem) => totalCost + currentItem.discountPrice * currentItem.quantity, 0);
     // console.log("Updated Cart Total Cost: ", newCartTotal);
     setCartTotal(newCartTotal);
   }, [cartItems, cartCount, cartTotal]);

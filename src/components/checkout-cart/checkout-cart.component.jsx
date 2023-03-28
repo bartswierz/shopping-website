@@ -39,11 +39,12 @@ const CheckoutCart = () => {
                 <div className="checkout-cart-image" style={{ backgroundImage: `url(${item.imageUrl})` }}></div>
               </div>
               <div className="checkout-cart-text">
-                <div>{item.description}</div>
+                <div>{item.brandName}</div>
+                <div>{item.productName}</div>
                 <div>Color: {item.color}</div>
                 <div>Size: {item.size}</div>
                 <div>Qty: {item.quantity}</div>
-                <div>${item.price}</div>
+                <div>${item.discountPrice}</div>
               </div>
             </div>
           );

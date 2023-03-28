@@ -23,7 +23,7 @@ const CartButton = ({ product, quantity, color, size }) => {
   // Adds the item to our CartItems array within our Cart Context
   const handleClick = (product, quantity, color, size) => {
     // ...product = id, description, imageUrl, price
-    console.log("in handleClick, color: ", color);
+    console.log("in handleClick, color: ", color, "& size: ", size);
     if (color !== "" && color !== "Color" && size !== "" && size !== "Size") {
       const itemToAdd = { ...product, quantity, color, size };
       // console.log("button clicked! ", itemToAdd);
@@ -39,7 +39,12 @@ const CartButton = ({ product, quantity, color, size }) => {
 
   return (
     <div>
-      <Button variant="contained" sx={buttonSX} className="cart-button" onClick={() => handleClick(product, quantity, color, size)}>
+      <Button
+        variant="contained"
+        sx={buttonSX}
+        className="cart-button"
+        onClick={() => handleClick(product, (quantity = 1), color, size)}
+      >
         ADD TO CART
       </Button>
     </div>
