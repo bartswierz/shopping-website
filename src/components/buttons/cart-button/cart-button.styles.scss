@@ -31,3 +31,15 @@ $activeColor: #6900d2;
     // background-color: rgb(215, 215, 215);
   }
 }
+
+@media screen and (max-width: 768px) {
+  .cart-button-container {
+    display: flex;
+    justify-content: center;
+    max-width: 20rem;
+
+    .cart-button {
+      max-width: 13rem;
+    }
+  }
+}

@@ -38,7 +38,7 @@ const CartButton = ({ product, quantity, color, size }) => {
   };
 
   return (
-    <div>
+    <div className="cart-button-container">
       <Button
         variant="contained"
         sx={buttonSX}

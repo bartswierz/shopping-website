@@ -102,63 +102,86 @@ const ProductCardMobile = ({ products }) => {
         <div className="product-card-left-container">
           {/* HEADER */}
           <div className="product-card-header-container">
-            <h1 className="product-card-header">MOBILE LAYOUT{currentShoe.brandName}</h1>
+            <h1 className="product-card-header">{currentShoe.brandName}</h1>
             <p className="product-card-subheader">{currentShoe.subheader}</p>
-          </div>
+            <div className="product-card-details-container">
+              <p className="product-card-details-name">{currentShoe.productName}</p>
 
-          {/* PRODUCT NAME */}
-          <div className="product-card-details-container">
-            <p className="product-card-details-name">{currentShoe.productName}</p>
-
-            {/* PRODUCT COLOR & RATING */}
-            <div className="product-card-color-rating">
-              <p>{currentShoe.color}</p>
-              <p className="product-card-star-rating-container">
-                <Rating value={currentShoe.starRating} precision={0.5} readOnly className="product-card-star" /> (
-                <a href="#" className="product-card-rating">
-                  {currentShoe.totalReviews} REVIEWS
-                </a>
-                )
-              </p>
-            </div>
-          </div>
-
-          {/* PRODUCT FEATURES LIST */}
-          <ul className="product-card-features-list">
-            {featureList.map((feature, idx) => (
-              <li key={idx}>{feature}</li>
-            ))}
-          </ul>
-
-          {/* Contains Size, Color, Cost, Cart Button */}
-          <div className="product-card-options-container">
-            {/* SIZE & COLOR*/}
-            <div className="product-card-options-left">
-              {/* SIZE */}
-              <div className="product-card-size">
-                <span>SIZE</span>
-                <SelectSize setSize={setSize} onChange={(event) => sizeHandler(event)} />
-              </div>
-
-              {/* COLOR */}
-              <div className="product-card-color">
-                <span>COLOR</span>
-                <SelectColor setColor={setColor} onChange={(event) => colorHandler(event)} />
+              {/* PRODUCT COLOR & RATING */}
+              <div className="product-card-color-rating">
+                <p>{currentShoe.color}</p>
+                <p className="product-card-star-rating-container">
+                  <Rating value={currentShoe.starRating} precision={0.5} readOnly className="product-card-star" /> (
+                  <a href="#" className="product-card-rating">
+                    {currentShoe.totalReviews} REVIEWS
+                  </a>
+                  )
+                </p>
               </div>
             </div>
+          </div>
 
-            {/* COST & CART BTN CONTAINER */}
-            <div className="product-card-options-right">
-              {/* COST */}
-              <div className="product-card-cost">
-                <s className="product-card-cost-slash">${currentShoe.originalPrice}</s>
-                <span className="product-card-cost-discount">${currentShoe.discountPrice}</span>
+          {/* MOBILE FLEX - ROW then INTO COLUMN ONCE WE NEED TO MOVE BUTTONS TO BOTTOM */}
+          <div className="product-card-details-and-button-container">
+            <div className="product-card-details-button-left">
+              {/* PRODUCT NAME
+              <div className="product-card-details-container">
+                <p className="product-card-details-name">{currentShoe.productName}</p>
+
+                PRODUCT COLOR & RATING
+                <div className="product-card-color-rating">
+                  <p>{currentShoe.color}</p>
+                  <p className="product-card-star-rating-container">
+                    <Rating value={currentShoe.starRating} precision={0.5} readOnly className="product-card-star" /> (
+                    <a href="#" className="product-card-rating">
+                      {currentShoe.totalReviews} REVIEWS
+                    </a>
+                    )
+                  </p>
+                </div>
+              </div> */}
+
+              {/* PRODUCT FEATURES LIST */}
+              <h2 className="product-card-features-header">Features</h2>
+              <ul className="product-card-features-list">
+                {featureList.map((feature, idx) => (
+                  <li key={idx}>{feature}</li>
+                ))}
+              </ul>
+            </div>
+            {/* END OF CONTAINER - product name, color, rating, features */}
+
+            {/* Contains Size, Color, Cost, Cart Button */}
+            <div className="product-card-options-container">
+              {/* SIZE & COLOR*/}
+              <div className="product-card-options-left">
+                {/* SIZE */}
+                <div className="product-card-size">
+                  <span>SIZE</span>
+                  <SelectSize setSize={setSize} onChange={(event) => sizeHandler(event)} />
+                </div>
+
+                {/* COLOR */}
+                <div className="product-card-color">
+                  <span>COLOR</span>
+                  <SelectColor setColor={setColor} onChange={(event) => colorHandler(event)} />
+                </div>
               </div>
 
-              {/* OnClick, we will pass color and size as props to CartButton */}
-              <CartButton product={product} color={color} size={size} />
+              {/* COST & CART BTN CONTAINER */}
+              <div className="product-card-options-right">
+                {/* COST */}
+                <div className="product-card-cost">
+                  <s className="product-card-cost-slash">${currentShoe.originalPrice}</s>
+                  <span className="product-card-cost-discount">${currentShoe.discountPrice}</span>
+                </div>
+
+                {/* OnClick, we will pass color and size as props to CartButton */}
+                <CartButton product={product} color={color} size={size} />
+              </div>
             </div>
           </div>
+          {/* END OF FLEX-ROW-COLUMN MOBILE */}
         </div>
         {/* RIGHT */}
         <div className="product-card-right-container">
