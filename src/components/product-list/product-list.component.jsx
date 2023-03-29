@@ -1,5 +1,5 @@
 import "./product-list.styles.scss";
-import ProductCard from "../product-card/product-card.component";
+import ProductCard from "../product-card-desktop/product-card-desktop.component";
 import { CategoriesContext } from "../../contexts/categories.context";
 import { useContext, useEffect, useState } from "react";
 

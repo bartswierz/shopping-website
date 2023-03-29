@@ -1,3 +1,6 @@
+/* FUTURE NOTE: DO NOT REMOVE THIS FILE! 
+We will continue to use this to update/create new collections inside Firebase DB using this file. This is more efficient than manually editting/creating file inside Free Tier of Firebase DB 
+*/
 const SHOP_DATA = [
   {
     title: "soccer",

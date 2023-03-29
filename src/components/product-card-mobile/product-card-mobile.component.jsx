@@ -1,4 +1,4 @@
-import "./product-card.styles.scss";
+import "./product-card-mobile.styles.scss";
 import CartButton from "../buttons/cart-button/cart-button.component";
 import SelectColor from "../select-color/select-color.component";
 import SelectSize from "../select-size/select-size.component";
@@ -10,7 +10,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Rating from "@mui/material/Rating";
 
-const ProductCard = ({ products }) => {
+const ProductCardMobile = ({ products }) => {
   const { shoesList, featuresList } = products[0];
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
@@ -102,7 +102,7 @@ const ProductCard = ({ products }) => {
         <div className="product-card-left-container">
           {/* HEADER */}
           <div className="product-card-header-container">
-            <h1 className="product-card-header">{currentShoe.brandName}</h1>
+            <h1 className="product-card-header">MOBILE LAYOUT{currentShoe.brandName}</h1>
             <p className="product-card-subheader">{currentShoe.subheader}</p>
           </div>
 
@@ -186,4 +186,4 @@ const ProductCard = ({ products }) => {
     </>
   );
 };
-export default ProductCard;
+export default ProductCardMobile;
