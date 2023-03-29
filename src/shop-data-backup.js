@@ -1,8 +1,11 @@
-[
+let featuresList = [];
+// let shoeList = [];
+// let title = "";
+const SHOP_DATA = [
   {
-    "title": "basketballTEST",
-    "items": [
-      "featuresList": [
+    title: "basketballTEST",
+    items: [
+      (featuresList) => [
         "PREMIUM LIGHTWEIGHT MATERIALS",
         "PREMIUM INSOLES FOR SHOCK ABSORPTION & COMFORT",
         "RUBBER OUTSOLE FOR ADDED TRACTION",
@@ -10,33 +13,33 @@
         "PERCISE FIT TO PREVENT SLIPPING",
         "ANKLE SUPPORT",
       ],
-      "shoeList": [
+      (shoeList) => [
         {
-          "id": 1,
-          "brandName": "Air Jordan",
-          "productName": "Air Jordan 1 Mid",
-          "subheader": "Iconic Shoes For Less",
-          "discountPrice": 179,
-          "originalPrice": 220,
-          "imageUrl": "https://i.ibb.co/K2XYLv5/nike-shoe-white.png",
+          id: 1,
+          brandName: "Air Jordan",
+          productName: "Air Jordan 1 Mid",
+          subheader: "Iconic Shoes For Less",
+          discountPrice: 179,
+          originalPrice: 220,
+          imageUrl: "https://i.ibb.co/K2XYLv5/nike-shoe-white.png",
         },
         {
-          "id": 2,
-          "brandName": "Air Jordan",
-          "productName": "Air Jordan 1 Retro High",
-          "subheader": "Iconic Shoes For Less",
-          "discountPrice": 159,
-          "originalPrice": 199,
-          "imageUrl": "https://i.ibb.co/8YGr16n/nike-shoe-red.png",
+          id: 2,
+          brandName: "Air Jordan",
+          productName: "Air Jordan 1 Retro High",
+          subheader: "Iconic Shoes For Less",
+          discountPrice: 159,
+          originalPrice: 199,
+          imageUrl: "https://i.ibb.co/8YGr16n/nike-shoe-red.png",
         },
         {
-          "id": 3,
-          "brandName": "Air Jordan",
-          "productName": "Air Jordan 1 Retro Mid",
-          "subheader": "Iconic Shoes For Less",
-          "discountPrice": 149,
-          "originalPrice": 189,
-          "imageUrl": "https://i.ibb.co/vqwjgd6/nike-shoe-green.png",
+          id: 3,
+          brandName: "Air Jordan",
+          productName: "Air Jordan 1 Retro Mid",
+          subheader: "Iconic Shoes For Less",
+          discountPrice: 149,
+          originalPrice: 189,
+          imageUrl: "https://i.ibb.co/vqwjgd6/nike-shoe-green.png",
         },
       ],
     ],

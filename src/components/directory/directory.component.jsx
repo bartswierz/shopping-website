@@ -13,14 +13,3 @@ const Directory = ({ categories }) => {
 };
 
 export default Directory;
-
-// return (
-//   <div className="directory-container">
-//     {categories.map((categoryItem) => (
-//       <div className="category-item" key={categoryItem.id}>
-//         <div>{categoryItem.title}</div>
-//         <div>Shop Now</div>
-//       </div>
-//     ))}
-//   </div>
-// );

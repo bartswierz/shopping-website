@@ -56,8 +56,9 @@ export const db = getFirestore();
 /*This is for ADDING IN our COLLECTION and DOCUMENTS into firebase DB. 
 collection key is the name in our db(users, categories, etc.), in this case we want our key to be named 'categories'.
 objectsToAdd - this is our json objects of product item information that we want to add. (shirts {...}, hats {...}, jackets{...}, ...)
-*/
+INSIDE APP.JS addCollectionAndDocuments('categoryName', SHOP_DATA)*/
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+  //passing in db instance, and passing it collectionKey
   const collectionRef = collection(db, collectionKey);
 
   //we are making a batch and it calls 'writeBatch' that returns us a batch and we need to PASS it the DB
@@ -80,7 +81,10 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
 //FETCH product data from our firebase db
 export const getCategoriesAndDocuments = async () => {
   //passing in db and our collectionKey name we created in firebase to store all of our five product types, 'categories'. This connects to our database and returns back the collection in our firebase named 'categories'
+  //CHANGE "categories" to any of the other category names for our files
   const collectRef = collection(db, "categories");
+  // const collectRef = collection(db, "testdata2");
+
   const q = query(collectRef);
   //getDocs = FETCH the document Snapshots that we want. Snapshot is the actual data itself
   const querySnapshot = await getDocs(q);

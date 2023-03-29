@@ -5,54 +5,44 @@ import SelectSize from "../select-size/select-size.component";
 import { useEffect, useState, useContext } from "react";
 import { ReactComponent as DecreaseIcon } from "../../assets/remove-outline.svg";
 import { ReactComponent as IncreaseIcon } from "../../assets/add-outline.svg";
-import NikeShoeRed from "./../../assets/nike-shoe-red.png";
-import NikeShoeWhite from "./../../assets/nike-shoe-white.png";
-import NikeShoeGreen from "./../../assets/nike-shoe-green.png";
-
-import NikeShoe from "./../../assets/nike-shoe.png";
-import NikeShoe2 from "./../../assets/nike-shoe2.png";
 import Button from "@mui/material/Button";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 const ProductCard = ({ products }) => {
-  const { shoeList, featuresList } = products[0];
+  const { shoesList, featuresList } = products[0];
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
+  // console.log("PRODUCT CARD - Products: ", products);
+  // console.log("SHOELIST: ", shoesList);
+  // console.log("FEATURES LIST: ", featuresList);
 
-  //TODO - Add a product containing: description, discountPrice, imageUrl
-  //USE: currentShoe.imageUrl
-  //When user clicks next or previous button, we run the function, that has three parameters, description, discountPrice, imageUrl
   //USED TO DISPLAY SHOE DETAILS ON SCREEN, SET TO FIRST PRODUCT FETCHED FROM OUR FIREBASE DB
-  const [currentShoe, setCurrentShoe] = useState(shoeList[0]);
+  const [currentShoe, setCurrentShoe] = useState(shoesList[0]);
   // ARRAY LIST OF SHOE FEATURES
   const [featureList, setFeatureList] = useState(featuresList);
 
   //OBJECT CONTAINS: HOLDS INFORMATION FOR THE CURRENT SHOE DISPLAYED. WILL BE PASSED TO CARTBUTTON
-  const [product, setProduct] = useState(shoeList[0]);
-  console.log("product: ", product);
+  const [product, setProduct] = useState(shoesList[0]);
+  // console.log("product: ", product);
 
   //USED TO RENDER PREV/NEXT SHOE
   const [index, setIndex] = useState(0);
 
-  const maxIndex = shoeList.length - 1;
+  const maxIndex = shoesList.length - 1;
   // Will find the number of shoes we have, will be used for navigating to prev/next shoe
-  // const [maxIndex, setMaxIndex] = useState(shoeList.length - 1);
-  // console.log("products: ", products);
 
   const colorHandler = (event) => {
-    console.log("PRODUCT_CARD event: ", event);
+    // console.log("PRODUCT_CARD event: ", event);
     const color = event.target.value;
-    // console.log("Color Changed! Event:", event);
-    console.log("Color Changed! color:", color);
+    // console.log("Color Changed - color:", color);
     setColor(color);
   };
 
   const sizeHandler = (event) => {
-    console.log("PRODUCT_CARD event: ", event);
+    // console.log("PRODUCT_CARD event: ", event);
     const size = event.target.value;
-    // console.log("Color Changed! Event:", event);
-    console.log("Size Changed! size:", size);
+    // console.log("Size Change:", size);
     setSize(size);
   };
 
@@ -86,35 +76,23 @@ const ProductCard = ({ products }) => {
     //USER IS AT START - WORKS: 0
     if (index === 0) {
       setIndex(index + 1);
-      setCurrentShoe(shoeList[index]);
-      setProduct(shoeList[index]);
+      setCurrentShoe(shoesList[index]);
+      setProduct(shoesList[index]);
     }
     //USER IS IN MIDDLE - WORK: 1
     else if (index < maxIndex) {
       //TODO - works, 0, 1, 2(NO)
       setIndex(index + 1);
-      setCurrentShoe(shoeList[index]);
-      setProduct(shoeList[index]);
+      setCurrentShoe(shoesList[index]);
+      setProduct(shoesList[index]);
     }
     // ELSE USER IS AT END, RESET TO START
     else {
       setIndex(0);
-      setCurrentShoe(shoeList[index]);
-      setProduct(shoeList[index]);
+      setCurrentShoe(shoesList[index]);
+      setProduct(shoesList[index]);
     }
   };
-
-  // if (index === shoeList.length - 1) {
-  //   console.log("AT END OF LIST - GO BACK TO FIRST: ", index);
-  //   setIndex(0);
-  //   setCurrentShoe(shoeList[index]);
-  //   // setCurrentShoe(shoeList[index]);
-  // } else {
-  //   console.log("NOT AT END INCREASE INDEX BY 1: ", index);
-  //   // setIndex(index + 1);
-  //   setIndex(index + 1);
-  //   setCurrentShoe(shoeList[index]);
-  // }
 
   return (
     <>
@@ -170,8 +148,7 @@ const ProductCard = ({ products }) => {
                 <span className="product-card-cost-discount">${currentShoe.discountPrice}</span>
               </div>
 
-              {/* OnClick, we will pass color and size as props to CartButton 
-              TODO - MUST PASS PRODUCT */}
+              {/* OnClick, we will pass color and size as props to CartButton */}
               <CartButton product={product} color={color} size={size} />
             </div>
           </div>
@@ -179,11 +156,11 @@ const ProductCard = ({ products }) => {
         {/* RIGHT */}
         <div className="product-card-right-container">
           <div className="product-card-img-container">
+            {/* TODO */}
             <img src={currentShoe.imageUrl} className="product-img" alt="shoe" />
           </div>
 
           {/* BUTTONS */}
-          {/* Temp buttons for testing  */}
           <div className="product-card-button-container">
             <button className="prev-btn">
               <ArrowBackIosIcon onClick={handlePrevious} className="prev-btn-icon" />
@@ -195,7 +172,6 @@ const ProductCard = ({ products }) => {
             </div>
             <button className="next-btn">
               <ArrowForwardIosIcon onClick={handleNext} className="next-btn-icon" />
-              {/* <ArrowBackIosIcon onClick={handlePrevious} className="prev-btn-icon" /> */}
             </button>
           </div>
         </div>
@@ -204,77 +180,3 @@ const ProductCard = ({ products }) => {
   );
 };
 export default ProductCard;
-
-// return (
-//   <>
-//     <div className="product-card-container">
-//       {/* LEFT */}
-//       <div className="product-card-left-container">
-//         {/* HEADER */}
-//         <div className="product-card-header-container">
-//           <h1 className="product-card-header">AIR JORDAN</h1>
-//           <p className="product-card-subheader">ICONIC SHOES FOR LESS</p>
-//         </div>
-
-//         {/* PRODUCT NAME */}
-//         <div className="product-card-details-container">
-//           <span className="product-card-details-name">AIR JORDAN 1 RETRO HIGH</span>
-
-//           {/* PRODUCT COLOR & RATING */}
-//           <div>
-//             <p>CORE BLACK / CARBON</p>
-//             <span>STAR RATING (249 REVIEWS)</span>
-//           </div>
-//         </div>
-
-//         {/* PRODUCT FEATURES LIST */}
-//         <ul className="product-card-features-list">
-//           <li>PREMIUM LIGHTWEIGHT MATERIALS</li>
-//           <li>PREMIUM INSOLES FOR SHOCK ABSORPTION & COMFORT</li>
-//           <li>RUBBER OUTSOLE FOR ADDED TRACTION</li>
-//           <li>STRUCTURED FIT & ICONIC LOOK</li>
-//           <li>PERCISE FIT TO PREVENT SLIPPING</li>
-//           <li>ANKLE SUPPORT</li>
-//         </ul>
-
-//         {/* Contains Size, Color, Cost, Cart Button */}
-//         <div className="product-card-options-container">
-//           {/* SIZE & COLOR*/}
-//           <div className="product-card-options-left">
-//             {/* SIZE */}
-//             <div className="product-card-size">
-//               <span>SIZE</span>
-//               <SelectSize />
-//             </div>
-
-//             {/* COLOR */}
-//             <div className="product-card-color">
-//               <span>COLOR</span>
-//               <Select />
-//             </div>
-//           </div>
-
-//           {/* COST & CART BTN CONTAINER */}
-//           <div className="product-card-options-right">
-//             {/* COST */}
-//             <div className="product-card-cost">
-//               {/* <p> */}
-//               <s className="product-card-cost-slash">$220</s>
-//               <span className="product-card-cost-discount">$179</span>
-//               {/* </p> */}
-//             </div>
-
-//             <CartButton />
-//           </div>
-//         </div>
-//       </div>
-//       {/* RIGHT */}
-//       {/* <div className="product-card-right-container"> */}
-//       <div className="product-card-img-container">
-//         {/* <img src={NikeShoeRed} className="product-img" alt="shoe" /> */}
-//         {/* <img src={NikeShoeGreen} className="product-img" alt="shoe" /> */}
-//         <img src={NikeShoeWhite} className="product-img" alt="shoe" />
-//       </div>
-//     </div>
-//   </>
-// );
