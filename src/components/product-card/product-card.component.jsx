@@ -14,7 +14,7 @@ const ProductCard = ({ products }) => {
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
   // console.log("PRODUCT CARD - Products: ", products);
-  // console.log("SHOELIST: ", shoesList);
+  // console.log("SHOESLIST: ", shoesList);
   // console.log("FEATURES LIST: ", featuresList);
 
   //USED TO DISPLAY SHOE DETAILS ON SCREEN, SET TO FIRST PRODUCT FETCHED FROM OUR FIREBASE DB
@@ -52,22 +52,22 @@ const ProductCard = ({ products }) => {
     if (index === 0) {
       console.log("AT END OF LIST - GO BACK TO FIRST: ", index);
       setIndex(maxIndex);
-      setCurrentShoe(shoeList[index]);
-      console.log("shoeList[index]: ", shoeList[index]);
-      setProduct(shoeList[index]);
-      // setCurrentShoe(shoeList[index]);
+      setCurrentShoe(shoesList[index]);
+      console.log("shoesList[index]: ", shoesList[index]);
+      setProduct(shoesList[index]);
+      // setCurrentShoe(shoesList[index]);
     }
     //USER IS AT LAST ITEM - DECREMENT BY 1
     else if (index === maxIndex) {
       setIndex(index - 1);
-      setCurrentShoe(shoeList[index]);
-      setProduct(shoeList[index]);
+      setCurrentShoe(shoesList[index]);
+      setProduct(shoesList[index]);
     }
     //USER IS IN MIDDLE - DECREMENT INDEX BY 1
     else if (index < maxIndex) {
       setIndex(index - 1);
-      setCurrentShoe(shoeList[index]);
-      setProduct(shoeList[index]);
+      setCurrentShoe(shoesList[index]);
+      setProduct(shoesList[index]);
     }
   };
 
@@ -111,8 +111,10 @@ const ProductCard = ({ products }) => {
 
             {/* PRODUCT COLOR & RATING */}
             <div>
-              <p>CORE BLACK / CARBON</p>
-              <span>STAR RATING (249 REVIEWS)</span>
+              <p>{currentShoe.color}</p>
+              <span>
+                STAR RATING {currentShoe.starRating} ({currentShoe.totalReviews} REVIEWS)
+              </span>
             </div>
           </div>
 
