@@ -73,6 +73,27 @@ $primaryColor: #7c00f9;
         font-size: clamp(2.1rem, 1.8vw, 3.2rem);
         letter-spacing: 0.025rem;
       }
+
+      .product-card-color-rating {
+        // display: flex;
+
+        .product-card-star-rating-container {
+          margin-top: 0.2rem;
+          display: flex;
+          align-items: start;
+
+          .product-card-star {
+            padding-right: 0.3rem;
+          }
+          .product-card-rating {
+            color: white;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
     }
 
     .product-card-features-list {

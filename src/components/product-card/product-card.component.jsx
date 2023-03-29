@@ -8,6 +8,7 @@ import { ReactComponent as IncreaseIcon } from "../../assets/add-outline.svg";
 import Button from "@mui/material/Button";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import Rating from "@mui/material/Rating";
 
 const ProductCard = ({ products }) => {
   const { shoesList, featuresList } = products[0];
@@ -107,14 +108,18 @@ const ProductCard = ({ products }) => {
 
           {/* PRODUCT NAME */}
           <div className="product-card-details-container">
-            <span className="product-card-details-name">{currentShoe.productName}</span>
+            <p className="product-card-details-name">{currentShoe.productName}</p>
 
             {/* PRODUCT COLOR & RATING */}
-            <div>
+            <div className="product-card-color-rating">
               <p>{currentShoe.color}</p>
-              <span>
-                STAR RATING {currentShoe.starRating} ({currentShoe.totalReviews} REVIEWS)
-              </span>
+              <p className="product-card-star-rating-container">
+                <Rating value={currentShoe.starRating} precision={0.5} readOnly className="product-card-star" /> (
+                <a href="#" className="product-card-rating">
+                  {currentShoe.totalReviews} REVIEWS
+                </a>
+                )
+              </p>
             </div>
           </div>
 
