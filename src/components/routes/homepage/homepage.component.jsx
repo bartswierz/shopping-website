@@ -8,28 +8,31 @@ const Homepage = () => {
   const categories = [
     {
       id: 1,
-      title: "Shirts",
-      imageUrl: "https://i.ibb.co/W5qcqjk/dress-shirt.jpg",
+      title: "Basketball",
+      // imageUrl: "https://i.ibb.co/qFDPkFf/basketball-homepage.jpg",
+      // imageUrl: "https://i.ibb.co/z6vyW3Q/basketball-homepage2.jpg",
+      imageUrl: "https://i.ibb.co/Gcd43yz/basketball-homepage3.jpg",
     },
     {
       id: 2,
-      title: "Pants",
-      imageUrl: "https://i.ibb.co/qkV6Szh/pants.jpg",
+      title: "Soccer",
+      // imageUrl: "https://i.ibb.co/zSvV7Y5/soccer-homepage1.jpg",
+      imageUrl: "https://i.ibb.co/4F4YMRK/soccer-homepage.jpg",
     },
     {
       id: 3,
-      title: "Jackets",
-      imageUrl: "https://i.ibb.co/bFXrZWV/jacket.jpg",
+      title: "Outdoor",
+      imageUrl: "https://i.ibb.co/0CM6hbf/hiking-homepage.jpg",
     },
     {
       id: 4,
-      title: "Hats",
-      imageUrl: "https://i.ibb.co/SmyzmXM/hat.jpg",
+      title: "Work",
+      imageUrl: "https://i.ibb.co/mB9FcSj/work-homepage.jpg",
     },
     {
       id: 5,
-      title: "Shoes",
-      imageUrl: "https://i.ibb.co/txNp8Gr/shoes.jpg",
+      title: "Casual",
+      imageUrl: "https://i.ibb.co/LtntH6D/colorful-shoe-directory-casual.jpg",
     },
   ];
 

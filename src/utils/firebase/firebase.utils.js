@@ -56,8 +56,9 @@ export const db = getFirestore();
 /*This is for ADDING IN our COLLECTION and DOCUMENTS into firebase DB. 
 collection key is the name in our db(users, categories, etc.), in this case we want our key to be named 'categories'.
 objectsToAdd - this is our json objects of product item information that we want to add. (shirts {...}, hats {...}, jackets{...}, ...)
-*/
+INSIDE APP.JS addCollectionAndDocuments('categoryName', SHOP_DATA)*/
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+  //passing in db instance, and passing it collectionKey
   const collectionRef = collection(db, collectionKey);
 
   //we are making a batch and it calls 'writeBatch' that returns us a batch and we need to PASS it the DB
@@ -80,16 +81,20 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
 //FETCH product data from our firebase db
 export const getCategoriesAndDocuments = async () => {
   //passing in db and our collectionKey name we created in firebase to store all of our five product types, 'categories'. This connects to our database and returns back the collection in our firebase named 'categories'
+  //CHANGE "categories" to any of the other category names for our files
   const collectRef = collection(db, "categories");
+  // const collectRef = collection(db, "testdata2");
+
   const q = query(collectRef);
   //getDocs = FETCH the document Snapshots that we want. Snapshot is the actual data itself
   const querySnapshot = await getDocs(q);
 
+  // console.log("BEFORE categoryMap function: ", querySnapshot);
   //We are doing a reduce to end up with ONE object of all the products collected. There will be 5 iterations because we have 5 TYPES of clothing(shirts, pants, jackets, hats, and shoes). we are passing in a empty object as the initial value
+  //TODO - MODIFY THIS TO GET OUR DATA FROM FIREBASE
   const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
     //collecting individual objects each iteration and placing it into our object. Once complete we return it in the categoryMap variable
     const { title, items } = docSnapshot.data();
-
     // i.e. hats: array(6) - Collecting each object based on its title
     acc[title.toLowerCase()] = items;
     // console.log("acc: ", acc);

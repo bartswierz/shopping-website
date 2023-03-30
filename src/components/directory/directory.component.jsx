@@ -1,6 +1,7 @@
 import "./directory.styles.scss";
 import CategoryItem from "../category-item/category-item.component";
 
+//Categories is the shoe types
 const Directory = ({ categories }) => {
   return (
     <div className="directory-container ">
@@ -12,14 +13,3 @@ const Directory = ({ categories }) => {
 };
 
 export default Directory;
-
-// return (
-//   <div className="directory-container">
-//     {categories.map((categoryItem) => (
-//       <div className="category-item" key={categoryItem.id}>
-//         <div>{categoryItem.title}</div>
-//         <div>Shop Now</div>
-//       </div>
-//     ))}
-//   </div>
-// );

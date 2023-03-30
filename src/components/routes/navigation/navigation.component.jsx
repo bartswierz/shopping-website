@@ -30,7 +30,6 @@ const Navigation = () => {
           <HomeLogo className="home-logo" />
         </Link>
 
-        <div></div>
         <div className="nav-items">
           {/* If currentUser EXISTS(user input email and password inside our Sign In Form, then display 'Sign Out' to indicate user is logged in, else display Sign In */}
           {currentUser ? (

@@ -1,7 +1,9 @@
 import "./product-list.styles.scss";
-import ProductCard from "../product-card/product-card.component";
+import ProductCard from "../product-card-desktop/product-card-desktop.component";
 import { CategoriesContext } from "../../contexts/categories.context";
 import { useContext, useEffect, useState } from "react";
+
+//THIS ONE IS THE CONTAINER FOR EACH INDIVIDUAL COMPONENT
 // Pass in product list from shirt component
 const ProductList = ({ products }) => {
   // The ? ensures we DO NOT RENDER COMPONENT UNTIL WE GET DATA FROM OUR ASYNC FUNCTION. "Does product exist? if it does then map through and render product cards"

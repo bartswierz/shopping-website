@@ -4,6 +4,7 @@ import { useState, useContext } from "react";
 // import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
 
 import { UserContext } from "../../contexts/user.context";
+import Button from "@mui/material/Button";
 
 import {
   // auth,
@@ -111,14 +112,18 @@ const SignInForm = () => {
         <label>Password</label>
         <input type="password" onChange={handleChange} value={password} name="password" required />
 
-        {/* Once button is clicked, form's onSubmit callback will be ran */}
         <div className="sign-in-form-btn-container">
-          <button type="submit" className="sign-in-form-btn">
+          <Button type="submit" sx={{ fontFamily: "Bebas Neue, sans-serif" }} className="sign-in-form-btn">
             Sign In
-          </button>
-          <button type="button" onClick={signInWithGoogle} className="sign-in-form-google-btn">
+          </Button>
+          <Button
+            type="button"
+            sx={{ fontFamily: "Bebas Neue, sans-serif" }}
+            onClick={signInWithGoogle}
+            className="sign-in-form-google-btn"
+          >
             Sign in with Google
-          </button>
+          </Button>
         </div>
       </form>
     </div>

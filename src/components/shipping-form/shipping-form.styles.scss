@@ -1,9 +1,13 @@
 $headerColor: rgb(42, 42, 42);
 $borderColor: #e1e1e1;
-$primaryColor: #7c00f9;
-$hoverColor: #7200e4;
+// $primaryColor: #7c00f9;
+// $hoverColor: #7200e4;
 $size: 1.6rem;
 $fontColor: #333;
+
+$primaryColor: #1de5fd;
+$hoverColor: #1bd1e5;
+$activeColor: #1ccbde;
 
 // Shipping form - left side
 .checkout-shipping-container {
@@ -32,7 +36,8 @@ $fontColor: #333;
     .checkout-submit-btn {
       background-color: $primaryColor;
       border: 1px solid $primaryColor;
-      color: white;
+      // color: white;
+      color: #333;
       font-weight: bold;
       padding: 0.8rem 1.2rem;
       font-size: 1.2rem;
@@ -42,6 +47,7 @@ $fontColor: #333;
       &:hover {
         cursor: pointer;
         background-color: $hoverColor;
+        color: #fff;
       }
     }
 

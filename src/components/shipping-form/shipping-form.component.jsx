@@ -1,5 +1,22 @@
 import "./shipping-form.styles.scss";
 import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+
+const buttonSX = {
+  backgroundColor: "#1de5fd",
+  fontWeight: 900,
+  fontSize: "1.2rem",
+  fontFamily: "Bebas Neue, sans-serif",
+  ":hover": {
+    backgroundColor: "#1bd1e5",
+  },
+  ":active": {
+    backgroundColor: "#1ccbde",
+    color: "#fff",
+  },
+  padding: "6px 12px",
+  color: "#444",
+};
 
 const ShippingForm = () => {
   return (
@@ -161,7 +178,9 @@ const ShippingForm = () => {
           </label>
 
           {/* Submit - Go to Billing */}
-          <input type="submit" value="CONTINUE TO BILLING" className="checkout-submit-btn" />
+          <Button type="submit" variant="contained" sx={buttonSX} className="cart-button">
+            CONTINUE TO BILLING
+          </Button>
         </div>
       </form>
     </div>

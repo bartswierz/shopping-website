@@ -59,11 +59,11 @@ $hoverColor: #7200e4;
       }
 
       .cart-checkout-button {
+        color: white;
         width: 40%;
         padding: 10px 5px;
         margin-top: 12px;
         background-color: black;
-        color: white;
         text-align: center;
         border: 1px solid black;
         font-size: 12px;
@@ -164,7 +164,14 @@ $hoverColor: #7200e4;
   }
 }
 
+// @media screen and (max-width: 1050px) {
+// }
+
 @media screen and (max-width: 768px) {
+  .cart-heading {
+    padding-top: 0;
+  }
+
   .cart-container {
     .cart-footer-container {
       .cart-footer {

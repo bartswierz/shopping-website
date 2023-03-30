@@ -85,14 +85,14 @@ export const CartProvider = ({ children }) => {
   // Updates total cost using reducer
   useEffect(() => {
     //Updates Cart Total Cost
-    const newCartTotal = cartItems.reduce((totalCost, currentItem) => totalCost + currentItem.price * currentItem.quantity, 0);
-    // console.log("Updated Cart Total Cost: ", newCartTotal);
+    // const newCartTotal = cartItems.reduce((totalCost, currentItem) => totalCost + currentItem.discountPrice * currentItem.quantity, 0);
+    const newCartTotal = cartItems.reduce((totalCost, currentItem) => totalCost + currentItem.discountPrice * currentItem.quantity, 0);
     setCartTotal(newCartTotal);
   }, [cartItems, cartCount, cartTotal]);
 
   // Updates tax by total cost multiplied by 10%
   useEffect(() => {
-    // console.log("updating tax total: ", taxTotal);
+    console.log("updating tax total: ", taxTotal);
     setTaxTotal(cartTotal * 0.1);
   }, [cartCount, cartTotal, taxTotal]);
 
