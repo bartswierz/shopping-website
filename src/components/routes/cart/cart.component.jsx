@@ -8,6 +8,7 @@ import { CartContext } from "../../../contexts/cart.context";
 import { ReactComponent as RemoveBtn } from "../../../assets/trash-outline.svg";
 import { ReactComponent as DecreaseIcon } from "../../../assets/chevron-back-outline.svg";
 import { ReactComponent as IncreaseIcon } from "../../../assets/chevron-forward-outline.svg";
+import Button from "@mui/material/Button";
 
 const Cart = () => {
   const { cartItems, removeItemFromCart, cartCount, cartTotal, taxTotal, updateCartCount, updateCartItem } = useContext(CartContext);
@@ -100,6 +101,7 @@ const Cart = () => {
               <span>Order Total: </span>
               <span className="order-total-value">${parseFloat(cartTotal + taxTotal).toFixed(2)}</span>
             </div>
+
             <Link to="/checkout" className="cart-checkout-button">
               Checkout
             </Link>

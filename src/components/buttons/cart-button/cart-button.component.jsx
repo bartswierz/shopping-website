@@ -3,18 +3,24 @@ import "./cart-button.styles.scss";
 import { CartContext } from "../../../contexts/cart.context";
 import { useContext } from "react";
 
+// $primaryColor: #1de5fd;
+// $hoverColor: #1bd1e5;
+// $activeColor: #1ccbde;
+
 const buttonSX = {
-  backgroundColor: "#7c00f9",
+  backgroundColor: "#1de5fd",
   fontWeight: 900,
   fontSize: "1.2rem",
   fontFamily: "Bebas Neue, sans-serif",
   ":hover": {
-    backgroundColor: "#7200e4",
+    backgroundColor: "#1bd1e5",
   },
   ":active": {
-    backgroundColor: "#6900d2",
+    backgroundColor: "#1ccbde",
+    color: "#fff",
   },
   padding: "12px 24px",
+  color: "#444",
 };
 
 const CartButton = ({ product, quantity, color, size }) => {

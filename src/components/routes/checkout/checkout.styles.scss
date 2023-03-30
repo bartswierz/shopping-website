@@ -20,7 +20,6 @@ $fontColor: #333;
   min-height: 80vh;
   margin: 0 auto;
   color: $fontColor;
-  padding-top: 7rem;
 
   overflow: hidden;
   // margin-bottom: 50px;
@@ -52,17 +51,6 @@ $fontColor: #333;
   .checkout-cart-container,
   .checkout-delivery-container {
     min-width: 29rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .checkout-container {
-    margin: 0 auto;
-    padding-top: 0rem;
-    // .checkout-shipping-container {
-    //   // min-width: 90vw;
-    //   // margin: 0 5vw;
-    // }
   }
 }
 

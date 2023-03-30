@@ -20,7 +20,7 @@ const App = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // CHANGE TO MOBILE COMPONENT IF WIDTH LESS THAN 768 px
+      setIsMobile(window.innerWidth <= 768); // CHANGE TO MOBILE COMPONENT IF WIDTH LESS THAN 768 px
     };
     window.addEventListener("resize", handleResize);
     handleResize();

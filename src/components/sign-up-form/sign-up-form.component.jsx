@@ -3,6 +3,7 @@ import "./sign-up-form.styles.scss";
 import { useState, useContext } from "react";
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
 import { UserContext } from "../../contexts/user.context";
+import Button from "@mui/material/Button";
 
 //Bundling the four form items together instead of four separate states because form has these grouped together
 const defaultFormFields = {
@@ -88,9 +89,9 @@ const SignUpForm = () => {
         <input type="password" onChange={handleChange} value={confirmPassword} name="confirmPassword" required />
 
         {/* Once button is clicked, form's onSubmit callback will be ran */}
-        <button type="submit" className="sign-up-form-btn">
+        <Button type="submit" sx={{ fontFamily: "Bebas Neue, sans-serif" }} className="sign-up-form-btn">
           Sign Up
-        </button>
+        </Button>
       </form>
     </div>
   );

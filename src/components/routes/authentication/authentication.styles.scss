@@ -11,13 +11,6 @@
   gap: 20px;
 }
 
-// Adding padding to align signin component with navigation as navigation is currently FIXED because of our desktop product component requiring navigation to be fixed
-@media screen and (max-width: 1992px) {
-  .authentication-header {
-    padding-top: 7rem;
-  }
-}
-
 @media screen and (max-width: 800px) {
   .authentication-container {
     grid-template-columns: 1fr;
@@ -25,13 +18,6 @@
     gap: 50px;
     width: 95vw;
     max-height: 100rem;
-  }
-}
-
-// Removes padding to realign signin component with navigation
-@media screen and (max-width: 768px) {
-  .authentication-header {
-    padding-top: 0rem;
   }
 }
 
