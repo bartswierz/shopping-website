@@ -1,7 +1,8 @@
 // $primaryColor: #7c00f9;
 // $primaryColor: #0091f9;
 $primaryColor: #1de5fd;
-// $primaryColor: red;
+$hoverColor: #1bd1e5;
+$activeColor: #1ccbde;
 
 // @media screen and (max-width: 1920px) {
 @media screen and (min-width: 769px) {
@@ -14,6 +15,7 @@ $primaryColor: #1de5fd;
     padding: 3rem;
     z-index: 1;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    background-color: #fff;
 
     //calc(minFont + (maxFont - minFont) * ((100vw - minVW) / (maxVW - minVW)))
     //screenwidth 768 to 1920px
