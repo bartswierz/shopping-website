@@ -3,7 +3,7 @@
 ## Launch ##
 Project can be launched without any installations directly on your device. Project is hosted on netlify, simply click the link below to launch.
 
-https://alpha-clothing.netlify.app/
+https://alpha-footwear.netlify.app/
 
 ## Built With ##
  
