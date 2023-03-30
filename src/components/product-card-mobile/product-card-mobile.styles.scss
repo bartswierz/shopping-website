@@ -185,13 +185,10 @@ $primaryColor: #7c00f9;
       // IMAGE
       .product-card-img-container {
         width: 200px;
-        // display: flex;
-        // justify-content: center;
-        // max-width: 35rem;
         object-fit: cover;
-        // object-fit: contain;
-        // -o-object-fit: contain;
-        // -o-object-position: center;
+        object-fit: contain;
+        -o-object-fit: contain;
+        -o-object-position: center;
         object-position: center;
         margin-top: 3rem;
 
@@ -199,7 +196,6 @@ $primaryColor: #7c00f9;
           max-width: 200px;
           max-height: 200px;
           width: 100%;
-          // object-fit: cover;
           object-fit: contain;
           -o-object-fit: contain;
           -o-object-position: center;
