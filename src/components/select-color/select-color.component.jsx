@@ -47,7 +47,8 @@ const SelectColor = ({ productType, onChange, setColor }) => {
   return (
     <Box sx={{ minWidth: 75 }}>
       <FormControl fullWidth size="large" sx={{ border: "2px" }}>
-        <InputLabel id="demo-simple-select-label" sx={{ color: "#7c00f9" }}>
+        {/* <InputLabel id="demo-simple-select-label" sx={{ color: "#7c00f9" }}> */}
+        <InputLabel id="demo-simple-select-label" sx={{ color: "#fff" }}>
           Color
         </InputLabel>
         <Select
