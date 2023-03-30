@@ -44,30 +44,44 @@ const SelectColor = ({ productType, onChange, setColor }) => {
   // if (productType === "pants") console.log("pants");
   // else console.log("not pants, productType: ", productType);
 
+  // return (
+  //   <Box sx={{ minWidth: 75 }}>
+  //     <FormControl fullWidth size="large" sx={{ border: "2px" }}>
+  //       {/* <InputLabel id="demo-simple-select-label" sx={{ color: "#7c00f9" }}> */}
+  //       <InputLabel id="demo-simple-select-label" sx={{ color: "#fff" }}>
+  //         Color
+  //       </InputLabel>
+  //       <Select
+  //         value={selectValue}
+  //         label="Black"
+  //         className="select-color-options"
+  //         // onChange={(e) => colorHandler(e)}
+  //         onChange={colorHandler}
+  //         sx={selectSX}
+  //       >
+  //         <MenuItem value={"Black"}>Black</MenuItem>
+  //         <MenuItem value={"Grey"}>Grey</MenuItem>
+  //         <MenuItem value={"White"}>White</MenuItem>
+  //         <MenuItem value={"Red"}>Red</MenuItem>
+  //         <MenuItem value={"Green"}>Green</MenuItem>
+  //         <MenuItem value={"Yellow"}>Yellow</MenuItem>
+  //       </Select>
+  //     </FormControl>
+  //   </Box>
+  // );
   return (
-    <Box sx={{ minWidth: 75 }}>
-      <FormControl fullWidth size="large" sx={{ border: "2px" }}>
-        {/* <InputLabel id="demo-simple-select-label" sx={{ color: "#7c00f9" }}> */}
-        <InputLabel id="demo-simple-select-label" sx={{ color: "#fff" }}>
-          Color
-        </InputLabel>
-        <Select
-          value={selectValue}
-          label="Black"
-          className="select-color-options"
-          // onChange={(e) => colorHandler(e)}
-          onChange={colorHandler}
-          sx={selectSX}
-        >
-          <MenuItem value={"Black"}>Black</MenuItem>
-          <MenuItem value={"Grey"}>Grey</MenuItem>
-          <MenuItem value={"White"}>White</MenuItem>
-          <MenuItem value={"Red"}>Red</MenuItem>
-          <MenuItem value={"Green"}>Green</MenuItem>
-          <MenuItem value={"Yellow"}>Yellow</MenuItem>
-        </Select>
-      </FormControl>
-    </Box>
+    <div>
+      {/* // Product is NOT pants, render Colors list */}
+      <select onChange={(event) => colorHandler(event)}>
+        {colors.map((color) => {
+          return (
+            <option key={color} className="option">
+              {color}
+            </option>
+          );
+        })}
+      </select>
+    </div>
   );
 };
 
@@ -75,14 +89,10 @@ export default SelectColor;
 
 // return (
 //   <div>
-//     {/* // Product is NOT pants, render Colors list */}
-//     <select onChange={(event) => colorHandler(event)}>
-//       {colors.map((color) => {
-//         return (
-//           <option key={color} className="option">
-//             {color}
-//           </option>
-//         );
+//     {/* //Product is Shoes, display Shoes selection options */}
+//     <select className="select-container" onChange={(event) => colorHandler(event)}>
+//       {shoeSizes.map((shoeSize) => {
+//         return <option key={shoeSize}>{shoeSize}</option>;
 //       })}
 //     </select>
 //   </div>

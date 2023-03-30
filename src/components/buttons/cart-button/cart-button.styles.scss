@@ -37,9 +37,22 @@ $activeColor: #6900d2;
     display: flex;
     justify-content: center;
     max-width: 20rem;
+    padding-right: 1rem;
 
     .cart-button {
-      max-width: 13rem;
+      max-width: 30rem;
     }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .cart-button-container {
+    display: flex;
+    justify-content: center;
+    max-width: 30rem;
+    width: 100%;
+  }
+  .cart-button {
+    max-width: 28rem;
   }
 }
