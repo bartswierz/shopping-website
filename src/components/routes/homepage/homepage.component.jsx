@@ -9,14 +9,11 @@ const Homepage = () => {
     {
       id: 1,
       title: "Basketball",
-      // imageUrl: "https://i.ibb.co/qFDPkFf/basketball-homepage.jpg",
-      // imageUrl: "https://i.ibb.co/z6vyW3Q/basketball-homepage2.jpg",
       imageUrl: "https://i.ibb.co/Gcd43yz/basketball-homepage3.jpg",
     },
     {
       id: 2,
       title: "Soccer",
-      // imageUrl: "https://i.ibb.co/zSvV7Y5/soccer-homepage1.jpg",
       imageUrl: "https://i.ibb.co/4F4YMRK/soccer-homepage.jpg",
     },
     {
