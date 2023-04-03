@@ -14,24 +14,20 @@ const ProductCardDesktop = ({ products }) => {
   const { shoesList, featuresList } = products[0];
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
-  // console.log("PRODUCT CARD - Products: ", products);
-  // console.log("SHOESLIST: ", shoesList);
-  // console.log("FEATURES LIST: ", featuresList);
-
-  //USED TO DISPLAY SHOE DETAILS ON SCREEN, SET TO FIRST PRODUCT FETCHED FROM OUR FIREBASE DB
-  const [currentShoe, setCurrentShoe] = useState(shoesList[0]);
+  const [displayShoe, setDisplayShoe] = useState(shoesList[0]);
   // ARRAY LIST OF SHOE FEATURES
   const [featureList, setFeatureList] = useState(featuresList);
-
-  //OBJECT CONTAINS: HOLDS INFORMATION FOR THE CURRENT SHOE DISPLAYED. WILL BE PASSED TO CARTBUTTON
+  //CONTAINS ALL INFORMATION ON THE CURRENT SHOE TO BE PASSED TO OUR CART BUTTON COMPONENT
   const [product, setProduct] = useState(shoesList[0]);
-  // console.log("product: ", product);
-
   //USED TO RENDER PREV/NEXT SHOE
   const [index, setIndex] = useState(0);
+  const [maxIndex, setMaxIndex] = useState(shoesList.length - 1);
 
-  const maxIndex = shoesList.length - 1;
-  // Will find the number of shoes we have, will be used for navigating to prev/next shoe
+  //Update new shoe & receive product details
+  useEffect(() => {
+    setDisplayShoe(shoesList[index]);
+    setProduct(shoesList[index]);
+  }, [index]);
 
   const colorHandler = (event) => {
     // console.log("PRODUCT_CARD event: ", event);
@@ -49,50 +45,27 @@ const ProductCardDesktop = ({ products }) => {
 
   //DECREMENT INDEX OR RESET TO maxIndex(LAST ITEM) TO RENDER CURRENT SHOE
   const handlePrevious = () => {
-    //USER IS AT START - SET INDEX TO LAST(maxIndex)
+    let newIndex;
     if (index === 0) {
-      console.log("AT END OF LIST - GO BACK TO FIRST: ", index);
-      setIndex(maxIndex);
-      setCurrentShoe(shoesList[index]);
-      console.log("shoesList[index]: ", shoesList[index]);
-      setProduct(shoesList[index]);
-      // setCurrentShoe(shoesList[index]);
+      newIndex = maxIndex;
+    } else {
+      newIndex = index - 1;
     }
-    //USER IS AT LAST ITEM - DECREMENT BY 1
-    else if (index === maxIndex) {
-      setIndex(index - 1);
-      setCurrentShoe(shoesList[index]);
-      setProduct(shoesList[index]);
-    }
-    //USER IS IN MIDDLE - DECREMENT INDEX BY 1
-    else if (index < maxIndex) {
-      setIndex(index - 1);
-      setCurrentShoe(shoesList[index]);
-      setProduct(shoesList[index]);
-    }
+    setIndex(newIndex);
   };
 
   //INCREMENT INDEX OR RESET TO 0(FIRST ITEM) TO RENDER CURRENT SHOE
   const handleNext = () => {
-    //USER IS AT START - WORKS: 0
-    if (index === 0) {
+    let newIndex;
+    if (index === maxIndex) {
+      //GO BACK THE TO FIRST SHOE
+      newIndex = 0;
+    } else {
+      //INDEX IS 0 TO (maxIndex - 1)
       setIndex(index + 1);
-      setCurrentShoe(shoesList[index]);
-      setProduct(shoesList[index]);
+      newIndex = index + 1;
     }
-    //USER IS IN MIDDLE - WORK: 1
-    else if (index < maxIndex) {
-      //TODO - works, 0, 1, 2(NO)
-      setIndex(index + 1);
-      setCurrentShoe(shoesList[index]);
-      setProduct(shoesList[index]);
-    }
-    // ELSE USER IS AT END, RESET TO START
-    else {
-      setIndex(0);
-      setCurrentShoe(shoesList[index]);
-      setProduct(shoesList[index]);
-    }
+    setIndex(newIndex);
   };
 
   return (
@@ -102,21 +75,21 @@ const ProductCardDesktop = ({ products }) => {
         <div className="product-card-left-container">
           {/* HEADER */}
           <div className="product-card-header-container">
-            <h1 className="product-card-header">{currentShoe.brandName}</h1>
-            <p className="product-card-subheader">{currentShoe.subheader}</p>
+            <h1 className="product-card-header">{displayShoe.brandName}</h1>
+            <p className="product-card-subheader">{displayShoe.subheader}</p>
           </div>
 
           {/* PRODUCT NAME */}
           <div className="product-card-details-container">
-            <p className="product-card-details-name">{currentShoe.productName}</p>
+            <p className="product-card-details-name">{displayShoe.productName}</p>
 
             {/* PRODUCT COLOR & RATING */}
             <div className="product-card-color-rating">
-              <p>{currentShoe.color}</p>
+              <p>{displayShoe.color}</p>
               <p className="product-card-star-rating-container">
-                <Rating value={currentShoe.starRating} precision={0.5} readOnly className="product-card-star" /> (
+                <Rating value={displayShoe.starRating} precision={0.5} readOnly className="product-card-star" /> (
                 <a href="#" className="product-card-rating">
-                  {currentShoe.totalReviews} REVIEWS
+                  {displayShoe.totalReviews} REVIEWS
                 </a>
                 )
               </p>
@@ -151,8 +124,8 @@ const ProductCardDesktop = ({ products }) => {
             <div className="product-card-options-right">
               {/* COST */}
               <div className="product-card-cost">
-                <s className="product-card-cost-slash">${currentShoe.originalPrice}</s>
-                <span className="product-card-cost-discount">${currentShoe.discountPrice}</span>
+                <s className="product-card-cost-slash">${displayShoe.originalPrice}</s>
+                <span className="product-card-cost-discount">${displayShoe.discountPrice}</span>
               </div>
 
               {/* OnClick, we will pass color and size as props to CartButton */}
@@ -163,8 +136,7 @@ const ProductCardDesktop = ({ products }) => {
         {/* RIGHT */}
         <div className="product-card-right-container">
           <div className="product-card-img-container">
-            {/* TODO */}
-            <img src={currentShoe.imageUrl} className="product-img" alt="shoe" />
+            <img src={displayShoe.imageUrl} className="product-img" alt="shoe" />
           </div>
 
           {/* BUTTONS */}

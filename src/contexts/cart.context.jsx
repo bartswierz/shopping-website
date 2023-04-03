@@ -64,8 +64,8 @@ export const CartProvider = ({ children }) => {
     //find the cart item
     //setCartItem({...cartItem, quantity: newQuantity})
     //if cartItem id matches our passed parameter item, then give it a new quantity
-    console.log("UpdateCartItem - cartItemToUpdate: ", cartItemToUpdate);
-    console.log("UpdateCartItem - newQuantity: ", newQuantity);
+    // console.log("UpdateCartItem - cartItemToUpdate: ", cartItemToUpdate);
+    // console.log("UpdateCartItem - newQuantity: ", newQuantity);
     // return cartItems.map((cartItem) => (cartItem.id === cartItemToUpdate.id ? { ...cartItem, quantity: newQuantity } : cartItem));
     const updatedCartItems = cartItems.map((cartItem) =>
       cartItem.id === cartItemToUpdate.id ? { ...cartItem, quantity: newQuantity } : cartItem
@@ -92,7 +92,7 @@ export const CartProvider = ({ children }) => {
 
   // Updates tax by total cost multiplied by 10%
   useEffect(() => {
-    console.log("updating tax total: ", taxTotal);
+    // console.log("updating tax total: ", taxTotal);
     setTaxTotal(cartTotal * 0.1);
   }, [cartCount, cartTotal, taxTotal]);
 

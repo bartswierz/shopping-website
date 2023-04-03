@@ -36,7 +36,7 @@ const SelectColor = ({ productType, onChange, setColor }) => {
 
     // Checking if user chose color before updating state of color
     if (color !== "Color" && color !== "") {
-      console.log("Color set, color: ", color);
+      // console.log("Color set, color: ", color);
       setColor(color);
     }
   };
@@ -86,49 +86,3 @@ const SelectColor = ({ productType, onChange, setColor }) => {
 };
 
 export default SelectColor;
-
-// return (
-//   <div>
-//     {/* //Product is Shoes, display Shoes selection options */}
-//     <select className="select-container" onChange={(event) => colorHandler(event)}>
-//       {shoeSizes.map((shoeSize) => {
-//         return <option key={shoeSize}>{shoeSize}</option>;
-//       })}
-//     </select>
-//   </div>
-// );
-
-// return (
-//   <div>
-//     {productType === "pants" ? (
-//       <div>
-//         <select onChange={(event) => colorHandler(event)}>
-//           {pantColors.map((pantColor) => {
-//             return <option key={pantColor}>{pantColor}</option>;
-//           })}
-//         </select>
-//         <svg
-//           xmlns="http://www.w3.org/2000/svg"
-//           fill="none"
-//           viewBox="0 0 24 24"
-//           stroke-width="1.5"
-//           stroke="currentColor"
-//           class="w-6 h-6"
-//         >
-//           <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-//         </svg>
-//       </div>
-//     ) : (
-//       // Product is NOT pants, render Colors list
-//       <select onChange={(event) => colorHandler(event)}>
-//         {colors.map((color) => {
-//           return (
-//             <option key={color} className="option">
-//               {color}
-//             </option>
-//           );
-//         })}
-//       </select>
-//     )}
-//   </div>
-// );

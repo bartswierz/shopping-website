@@ -12,9 +12,6 @@ import ProductCardDesktop from "./components/product-card-desktop/product-card-d
 import ProductCardMobile from "./components/product-card-mobile/product-card-mobile.component";
 import SHOP_DATA from "./shop-data";
 
-//TO UPDATE OUR FIREBASE DB COLLECTION WITH NEW CHANGES INSIDE shop-data.js
-import { addCollectionAndDocuments } from "./utils/firebase/firebase.utils";
-
 const App = () => {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -28,12 +25,6 @@ const App = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  //DO NOT REMOVE, THIS WILL ALLOW US TO CREATE AND STORE OUR SHOP_DATA product information into our firebase DB. ("collectionName", DataFile)
-  // useEffect(() => {
-  //   console.log("BUILD/UPDATE COLLECTION WITH THIS DATA IN SHOP_DATA: ", SHOP_DATA);
-  //   addCollectionAndDocuments("categories", SHOP_DATA);
-  // }, []);
 
   /* categoriesMap holds ALL of our PRODUCTS in our firebase DB. 
   collection: categories -> Documents: hats, jackets, pants, shirts, shoes */

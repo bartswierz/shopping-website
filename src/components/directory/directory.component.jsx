@@ -1,7 +1,7 @@
 import "./directory.styles.scss";
 import CategoryItem from "../category-item/category-item.component";
 
-//Categories is the shoe types
+//HOMEPAGE RENDERS 5 SHOE TYPES(BASKETBALL, SOCCER, OUTDOOR, WORK, CASUAL)
 const Directory = ({ categories }) => {
   return (
     <div className="directory-container ">
