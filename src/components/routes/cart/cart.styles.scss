@@ -115,8 +115,17 @@ $hoverColor: #7200e4;
       .cart-description {
         display: flex;
         flex-direction: column;
+
+        .cart-description-name {
+          max-width: 300px;
+          padding-right: 4rem;
+        }
       }
     }
+
+    // .cart-price {
+    // padding-left: 5px;
+    // }
 
     .cart-quantity {
       display: flex;
@@ -147,9 +156,10 @@ $hoverColor: #7200e4;
       justify-content: flex-end;
       width: 100%;
 
-      .cart-price {
-        padding-left: 5px;
-      }
+      // .cart-price {
+      //   padding-left: 5px;
+      //   margin-left: 3rem;
+      // }
 
       .cart-remove {
         cursor: pointer;

@@ -172,15 +172,17 @@ const ShippingForm = () => {
         </div>
 
         <div className="form-footer">
-          <label>
+          {/* <label>
             <span className="highlight">*</span>
             <span className="required-text"> Required Fields</span>
-          </label>
+          </label> */}
 
           {/* Submit - Go to Billing */}
-          <Button type="submit" variant="contained" sx={buttonSX} className="cart-button">
-            CONTINUE TO BILLING
-          </Button>
+          <div className="shipping-form-button-container">
+            <Button type="submit" variant="contained" sx={buttonSX} className="cart-button">
+              CONTINUE TO BILLING
+            </Button>
+          </div>
         </div>
       </form>
     </div>

@@ -35,8 +35,11 @@ const CheckoutCart = () => {
         {cartItems.map((item) => {
           return (
             <div className="checkout-item" key={item.id}>
-              <div>
+              {/* <div>
                 <div className="checkout-cart-image" style={{ backgroundImage: `url(${item.imageUrl})` }}></div>
+              </div> */}
+              <div className="checkout-cart-image-container">
+                <img src={item.imageUrl} alt="Cart Item" className="checkout-cart-image" />
               </div>
               <div className="checkout-cart-text">
                 <div>{item.brandName}</div>

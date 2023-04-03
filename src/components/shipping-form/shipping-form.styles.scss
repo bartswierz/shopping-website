@@ -117,7 +117,8 @@ $activeColor: #1ccbde;
 
     .form-footer {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
+      // justify-content: space-between;
 
       .highlight {
         color: $primaryColor;
@@ -127,6 +128,12 @@ $activeColor: #1ccbde;
 
       .required-text {
         font-size: 1.2rem;
+      }
+
+      .shipping-form-button-container {
+        // min-width: 200px;
+        width: 100%;
+        max-width: 120px;
       }
     }
 
@@ -159,3 +166,15 @@ $activeColor: #1ccbde;
     }
   }
 }
+
+// @media screen and (max-width: 400px) {
+//   .checkout-shipping-container .checkout-form-container .form-footer {
+//     flex-direction: column-reverse;
+
+//     .shipping-form-button-container {
+//       max-width: 20rem;
+//       display: flex;
+//       justify-content: center;
+//     }
+//   }
+// }
