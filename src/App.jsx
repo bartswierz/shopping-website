@@ -10,7 +10,6 @@ import { CategoriesContext } from "./contexts/categories.context";
 import ProductList from "./components/product-list/product-list.component";
 import ProductCardDesktop from "./components/product-card-desktop/product-card-desktop.component";
 import ProductCardMobile from "./components/product-card-mobile/product-card-mobile.component";
-import SHOP_DATA from "./shop-data";
 
 const App = () => {
   const [isMobile, setIsMobile] = useState(false);

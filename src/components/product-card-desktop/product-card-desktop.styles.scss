@@ -179,6 +179,8 @@ $activeColor: #1ccbde;
     .product-card-right-container {
       position: relative;
       width: 50%;
+      height: 59rem;
+
       // IMAGE
       .product-card-img-container {
         position: absolute;
@@ -187,7 +189,8 @@ $activeColor: #1ccbde;
         max-width: 500px;
 
         .product-img {
-          max-width: 25vw;
+          max-width: 20vw;
+          // max-width: 25vw;
           height: auto;
           object-fit: cover;
           object-position: center;
