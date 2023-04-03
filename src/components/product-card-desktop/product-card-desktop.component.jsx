@@ -71,6 +71,21 @@ const ProductCardDesktop = ({ products }) => {
   return (
     <>
       <div className="product-card-container">
+        {/* BUTTONS */}
+        <div className="product-card-button-container">
+          <button className="prev-btn">
+            <ArrowBackIosIcon onClick={handlePrevious} className="prev-btn-icon" />
+          </button>
+          <div className="product-card-image-index">
+            <p>
+              {index + 1} / {maxIndex + 1}
+            </p>
+          </div>
+          <button className="next-btn">
+            <ArrowForwardIosIcon onClick={handleNext} className="next-btn-icon" />
+          </button>
+        </div>
+
         {/* LEFT */}
         <div className="product-card-left-container">
           {/* HEADER */}
@@ -139,7 +154,7 @@ const ProductCardDesktop = ({ products }) => {
             <img src={displayShoe.imageUrl} className="product-img" alt="shoe" />
           </div>
 
-          {/* BUTTONS */}
+          {/* BUTTONS
           <div className="product-card-button-container">
             <button className="prev-btn">
               <ArrowBackIosIcon onClick={handlePrevious} className="prev-btn-icon" />
@@ -152,7 +167,7 @@ const ProductCardDesktop = ({ products }) => {
             <button className="next-btn">
               <ArrowForwardIosIcon onClick={handleNext} className="next-btn-icon" />
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
