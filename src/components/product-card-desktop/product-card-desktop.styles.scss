@@ -10,7 +10,6 @@ $activeColor: #1ccbde;
     position: relative;
     display: flex;
     max-width: 96%;
-    max-height: 100vh;
     margin: 0 auto;
     padding: 3rem;
     z-index: 1;
@@ -78,6 +77,9 @@ $activeColor: #1ccbde;
     // PRODUCT CONTENT
     .product-card-left-container {
       width: 50%;
+
+      display: flex;
+      flex-direction: column;
 
       .product-card-header-container {
         margin-top: 5rem;
