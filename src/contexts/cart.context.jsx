@@ -4,6 +4,7 @@ import { createContext, useState, useEffect } from "react";
 const addToCart = (cartItems, itemToAdd) => {
   //If already inside our cart then increment quantity only
   // const alreadyInCart = cartItems.find((cartItem) => cartItem.id === itemToAdd.id);
+  console.log("cartItems: ", cartItems);
   const alreadyInCart = cartItems.find(
     (cartItem) => cartItem.id === itemToAdd.id && cartItem.color === itemToAdd.color && cartItem.size === itemToAdd.size
   );

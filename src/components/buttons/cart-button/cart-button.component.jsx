@@ -23,23 +23,34 @@ const buttonSX = {
   color: "#444",
 };
 
+//Uses product name,
+const createUniqueId = (productName, color, size) => {
+  //i.e. "Vans Old Skool ShoesRed10.5"
+  const cartIdContent = productName + color + size;
+
+  //STRIPS ALL EMPTY SPACES & PERIODS -> "VansOldSkoolShoesRed105"
+  return cartIdContent.replace(/[ .]/g, "");
+};
+
 const CartButton = ({ product, quantity, color, size }) => {
   const { addItemToCart, cartItems, cartCount, updateCartCount } = useContext(CartContext);
 
   // Adds the item to our CartItems array within our Cart Context
   const handleClick = (product, quantity, color, size) => {
-    // ...product = id, description, imageUrl, price
-    console.log("in handleClick, color: ", color, "& size: ", size);
+    // console.log("in handleClick, color: ", color, "& size: ", size);
     if (color !== "" && color !== "Color" && size !== "" && size !== "Size") {
-      const itemToAdd = { ...product, quantity, color, size };
-      // console.log("button clicked! ", itemToAdd);
+      const cartItemId = createUniqueId(product.productName, color, size);
+
+      /*Passing custom id to prevent incorrect behavior with add/remove buttons within cart 
+      ...product = id, description, imageUrl, price
+      */
+      const itemToAdd = { ...product, id: cartItemId, quantity, color, size };
       addItemToCart(itemToAdd);
 
       //Passing the quantity value of our item to update our current cart count inside cart context using a reducer
       updateCartCount(quantity);
     } else {
       alert("Cart BTN: Please select a size and color.");
-      console.log("WRONG");
     }
   };
 
