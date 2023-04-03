@@ -187,9 +187,11 @@ $activeColor: #1ccbde;
         top: 12%;
         right: 12%;
         max-width: 500px;
+        // max-width: 300px;
 
         .product-img {
-          max-width: 20vw;
+          // max-width: 20vw;
+          max-width: 40rem;
           // max-width: 25vw;
           height: auto;
           object-fit: cover;
