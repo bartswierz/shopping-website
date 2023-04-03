@@ -182,9 +182,6 @@ $hoverColor: #7200e4;
   }
 }
 
-// @media screen and (max-width: 1050px) {
-// }
-
 @media screen and (max-width: 768px) {
   .cart-heading {
     padding-top: 0;
@@ -205,25 +202,7 @@ $hoverColor: #7200e4;
 // Small screen Tilt image/Desc
 @media screen and (max-width: 568px) {
   .image-desc-container {
-    display: flex;
     flex-direction: column;
-    // align-items: none;
-    // align-items: flex-start;
-    // justify-content: flex-start;
-    // gap: 20px;
-
-    // .image-desc-container {
-    //   display: flex;
-    //   align-items: center;
-
-    // .cart-image-container .cart-image {
-    //   align-self: flex-start;
-    //   justify-content: flex-start;
-    // }
-
-    // .cart-description {
-    //   align-self: flex-start;
-    // }
   }
 
   .cart-container {
