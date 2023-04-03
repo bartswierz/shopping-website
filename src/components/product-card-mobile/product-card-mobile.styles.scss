@@ -184,6 +184,8 @@ $activeColor: #1ccbde;
       display: flex;
       align-items: center;
       flex-direction: column;
+      min-height: 30rem;
+      justify-content: space-between;
 
       // IMAGE
       .product-card-img-container {
