@@ -52,7 +52,9 @@ const Cart = () => {
           return (
             <div className="cart-item" key={item.id}>
               <div className="image-desc-container">
-                <div className="cart-image" style={{ backgroundImage: `url(${item.imageUrl})` }}></div>
+                <div className="cart-image-container">
+                  <img src={item.imageUrl} alt="Shoe" className="cart-image" />
+                </div>
                 <div className="cart-description">
                   <span>
                     <strong>{item.brandName}</strong>
