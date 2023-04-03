@@ -10,7 +10,7 @@ import { ReactComponent as DecreaseIcon } from "../../../assets/chevron-back-out
 import { ReactComponent as IncreaseIcon } from "../../../assets/chevron-forward-outline.svg";
 import Button from "@mui/material/Button";
 
-const Cart = () => {
+const Cart = (props) => {
   const { cartItems, removeItemFromCart, cartCount, cartTotal, taxTotal, updateCartCount, updateCartItem } = useContext(CartContext);
   console.log("cartItems in cart: ", cartItems);
 
@@ -18,6 +18,9 @@ const Cart = () => {
   const taxTotalFixed = parseFloat(taxTotal).toFixed(2);
   const cartTotalFixed = parseFloat(cartTotal + taxTotal).toFixed(2);
   // const tax = cartTotal * 0.08;
+
+  const { message } = props;
+  console.log("message: ", message);
 
   const removeItem = (itemToRemove) => {
     console.log("removeItem, idToRemove: ", itemToRemove);
@@ -40,8 +43,8 @@ const Cart = () => {
           <div>
             <strong>Price</strong>
           </div>
-          <div>
-            <strong>Quantity</strong>
+          <div className="cart-header-qty">
+            <strong>QTY</strong>
           </div>
           <div className="cart-header-total">
             <strong>Remove</strong>

@@ -39,7 +39,7 @@ const App = () => {
         <Route index element={<Homepage />} />
         <Route path="Authentication" element={<Authentication />} />
         <Route path="checkout" element={<Checkout />} />
-        <Route path="cart" element={<Cart />} />
+        <Route path="cart" element={isMobile ? <Cart message={"MOBILE SCREEN"} /> : <Cart message={"DESKTOP SCREEN"} />} />
         {/* Paths will be taken from  CategoryItem component using category.title - using conditional so that we will render component when our async function completes fetching our categoriesMap from firebase DB */}
 
         {/* 2. isMobile -> If viewport width is less than 768px, render Mobile Component, ELSE render desktop component  */}
