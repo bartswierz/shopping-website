@@ -333,6 +333,12 @@ $activeColor: #1ccbde;
     flex-direction: row;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .product-card-container .product-card-right-container .product-card-img-container .product-img {
+    max-height: 125px;
+  }
+}
 // product-card-details-and-button-container
 
 //calc(minFont + (maxFont - minFont) * ((100vw - minVW) / (maxVW - minVW)))
