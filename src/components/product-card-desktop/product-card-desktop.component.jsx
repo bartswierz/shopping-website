@@ -145,6 +145,9 @@ const ProductCardDesktop = ({ products }) => {
 
               {/* OnClick, we will pass color and size as props to CartButton */}
               <CartButton product={product} color={color} size={size} />
+
+              {/* <CartButton product={product} color={color} size={size} resetOptionsHandler={resetOptionsHandler} /> */}
+              {/* <CartButton product={product} color={color} size={size} onClick={() => resetOptions()} /> */}
             </div>
           </div>
         </div>
@@ -153,21 +156,6 @@ const ProductCardDesktop = ({ products }) => {
           <div className="product-card-img-container">
             <img src={displayShoe.imageUrl} className="product-img" alt="shoe" />
           </div>
-
-          {/* BUTTONS
-          <div className="product-card-button-container">
-            <button className="prev-btn">
-              <ArrowBackIosIcon onClick={handlePrevious} className="prev-btn-icon" />
-            </button>
-            <div className="product-card-image-index">
-              <p>
-                {index + 1} / {maxIndex + 1}
-              </p>
-            </div>
-            <button className="next-btn">
-              <ArrowForwardIosIcon onClick={handleNext} className="next-btn-icon" />
-            </button>
-          </div> */}
         </div>
       </div>
     </>

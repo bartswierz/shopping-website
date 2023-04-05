@@ -19,6 +19,8 @@ $activeColor: #1ccbde;
     gap: 3rem;
     margin-bottom: 5vh;
 
+    // margin-top: 30rem;
+
     //calc(minFont + (maxFont - minFont) * ((100vw - minVW) / (maxVW - minVW)))
     //screenwidth 768 to 1920px
     //             min     max - min *  100vw  - minVW  / maxVW - minVW
@@ -94,10 +96,10 @@ $activeColor: #1ccbde;
           // font-size: 8.4rem;
           font-size: clamp(3.2rem, 5vw, 6.4rem);
           font-weight: 700;
-          z-index: 30;
           letter-spacing: 1rem;
           max-height: 90px;
           color: $primaryColor;
+          // margin-bottom: 1rem;
         }
 
         .product-card-subheader {
@@ -106,6 +108,7 @@ $activeColor: #1ccbde;
           letter-spacing: 0.3rem;
           font-weight: 600;
           color: $primaryColor;
+          padding-top: 1rem;
         }
       }
 

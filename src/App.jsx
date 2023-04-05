@@ -20,6 +20,7 @@ const App = () => {
     };
     window.addEventListener("resize", handleResize);
     handleResize();
+
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -33,6 +34,7 @@ const App = () => {
   return (
     <Routes>
       {/* At the default path, display The navigation, inside our navigation we will use Outlet to display Home Page and/or any of the other paths we use */}
+      {/* <Route path="/" element={<Navigation />}> */}
       <Route path="/" element={<Navigation />}>
         {/* using index: if you are at the '/' path then render this Homepage Component */}
         <Route index element={<Homepage />} />

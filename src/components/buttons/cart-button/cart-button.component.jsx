@@ -1,8 +1,8 @@
 import Button from "@mui/material/Button";
 import "./cart-button.styles.scss";
 import { CartContext } from "../../../contexts/cart.context";
-import { useContext } from "react";
-
+import { useContext, useState } from "react";
+import { CACHE_SIZE_UNLIMITED } from "firebase/firestore";
 // $primaryColor: #1de5fd;
 // $hoverColor: #1bd1e5;
 // $activeColor: #1ccbde;
@@ -36,7 +36,8 @@ const CartButton = ({ product, quantity, color, size }) => {
   const { addItemToCart, cartItems, cartCount, updateCartCount } = useContext(CartContext);
 
   // Adds the item to our CartItems array within our Cart Context
-  const handleClick = (product, quantity, color, size) => {
+  const handleClick = (product, quantity, color, size, resetOptionsHandler) => {
+    console.log("cart btn - inside handleClick - resetOptions: ", resetOptionsHandler);
     // console.log("in handleClick, color: ", color, "& size: ", size);
     if (color !== "" && color !== "Color" && size !== "" && size !== "Size") {
       const cartItemId = createUniqueId(product.productName, color, size);
@@ -50,7 +51,7 @@ const CartButton = ({ product, quantity, color, size }) => {
       //Passing the quantity value of our item to update our current cart count inside cart context using a reducer
       updateCartCount(quantity);
     } else {
-      alert("Cart BTN: Please select a size and color.");
+      alert("Please select a size and color.");
     }
   };
 
@@ -60,7 +61,11 @@ const CartButton = ({ product, quantity, color, size }) => {
         variant="contained"
         sx={buttonSX}
         className="cart-button"
-        onClick={() => handleClick(product, (quantity = 1), color, size)}
+        onClick={() => {
+          handleClick(product, (quantity = 1), color, size);
+        }}
+
+        // onClick={() => handleClick(product, (quantity = 1), color, size, )}
       >
         ADD TO CART
       </Button>
