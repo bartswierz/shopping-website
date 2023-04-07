@@ -132,7 +132,7 @@ const Navigation = () => {
                   ) : (
                     ""
                   )}
-                  <span>Home</span>
+                  <span className="nav-link-text">Home</span>
                 </NavLink>
               </li>
               <li className="nav-item">
@@ -145,7 +145,7 @@ const Navigation = () => {
                       signoutHandler(), closeMobileMenu;
                     }}
                   >
-                    <span>Sign Out</span>
+                    <span className="nav-link-text">Sign Out</span>
                   </NavLink>
                 ) : (
                   <NavLink
@@ -154,7 +154,7 @@ const Navigation = () => {
                     onClick={closeMobileMenu}
                   >
                     {isMobile ? <LoginRoundedIcon fontSize={"large"} /> : ""}
-                    <span>Sign In</span>
+                    <span className="nav-link-text">Sign In</span>
                   </NavLink>
                 )}
               </li>
@@ -174,10 +174,11 @@ const Navigation = () => {
                 <NavLink
                   to="/checkout"
                   className={({ isActive }) => "nav-links" + (isActive ? " activated" : "")}
+                  // className={({ isActive }) => "nav-links" + (isActive ? " activated" : "")}
                   onClick={closeMobileMenu}
                 >
                   {isMobile ? <CreditCardRoundedIcon fontSize={"large"} /> : ""}
-                  checkout
+                  <a className="nav-link-text">checkout</a>
                 </NavLink>
               </li>
 
@@ -191,7 +192,7 @@ const Navigation = () => {
                     <CartIcon className="cart-icon" />
                     <div className="cart-item-count">{cartCount}</div>
                   </div>
-                  {isMobile ? <span className="menu-link-text">Cart</span> : ""}
+                  {isMobile ? <span className="menu-link-text nav-link-text">Cart</span> : ""}
                 </NavLink>
               </li>
             </ul>

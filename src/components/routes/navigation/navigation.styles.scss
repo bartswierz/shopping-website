@@ -104,15 +104,17 @@ $activeColor: #1ccbde;
         height: 80px;
         border-bottom: 2px solid transparent;
 
+        // Border Bottom at the bottom of our navigation
         &:hover {
           // border-bottom: 2px solid #09bef0;
-          border-bottom: 2px solid #000;
+          // border-bottom: 2px solid #000;
         }
 
         // Changes Color Text - Replace this to add the underline left to right animation
         .activated {
           // color: #09bef0;
           // color: $primaryColor;
+          // border-bottom: 2px solid #000;
         }
 
         .nav-links {
@@ -122,6 +124,37 @@ $activeColor: #1ccbde;
           padding: 0.5rem 1rem;
           height: 7.8rem;
           // border-bottom: 1px solid $primaryColor;
+        }
+
+        // Hover Effect With underline going from left to right
+        .nav-link-text {
+          position: relative;
+          text-decoration: none;
+          color: black;
+
+          // Hidden at first to the left
+          &:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            left: 0;
+            // position of bar
+            bottom: -3px;
+            // Bar Thickness
+            height: 3px;
+            background-color: black;
+            transition: width 0.3s ease;
+          }
+          // On hover, underline goes to full width left to right
+          &:hover:after,
+          &:visited:after {
+            width: 100%;
+          }
+
+          // &:visited:after {
+          //   // border: 2px solid #000;
+          //   width: 100%;
+          // }
         }
 
         .cart-icon-container {
