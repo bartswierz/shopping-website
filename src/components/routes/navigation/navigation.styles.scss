@@ -130,7 +130,7 @@ $activeColor: #1ccbde;
         .nav-link-text {
           position: relative;
           text-decoration: none;
-          color: black;
+          // color: black;
 
           // Hidden at first to the left
           &:after {
@@ -143,6 +143,8 @@ $activeColor: #1ccbde;
             // Bar Thickness
             height: 3px;
             background-color: black;
+            // background-color: $primaryColor;
+
             transition: width 0.3s ease;
           }
           // On hover, underline goes to full width left to right
@@ -319,5 +321,10 @@ $activeColor: #1ccbde;
     // Increase icon size
     font-size: 2.2rem;
     cursor: pointer;
+  }
+
+  // Changes Nav menu item hover text to brand color for visibility as the mobile nav menu is dark
+  .navbar .navbar-container.container .nav-menu .nav-item .nav-link-text:after {
+    background-color: $primaryColor;
   }
 }

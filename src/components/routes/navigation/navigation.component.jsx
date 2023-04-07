@@ -178,7 +178,7 @@ const Navigation = () => {
                   onClick={closeMobileMenu}
                 >
                   {isMobile ? <CreditCardRoundedIcon fontSize={"large"} /> : ""}
-                  <a className="nav-link-text">checkout</a>
+                  <span className="nav-link-text">checkout</span>
                 </NavLink>
               </li>
 
