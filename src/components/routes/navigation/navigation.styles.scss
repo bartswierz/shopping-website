@@ -47,22 +47,6 @@ $activeColor: #1ccbde;
   z-index: 999;
   margin-bottom: 3rem;
 
-  // .navbar-container {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   height: 80px;
-  // }
-
-  // .container {
-  //   z-index: 1;
-  //   width: 100%;
-  //   max-width: 1300px;
-  //   margin-right: auto;
-  //   margin-left: auto;
-  //   padding-right: 5rem;
-  //   padding-left: 5rem;
-  // }
-
   .navbar-container.container {
     display: flex;
     justify-content: space-between;
@@ -105,28 +89,6 @@ $activeColor: #1ccbde;
       }
     }
 
-    // .nav-menu-header-container {
-    //   .filter {
-    //     position: relative;
-    //     -webkit-filter: hue-rotate(188deg);
-    //     filter: hue-rotate(188deg);
-
-    //     .brand-logo {
-    //       max-width: 200px;
-    //       height: auto;
-    //     }
-
-    //     .nav-menu-header {
-    //       font-size: 42px;
-    //       color: $primaryColor;
-    //     }
-    //   }
-    // }
-
-    // TODO - this is hiding our hamburger icon for screen below 768px
-    // .navbar .navbar-container.container .menu-icon {
-    // display: none;
-    // }
     .menu-icon {
       display: none;
     }
@@ -154,13 +116,10 @@ $activeColor: #1ccbde;
         }
 
         .nav-links {
-          // color: #fff;
           display: flex;
           align-items: center;
           text-decoration: none;
           padding: 0.5rem 1rem;
-          // height: 100%;
-          // max-height: 7.8rem;
           height: 7.8rem;
           // border-bottom: 1px solid $primaryColor;
         }
@@ -195,32 +154,7 @@ $activeColor: #1ccbde;
   }
 }
 
-// .navbar-logo {
-//   color: #fff;
-//   justify-self: start;
-//   cursor: pointer;
-//   text-decoration: none;
-//   font-size: 2rem;
-//   display: flex;
-//   align-items: center;
-// }
-
-// .navbar-icon {
-//   margin-right: 0.5rem;
-// }
-
-// This will be transformed to underline from left to right
-
-// For Dark Mode
-.fa-bars {
-  color: #fff;
-}
-
 @media screen and (max-width: 768px) {
-  // .NavbarItems {
-  //   position: relative;
-  // }
-
   .navbar .navbar-container.container .nav-menu .nav-item .nav-links {
     gap: 1rem;
   }
@@ -291,27 +225,11 @@ $activeColor: #1ccbde;
 
   // Container that will slide in the from left containing links upon clicking hamburger icon
   .nav-menu.active {
-    // background: #777;
-    // background-color: #272727;
-    // background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='24' viewBox='0 0 88 24'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='autumn' fill='%23807f83' fill-opacity='0.05'%3E%3Cpath d='M10 0l30 15 2 1V2.18A10 10 0 0 0 41.76 0H39.7a8 8 0 0 1 .3 2.18v10.58L14.47 0H10zm31.76 24a10 10 0 0 0-5.29-6.76L4 1 2 0v13.82a10 10 0 0 0 5.53 8.94L10 24h4.47l-6.05-3.02A8 8 0 0 1 4 13.82V3.24l31.58 15.78A8 8 0 0 1 39.7 24h2.06zM78 24l2.47-1.24A10 10 0 0 0 86 13.82V0l-2 1-32.47 16.24A10 10 0 0 0 46.24 24h2.06a8 8 0 0 1 4.12-4.98L84 3.24v10.58a8 8 0 0 1-4.42 7.16L73.53 24H78zm0-24L48 15l-2 1V2.18A10 10 0 0 1 46.24 0h2.06a8 8 0 0 0-.3 2.18v10.58L73.53 0H78z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    // background-color: red;
     left: 0%;
     opacity: 1;
     transition: all 0.6s ease;
     z-index: 1;
     width: 100%;
-    // width: 50%;
-    // border-radius: 20px;
-
-    // 1
-    // background: rgba(255, 255, 255, 0.1);
-    // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    // backdrop-filter: blur(4px);
-    // -webkit-backdrop-filter: blur(4px);
-    // border-radius: 10px;
-    // border: 1px solid rgba(255, 255, 255, 0.18);
-
-    // background: rgba(255, 255, 255, 0.25);
     background: rgba(0, 0, 0, 0.82);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(11px);
@@ -370,237 +288,3 @@ $activeColor: #1ccbde;
     cursor: pointer;
   }
 }
-
-//================================
-
-// .navbar {
-//   padding: 2rem;
-
-//   .navbar-container.container {
-//     .home-logo-container {
-//       cursor: pointer;
-
-//       .home-logo {
-//         width: 30px;
-//         height: 30px;
-
-//         &:hover {
-//           transform: scale(1.2);
-//         }
-
-//         &:active {
-//           transform: scale(1);
-//         }
-//       }
-//     }
-//   }
-// }
-
-//==================================
-
-// .navbar {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   padding: 0 2rem;
-//   // position: fixed;
-//   // flex-direction: row;
-//   // font-size: 1.6rem;
-//   // min-width: 1280px;
-
-//   // padding: 10px 25px;
-//   // To keep navigation at the top of product's url page
-//   // z-index: 9999;
-//   // Remove after
-//   background-color: grey;
-//   border: 2px solid red;
-
-//   .nav-links {
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     list-style: none;
-//     text-decoration: none;
-//     column-gap: 2rem;
-//     cursor: pointer;
-//     background-color: skyblue;
-//     border: 2px solid blue;
-
-//     .cart-icon-container {
-//       position: relative;
-
-//       .cart-icon {
-//         width: 36px;
-//         height: 36px;
-//       }
-
-//       .cart-item-count {
-//         position: absolute;
-//         top: 24%;
-//         left: 29%;
-//         font-size: 1rem;
-//         font-weight: bold;
-//         width: 20px;
-//         text-align: center;
-//       }
-//     }
-//   }
-
-//   .nav-btn {
-//     padding: 2px;
-//     cursor: pointer;
-//     background-color: transparent;
-//     border: none;
-//     outline: none;
-//     color: black;
-//     visibility: hidden;
-//     opacity: 0;
-//     font-size: 1.8rem;
-//   }
-
-//   .home-logo-container {
-//     cursor: pointer;
-
-//     .home-logo {
-//       width: 30px;
-//       height: 30px;
-
-//       &:hover {
-//         transform: scale(1.2);
-//       }
-
-//       &:active {
-//         transform: scale(1);
-//       }
-//     }
-//   }
-// }
-
-// @media screen and (max-width: 1280px) {
-//   .navbar {
-//     min-width: 100vw;
-//   }
-// }
-
-// @media screen and (max-width: 1024px) {
-//   .container .navbar .nav-btn {
-//     visibility: visible;
-//     opacity: 1;
-//     background-color: red;
-//   }
-
-//   .container .navbar {
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     height: 50%;
-//     width: 100%;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: flex-start;
-//     justify-content: center;
-//     gap: 2rem;
-//     background-color: skyblue;
-//     transition: 0.5s;
-//     transform: translateX(100vh);
-//   }
-
-//   .container .responsive {
-//     transform: none;
-//   }
-
-//   .navbar .nav-close-btn {
-//     position: absolute;
-//     top: 2rem;
-//     right: 2rem;
-//   }
-// }
-
-// @media screen and (max-width: 768px) {
-//   .nav-links {
-//     flex-direction: column;
-//   }
-// }
-
-//======================================================================
-
-//=======================================================================
-
-// ---------------------------
-// .navbar {
-//   // position: fixed;
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-//   padding-left: 2rem;
-//   padding-right: 2rem;
-//   font-size: 1.6rem;
-//   // padding: 10px 25px;
-//   min-width: 1280px;
-//   // min-width: 100%;
-//   // min-width: 100vw;
-//   // To keep navigation at the top of product's url page
-//   z-index: 9999;
-//   // Remove after
-//   background-color: grey;
-//   border: 2px solid red;
-// }
-
-// .nav-links {
-//   display: flex;
-//   column-gap: 2rem;
-//   text-decoration: none;
-//   align-items: center;
-//   cursor: pointer;
-//   height: 75px;
-//   background-color: skyblue;
-//   border: 2px solid blue;
-
-//   .cart-icon-container {
-//     position: relative;
-
-//     .cart-icon {
-//       width: 36px;
-//       height: 36px;
-//     }
-
-//     .cart-item-count {
-//       position: absolute;
-//       top: 24%;
-//       left: 29%;
-//       font-size: 1rem;
-//       font-weight: bold;
-//       width: 20px;
-//       text-align: center;
-//     }
-//   }
-// }
-
-// .home-logo-container {
-//   cursor: pointer;
-
-//   .home-logo {
-//     width: 30px;
-//     height: 30px;
-
-//     &:hover {
-//       transform: scale(1.2);
-//     }
-
-//     &:active {
-//       transform: scale(1);
-//     }
-//   }
-// }
-
-// @media screen and (max-width: 1280px) {
-//   .navbar {
-//     min-width: 100vw;
-//   }
-// }
-
-// @media screen and (max-width: 768px) {
-//   .nav-links {
-//     flex-direction: column;
-//   }
-// }
