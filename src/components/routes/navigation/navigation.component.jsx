@@ -42,19 +42,13 @@ const Navigation = () => {
     };
   }, []);
 
-  console.log("isMobile: ", isMobile);
+  // console.log("isMobile: ", isMobile);
 
   const [click, setClick] = useState(false);
 
   // document.body.classlist.add("menu-open");
   const handleClick = () => {
     setClick(!click);
-
-    // Adds dark opacity when open
-    document.body.classList.toggle("menu-open");
-
-    // if (click) document.body.classList.add("menu-open");
-    // else document.body.classList.remove("menu-open");
   };
 
   const closeMobileMenu = () => {
@@ -70,6 +64,9 @@ const Navigation = () => {
 
   //   return () => window.removeEventListener("resize", handleResize);
   // }, []);
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
 
   const signoutHandler = async () => {
     const response = await signOutUser();
