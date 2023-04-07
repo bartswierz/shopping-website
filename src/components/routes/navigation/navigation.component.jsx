@@ -23,6 +23,8 @@ import NavLogo from "../../../assets/nav-logo.png";
 
 const Navigation = () => {
   const { cartCount } = useContext(CartContext);
+
+  // Will be used for authentication/authorizing user using firebase
   const { currentUser, setCurrentUser } = useContext(UserContext);
   // console.log("cartCount: ", cartCount);
   // const [value, setValue] = useState(0);
@@ -100,8 +102,8 @@ const Navigation = () => {
             <Link to="/authentication" element={<Authentication />}>
               Sign In
             </Link>
-          )}
-          <Link to="/checkout" element={<Checkout />}>
+          )} */}
+            {/* <Link to="/checkout" element={<Checkout />}>
             Checkout
           </Link>
           // <Link to="/cart" element={<Cart />}>
@@ -147,15 +149,49 @@ const Navigation = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink
+                {/* <NavLink
                   to="/authentication"
                   className={({ isActive }) => "nav-links" + (isActive ? " activated" : "")}
                   onClick={closeMobileMenu}
                 >
                   {isMobile ? <LoginRoundedIcon fontSize={"large"} /> : ""}
                   Sign In
-                </NavLink>
+                </NavLink> */}
+
+                {currentUser ? (
+                  <NavLink
+                    to="/authentication"
+                    className={({ isActive }) => "nav-links" + (isActive ? " activated" : "")}
+                    element={<Authentication />}
+                    onClick={() => {
+                      signoutHandler(), closeMobileMenu;
+                    }}
+                  >
+                    Sign Out
+                  </NavLink>
+                ) : (
+                  <NavLink
+                    to="/authentication"
+                    className={({ isActive }) => "nav-links" + (isActive ? " activated" : "")}
+                    onClick={closeMobileMenu}
+                  >
+                    {isMobile ? <LoginRoundedIcon fontSize={"large"} /> : ""}
+                    Sign In
+                  </NavLink>
+                )}
               </li>
+
+              {/* TODO - Add Sign/Sign Out */}
+              {/* {currentUser ? (
+                <Link to="/authentication" element={<Authentication />} onClick={signoutHandler}>
+                  Sign Out
+                </Link>
+              ) : (
+                <Link to="/authentication" element={<Authentication />}>
+                  Sign In
+                </Link>
+              )} */}
+
               <li className="nav-item">
                 <NavLink
                   to="/checkout"
