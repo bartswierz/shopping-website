@@ -57,19 +57,6 @@ const Navigation = () => {
     setClick(false);
   };
 
-  // useEffect(() => {
-  //   function handleResize() {
-  //     setIsMobile(window.innerWidth < 768);
-  //   }
-
-  //   window.addEventListener("resize", handleResize);
-
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, []);
-  const scrollToTop = () => {
-    window.scrollTo(0, 0);
-  };
-
   const signoutHandler = async () => {
     const response = await signOutUser();
     // console.log("signOutHandler - response: ", response);
@@ -145,19 +132,10 @@ const Navigation = () => {
                   ) : (
                     ""
                   )}
-                  Home
+                  <span>Home</span>
                 </NavLink>
               </li>
               <li className="nav-item">
-                {/* <NavLink
-                  to="/authentication"
-                  className={({ isActive }) => "nav-links" + (isActive ? " activated" : "")}
-                  onClick={closeMobileMenu}
-                >
-                  {isMobile ? <LoginRoundedIcon fontSize={"large"} /> : ""}
-                  Sign In
-                </NavLink> */}
-
                 {currentUser ? (
                   <NavLink
                     to="/authentication"
@@ -167,7 +145,7 @@ const Navigation = () => {
                       signoutHandler(), closeMobileMenu;
                     }}
                   >
-                    Sign Out
+                    <span>Sign Out</span>
                   </NavLink>
                 ) : (
                   <NavLink
@@ -176,7 +154,7 @@ const Navigation = () => {
                     onClick={closeMobileMenu}
                   >
                     {isMobile ? <LoginRoundedIcon fontSize={"large"} /> : ""}
-                    Sign In
+                    <span>Sign In</span>
                   </NavLink>
                 )}
               </li>
