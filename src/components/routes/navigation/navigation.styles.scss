@@ -1,9 +1,37 @@
 // Desktop and Mobile share navbar, default is for desktop, when we hit 768px we
 
+$primaryColor: #1de5fd;
+$hoverColor: #1bd1e5;
+$activeColor: #1ccbde;
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+// body.menu-open {
+.menu-open {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  // background-color: rgba(0, 0, 0, 1);
+  // z-index: 1000;
+  // background-color: rgba(0, 17, 246, 0.5);
+  // background: rgba(255, 255, 255, 0.9);
+  // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  // backdrop-filter: blur(15px);
+  // -webkit-backdrop-filter: blur(15px);
+  // border-radius: 10px;
+  // border: 1px solid rgba(255, 255, 255, 0.18);
+
+  // background: rgba( 255, 255, 255, 0.8 );
+  // background: rgba(0, 38, 255, 0.8);
+  // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  // backdrop-filter: blur(11.5px);
+  // -webkit-backdrop-filter: blur(11.5px);
+  // border-radius: 10px;
+  // border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .navbar {
@@ -19,154 +47,300 @@
   z-index: 999;
   margin-bottom: 3rem;
 
-  .navbar-container {
+  // .navbar-container {
+  //   display: flex;
+  //   justify-content: space-between;
+  //   height: 80px;
+  // }
+
+  // .container {
+  //   z-index: 1;
+  //   width: 100%;
+  //   max-width: 1300px;
+  //   margin-right: auto;
+  //   margin-left: auto;
+  //   padding-right: 5rem;
+  //   padding-left: 5rem;
+  // }
+
+  .navbar-container.container {
     display: flex;
     justify-content: space-between;
     height: 80px;
-  }
 
-  .container {
     z-index: 1;
     width: 100%;
     max-width: 1300px;
     margin-right: auto;
     margin-left: auto;
-    padding-right: 5rem;
-    padding-left: 5rem;
-  }
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
 
-  .navbar-container.container {
-    .home-logo-container {
+    .brand-logo-container {
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
 
-      .home-logo {
-        width: 30px;
-        height: 30px;
+      // Changes Shoe from Red to Blue to match site colors
+      .filter {
+        position: relative;
+        -webkit-filter: hue-rotate(188deg);
+        filter: hue-rotate(188deg);
+
+        .brand-logo {
+          max-width: 70px;
+          height: auto;
+          transition: transform 0.1s ease-in;
+
+          &:hover {
+            transform: scale(1.2);
+          }
+
+          // On Click decreases down to original size
+          &:active {
+            transform: scale(1);
+          }
+        }
+      }
+    }
+
+    // .nav-menu-header-container {
+    //   .filter {
+    //     position: relative;
+    //     -webkit-filter: hue-rotate(188deg);
+    //     filter: hue-rotate(188deg);
+
+    //     .brand-logo {
+    //       max-width: 200px;
+    //       height: auto;
+    //     }
+
+    //     .nav-menu-header {
+    //       font-size: 42px;
+    //       color: $primaryColor;
+    //     }
+    //   }
+    // }
+
+    // TODO - this is hiding our hamburger icon for screen below 768px
+    // .navbar .navbar-container.container .menu-icon {
+    // display: none;
+    // }
+    .menu-icon {
+      display: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      text-align: center;
+      justify-content: flex-end;
+
+      .nav-item {
+        height: 80px;
+        border-bottom: 2px solid transparent;
 
         &:hover {
-          transform: scale(1.2);
+          // border-bottom: 2px solid #09bef0;
+          border-bottom: 2px solid #000;
         }
 
-        &:active {
-          transform: scale(1);
+        // Changes Color Text - Replace this to add the underline left to right animation
+        .activated {
+          // color: #09bef0;
+          // color: $primaryColor;
+        }
+
+        .nav-links {
+          // color: #fff;
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          padding: 0.5rem 1rem;
+          // height: 100%;
+          // max-height: 7.8rem;
+          height: 7.8rem;
+          // border-bottom: 1px solid $primaryColor;
+        }
+
+        .cart-icon-container {
+          position: relative;
+
+          .cart-icon {
+            width: 36px;
+            height: 36px;
+            // color: #000;
+          }
+
+          .cart-item-count {
+            position: absolute;
+            top: 24%;
+            left: 29%;
+            font-size: 1rem;
+            font-weight: bold;
+            width: 20px;
+            text-align: center;
+            // color: #000;
+          }
+        }
+
+        // TEXT IN OPENED MOBILE NAVIGATION MENU
+        .menu-link-text {
+          font-size: 18px;
         }
       }
     }
   }
 }
 
-.navbar-logo {
-  color: #fff;
-  justify-self: start;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 2rem;
-  display: flex;
-  align-items: center;
-}
+// .navbar-logo {
+//   color: #fff;
+//   justify-self: start;
+//   cursor: pointer;
+//   text-decoration: none;
+//   font-size: 2rem;
+//   display: flex;
+//   align-items: center;
+// }
 
-.navbar-icon {
-  margin-right: 0.5rem;
-}
+// .navbar-icon {
+//   margin-right: 0.5rem;
+// }
 
-.nav-menu {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  list-style: none;
-  text-align: center;
-  justify-content: flex-end;
-}
+// This will be transformed to underline from left to right
 
-.nav-item {
-  height: 80px;
-  border-bottom: 2px solid transparent;
-
-  .cart-icon-container {
-    position: relative;
-
-    .cart-icon {
-      width: 36px;
-      height: 36px;
-      color: #000;
-    }
-
-    .cart-item-count {
-      position: absolute;
-      top: 24%;
-      left: 29%;
-      font-size: 1rem;
-      font-weight: bold;
-      width: 20px;
-      text-align: center;
-      color: #000;
-    }
-  }
-}
-
-.nav-item:hover {
-  border-bottom: 2px solid #09bef0;
-}
-
-.nav-links {
-  // color: #fff;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  height: 100%;
-}
-
-.activated {
-  color: #09bef0;
-}
-
+// For Dark Mode
 .fa-bars {
   color: #fff;
 }
 
-.menu-icon {
-  display: none;
-}
+@media screen and (max-width: 768px) {
+  // .NavbarItems {
+  //   position: relative;
+  // }
 
-@media screen and (max-width: 960px) {
-  .NavbarItems {
-    position: relative;
+  .navbar .navbar-container.container .nav-menu .nav-item .nav-links {
+    gap: 1rem;
   }
 
+  .nav-menu {
+    padding: 5rem;
+  }
+
+  .navbar .navbar-container.container .nav-menu .nav-item:hover {
+    border-bottom: none;
+  }
+
+  .nav-menu-header-container {
+    // border: 3px solid white;
+    padding: 2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    // border: 1px solid rgba(255, 255, 255, 0.18);
+    -webkit-box-shadow: 0px 0px 14px 6px rgba(29, 231, 253, 0.9);
+    -moz-box-shadow: 0px 0px 14px 6px rgba(29, 231, 253, 0.9);
+    box-shadow: 0px 0px 14px 6px rgba(29, 231, 253, 0.9);
+    margin-bottom: 1rem;
+
+    .nav-brand-container.filter {
+      // position: relative;
+      -webkit-filter: hue-rotate(188deg);
+      filter: hue-rotate(188deg);
+
+      .brand-logo {
+        display: flex;
+        width: 90%;
+        max-width: 200px;
+        height: auto;
+      }
+    }
+    .nav-menu-header {
+      font-size: 42px;
+      color: $primaryColor;
+      padding-top: 1rem;
+      font-size: 16px;
+    }
+  }
+
+  // Content container that will be added upon clicking Hamburger Icon
   .nav-menu {
     display: flex;
     flex-direction: column;
     width: 100%;
+    color: $primaryColor;
+
     position: absolute;
     top: 80px;
+
+    // SLIDES NAV MENU TO THE RIGHT ON SCREEN / LEFT OFF SECOND CLICK
     left: -100%;
+
+    // SLIDES NAV MENU TO THE LEFT ON SCREEN / RIGHT OFF SECOND CLICK
+    // left: 100%;
+
     opacity: 1;
+
+    // Allows animations on and off the screen
     transition: all 0.5s ease;
   }
 
+  // Container that will slide in the from left containing links upon clicking hamburger icon
   .nav-menu.active {
-    background: #19191a;
-    left: 0;
+    // background: #777;
+    // background-color: #272727;
+    // background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='24' viewBox='0 0 88 24'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='autumn' fill='%23807f83' fill-opacity='0.05'%3E%3Cpath d='M10 0l30 15 2 1V2.18A10 10 0 0 0 41.76 0H39.7a8 8 0 0 1 .3 2.18v10.58L14.47 0H10zm31.76 24a10 10 0 0 0-5.29-6.76L4 1 2 0v13.82a10 10 0 0 0 5.53 8.94L10 24h4.47l-6.05-3.02A8 8 0 0 1 4 13.82V3.24l31.58 15.78A8 8 0 0 1 39.7 24h2.06zM78 24l2.47-1.24A10 10 0 0 0 86 13.82V0l-2 1-32.47 16.24A10 10 0 0 0 46.24 24h2.06a8 8 0 0 1 4.12-4.98L84 3.24v10.58a8 8 0 0 1-4.42 7.16L73.53 24H78zm0-24L48 15l-2 1V2.18A10 10 0 0 1 46.24 0h2.06a8 8 0 0 0-.3 2.18v10.58L73.53 0H78z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    // background-color: red;
+    left: 0%;
     opacity: 1;
     transition: all 0.6s ease;
     z-index: 1;
-  }
-
-  .nav-links {
-    text-align: center;
-    padding: 2rem;
     width: 100%;
-    display: table;
+    // width: 50%;
+    // border-radius: 20px;
+
+    // 1
+    // background: rgba(255, 255, 255, 0.1);
+    // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    // backdrop-filter: blur(4px);
+    // -webkit-backdrop-filter: blur(4px);
+    // border-radius: 10px;
+    // border: 1px solid rgba(255, 255, 255, 0.18);
+
+    // background: rgba(255, 255, 255, 0.25);
+    background: rgba(0, 0, 0, 0.82);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(11px);
+    -webkit-backdrop-filter: blur(11px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
   }
 
+  // Nav menu links
+  .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // border-bottom: 1px solid $primaryColor;
+    border-bottom: 1px solid #696969;
+
+    color: $primaryColor;
+    // color: #fff;
+  }
+
+  .nav-links:not(:last-child) {
+    border-bottom: 1px solid $primaryColor;
+  }
+
+  // TODO - turn this into the left to right underlind animation
   .nav-links:hover {
-    color: #09bef0;
-    transform: scale(1.2);
-    transition: all 0.3s ease;
+    color: $primaryColor;
+    // transform: scale(1.2);
+    // transition: all 0.3s ease;
   }
 
   .nav-item:hover {
@@ -184,16 +358,19 @@
     transform: translate(25%, 50%);
   }
 
-  .menu-icon {
+  // Displays Hamburger Icon on screen to replace the navlink text
+  .navbar .navbar-container.container .menu-icon {
     display: block;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 18%;
+    right: 2%;
     transform: translate(-100%, 60%);
-    font-size: 1.8rem;
+    // Increase icon size
+    font-size: 2.2rem;
     cursor: pointer;
   }
 }
+
 //================================
 
 // .navbar {
