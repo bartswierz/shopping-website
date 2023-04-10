@@ -4,10 +4,12 @@ import CostSummary from "../../checkout-summary/checkout-summary.component";
 import CheckoutCart from "../../checkout-cart/checkout-cart.component";
 import CheckoutDelivery from "../../checkout-delivery/checkout-delivery.component";
 
+// Contains all Information for the checkout page
 const Checkout = () => {
   return (
     <div className="checkout-container">
       <ShippingForm />
+      {/* <div>BILLING/STRIPE PAYMENT GOES HERE</div> */}
       <div className="checkout-side-container">
         <CostSummary />
         <CheckoutCart />

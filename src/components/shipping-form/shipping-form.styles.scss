@@ -5,7 +5,12 @@ $borderColor: #e1e1e1;
 $size: 1.6rem;
 $fontColor: #333;
 
-$primaryColor: #1de5fd;
+// Switch to this color on Dark Mode
+// $primaryColor: #1de5fd;
+// For better contrast on Light mode
+$primaryColor: #13737d;
+// $primaryLightColor: #13737d;
+
 $hoverColor: #1bd1e5;
 $activeColor: #1ccbde;
 

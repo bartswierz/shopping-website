@@ -20,7 +20,7 @@ const Cart = (props) => {
   // const tax = cartTotal * 0.08;
 
   const { message } = props;
-  console.log("message: ", message);
+  // console.log("message: ", message);
 
   const removeItem = (itemToRemove) => {
     console.log("removeItem, idToRemove: ", itemToRemove);

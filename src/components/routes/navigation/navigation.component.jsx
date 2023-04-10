@@ -132,7 +132,7 @@ const Navigation = () => {
                   ) : (
                     ""
                   )}
-                  <span className="nav-link-text">Home</span>
+                  <p className="nav-link-text">Home</p>
                 </NavLink>
               </li>
               <li className="nav-item">
@@ -145,6 +145,7 @@ const Navigation = () => {
                       signoutHandler(), closeMobileMenu;
                     }}
                   >
+                    {isMobile ? <LogoutRoundedIcon fontSize={"large"} /> : ""}
                     <span className="nav-link-text">Sign Out</span>
                   </NavLink>
                 ) : (
