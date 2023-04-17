@@ -17,9 +17,9 @@ const CategoryItem = ({ category }: ICategoryItemProps) => {
   // const lowercaseTitle = title.toLowercase();
   // console.log("lowercaseTitle: ", lowercaseTitle);
 
-  console.log("id: ", typeof id);
-  console.log("title: ", typeof title);
-  console.log("imageUrl: ", typeof imageUrl);
+  // console.log("id: ", typeof id);
+  // console.log("title: ", typeof title);
+  // console.log("imageUrl: ", typeof imageUrl);
 
   const idVal = (id: number) => {
     console.log("id is: ", id);
