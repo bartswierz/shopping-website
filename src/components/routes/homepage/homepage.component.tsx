@@ -2,17 +2,10 @@ import Navigation from "../navigation/navigation.component";
 import Directory from "../../directory/directory.component";
 import { Outlet } from "react-router-dom";
 
-// Our categories structure, pass this interface as the type for categories array
-// interface categoriesProps {
-//   id: number;
-//   title: string;
-//   imageUrl: string;
-// }
-
 // Our homepage displayed at '/'
 const Homepage = () => {
   // Holds our directory categories for routes. Array of type categoriesProp
-  // const categories: categoriesProps[] = [
+
   const categories = [
     {
       id: 1,
@@ -44,7 +37,6 @@ const Homepage = () => {
   return (
     <>
       {/* <Navigation /> */}
-      {/* TODO - categories: any */}
       <Directory categories={categories} />
       {/* Displays the test route content */}
       <Outlet />

@@ -22,9 +22,11 @@ interface DirectoryProps {
 
 //HOMEPAGE RENDERS 5 SHOE TYPES(BASKETBALL, SOCCER, OUTDOOR, WORK, CASUAL)
 // const Directory = ({ categories }) => {
+// Receives the object array
 const Directory: React.FC<DirectoryProps> = ({ categories }: DirectoryProps) => {
   return (
     <div className="directory-container">
+      {/* Passing in individual objects to categoryItem */}
       {categories.map((category) => (
         <CategoryItem category={category} key={category.id} />
       ))}

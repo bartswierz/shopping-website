@@ -2,7 +2,7 @@ import "./category-item.styles.scss";
 import { Link } from "react-router-dom";
 
 // TODO - need to TYPE the parameters coming in. What is category prop?
-interface ICategoryItemProps {
+interface CategoryItemProps {
   // category: { id: number; title: string; imageUrl: string };
   category: { id: number; title: string; imageUrl: string };
 }
@@ -11,21 +11,9 @@ interface ICategoryItemProps {
 // const CategoryItem = ({ category }) => {
 // const CategoryItem: React.FC<ICategoryItemProps> = (props) => {
 // const CategoryItem = ({category}) => {
-const CategoryItem = ({ category }: ICategoryItemProps) => {
-  // const { id, title, imageUrl } = item;
+const CategoryItem = ({ category }: CategoryItemProps) => {
+  // const CategoryItem = ({ id, title, imageUrl }: CategoryItemProps) => {
   const { id, title, imageUrl } = category;
-  // const lowercaseTitle = title.toLowercase();
-  // console.log("lowercaseTitle: ", lowercaseTitle);
-
-  // console.log("id: ", typeof id);
-  // console.log("title: ", typeof title);
-  // console.log("imageUrl: ", typeof imageUrl);
-
-  const idVal = (id: number) => {
-    console.log("id is: ", id);
-  };
-
-  idVal(id);
 
   return (
     // to={`${title}`} takes us to specific route depending on category title(i.e. "/Shirts")

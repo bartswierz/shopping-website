@@ -1,7 +1,14 @@
 import { Outlet, Link, NavLink } from "react-router-dom";
 import { Fragment, useContext, useState, useEffect, useRef } from "react";
-import { ReactComponent as HomeLogo } from "../../../assets/home-outline.svg";
-import { ReactComponent as CartIcon } from "../../../assets/cart-outline.svg";
+// import { ReactComponent as HomeLogo } from "../../../assets/home-outline.svg";
+// import { ReactComponent as HomeLogo } from " @/assets/icon.svg";
+// import { HomeLogo } from " @/assets/icon.svg";
+// import { ReactComponent as CartIcon } from "../../../assets/cart-outline.svg";
+// import { ReactComponent as CartIcon } from "@/assets/cart-outline.svg";
+import HomeLogo from "../../../assets/home-outline.svg";
+import CartIcon from "../../../assets/cart-outline.svg";
+// import HomeLogo from "@/assets/home-outline.svg";
+// import CartIcon from "@/assets/cart-outline.svg";
 import Checkout from "../checkout/checkout.component";
 import Cart from "../cart/cart.component";
 import Authentication from "../authentication/authentication.component";
@@ -21,6 +28,8 @@ import CreditCardRoundedIcon from "@mui/icons-material/CreditCardRounded";
 import BrandLogo from "../../../assets/brand-logo.png";
 import NavLogo from "../../../assets/nav-logo.png";
 
+interface CurrentUser {}
+
 const Navigation = () => {
   const { cartCount } = useContext(CartContext);
 
@@ -28,6 +37,8 @@ const Navigation = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
   // console.log("cartCount: ", cartCount);
   // const [value, setValue] = useState(0);
+
+  console.log("CURRENT USER: ", currentUser);
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -127,7 +138,8 @@ const Navigation = () => {
                 <NavLink to="/" className={({ isActive }) => "nav-links" + (isActive ? " activated" : "")} onClick={closeMobileMenu}>
                   {isMobile ? (
                     <div style={{ width: "22px", height: "22px" }}>
-                      <HomeLogo className="home-logo" />
+                      {/* <HomeLogo className="home-logo" /> */}
+                      <img src={HomeLogo} className="home-logo" />
                     </div>
                   ) : (
                     ""
@@ -140,7 +152,8 @@ const Navigation = () => {
                   <NavLink
                     to="/authentication"
                     className={({ isActive }) => "nav-links" + (isActive ? " activated" : "")}
-                    element={<Authentication />}
+                    // element={<Authentication />}
+                    // element={Authentication}
                     onClick={() => {
                       signoutHandler(), closeMobileMenu;
                     }}
@@ -190,7 +203,8 @@ const Navigation = () => {
                   onClick={closeMobileMenu}
                 >
                   <div className="cart-icon-container">
-                    <CartIcon className="cart-icon" />
+                    {/* <CartIcon className="cart-icon" /> */}
+                    <img src={CartIcon} className="cart-icon" />
                     <div className="cart-item-count">{cartCount}</div>
                   </div>
                   {isMobile ? <span className="menu-link-text nav-link-text">Cart</span> : ""}
