@@ -5,13 +5,24 @@ import { CartContext } from "../../contexts/cart.context";
 const CostSummary = () => {
   const { cartTotal, taxTotal } = useContext(CartContext);
 
+  const formatNumber = (numToParse: number | string) => {
+    if (typeof numToParse === "string") return parseFloat(numToParse).toFixed(2);
+    else if (typeof numToParse === "number") return numToParse.toFixed(2);
+    //Not a String or Number so return default 0.00
+    else return "0.00";
+  };
+
+  const formattedCartTotal = formatNumber(cartTotal);
+  const formattedTaxTotal = formatNumber(taxTotal);
+  const formattedTotalCost = formatNumber(cartTotal + taxTotal);
+
   return (
     <div className="checkout-summary-container">
       <div className="checkout-summary-header">SUMMARY</div>
       <div>
         <div className="checkout-summary-item">
           <span>Subtotal</span>
-          <span>${parseFloat(cartTotal).toFixed(2)}</span>
+          <span>${formattedCartTotal}</span>
         </div>
         <div className="checkout-summary-item">
           <span>Shipping & Handling</span>
@@ -19,11 +30,11 @@ const CostSummary = () => {
         </div>
         <div className="checkout-summary-item">
           <span>Taxes</span>
-          <span>${parseFloat(taxTotal).toFixed(2)}</span>
+          <span>${formattedTaxTotal}</span>
         </div>
         <div className="checkout-summary-item">
           <span>Total</span>
-          <span className="highlight">${parseFloat(cartTotal + taxTotal).toFixed(2)}</span>
+          <span className="highlight">${formattedTotalCost}</span>
         </div>
       </div>
     </div>

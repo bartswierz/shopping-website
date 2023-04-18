@@ -9,10 +9,7 @@ interface CategoryItemProps {
 //Builds each of the five directory components (Basketball, Soccer, ...) on the homepage
 
 // const CategoryItem = ({ category }) => {
-// const CategoryItem: React.FC<ICategoryItemProps> = (props) => {
-// const CategoryItem = ({category}) => {
-const CategoryItem = ({ category }: CategoryItemProps) => {
-  // const CategoryItem = ({ id, title, imageUrl }: CategoryItemProps) => {
+const CategoryItem: React.FC<CategoryItemProps> = ({ category }: CategoryItemProps) => {
   const { id, title, imageUrl } = category;
 
   return (
@@ -28,15 +25,3 @@ const CategoryItem = ({ category }: CategoryItemProps) => {
 };
 
 export default CategoryItem;
-
-/*
-return (
-    <div className="category-item-container" key={id}>
-      <div className="background-image" style={{ backgroundImage: `url(${imageUrl})` }} alt="dress-shirt"></div>
-      <div className="category-text-container">
-        <div className="category-text">{title}</div>
-        <div className="shop-text">SHOP NOW</div>
-      </div>
-    </div>
-  );
-*/

@@ -3,14 +3,20 @@ import CartButton from "../buttons/cart-button/cart-button.component";
 import SelectColor from "../select-color/select-color.component";
 import SelectSize from "../select-size/select-size.component";
 import { useEffect, useState, useContext } from "react";
-import { ReactComponent as DecreaseIcon } from "../../assets/remove-outline.svg";
-import { ReactComponent as IncreaseIcon } from "../../assets/add-outline.svg";
 import Button from "@mui/material/Button";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Rating from "@mui/material/Rating";
 
+//TODO - add interface for products
+// interface ProductCardDesktopProps {}
+
+// Products = AN Array containing an object, containing two arrays, (featuresList, and shoesList)
+// Shoe List holds 5 objects
 const ProductCardDesktop = ({ products }) => {
+  console.log("ProductCardDesktop: ", products);
+  console.log("ProductCardDesktop: ", typeof products);
+
   const { shoesList, featuresList } = products[0];
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");

@@ -26,10 +26,75 @@ const App = () => {
     };
   }, []);
 
+  // interface categoriesMapProps {
+  //   categoriesMap: {
+  //     basketball: [
+  //       {
+  //         featuresList: [];
+  //         shoesList: [];
+  //       }
+  //     ];
+  //     casual: [
+  //       {
+  //         featuresList: [];
+  //         shoesList: [];
+  //       }
+  //     ];
+  //     outdoor: [
+  //       {
+  //         featuresList: [];
+  //         shoesList: [];
+  //       }
+  //     ];
+  //     soccer: [
+  //       {
+  //         featuresList: [];
+  //         shoesList: [];
+  //       }
+  //     ];
+  //     work: [
+  //       {
+  //         featuresList: [];
+  //         shoesList: [];
+  //       }
+  //     ];
+  //   };
+  // }
+
+  // i.e. basketball: CategoriesMapProps[]
+  interface CategoriesMapProps {
+    featuresList: string[];
+    shoesList: {
+      id: number;
+      brandName: string;
+      productName: string;
+      subheader: string;
+      discountPrice: number;
+      originalPrice: number;
+      imageUrl: string;
+      color: string;
+      starRating: number;
+      totalReviews: number;
+    }[];
+  }
+
+  // CategoriesMap structure has 5 shoe types, and each type has an array with the above content
+  interface CategoriesMap {
+    basketball: CategoriesMapProps[];
+    casual: CategoriesMapProps[];
+    outdoor: CategoriesMapProps[];
+    soccer: CategoriesMapProps[];
+    work: CategoriesMapProps[];
+  }
   /* categoriesMap holds ALL of our PRODUCTS in our firebase DB. 
   collection: categories -> Documents: hats, jackets, pants, shirts, shoes */
-  const { categoriesMap, setCategoriesMap } = useContext(CategoriesContext);
-  // console.log("App.js - categoriesMap: ", categoriesMap);
+
+  // const { categoriesMap, setCategoriesMap } = useContext(CategoriesContext);
+  const { categoriesMap } = useContext(CategoriesContext);
+  // categoriesMap is an object holding 5 arrays
+  //TODO - Create an array that we will then grab data from
+  console.log("App.js - categoriesMap TYPE: ", typeof categoriesMap);
+  console.log("App.js - categoriesMap: ", categoriesMap);
 
   return (
     <Routes>

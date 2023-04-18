@@ -105,17 +105,17 @@ $activeColor: #1ccbde;
         border-bottom: 2px solid transparent;
 
         // Border Bottom at the bottom of our navigation
-        &:hover {
-          // border-bottom: 2px solid #09bef0;
-          // border-bottom: 2px solid #000;
-        }
+        // &:hover {
+        // border-bottom: 2px solid #09bef0;
+        // border-bottom: 2px solid #000;
+        // }
 
         // Changes Color Text - Replace this to add the underline left to right animation
-        .activated {
-          // color: #09bef0;
-          // color: $primaryColor;
-          // border-bottom: 2px solid #000;
-        }
+        // .activated {
+        // color: #09bef0;
+        // color: $primaryColor;
+        // border-bottom: 2px solid #000;
+        // }
 
         .nav-links {
           display: flex;

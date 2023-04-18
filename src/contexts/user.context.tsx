@@ -1,20 +1,18 @@
 import { createContext, useState, useEffect, ReactNode } from "react";
 
-type UserContextValue = {
+interface UserContextValue {
   currentUser: null;
   setCurrentUser: (user: null) => void;
-};
+}
 
 export const UserContext = createContext<UserContextValue>({
   currentUser: null,
-  // setCurrentUser: () => null,
   setCurrentUser: (user: null) => null,
-  // setCurrentUser: () => void,
 });
 
-type UserProviderProps = {
+interface UserProviderProps {
   children: ReactNode;
-};
+}
 
 export const UserProvider = ({ children }: UserProviderProps) => {
   const [currentUser, setCurrentUser] = useState(null);
