@@ -62,30 +62,33 @@ const App = () => {
   // }
 
   // i.e. basketball: CategoriesMapProps[]
-  interface CategoriesMapProps {
-    featuresList: string[];
-    shoesList: {
-      id: number;
-      brandName: string;
-      productName: string;
-      subheader: string;
-      discountPrice: number;
-      originalPrice: number;
-      imageUrl: string;
-      color: string;
-      starRating: number;
-      totalReviews: number;
-    }[];
-  }
+  //TODO - uncomment - temporary to update Menu Icon on site
+  // interface CategoriesMapProps {
+  //   featuresList: string[];
+  //   shoesList: {
+  //     id: number;
+  //     brandName: string;
+  //     productName: string;
+  //     subheader: string;
+  //     discountPrice: number;
+  //     originalPrice: number;
+  //     imageUrl: string;
+  //     color: string;
+  //     starRating: number;
+  //     totalReviews: number;
+  //   }[];
+  // }
 
   // CategoriesMap structure has 5 shoe types, and each type has an array with the above content
-  interface CategoriesMap {
-    basketball: CategoriesMapProps[];
-    casual: CategoriesMapProps[];
-    outdoor: CategoriesMapProps[];
-    soccer: CategoriesMapProps[];
-    work: CategoriesMapProps[];
-  }
+  //TODO - uncomment - temporary to update Menu Icon on site
+  // interface CategoriesMap {
+  //   basketball: CategoriesMapProps[];
+  //   casual: CategoriesMapProps[];
+  //   outdoor: CategoriesMapProps[];
+  //   soccer: CategoriesMapProps[];
+  //   work: CategoriesMapProps[];
+  // }
+
   /* categoriesMap holds ALL of our PRODUCTS in our firebase DB. 
   collection: categories -> Documents: hats, jackets, pants, shirts, shoes */
 
