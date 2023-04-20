@@ -1,12 +1,31 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, ReactNode } from "react";
 
+interface ProductDetails {
+  brandName: string;
+  color: string;
+  discountPrice: number;
+  id: number;
+  imageUrl: string;
+  originalPrice: number;
+  productName: string;
+  quantity: number;
+  size: string;
+  starRating: number;
+  subheader: string;
+  totalReviews: number;
+}
+
+// interface CartItems extends ItemToAdd {
+//   cartItems: ItemToAdd;
+// }
 // Adds item to our cart
-const addToCart = (cartItems, itemToAdd) => {
+const addToCart = (cartItems: ProductDetails[], itemToAdd: ProductDetails) => {
   //If already inside our cart then increment quantity only
   // const alreadyInCart = cartItems.find((cartItem) => cartItem.id === itemToAdd.id);
   console.log("cartItems: ", cartItems);
   const alreadyInCart = cartItems.find(
-    (cartItem) => cartItem.id === itemToAdd.id && cartItem.color === itemToAdd.color && cartItem.size === itemToAdd.size
+    (cartItem: ProductDetails) =>
+      cartItem.id === itemToAdd.id && cartItem.color === itemToAdd.color && cartItem.size === itemToAdd.size
   );
 
   //if in cart then increase its quanity
@@ -22,7 +41,7 @@ const addToCart = (cartItems, itemToAdd) => {
 };
 
 //Creates new list with items that are not equal to itemToRemove's id
-const removeFromCart = (cartItems, itemToRemove) => {
+const removeFromCart = (cartItems: ProductDetails[], itemToRemove: ProductDetails) => {
   // console.log("inside removeFromCart, cartItems: ", cartItems);
   // console.log("itemToRemove: ", itemToRemove);
   const newCartItems = cartItems.filter((item) => item.id !== itemToRemove.id);
@@ -30,8 +49,18 @@ const removeFromCart = (cartItems, itemToRemove) => {
   return newCartItems;
 };
 
+interface CartItems {
+  cartItems: ProductDetails[];
+  cartCount: number;
+  cartTotal: number;
+  taxTotal: number;
+  addItemToCart: (itemToAdd: ProductDetails) => void;
+  removeItemFromCart: (itemToRemove: ProductDetails) => void;
+  updateCartItem: (cartItemToUpdate: ProductDetails, newQuantity: number) => void;
+}
+
 //Values we are accessing
-export const CartContext = createContext({
+export const CartContext = createContext<CartItems>({
   cartItems: [],
   cartCount: 0,
   cartTotal: 0,
@@ -41,34 +70,35 @@ export const CartContext = createContext({
   updateCartItem: () => {},
 });
 
-export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+interface CartProviderProps {
+  children: ReactNode;
+}
+
+export const CartProvider = ({ children }: CartProviderProps) => {
+  // Using ProductDetails as the ProductDetails contains all information needed to render within our cart page
+  const [cartItems, setCartItems] = useState<ProductDetails[]>([]);
   const [cartCount, setCartCount] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
   const [taxTotal, setTaxTotal] = useState(0);
 
-  const addItemToCart = (itemToAdd) => {
+  const addItemToCart = (itemToAdd: ProductDetails) => {
+    console.log("itemToAdd: ", itemToAdd);
+    console.log("itemToAdd type: ", typeof itemToAdd);
     setCartItems(addToCart(cartItems, itemToAdd));
   };
 
-  const removeItemFromCart = (itemToRemove) => {
+  const removeItemFromCart = (itemToRemove: ProductDetails) => {
     setCartItems(removeFromCart(cartItems, itemToRemove));
   };
 
-  const updateCartCount = (numberOfItems) => {
+  const updateCartCount = (numberOfItems: number) => {
     // setCartCount({ cartCount: cartCount + numberOfItems });
     setCartCount(cartCount + numberOfItems);
   };
 
-  const updateCartItem = (cartItemToUpdate, newQuantity) => {
+  const updateCartItem = (cartItemToUpdate: ProductDetails, newQuantity: number) => {
     //set item quantity to new quantity
-    //find the cart item
-    //setCartItem({...cartItem, quantity: newQuantity})
-    //if cartItem id matches our passed parameter item, then give it a new quantity
-    // console.log("UpdateCartItem - cartItemToUpdate: ", cartItemToUpdate);
-    // console.log("UpdateCartItem - newQuantity: ", newQuantity);
-    // return cartItems.map((cartItem) => (cartItem.id === cartItemToUpdate.id ? { ...cartItem, quantity: newQuantity } : cartItem));
-    const updatedCartItems = cartItems.map((cartItem) =>
+    const updatedCartItems = cartItems.map((cartItem: ProductDetails) =>
       cartItem.id === cartItemToUpdate.id ? { ...cartItem, quantity: newQuantity } : cartItem
     );
     setCartItems(updatedCartItems);

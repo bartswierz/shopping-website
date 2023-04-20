@@ -14,8 +14,8 @@ import Rating from "@mui/material/Rating";
 // Products = AN Array containing an object, containing two arrays, (featuresList, and shoesList)
 // Shoe List holds 5 objects
 const ProductCardDesktop = ({ products }) => {
-  console.log("ProductCardDesktop: ", products);
-  console.log("ProductCardDesktop: ", typeof products);
+  // console.log("ProductCardDesktop: ", products);
+  // console.log("ProductCardDesktop: ", typeof products);
 
   const { shoesList, featuresList } = products[0];
   const [color, setColor] = useState("");

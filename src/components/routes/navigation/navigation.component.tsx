@@ -38,7 +38,7 @@ const Navigation = () => {
   // console.log("cartCount: ", cartCount);
   // const [value, setValue] = useState(0);
 
-  console.log("CURRENT USER: ", currentUser);
+  // console.log("CURRENT USER: ", currentUser);
 
   const [isMobile, setIsMobile] = useState(false);
 

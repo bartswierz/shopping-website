@@ -92,9 +92,6 @@ const App = () => {
   // const { categoriesMap, setCategoriesMap } = useContext(CategoriesContext);
   const { categoriesMap } = useContext(CategoriesContext);
   // categoriesMap is an object holding 5 arrays
-  //TODO - Create an array that we will then grab data from
-  console.log("App.js - categoriesMap TYPE: ", typeof categoriesMap);
-  console.log("App.js - categoriesMap: ", categoriesMap);
 
   return (
     <Routes>

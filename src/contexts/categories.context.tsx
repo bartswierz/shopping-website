@@ -94,10 +94,6 @@ export const CategoriesProvider = ({ children }: CategoriesProviderProps) => {
     ],
   });
 
-  useEffect(() => {
-    console.log("categoriesMap: ", categoriesMap);
-  }, [categoriesMap]);
-
   const [isLoading, setIsLoading] = useState(true);
 
   //This will FETCH all of our firebase product data at the start of the app
