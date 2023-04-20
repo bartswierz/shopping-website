@@ -31,25 +31,31 @@ export interface ProductCardProps {
   ];
 }
 
+export interface Product {
+  brandName: string;
+  color: string;
+  discountPrice: number;
+  id: number;
+  imageUrl: string;
+  originalPrice: number;
+  productName: string;
+  starRating: number;
+  subheader: string;
+  totalReviews: number;
+}
+
 // Products = AN Array containing an object, containing two arrays, (featuresList, and shoesList)
 // Shoe List holds 5 objects
 const ProductCardDesktop: React.FC<ProductCardProps> = ({ products }: ProductCardProps) => {
-  const { shoesList } = products[0];
-  const { featuresList } = products[0];
-  console.log("shoesList: ", shoesList);
-  const [color, setColor] = useState<string>("");
-  const [size, setSize] = useState<string>("");
+  const { shoesList, featuresList } = products[0];
+  const [color, setColor] = useState<string>("Color");
+  const [size, setSize] = useState<string>("Size");
   const [index, setIndex] = useState<number>(0);
-  const [maxIndex, setMaxIndex] = useState<number>(shoesList.length - 1);
+  const maxIndex: number = shoesList.length - 1;
   const [displayShoe, setDisplayShoe] = useState(shoesList[index]);
-  // const [displayShoe, setDisplayShoe] = useState(shoesList[0]);
-  // ARRAY LIST OF SHOE FEATURES
   const [featureList, setFeatureList] = useState<string[]>(featuresList);
-
-  console.log("featuresList: ", featureList);
   //CONTAINS ALL INFORMATION ON THE CURRENT SHOE TO BE PASSED TO OUR CART BUTTON COMPONENT
-  // const [product, setProduct] = useState(shoesList[0]);
-  const [product, setProduct] = useState<{}>(shoesList[index]);
+  const [product, setProduct] = useState<Product>(shoesList[index]);
   // console.log("product: ", product);
 
   //Update new shoe & receive product details
@@ -58,22 +64,16 @@ const ProductCardDesktop: React.FC<ProductCardProps> = ({ products }: ProductCar
     setProduct(shoesList[index]);
   }, [index, shoesList]);
 
-  // Passed as prop to select-color and pass back our value
-  // const colorHandler = (event: ChangeEvent<HTMLSelectElement>): void => {
-  const colorHandler = (event: string): void => {
-    console.log("PRODUCT_CARD event: ", event);
-    // const color = event.target.value;
-    // console.log("Color Changed - color:", color);
-    setColor((color) => color);
+  // Callback Function - Passed colorHandler as prop
+  const colorHandler = (colorPicked: string): void => {
+    // console.log("colorPicked: ", colorPicked);
+    setColor(colorPicked);
   };
 
-  // const sizeHandler = (event: ChangeEvent<HTMLInputElement>): void => {
-  const sizeHandler = (event: ChangeEvent<HTMLInputElement>): void => {
-    console.log("PRODUCT_CARD event: ", event);
-    const size = event.target.value;
-    // console.log("Size Change:", size);
-    // setSize(size);
-    setSize((size) => size);
+  // Callback Function - Passed sizeHandler as prop
+  const sizeHandler = (sizePicked: string): void => {
+    // console.log("sizePicked: ", sizePicked);
+    setSize(sizePicked);
   };
 
   //DECREMENT INDEX OR RESET TO maxIndex(LAST ITEM) TO RENDER CURRENT SHOE

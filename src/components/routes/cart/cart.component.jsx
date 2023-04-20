@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 
 const Cart = (props) => {
   const { cartItems, removeItemFromCart, cartCount, cartTotal, taxTotal, updateCartCount, updateCartItem } = useContext(CartContext);
-  console.log("cartItems in cart: ", cartItems);
+  // console.log("cartItems in cart: ", cartItems);
 
   const subtotalFixed = parseFloat(cartTotal).toFixed(2);
   const taxTotalFixed = parseFloat(taxTotal).toFixed(2);

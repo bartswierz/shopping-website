@@ -4,7 +4,7 @@ interface ProductDetails {
   brandName: string;
   color: string;
   discountPrice: number;
-  id: number;
+  id: string;
   imageUrl: string;
   originalPrice: number;
   productName: string;
@@ -81,8 +81,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   const [taxTotal, setTaxTotal] = useState(0);
 
   const addItemToCart = (itemToAdd: ProductDetails) => {
-    console.log("itemToAdd: ", itemToAdd);
-    console.log("itemToAdd type: ", typeof itemToAdd);
+    // console.log("itemToAdd: ", itemToAdd);
     setCartItems(addToCart(cartItems, itemToAdd));
   };
 

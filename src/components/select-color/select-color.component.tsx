@@ -29,7 +29,8 @@ interface SelectColorProps {
 const SelectColor: React.FC<SelectColorProps> = ({ onChange, setColor }: SelectColorProps) => {
   // Product Type = shirt, pants, jacket, shoes, hats / Passed in from product-card
   // console.log("productType = ", productType);
-  const [selectValue, setSelectValue] = useState<string>("Black");
+  const [selectValue, setSelectValue] = useState<string>("Color");
+  // const [selectValue, setSelectValue] = useState<string>("Black");
   // const [color, setColor] = useState("");
 
   // Color options

@@ -2,26 +2,28 @@ import "./product-card-mobile.styles.scss";
 import CartButton from "../buttons/cart-button/cart-button.component";
 import SelectColor from "../select-color/select-color.component";
 import SelectSize from "../select-size/select-size.component";
-import { useEffect, useState, useContext } from "react";
-import { ReactComponent as DecreaseIcon } from "../../assets/remove-outline.svg";
-import { ReactComponent as IncreaseIcon } from "../../assets/add-outline.svg";
+import { useEffect, useState, useContext, Key } from "react";
+// import DecreaseIcon  from "../../assets/remove-outline.svg";
+// import IncreaseIcon  from "../../assets/add-outline.svg";
 import Button from "@mui/material/Button";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Rating from "@mui/material/Rating";
+import { ProductCardProps, Product } from "../product-card-desktop/product-card-desktop.component";
 
-const ProductCardMobile = ({ products }) => {
+const ProductCardMobile: React.FC<ProductCardProps> = ({ products }: ProductCardProps) => {
   const { shoesList, featuresList } = products[0];
-  const [color, setColor] = useState("");
-  const [size, setSize] = useState("");
+  const [color, setColor] = useState<string>("Color");
+  const [size, setSize] = useState<string>("Size");
   const [displayShoe, setDisplayShoe] = useState(shoesList[0]);
   // ARRAY LIST OF SHOE FEATURES
-  const [featureList, setFeatureList] = useState(featuresList);
+  const [featureList, setFeatureList] = useState<string[]>(featuresList);
   //CONTAINS ALL INFORMATION ON THE CURRENT SHOE TO BE PASSED TO OUR CART BUTTON COMPONENT
-  const [product, setProduct] = useState(shoesList[0]);
+  const [product, setProduct] = useState<Product>(shoesList[0]);
   //USED TO RENDER PREV/NEXT SHOE
-  const [index, setIndex] = useState(0);
-  const [maxIndex, setMaxIndex] = useState(shoesList.length - 1);
+  const [index, setIndex] = useState<number>(0);
+  const maxIndex: number = shoesList.length - 1;
+  // const [maxIndex, setMaxIndex] = useState(shoesList.length - 1);
 
   //Update new shoe & receive product details
   useEffect(() => {
@@ -29,18 +31,16 @@ const ProductCardMobile = ({ products }) => {
     setProduct(shoesList[index]);
   }, [index]);
 
-  const colorHandler = (event) => {
-    // console.log("PRODUCT_CARD event: ", event);
-    const color = event.target.value;
-    // console.log("Color Changed - color:", color);
-    setColor(color);
+  // Callback Function - Passed colorHandler as prop
+  const colorHandler = (colorPicked: string): void => {
+    // console.log("colorPicked: ", colorPicked);
+    setColor(colorPicked);
   };
 
-  const sizeHandler = (event) => {
-    // console.log("PRODUCT_CARD event: ", event);
-    const size = event.target.value;
-    // console.log("Size Change:", size);
-    setSize(size);
+  // Callback Function - Passed sizeHandler as prop
+  const sizeHandler = (sizePicked: string): void => {
+    // console.log("sizePicked: ", sizePicked);
+    setSize(sizePicked);
   };
 
   //DECREMENT INDEX OR RESET TO maxIndex(LAST ITEM) TO RENDER CURRENT SHOE
@@ -117,7 +117,7 @@ const ProductCardMobile = ({ products }) => {
               {/* PRODUCT FEATURES LIST */}
               <h2 className="product-card-features-header">Features</h2>
               <ul className="product-card-features-list">
-                {featureList.map((feature, idx) => (
+                {featureList.map((feature: string, idx: Key) => (
                   <li key={idx}>{feature}</li>
                 ))}
               </ul>
@@ -131,13 +131,15 @@ const ProductCardMobile = ({ products }) => {
                 {/* SIZE */}
                 <div className="product-card-size">
                   <span>SIZE</span>
-                  <SelectSize setSize={setSize} onChange={(event) => sizeHandler(event)} />
+                  <SelectSize setSize={setSize} onChange={sizeHandler} />
+                  {/* <SelectSize setSize={setSize} onChange={(event) => sizeHandler(event)} /> */}
                 </div>
 
                 {/* COLOR */}
                 <div className="product-card-color">
                   <span>COLOR</span>
-                  <SelectColor setColor={setColor} onChange={(event) => colorHandler(event)} />
+                  <SelectColor setColor={setColor} onChange={colorHandler} />
+                  {/* <SelectColor setColor={setColor} onChange={(event) => colorHandler(event)} /> */}
                 </div>
               </div>
 
