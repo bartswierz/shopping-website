@@ -1,9 +1,10 @@
-const SelectSize = ({ productType, onChange, setSize }) => {
+// const SelectSize = ({ productType, onChange, setSize }) => {
+const SelectSize = ({ onChange, setSize }) => {
   // Product Type = shirt, pants, jacket, shoes, hats / Passed in from product-card
   // console.log("productType = ", productType);
 
   // Color options
-  const sizes = ["Size", "S", "M", "L", "XL", "XXL"];
+  // const sizes = ["Size", "S", "M", "L", "XL", "XXL"];
 
   const shoeSizes = ["Size", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5", "11", "11.5", "12", "12.5", "13"];
 

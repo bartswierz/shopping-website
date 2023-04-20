@@ -2,7 +2,7 @@ import "./product-card-desktop.styles.scss";
 import CartButton from "../buttons/cart-button/cart-button.component";
 import SelectColor from "../select-color/select-color.component";
 import SelectSize from "../select-size/select-size.component";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, ChangeEvent, Key } from "react";
 import Button from "@mui/material/Button";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
@@ -11,42 +11,69 @@ import Rating from "@mui/material/Rating";
 //TODO - add interface for products
 // interface ProductCardDesktopProps {}
 
+export interface ProductCardProps {
+  products: [
+    {
+      featuresList: string[];
+      shoesList: {
+        brandName: string;
+        color: string;
+        discountPrice: number;
+        id: number;
+        imageUrl: string;
+        originalPrice: number;
+        productName: string;
+        starRating: number;
+        subheader: string;
+        totalReviews: number;
+      }[];
+    }
+  ];
+}
+
 // Products = AN Array containing an object, containing two arrays, (featuresList, and shoesList)
 // Shoe List holds 5 objects
-const ProductCardDesktop = ({ products }) => {
-  // console.log("ProductCardDesktop: ", products);
-  // console.log("ProductCardDesktop: ", typeof products);
-
-  const { shoesList, featuresList } = products[0];
-  const [color, setColor] = useState("");
-  const [size, setSize] = useState("");
-  const [displayShoe, setDisplayShoe] = useState(shoesList[0]);
+const ProductCardDesktop: React.FC<ProductCardProps> = ({ products }: ProductCardProps) => {
+  const { shoesList } = products[0];
+  const { featuresList } = products[0];
+  console.log("shoesList: ", shoesList);
+  const [color, setColor] = useState<string>("");
+  const [size, setSize] = useState<string>("");
+  const [index, setIndex] = useState<number>(0);
+  const [maxIndex, setMaxIndex] = useState<number>(shoesList.length - 1);
+  const [displayShoe, setDisplayShoe] = useState(shoesList[index]);
+  // const [displayShoe, setDisplayShoe] = useState(shoesList[0]);
   // ARRAY LIST OF SHOE FEATURES
-  const [featureList, setFeatureList] = useState(featuresList);
+  const [featureList, setFeatureList] = useState<string[]>(featuresList);
+
+  console.log("featuresList: ", featureList);
   //CONTAINS ALL INFORMATION ON THE CURRENT SHOE TO BE PASSED TO OUR CART BUTTON COMPONENT
-  const [product, setProduct] = useState(shoesList[0]);
-  //USED TO RENDER PREV/NEXT SHOE
-  const [index, setIndex] = useState(0);
-  const [maxIndex, setMaxIndex] = useState(shoesList.length - 1);
+  // const [product, setProduct] = useState(shoesList[0]);
+  const [product, setProduct] = useState<{}>(shoesList[index]);
+  // console.log("product: ", product);
 
   //Update new shoe & receive product details
   useEffect(() => {
     setDisplayShoe(shoesList[index]);
     setProduct(shoesList[index]);
-  }, [index]);
+  }, [index, shoesList]);
 
-  const colorHandler = (event) => {
-    // console.log("PRODUCT_CARD event: ", event);
-    const color = event.target.value;
+  // Passed as prop to select-color and pass back our value
+  // const colorHandler = (event: ChangeEvent<HTMLSelectElement>): void => {
+  const colorHandler = (event: string): void => {
+    console.log("PRODUCT_CARD event: ", event);
+    // const color = event.target.value;
     // console.log("Color Changed - color:", color);
-    setColor(color);
+    setColor((color) => color);
   };
 
-  const sizeHandler = (event) => {
-    // console.log("PRODUCT_CARD event: ", event);
+  // const sizeHandler = (event: ChangeEvent<HTMLInputElement>): void => {
+  const sizeHandler = (event: ChangeEvent<HTMLInputElement>): void => {
+    console.log("PRODUCT_CARD event: ", event);
     const size = event.target.value;
     // console.log("Size Change:", size);
-    setSize(size);
+    // setSize(size);
+    setSize((size) => size);
   };
 
   //DECREMENT INDEX OR RESET TO maxIndex(LAST ITEM) TO RENDER CURRENT SHOE
@@ -119,7 +146,7 @@ const ProductCardDesktop = ({ products }) => {
 
           {/* PRODUCT FEATURES LIST */}
           <ul className="product-card-features-list">
-            {featureList.map((feature, idx) => (
+            {featureList.map((feature: string, idx: Key) => (
               <li key={idx}>{feature}</li>
             ))}
           </ul>
@@ -131,13 +158,15 @@ const ProductCardDesktop = ({ products }) => {
               {/* SIZE */}
               <div className="product-card-size">
                 <span>SIZE</span>
-                <SelectSize setSize={setSize} onChange={(event) => sizeHandler(event)} />
+                {/* <SelectSize setSize={setSize} onChange={(event) => sizeHandler(event)} /> */}
+                <SelectSize setSize={setSize} onChange={sizeHandler} />
               </div>
 
               {/* COLOR */}
               <div className="product-card-color">
                 <span>COLOR</span>
-                <SelectColor setColor={setColor} onChange={(event) => colorHandler(event)} />
+                <SelectColor setColor={setColor} onChange={colorHandler} />
+                {/* <SelectColor setColor={setColor} onChange={(event) => colorHandler(event)} /> */}
               </div>
             </div>
 

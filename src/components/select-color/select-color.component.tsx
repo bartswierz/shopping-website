@@ -3,7 +3,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 //Passing this into our select option
 const selectSX = {
@@ -19,17 +19,24 @@ const selectSX = {
   },
 };
 
-const SelectColor = ({ productType, onChange, setColor }) => {
+interface SelectColorProps {
+  // onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
+  onChange: (event: string) => void;
+  setColor: (color: string) => void;
+}
+
+// const SelectColor = ({ productType, onChange, setColor }) => {
+const SelectColor: React.FC<SelectColorProps> = ({ onChange, setColor }: SelectColorProps) => {
   // Product Type = shirt, pants, jacket, shoes, hats / Passed in from product-card
   // console.log("productType = ", productType);
-  const [selectValue, setSelectValue] = useState("Black");
+  const [selectValue, setSelectValue] = useState<string>("Black");
   // const [color, setColor] = useState("");
 
   // Color options
   const colors = ["Color", "Black", "Grey", "White", "Navy", "Red", "Green", "Purple", "Yellow"];
 
-  const colorHandler = (event) => {
-    // console.log("SELECT event: ", event);
+  const colorHandler = (event: ChangeEvent<HTMLSelectElement>) => {
+    // console.log("SELECT event: ", event.target.value);
     const color = event.target.value;
     setSelectValue(color);
     // console.log("Color Picked:", color);
@@ -38,6 +45,10 @@ const SelectColor = ({ productType, onChange, setColor }) => {
     if (color !== "Color" && color !== "") {
       // console.log("Color set, color: ", color);
       setColor(color);
+      console.log("event.target.value: ", event.target.value);
+
+      // onChange(event.target.value);
+      onChange(color);
     }
   };
 
@@ -72,8 +83,9 @@ const SelectColor = ({ productType, onChange, setColor }) => {
   return (
     <div>
       {/* // Product is NOT pants, render Colors list */}
-      <select onChange={(event) => colorHandler(event)}>
-        {colors.map((color) => {
+      {/* <select onChange={(event) => colorHandler(event)}> */}
+      <select onChange={colorHandler}>
+        {colors.map((color: string) => {
           return (
             <option key={color} className="option">
               {color}

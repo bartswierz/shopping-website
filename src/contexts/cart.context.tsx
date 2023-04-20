@@ -54,6 +54,7 @@ interface CartItems {
   addItemToCart: (itemToAdd: ProductDetails) => void;
   removeItemFromCart: (itemToRemove: ProductDetails) => void;
   updateCartItem: (cartItemToUpdate: ProductDetails, newQuantity: number) => void;
+  updateCartCount: (numberOfItems: number) => void;
 }
 
 //Values we are accessing
@@ -65,6 +66,7 @@ export const CartContext = createContext<CartItems>({
   addItemToCart: () => {},
   removeItemFromCart: () => {},
   updateCartItem: () => {},
+  updateCartCount: () => {},
 });
 
 interface CartProviderProps {

@@ -24,7 +24,7 @@ const buttonSX = {
 };
 
 //Uses product name,
-const createUniqueId = (productName, color, size) => {
+const createUniqueId = (productName, color: string, size: string) => {
   //i.e. "Vans Old Skool ShoesRed10.5"
   const cartIdContent = productName + color + size;
 
@@ -32,24 +32,40 @@ const createUniqueId = (productName, color, size) => {
   return cartIdContent.replace(/[ .]/g, "");
 };
 
-const CartButton = ({ product, quantity, color, size }) => {
+interface CartButtonProps {
+  product: any;
+  color: string;
+  size: string;
+}
+
+// const CartButton = ({ product, quantity, color, size }) => {
+const CartButton: React.FC<CartButtonProps> = ({ product, color, size }: CartButtonProps) => {
   const { addItemToCart, cartItems, cartCount, updateCartCount } = useContext(CartContext);
 
   // Adds the item to our CartItems array within our Cart Context
-  const handleClick = (product, quantity, color, size, resetOptionsHandler) => {
-    console.log("cart btn - inside handleClick - resetOptions: ", resetOptionsHandler);
-    // console.log("in handleClick, color: ", color, "& size: ", size);
+  // const handleClick = (product, quantity = 1, color, size, resetOptionsHandler) => {
+  //resetOptionsHandler will change color/size back to default
+  // const handleClick = (product, color, size, resetOptionsHandler) => {
+  const handleClick = (product, color: string, size: string) => {
+    // console.log("cart btn - inside handleClick - resetOptions: ", resetOptionsHandler);
+    console.log("in handleClick, color: ", color, "& size: ", size);
     if (color !== "" && color !== "Color" && size !== "" && size !== "Size") {
       const cartItemId = createUniqueId(product.productName, color, size);
 
       /*Passing custom id to prevent incorrect behavior with add/remove buttons within cart 
       ...product = id, description, imageUrl, price
       */
-      const itemToAdd = { ...product, id: cartItemId, quantity, color, size };
+      // const itemToAdd = { ...product, id: cartItemId, quantity, color, size };
+      const itemToAdd = { ...product, id: cartItemId, quantity: 1, color, size };
       addItemToCart(itemToAdd);
 
       //Passing the quantity value of our item to update our current cart count inside cart context using a reducer
-      updateCartCount(quantity);
+      //TODO - Broken because we DO NOT HAVE updateCartCount in our cartItems interface
+      updateCartCount(1);
+      // updateCartCount(quantity);
+
+      //TODO - Add resetOptions function here
+      //resetOptions();
     } else {
       alert("Please select a size and color.");
     }
@@ -62,7 +78,8 @@ const CartButton = ({ product, quantity, color, size }) => {
         sx={buttonSX}
         className="cart-button"
         onClick={() => {
-          handleClick(product, (quantity = 1), color, size);
+          handleClick(product, color, size);
+          // handleClick(product, (quantity = 1), color, size);
         }}
 
         // onClick={() => handleClick(product, (quantity = 1), color, size, )}
