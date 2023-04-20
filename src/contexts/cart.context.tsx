@@ -15,9 +15,6 @@ interface ProductDetails {
   totalReviews: number;
 }
 
-// interface CartItems extends ItemToAdd {
-//   cartItems: ItemToAdd;
-// }
 // Adds item to our cart
 const addToCart = (cartItems: ProductDetails[], itemToAdd: ProductDetails) => {
   //If already inside our cart then increment quantity only
@@ -77,7 +74,7 @@ interface CartProviderProps {
 export const CartProvider = ({ children }: CartProviderProps) => {
   // Using ProductDetails as the ProductDetails contains all information needed to render within our cart page
   const [cartItems, setCartItems] = useState<ProductDetails[]>([]);
-  const [cartCount, setCartCount] = useState(0);
+  const [cartCount, setCartCount] = useState<number>(0);
   const [cartTotal, setCartTotal] = useState(0);
   const [taxTotal, setTaxTotal] = useState(0);
 
