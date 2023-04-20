@@ -1,17 +1,8 @@
 import { Outlet, Link, NavLink } from "react-router-dom";
-import { Fragment, useContext, useState, useEffect, useRef } from "react";
-// import { ReactComponent as HomeLogo } from "../../../assets/home-outline.svg";
-// import { ReactComponent as HomeLogo } from " @/assets/icon.svg";
-// import { HomeLogo } from " @/assets/icon.svg";
-// import { ReactComponent as CartIcon } from "../../../assets/cart-outline.svg";
-// import { ReactComponent as CartIcon } from "@/assets/cart-outline.svg";
+import { Fragment, useContext, useState, useEffect } from "react";
 import HomeLogo from "../../../assets/home-outline.svg";
 import CartIcon from "../../../assets/cart-outline.svg";
-// import HomeLogo from "@/assets/home-outline.svg";
-// import CartIcon from "@/assets/cart-outline.svg";
-import Checkout from "../checkout/checkout.component";
-import Cart from "../cart/cart.component";
-import Authentication from "../authentication/authentication.component";
+import CartIconMenu from "../../../assets/cart-outline-menu.svg";
 import { CartContext } from "../../../contexts/cart.context";
 import { UserContext } from "../../../contexts/user.context";
 import { signOutUser } from "../../../utils/firebase/firebase.utils";
@@ -35,8 +26,6 @@ const Navigation = () => {
 
   // Will be used for authentication/authorizing user using firebase
   const { currentUser, setCurrentUser } = useContext(UserContext);
-  // console.log("cartCount: ", cartCount);
-  // const [value, setValue] = useState(0);
 
   // console.log("CURRENT USER: ", currentUser);
 
@@ -89,30 +78,6 @@ const Navigation = () => {
               </div>
               {/* <HomeLogo className="navbar-icon home-logo" onClick={closeMobileMenu} /> */}
             </Link>
-            {/* TODO - Turn these into hamburger once screen is 600px */}
-            {/* <div className="nav-links"> */}
-            {/* If currentUser EXISTS(user input email and password inside our Sign In Form, then display 'Sign Out' to indicate user is logged in, else display Sign In */}
-            {/* {currentUser ? (
-            <Link to="/authentication" element={<Authentication />} onClick={signoutHandler}>
-              Sign Out
-            </Link>
-          ) : (
-            <Link to="/authentication" element={<Authentication />}>
-              Sign In
-            </Link>
-          )} */}
-            {/* <Link to="/checkout" element={<Checkout />}>
-            Checkout
-          </Link>
-          // <Link to="/cart" element={<Cart />}>
-            
-          //   <div className="cart-icon-container">
-          //     <CartIcon className="cart-icon" />
-          //     <div className="cart-item-count">{cartCount}</div>
-          //   </div>
-          // </Link> */}
-
-            {/* className={({ isActive }) => "nav-links" + (isActive ? " activated" : "")} ADDS 'activated' class to the DOM upon user clicking one of the Nav Links*/}
 
             <div className="menu-icon" onClick={handleClick}>
               {click ? <FaTimes /> : <GiHamburgerMenu />}
@@ -204,7 +169,8 @@ const Navigation = () => {
                 >
                   <div className="cart-icon-container">
                     {/* <CartIcon className="cart-icon" /> */}
-                    <img src={CartIcon} className="cart-icon" />
+                    {/* <img src={CartIcon} className="cart-icon" /> */}
+                    <img src={isMobile ? CartIconMenu : CartIcon} className="cart-icon" />
                     <div className="cart-item-count">{cartCount}</div>
                   </div>
                   {isMobile ? <span className="menu-link-text nav-link-text">Cart</span> : ""}

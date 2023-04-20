@@ -285,6 +285,16 @@ $activeColor: #1ccbde;
     // color: #fff;
   }
 
+  .home-logo {
+    color: $primaryColor;
+    // background-color: $primaryColor;
+  }
+
+  // .nav-links div {
+  //   color: $primaryColor;
+  //   // background-color: $primaryColor;
+  // }
+
   .nav-links:not(:last-child) {
     border-bottom: 1px solid $primaryColor;
   }
