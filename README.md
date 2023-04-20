@@ -8,8 +8,11 @@ https://alpha-footwear.netlify.app/
 ## Built With ##
  
 * React
+* TypeScript
 * SCSS
-
+* Firebase
+* Material UI
+* Firebase
 
 ## Features ##
 Feature  | Description
