@@ -91,11 +91,11 @@ export const getCategoriesAndDocuments = async () => {
 
   // console.log("BEFORE categoryMap function: ", querySnapshot);
   //We are doing a reduce to end up with ONE object of all the products collected. There will be 5 iterations because we have 5 TYPES of clothing(shirts, pants, jackets, hats, and shoes). we are passing in a empty object as the initial value
-  //TODO - MODIFY THIS TO GET OUR DATA FROM FIREBASE
   const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
     //collecting individual objects each iteration and placing it into our object. Once complete we return it in the categoryMap variable
     const { title, items } = docSnapshot.data();
     // i.e. hats: array(6) - Collecting each object based on its title
+
     acc[title.toLowerCase()] = items;
     // console.log("acc: ", acc);
     return acc;
