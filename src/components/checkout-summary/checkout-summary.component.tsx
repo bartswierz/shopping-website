@@ -32,7 +32,7 @@ const CostSummary = ({ shippingChoice }: CostSummaryProps) => {
 
   const formattedCartTotal = formatNumber(cartTotal);
   const formattedTaxTotal = formatNumber(taxTotal);
-  const formattedTotalCost = formatNumber(cartTotal + taxTotal);
+  const formattedTotalCost = formatNumber(cartTotal + taxTotal + shippingChoice);
 
   return (
     <div className="checkout-summary-container">
