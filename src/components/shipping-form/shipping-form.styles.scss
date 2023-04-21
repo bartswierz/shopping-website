@@ -118,6 +118,9 @@ $activeColor: #1ccbde;
           color: black;
         }
       }
+      .checkout-member-link {
+        font-size: 1.6rem;
+      }
     }
 
     .form-footer {
@@ -139,34 +142,6 @@ $activeColor: #1ccbde;
         // min-width: 200px;
         width: 100%;
         max-width: 120px;
-      }
-    }
-
-    .form-radio-container {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 1rem;
-
-      .form-radio-header {
-        font-size: $size;
-        margin-bottom: 1.5rem;
-      }
-
-      .form-radio-item {
-        display: flex;
-        gap: 0.5rem;
-        margin-bottom: 7px;
-
-        .shipping-type {
-          font-weight: 700;
-          font-size: 1.2rem;
-        }
-
-        .shipping-price {
-          color: $primaryColor;
-          font-size: 1.2rem;
-          font-weight: 800;
-        }
       }
     }
   }

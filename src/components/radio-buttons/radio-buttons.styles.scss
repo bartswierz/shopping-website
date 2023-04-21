@@ -1,0 +1,28 @@
+// $primaryColor: #1de5fd;
+$primaryColor: #13737d;
+
+.radio-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+
+  .form-radio-header {
+    font-size: 1.6rem;
+    width: 16rem;
+
+    align-self: flex-start;
+    font-weight: bold;
+  }
+
+  .radio-text {
+    font-size: 1.6rem;
+
+    .radio-text-highlight {
+      color: $primaryColor;
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+  }
+}

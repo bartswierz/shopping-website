@@ -1,6 +1,9 @@
 import "./shipping-form.styles.scss";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
+import SelectState from "../select-state/select-state.component";
+import RadioButtons from "../radio-buttons/radio-buttons.component";
+import { useEffect, useState } from "react";
 
 const buttonSX = {
   backgroundColor: "#1de5fd",
@@ -18,7 +21,27 @@ const buttonSX = {
   color: "#444",
 };
 
-const ShippingForm: React.FC = () => {
+interface ShippingFormProps {
+  shippingChoiceCallback: (choice: string) => void;
+}
+
+const ShippingForm: React.FC<ShippingFormProps> = ({ shippingChoiceCallback }: ShippingFormProps) => {
+  // const [shippingChoice, setShippingChoice] = useState<string | number>("");
+
+  // // TODO - CALLBACK - RETURNS USER CHOICE FROM "RADIOBUTTON"
+  // const shippingChoiceHandler = (shippingChoice: string): void => {
+  //   console.log("shippingChoice: ", shippingChoice);
+  //   // setShippingChoice(shippingChoice);
+
+  //   if (shippingChoice === "overnight") setShippingChoice(23);
+  //   else if (shippingChoice === "twoday") setShippingChoice(14);
+  //   else setShippingChoice("FREE");
+  // };
+
+  // useEffect(() => {
+  //   console.log("shippingChoice: ", shippingChoice);
+  // }, [shippingChoice]);
+
   return (
     <div className="checkout-shipping-container">
       {/* Header */}
@@ -72,78 +95,12 @@ const ShippingForm: React.FC = () => {
           <br /> */}
         <div className="form-item-container">
           <label className="form-label">State</label>
-          <select className="select-box">
-            <option value="SelectState">Select State</option>
-            <option value="AL">Alabama</option>
-            <option value="AK">Alaska</option>
-            <option value="AZ">Arizona</option>
-            <option value="AR">Arkansas</option>
-            <option value="CA">California</option>
-            <option value="CO">Colorado</option>
-            <option value="CT">Connecticut</option>
-            <option value="DE">Delaware</option>
-            <option value="DC">District Of Columbia</option>
-            <option value="FL">Florida</option>
-            <option value="GA">Georgia</option>
-            <option value="HI">Hawaii</option>
-            <option value="ID">Idaho</option>
-            <option value="IL">Illinois</option>
-            <option value="IN">Indiana</option>
-            <option value="IA">Iowa</option>
-            <option value="KS">Kansas</option>
-            <option value="KY">Kentucky</option>
-            <option value="LA">Louisiana</option>
-            <option value="ME">Maine</option>
-            <option value="MD">Maryland</option>
-            <option value="MA">Massachusetts</option>
-            <option value="MI">Michigan</option>
-            <option value="MN">Minnesota</option>
-            <option value="MS">Mississippi</option>
-            <option value="MO">Missouri</option>
-            <option value="MT">Montana</option>
-            <option value="NE">Nebraska</option>
-            <option value="NV">Nevada</option>
-            <option value="NH">New Hampshire</option>
-            <option value="NJ">New Jersey</option>
-            <option value="NM">New Mexico</option>
-            <option value="NY">New York</option>
-            <option value="NC">North Carolina</option>
-            <option value="ND">North Dakota</option>
-            <option value="OH">Ohio</option>
-            <option value="OK">Oklahoma</option>
-            <option value="OR">Oregon</option>
-            <option value="PA">Pennsylvania</option>
-            <option value="RI">Rhode Island</option>
-            <option value="SC">South Carolina</option>
-            <option value="SD">South Dakota</option>
-            <option value="TN">Tennessee</option>
-            <option value="TX">Texas</option>
-            <option value="UT">Utah</option>
-            <option value="VT">Vermont</option>
-            <option value="VA">Virginia</option>
-            <option value="WA">Washington</option>
-            <option value="WV">West Virginia</option>
-            <option value="WI">Wisconsin</option>
-            <option value="WY">Wyoming</option>
-          </select>
+          <SelectState />
         </div>
         <br />
 
-        {/* Delivery Method */}
         <div className="form-radio-container">
-          <h3 className="form-radio-header">Select Delivery Method</h3>
-          <div className="form-radio-item">
-            <input type="radio" value="FREE" name="FREE" />
-            <label className="form-label">
-              <span className="shipping-type">Standard</span> <span className="shipping-price">FREE</span>
-            </label>
-          </div>
-          <div className="form-radio-item">
-            <input type="radio" value="Express" name="Express" />
-            <label className="form-label">
-              <span className="shipping-type">Express</span> <span className="shipping-price">$20</span>
-            </label>
-          </div>
+          <RadioButtons shippingChoiceCallback={shippingChoiceCallback} />
         </div>
 
         <div className="form-item-container">
@@ -162,11 +119,11 @@ const ShippingForm: React.FC = () => {
         </div>
         <br />
 
-        <div className="checkout-member-text">
-          <span>
+        <div>
+          <span className="checkout-member-text">
             Already a member?
             <Link to="/authentication">
-              <span className="checkout-sign-in-link">Sign In</span>
+              <span className="checkout-sign-in-link checkout-member-link">Sign In</span>
             </Link>
           </span>
         </div>
