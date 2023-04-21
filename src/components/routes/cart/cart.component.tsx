@@ -11,7 +11,7 @@ const Cart: React.FC = () => {
 
   // REMOVE AN ITEM FROM THE CART
   const removeItem = (itemToRemove: ProductDetails): void => {
-    console.log("removeItem, idToRemove: ", itemToRemove);
+    // console.log("removeItem, idToRemove: ", itemToRemove);
     removeItemFromCart(itemToRemove);
   };
 
