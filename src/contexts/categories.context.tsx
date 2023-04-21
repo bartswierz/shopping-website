@@ -53,14 +53,6 @@ interface CategoriesProviderProps {
 }
 
 export const CategoriesProvider = ({ children }: CategoriesProviderProps) => {
-  // const [categoriesMap, setCategoriesMap] = useState({});
-  // const [categoriesMap, setCategoriesMap] = useState<CategoriesContextValue["categoriesMap"]>({
-  //   basketball: { featuresList: [], shoesList: [] },
-  //   casual: { featuresList: [], shoesList: [] },
-  //   outdoor: { featuresList: [], shoesList: [] },
-  //   soccer: { featuresList: [], shoesList: [] },
-  //   work: { featuresList: [], shoesList: [] },
-  // });
   const [categoriesMap, setCategoriesMap] = useState<CategoriesMap>({
     basketball: [
       {
@@ -98,17 +90,11 @@ export const CategoriesProvider = ({ children }: CategoriesProviderProps) => {
 
   //This will FETCH all of our firebase product data at the start of the app
   useEffect(() => {
-    // const getCategoriesMap = async () => {
-    //   const categoryMap: CategoriesMap = await getCategoriesAndDocuments();
-    //   setCategoriesMap(categoryMap);
-    //   setIsLoading(false);
-    // };
     const getCategoriesMap = async () => {
       try {
         // TODO - resolve categoryMap returned object issue
         // @ts-ignore
         const categoryMap: CategoriesMap = await getCategoriesAndDocuments();
-        // const categoryMap = await getCategoriesAndDocuments();
         setCategoriesMap(categoryMap);
         setIsLoading(false);
       } catch (error) {
