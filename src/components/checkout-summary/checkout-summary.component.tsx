@@ -2,15 +2,22 @@ import "./checkout-summary.styles.scss";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
 
+export const formatNumber = (numToParse: number | string): string => {
+  if (typeof numToParse === "string") return parseFloat(numToParse).toFixed(2);
+  else if (typeof numToParse === "number") return numToParse.toFixed(2);
+  //Not a String or Number so return default 0.00
+  else return "0.00";
+};
+
 const CostSummary = () => {
   const { cartTotal, taxTotal } = useContext(CartContext);
 
-  const formatNumber = (numToParse: number | string) => {
-    if (typeof numToParse === "string") return parseFloat(numToParse).toFixed(2);
-    else if (typeof numToParse === "number") return numToParse.toFixed(2);
-    //Not a String or Number so return default 0.00
-    else return "0.00";
-  };
+  //  const formatNumber = (numToParse: number | string): string => {
+  //   if (typeof numToParse === "string") return parseFloat(numToParse).toFixed(2);
+  //   else if (typeof numToParse === "number") return numToParse.toFixed(2);
+  //   //Not a String or Number so return default 0.00
+  //   else return "0.00";
+  // };
 
   const formattedCartTotal = formatNumber(cartTotal);
   const formattedTaxTotal = formatNumber(taxTotal);

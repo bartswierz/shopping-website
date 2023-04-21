@@ -1,33 +1,22 @@
 import "./cart.styles.scss";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { CartContext } from "../../../contexts/cart.context";
-// import { RemoveBtn } from "../../../assets/trash-outline.svg";
-// import { DecreaseIcon } from "../../../assets/chevron-back-outline.svg";
-// import { IncreaseIcon } from "../../../assets/chevron-forward-outline.svg";
-import { ReactComponent as RemoveBtn } from "../../../assets/trash-outline.svg";
-import { ReactComponent as DecreaseIcon } from "../../../assets/chevron-back-outline.svg";
-import { ReactComponent as IncreaseIcon } from "../../../assets/chevron-forward-outline.svg";
-import Button from "@mui/material/Button";
+import { CartContext, ProductDetails } from "../../../contexts/cart.context";
+import RemoveBtn from "../../../assets/trash-outline.svg";
+import DecreaseIcon from "../../../assets/chevron-back-outline.svg";
+import IncreaseIcon from "../../../assets/chevron-forward-outline.svg";
 
-const Cart = (props) => {
+const Cart: React.FC = () => {
   const { cartItems, removeItemFromCart, cartCount, cartTotal, taxTotal, updateCartCount, updateCartItem } = useContext(CartContext);
-  // console.log("cartItems in cart: ", cartItems);
 
-  const subtotalFixed = parseFloat(cartTotal).toFixed(2);
-  const taxTotalFixed = parseFloat(taxTotal).toFixed(2);
-  const cartTotalFixed = parseFloat(cartTotal + taxTotal).toFixed(2);
-  // const tax = cartTotal * 0.08;
-
-  const { message } = props;
-  // console.log("message: ", message);
-
-  const removeItem = (itemToRemove) => {
+  // REMOVE AN ITEM FROM THE CART
+  const removeItem = (itemToRemove: ProductDetails): void => {
     console.log("removeItem, idToRemove: ", itemToRemove);
     removeItemFromCart(itemToRemove);
   };
 
-  const updateCart = (itemToUpdate, newQuantity) => {
+  // INCREASE/DECREASE QUANTITY OF AN ITEM INSIDE THE CART
+  const updateCart = (itemToUpdate: ProductDetails, newQuantity: number): void => {
     updateCartItem(itemToUpdate, newQuantity);
   };
 
@@ -51,7 +40,7 @@ const Cart = (props) => {
           </div>
         </div>
         {/* Cart Items Rendered here */}
-        {cartItems.map((item) => {
+        {cartItems.map((item: ProductDetails) => {
           return (
             <div className="cart-item" key={item.id}>
               <div className="image-desc-container">
@@ -73,19 +62,22 @@ const Cart = (props) => {
                   </span>
                 </div>
               </div>
-              <div className="cart-price">${parseFloat(item.discountPrice).toFixed(2)}</div>
+              <div className="cart-price">${item.discountPrice.toFixed(2)}</div>
               <div className="cart-quantity">
                 {/* If qty is greater than 1, then allow user to decrease quantity on click. Else, display icon without updating quantity */}
                 {item.quantity > 1 ? (
-                  <DecreaseIcon className="decrease-icon" onClick={() => updateCart(item, item.quantity - 1)} />
+                  <img src={DecreaseIcon} className="decrease-icon" onClick={() => updateCart(item, item.quantity - 1)} />
                 ) : (
-                  <DecreaseIcon className="decrease-icon" />
+                  // <DecreaseIcon className="decrease-icon" onClick={() => updateCart(item, item.quantity - 1)} />
+                  // <DecreaseIcon className="decrease-icon" />
+                  <img src={DecreaseIcon} className="decrease-icon" />
                 )}
                 {item.quantity}
-                <IncreaseIcon className="increase-icon" onClick={() => updateCart(item, item.quantity + 1)} />
+                <img src={IncreaseIcon} className="increase-icon" onClick={() => updateCart(item, item.quantity + 1)} />
+                {/* <IncreaseIcon className="increase-icon" onClick={() => updateCart(item, item.quantity + 1)} /> */}
               </div>
               <div className="cart-total-remove">
-                <RemoveBtn className="cart-remove" onClick={() => removeItem(item)} />
+                <img src={RemoveBtn} className="cart-remove" onClick={() => removeItem(item)} />
               </div>
             </div>
           );
@@ -96,15 +88,15 @@ const Cart = (props) => {
           <div className="cart-footer">
             <div className="footer-item">
               <span>Subtotal: </span>
-              <span>${parseFloat(cartTotal).toFixed(2)}</span>
+              <span>${cartTotal.toFixed(2)}</span>
             </div>
             <div className="footer-item">
               <span>Sales Tax: </span>
-              <span>${parseFloat(taxTotal).toFixed(2)}</span>
+              <span>${taxTotal.toFixed(2)}</span>
             </div>
             <div className="footer-item">
               <span>Order Total: </span>
-              <span className="order-total-value">${parseFloat(cartTotal + taxTotal).toFixed(2)}</span>
+              <span className="order-total-value">${(cartTotal + taxTotal).toFixed(2)}</span>
             </div>
 
             <Link to="/checkout" className="cart-checkout-button">

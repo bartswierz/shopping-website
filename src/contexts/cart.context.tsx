@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect, ReactNode } from "react";
 
-interface ProductDetails {
+export interface ProductDetails {
   brandName: string;
   color: string;
   discountPrice: number;
