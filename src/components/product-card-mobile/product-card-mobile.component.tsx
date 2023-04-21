@@ -2,10 +2,7 @@ import "./product-card-mobile.styles.scss";
 import CartButton from "../buttons/cart-button/cart-button.component";
 import SelectColor from "../select-color/select-color.component";
 import SelectSize from "../select-size/select-size.component";
-import { useEffect, useState, useContext, Key } from "react";
-// import DecreaseIcon  from "../../assets/remove-outline.svg";
-// import IncreaseIcon  from "../../assets/add-outline.svg";
-import Button from "@mui/material/Button";
+import { useEffect, useState, Key } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Rating from "@mui/material/Rating";
@@ -178,7 +175,6 @@ const ProductCardMobile: React.FC<ProductCardProps> = ({ products }: ProductCard
         {/* RIGHT */}
         <div className="product-card-right-container">
           <div className="product-card-img-container">
-            {/* TODO */}
             <img src={displayShoe.imageUrl} className="product-img" alt="shoe" />
           </div>
 

@@ -13,7 +13,7 @@ interface ProductCardProps {
   products: CategoryData[];
 }
 
-interface Product {
+export interface Product {
   id: string;
   brandName: string;
   productName: string;

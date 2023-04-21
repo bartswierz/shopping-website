@@ -1,9 +1,4 @@
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
 
 //Passing this into our select option
 const selectSX = {
@@ -29,8 +24,6 @@ interface SelectColorProps {
 const SelectColor: React.FC<SelectColorProps> = ({ onChange, setColor }: SelectColorProps) => {
   // Product Type = shirt, pants, jacket, shoes, hats / Passed in from product-card
   // console.log("productType = ", productType);
-  // const [selectValue, setSelectValue] = useState<string>("Color");
-  // const [selectValue, setSelectValue] = useState<string>("Black");
   // const [color, setColor] = useState("");
 
   // Color options
@@ -39,7 +32,6 @@ const SelectColor: React.FC<SelectColorProps> = ({ onChange, setColor }: SelectC
   const colorHandler = (event: ChangeEvent<HTMLSelectElement>) => {
     // console.log("SELECT event: ", event.target.value);
     const color = event.target.value;
-    // setSelectValue(color);
     // console.log("Color Picked:", color);
 
     // Checking if user chose color before updating state of color
@@ -52,34 +44,6 @@ const SelectColor: React.FC<SelectColorProps> = ({ onChange, setColor }: SelectC
     }
   };
 
-  // if (productType === "pants") console.log("pants");
-  // else console.log("not pants, productType: ", productType);
-
-  // return (
-  //   <Box sx={{ minWidth: 75 }}>
-  //     <FormControl fullWidth size="large" sx={{ border: "2px" }}>
-  //       {/* <InputLabel id="demo-simple-select-label" sx={{ color: "#7c00f9" }}> */}
-  //       <InputLabel id="demo-simple-select-label" sx={{ color: "#fff" }}>
-  //         Color
-  //       </InputLabel>
-  //       <Select
-  //         value={selectValue}
-  //         label="Black"
-  //         className="select-color-options"
-  //         // onChange={(e) => colorHandler(e)}
-  //         onChange={colorHandler}
-  //         sx={selectSX}
-  //       >
-  //         <MenuItem value={"Black"}>Black</MenuItem>
-  //         <MenuItem value={"Grey"}>Grey</MenuItem>
-  //         <MenuItem value={"White"}>White</MenuItem>
-  //         <MenuItem value={"Red"}>Red</MenuItem>
-  //         <MenuItem value={"Green"}>Green</MenuItem>
-  //         <MenuItem value={"Yellow"}>Yellow</MenuItem>
-  //       </Select>
-  //     </FormControl>
-  //   </Box>
-  // );
   return (
     <div>
       {/* // Product is NOT pants, render Colors list */}

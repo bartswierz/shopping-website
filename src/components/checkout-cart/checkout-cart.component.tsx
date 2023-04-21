@@ -6,9 +6,11 @@ import { Link } from "react-router-dom";
 const CheckoutCart: React.FC = () => {
   const { cartCount, cartItems } = useContext(CartContext);
 
-  const current = new Date();
-  const startDate = `${current.getMonth() + 1}/${current.getDate() + 3}`;
-  const endDate = `${current.getMonth() + 1}/${current.getDate() + 8}`;
+  const current: Date = new Date();
+  // THREE DAYS AHEAD
+  const startDate: string = `${current.getMonth() + 1}/${current.getDate() + 3}`;
+  // EIGHT DAYS AHEAD
+  const endDate: string = `${current.getMonth() + 1}/${current.getDate() + 8}`;
 
   return (
     <div className="checkout-cart-container">

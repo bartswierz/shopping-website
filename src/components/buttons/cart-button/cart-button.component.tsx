@@ -1,12 +1,26 @@
 import Button from "@mui/material/Button";
 import "./cart-button.styles.scss";
 import { CartContext } from "../../../contexts/cart.context";
-import { useContext, useState } from "react";
-import { CACHE_SIZE_UNLIMITED } from "firebase/firestore";
+import { useContext } from "react";
 import { Product } from "../../product-card-desktop/product-card-desktop.component";
 // $primaryColor: #1de5fd;
 // $hoverColor: #1bd1e5;
 // $activeColor: #1ccbde;
+
+interface ItemToAdd {
+  id: string;
+  quantity: number;
+  color: string;
+  size: string;
+  brandName: string;
+  productName: string;
+  subheader: string;
+  discountPrice: number;
+  originalPrice: number;
+  imageUrl: string;
+  starRating: number;
+  totalReviews: number;
+}
 
 const buttonSX = {
   backgroundColor: "#1de5fd",
@@ -25,7 +39,7 @@ const buttonSX = {
 };
 
 //Uses product name,
-const createUniqueId = (productName: string, color: string, size: string) => {
+const createUniqueId = (productName: string, color: string, size: string): string => {
   //i.e. "Vans Old Skool ShoesRed10.5"
   const cartIdContent = productName + color + size;
 
@@ -46,7 +60,7 @@ const CartButton: React.FC<CartButtonProps> = ({ product, color, size }: CartBut
   // const handleClick = (product, quantity = 1, color, size, resetOptionsHandler) => {
   //resetOptionsHandler will change color/size back to default
   // const handleClick = (product, color, size, resetOptionsHandler) => {
-  const handleClick = (product: Product, color: string, size: string) => {
+  const handleClick = (product: Product, color: string, size: string): void => {
     // console.log("cart btn - inside handleClick - resetOptions: ", resetOptionsHandler);
     console.log("in handleClick, color: ", color, "& size: ", size);
     if (color !== "" && color !== "Color" && size !== "" && size !== "Size") {
@@ -54,7 +68,7 @@ const CartButton: React.FC<CartButtonProps> = ({ product, color, size }: CartBut
 
       /*Passing custom id to prevent incorrect behavior with add/remove buttons within cart
        */
-      const itemToAdd = { ...product, id: cartItemId, quantity: 1, color, size };
+      const itemToAdd: ItemToAdd = { ...product, id: cartItemId, quantity: 1, color, size };
       addItemToCart(itemToAdd);
 
       //Passing the quantity value of our item to update our current cart count inside cart context using a reducer
@@ -72,10 +86,7 @@ const CartButton: React.FC<CartButtonProps> = ({ product, color, size }: CartBut
         className="cart-button"
         onClick={() => {
           handleClick(product, color, size);
-          // handleClick(product, (quantity = 1), color, size);
         }}
-
-        // onClick={() => handleClick(product, (quantity = 1), color, size, )}
       >
         ADD TO CART
       </Button>
@@ -84,8 +95,3 @@ const CartButton: React.FC<CartButtonProps> = ({ product, color, size }: CartBut
 };
 
 export default CartButton;
-{
-  /* <button className="cart-button" onClick={() => handleClick(product, quantity, color, size)}>
-        ADD TO CART
-      </button> */
-}
