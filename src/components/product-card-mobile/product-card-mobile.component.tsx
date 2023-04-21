@@ -9,20 +9,37 @@ import Button from "@mui/material/Button";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Rating from "@mui/material/Rating";
-import { ProductCardProps, Product } from "../product-card-desktop/product-card-desktop.component";
+import { CategoryData } from "../../contexts/categories.context";
+
+interface ProductCardProps {
+  products: CategoryData[];
+}
+
+interface Product {
+  id: string;
+  brandName: string;
+  productName: string;
+  subheader: string;
+  discountPrice: number;
+  originalPrice: number;
+  imageUrl: string;
+  color: string;
+  starRating: number;
+  totalReviews: number;
+}
 
 const ProductCardMobile: React.FC<ProductCardProps> = ({ products }: ProductCardProps) => {
   const { shoesList, featuresList } = products[0];
   const [color, setColor] = useState<string>("Color");
   const [size, setSize] = useState<string>("Size");
+  const [index, setIndex] = useState<number>(0);
+  const maxIndex: number = shoesList.length - 1;
   const [displayShoe, setDisplayShoe] = useState(shoesList[0]);
   // ARRAY LIST OF SHOE FEATURES
-  const [featureList, setFeatureList] = useState<string[]>(featuresList);
+  const featureList: string[] = featuresList;
   //CONTAINS ALL INFORMATION ON THE CURRENT SHOE TO BE PASSED TO OUR CART BUTTON COMPONENT
   const [product, setProduct] = useState<Product>(shoesList[0]);
   //USED TO RENDER PREV/NEXT SHOE
-  const [index, setIndex] = useState<number>(0);
-  const maxIndex: number = shoesList.length - 1;
   // const [maxIndex, setMaxIndex] = useState(shoesList.length - 1);
 
   //Update new shoe & receive product details

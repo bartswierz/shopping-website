@@ -18,7 +18,7 @@ const buttonSX = {
   color: "#444",
 };
 
-const ShippingForm = () => {
+const ShippingForm: React.FC = () => {
   return (
     <div className="checkout-shipping-container">
       {/* Header */}

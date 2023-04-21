@@ -38,7 +38,7 @@ const addToCart = (cartItems: ProductDetails[], itemToAdd: ProductDetails) => {
 };
 
 //Creates new list with items that are not equal to itemToRemove's id
-const removeFromCart = (cartItems: ProductDetails[], itemToRemove: ProductDetails) => {
+const removeFromCart = (cartItems: ProductDetails[], itemToRemove: ProductDetails): ProductDetails[] => {
   // console.log("inside removeFromCart, cartItems: ", cartItems);
   // console.log("itemToRemove: ", itemToRemove);
   const newCartItems = cartItems.filter((item) => item.id !== itemToRemove.id);
@@ -73,28 +73,28 @@ interface CartProviderProps {
   children: ReactNode;
 }
 
-export const CartProvider = ({ children }: CartProviderProps) => {
+export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProviderProps) => {
   // Using ProductDetails as the ProductDetails contains all information needed to render within our cart page
   const [cartItems, setCartItems] = useState<ProductDetails[]>([]);
   const [cartCount, setCartCount] = useState<number>(0);
-  const [cartTotal, setCartTotal] = useState(0);
-  const [taxTotal, setTaxTotal] = useState(0);
+  const [cartTotal, setCartTotal] = useState<number>(0);
+  const [taxTotal, setTaxTotal] = useState<number>(0);
 
-  const addItemToCart = (itemToAdd: ProductDetails) => {
+  const addItemToCart = (itemToAdd: ProductDetails): void => {
     // console.log("itemToAdd: ", itemToAdd);
     setCartItems(addToCart(cartItems, itemToAdd));
   };
 
-  const removeItemFromCart = (itemToRemove: ProductDetails) => {
+  const removeItemFromCart = (itemToRemove: ProductDetails): void => {
     setCartItems(removeFromCart(cartItems, itemToRemove));
   };
 
-  const updateCartCount = (numberOfItems: number) => {
+  const updateCartCount = (numberOfItems: number): void => {
     // setCartCount({ cartCount: cartCount + numberOfItems });
     setCartCount(cartCount + numberOfItems);
   };
 
-  const updateCartItem = (cartItemToUpdate: ProductDetails, newQuantity: number) => {
+  const updateCartItem = (cartItemToUpdate: ProductDetails, newQuantity: number): void => {
     //set item quantity to new quantity
     const updatedCartItems = cartItems.map((cartItem: ProductDetails) =>
       cartItem.id === cartItemToUpdate.id ? { ...cartItem, quantity: newQuantity } : cartItem
@@ -106,7 +106,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   useEffect(() => {
     //Each time we add item to cart using the "add to cart" button, we will run this reducer that will add up all quantity of items and set that to our current cart count
     //reduce(accumulator value, currentValue in list) => accumulator + currentValue, initial value of 0(starting point)
-    const newCartCount = cartItems.reduce((totalItems, currentItem) => totalItems + currentItem.quantity, 0);
+    const newCartCount: number = cartItems.reduce((totalItems, currentItem) => totalItems + currentItem.quantity, 0);
     // console.log("current Cart Count: ", newCartCount);
     setCartCount(newCartCount);
   }, [cartCount, cartTotal, cartItems]);

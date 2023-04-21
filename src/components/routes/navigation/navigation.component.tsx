@@ -19,7 +19,7 @@ import CreditCardRoundedIcon from "@mui/icons-material/CreditCardRounded";
 import BrandLogo from "../../../assets/brand-logo.png";
 import NavLogo from "../../../assets/nav-logo.png";
 
-interface CurrentUser {}
+// interface CurrentUser {}
 
 const Navigation = () => {
   const { cartCount } = useContext(CartContext);

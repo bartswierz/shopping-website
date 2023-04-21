@@ -7,56 +7,49 @@ import Button from "@mui/material/Button";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Rating from "@mui/material/Rating";
+import { CategoryData } from "../../contexts/categories.context";
 
-//TODO - add interface for products
-// interface ProductCardDesktopProps {}
-
-export interface ProductCardProps {
-  products: [
-    {
-      featuresList: string[];
-      shoesList: {
-        brandName: string;
-        color: string;
-        discountPrice: number;
-        id: number;
-        imageUrl: string;
-        originalPrice: number;
-        productName: string;
-        starRating: number;
-        subheader: string;
-        totalReviews: number;
-      }[];
-    }
-  ];
+interface ProductCardProps {
+  products: CategoryData[];
 }
 
-export interface Product {
+interface Product {
+  id: string;
   brandName: string;
-  color: string;
-  discountPrice: number;
-  id: number;
-  imageUrl: string;
-  originalPrice: number;
   productName: string;
-  starRating: number;
   subheader: string;
+  discountPrice: number;
+  originalPrice: number;
+  imageUrl: string;
+  color: string;
+  starRating: number;
   totalReviews: number;
 }
 
-// Products = AN Array containing an object, containing two arrays, (featuresList, and shoesList)
-// Shoe List holds 5 objects
+interface DisplayShoe {
+  id: string;
+  brandName: string;
+  productName: string;
+  subheader: string;
+  discountPrice: number;
+  originalPrice: number;
+  imageUrl: string;
+  color: string;
+  starRating: number;
+  totalReviews: number;
+}
+
 const ProductCardDesktop: React.FC<ProductCardProps> = ({ products }: ProductCardProps) => {
   const { shoesList, featuresList } = products[0];
   const [color, setColor] = useState<string>("Color");
   const [size, setSize] = useState<string>("Size");
   const [index, setIndex] = useState<number>(0);
   const maxIndex: number = shoesList.length - 1;
-  const [displayShoe, setDisplayShoe] = useState(shoesList[index]);
-  const [featureList, setFeatureList] = useState<string[]>(featuresList);
+  const [displayShoe, setDisplayShoe] = useState<DisplayShoe>(shoesList[index]);
+  // const [featureList, setFeatureList] = useState<string[]>(featuresList);
+  const featureList: string[] = featuresList;
   //CONTAINS ALL INFORMATION ON THE CURRENT SHOE TO BE PASSED TO OUR CART BUTTON COMPONENT
   const [product, setProduct] = useState<Product>(shoesList[index]);
-  // console.log("product: ", product);
 
   //Update new shoe & receive product details
   useEffect(() => {
@@ -77,7 +70,7 @@ const ProductCardDesktop: React.FC<ProductCardProps> = ({ products }: ProductCar
   };
 
   //DECREMENT INDEX OR RESET TO maxIndex(LAST ITEM) TO RENDER CURRENT SHOE
-  const handlePrevious = () => {
+  const handlePrevious = (): void => {
     let newIndex;
     if (index === 0) {
       newIndex = maxIndex;
@@ -88,7 +81,7 @@ const ProductCardDesktop: React.FC<ProductCardProps> = ({ products }: ProductCar
   };
 
   //INCREMENT INDEX OR RESET TO 0(FIRST ITEM) TO RENDER CURRENT SHOE
-  const handleNext = () => {
+  const handleNext = (): void => {
     let newIndex;
     if (index === maxIndex) {
       //GO BACK THE TO FIRST SHOE

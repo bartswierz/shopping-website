@@ -29,7 +29,7 @@ interface SelectColorProps {
 const SelectColor: React.FC<SelectColorProps> = ({ onChange, setColor }: SelectColorProps) => {
   // Product Type = shirt, pants, jacket, shoes, hats / Passed in from product-card
   // console.log("productType = ", productType);
-  const [selectValue, setSelectValue] = useState<string>("Color");
+  // const [selectValue, setSelectValue] = useState<string>("Color");
   // const [selectValue, setSelectValue] = useState<string>("Black");
   // const [color, setColor] = useState("");
 
@@ -39,14 +39,13 @@ const SelectColor: React.FC<SelectColorProps> = ({ onChange, setColor }: SelectC
   const colorHandler = (event: ChangeEvent<HTMLSelectElement>) => {
     // console.log("SELECT event: ", event.target.value);
     const color = event.target.value;
-    setSelectValue(color);
+    // setSelectValue(color);
     // console.log("Color Picked:", color);
 
     // Checking if user chose color before updating state of color
     if (color !== "Color" && color !== "") {
-      // console.log("Color set, color: ", color);
+      console.log("Color Picked: ", color);
       setColor(color);
-      console.log("event.target.value: ", event.target.value);
 
       // onChange(event.target.value);
       onChange(color);

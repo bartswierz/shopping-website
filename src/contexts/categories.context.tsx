@@ -3,7 +3,7 @@ import { createContext, useState, useEffect, ReactNode } from "react";
 import { getCategoriesAndDocuments } from "../utils/firebase/firebase.utils";
 import CircularProgress from "@mui/material/CircularProgress";
 
-interface CategoriesMap {
+export interface CategoriesMap {
   basketball: CategoryData[];
   casual: CategoryData[];
   outdoor: CategoryData[];
@@ -11,7 +11,7 @@ interface CategoriesMap {
   work: CategoryData[];
 }
 
-interface CategoryData {
+export interface CategoryData {
   featuresList: string[];
   shoesList: {
     id: string;
@@ -28,7 +28,7 @@ interface CategoryData {
 }
 [];
 
-interface CategoriesContextValue {
+export interface CategoriesContextValue {
   categoriesMap: {
     basketball: CategoryData[];
     casual: CategoryData[];

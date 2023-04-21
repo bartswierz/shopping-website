@@ -7,7 +7,6 @@ import Checkout from "./components/routes/checkout/checkout.component";
 import Cart from "./components/routes/cart/cart.component";
 import Authentication from "./components/routes/authentication/authentication.component";
 import { CategoriesContext } from "./contexts/categories.context";
-import ProductList from "./components/product-list/product-list.component";
 import ProductCardDesktop from "./components/product-card-desktop/product-card-desktop.component";
 import ProductCardMobile from "./components/product-card-mobile/product-card-mobile.component";
 
@@ -26,75 +25,9 @@ const App = () => {
     };
   }, []);
 
-  // interface categoriesMapProps {
-  //   categoriesMap: {
-  //     basketball: [
-  //       {
-  //         featuresList: [];
-  //         shoesList: [];
-  //       }
-  //     ];
-  //     casual: [
-  //       {
-  //         featuresList: [];
-  //         shoesList: [];
-  //       }
-  //     ];
-  //     outdoor: [
-  //       {
-  //         featuresList: [];
-  //         shoesList: [];
-  //       }
-  //     ];
-  //     soccer: [
-  //       {
-  //         featuresList: [];
-  //         shoesList: [];
-  //       }
-  //     ];
-  //     work: [
-  //       {
-  //         featuresList: [];
-  //         shoesList: [];
-  //       }
-  //     ];
-  //   };
-  // }
-
-  // i.e. basketball: CategoriesMapProps[]
-  //TODO - uncomment - temporary to update Menu Icon on site
-  // interface CategoriesMapProps {
-  //   featuresList: string[];
-  //   shoesList: {
-  //     id: number;
-  //     brandName: string;
-  //     productName: string;
-  //     subheader: string;
-  //     discountPrice: number;
-  //     originalPrice: number;
-  //     imageUrl: string;
-  //     color: string;
-  //     starRating: number;
-  //     totalReviews: number;
-  //   }[];
-  // }
-
-  // CategoriesMap structure has 5 shoe types, and each type has an array with the above content
-  //TODO - uncomment - temporary to update Menu Icon on site
-  // interface CategoriesMap {
-  //   basketball: CategoriesMapProps[];
-  //   casual: CategoriesMapProps[];
-  //   outdoor: CategoriesMapProps[];
-  //   soccer: CategoriesMapProps[];
-  //   work: CategoriesMapProps[];
-  // }
-
-  /* categoriesMap holds ALL of our PRODUCTS in our firebase DB. 
-  collection: categories -> Documents: hats, jackets, pants, shirts, shoes */
-
-  // const { categoriesMap, setCategoriesMap } = useContext(CategoriesContext);
+  // CATEGORIESMAP CONTAINS ALL SHOE DATA FROM FIREBASE DB
   const { categoriesMap } = useContext(CategoriesContext);
-  // categoriesMap is an object holding 5 arrays
+  // console.log("categoriesMap: ", categoriesMap);
 
   return (
     <Routes>
@@ -107,8 +40,6 @@ const App = () => {
         <Route path="checkout" element={<Checkout />} />
         <Route path="cart" element={<Cart />} />
         {/* Paths will be taken from  CategoryItem component using category.title - using conditional so that we will render component when our async function completes fetching our categoriesMap from firebase DB */}
-
-        {/* 2. isMobile -> If viewport width is less than 768px, render Mobile Component, ELSE render desktop component  */}
         <Route
           path="casual"
           element={

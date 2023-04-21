@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
 import { Link } from "react-router-dom";
 
-const CheckoutCart = () => {
+const CheckoutCart: React.FC = () => {
   const { cartCount, cartItems } = useContext(CartContext);
 
   const current = new Date();
@@ -47,7 +47,7 @@ const CheckoutCart = () => {
                 <div>Color: {item.color}</div>
                 <div>Size: {item.size}</div>
                 <div>Qty: {item.quantity}</div>
-                <div>${parseFloat(item.discountPrice).toFixed(2)}</div>
+                <div>${item.discountPrice.toFixed(2)}</div>
               </div>
             </div>
           );
