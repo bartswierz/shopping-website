@@ -25,7 +25,8 @@ interface ItemToAdd {
 const buttonSX = {
   backgroundColor: "#1de5fd",
   fontWeight: 900,
-  fontSize: "1.2rem",
+  // fontSize: "1.2rem",
+  fontSize: "1.6rem",
   fontFamily: "Bebas Neue, sans-serif",
   ":hover": {
     backgroundColor: "#1bd1e5",
@@ -34,7 +35,8 @@ const buttonSX = {
     backgroundColor: "#1ccbde",
     color: "#fff",
   },
-  padding: "12px 24px",
+  // padding: "12px 24px",
+  padding: "10px 20px",
   color: "#444",
 };
 

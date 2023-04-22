@@ -3,10 +3,10 @@ import CartButton from "../buttons/cart-button/cart-button.component";
 import SelectColor from "../select-color/select-color.component";
 import SelectSize from "../select-size/select-size.component";
 import { useEffect, useState, Key } from "react";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Rating from "@mui/material/Rating";
 import { CategoryData } from "../../contexts/categories.context";
+import { shoeButtonSX } from "../product-card-desktop/product-card-desktop.component";
+import Button from "@mui/material/Button";
 
 interface ProductCardProps {
   products: CategoryData[];
@@ -111,23 +111,6 @@ const ProductCardMobile: React.FC<ProductCardProps> = ({ products }: ProductCard
           {/* MOBILE FLEX - ROW then INTO COLUMN ONCE WE NEED TO MOVE BUTTONS TO BOTTOM */}
           <div className="product-card-details-and-button-container">
             <div className="product-card-details-button-left">
-              {/* PRODUCT NAME
-              <div className="product-card-details-container">
-                <p className="product-card-details-name">{displayShoe.productName}</p>
-
-                PRODUCT COLOR & RATING
-                <div className="product-card-color-rating">
-                  <p>{displayShoe.color}</p>
-                  <p className="product-card-star-rating-container">
-                    <Rating value={displayShoe.starRating} precision={0.5} readOnly className="product-card-star" /> (
-                    <a href="#" className="product-card-rating">
-                      {displayShoe.totalReviews} REVIEWS
-                    </a>
-                    )
-                  </p>
-                </div>
-              </div> */}
-
               {/* PRODUCT FEATURES LIST */}
               <h2 className="product-card-features-header">Features</h2>
               <ul className="product-card-features-list">
@@ -146,14 +129,12 @@ const ProductCardMobile: React.FC<ProductCardProps> = ({ products }: ProductCard
                 <div className="product-card-size">
                   <span>SIZE</span>
                   <SelectSize setSize={setSize} onChange={sizeHandler} />
-                  {/* <SelectSize setSize={setSize} onChange={(event) => sizeHandler(event)} /> */}
                 </div>
 
                 {/* COLOR */}
                 <div className="product-card-color">
                   <span>COLOR</span>
                   <SelectColor setColor={setColor} onChange={colorHandler} />
-                  {/* <SelectColor setColor={setColor} onChange={(event) => colorHandler(event)} /> */}
                 </div>
               </div>
 
@@ -180,17 +161,17 @@ const ProductCardMobile: React.FC<ProductCardProps> = ({ products }: ProductCard
 
           {/* BUTTONS */}
           <div className="product-card-button-container">
-            <button className="prev-btn">
-              <ArrowBackIosIcon onClick={handlePrevious} className="prev-btn-icon" />
-            </button>
+            <Button onClick={handlePrevious} sx={shoeButtonSX}>
+              Prev Shoe
+            </Button>
             <div className="product-card-image-index">
               <p>
                 {index + 1} / {maxIndex + 1}
               </p>
             </div>
-            <button className="next-btn">
-              <ArrowForwardIosIcon onClick={handleNext} className="next-btn-icon" />
-            </button>
+            <Button onClick={handleNext} sx={shoeButtonSX}>
+              Next Shoe
+            </Button>
           </div>
         </div>
       </div>
