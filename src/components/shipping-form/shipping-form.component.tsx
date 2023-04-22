@@ -26,21 +26,7 @@ interface ShippingFormProps {
 }
 
 const ShippingForm: React.FC<ShippingFormProps> = ({ shippingChoiceCallback }: ShippingFormProps) => {
-  // const [shippingChoice, setShippingChoice] = useState<string | number>("");
-
-  // // TODO - CALLBACK - RETURNS USER CHOICE FROM "RADIOBUTTON"
-  // const shippingChoiceHandler = (shippingChoice: string): void => {
-  //   console.log("shippingChoice: ", shippingChoice);
-  //   // setShippingChoice(shippingChoice);
-
-  //   if (shippingChoice === "overnight") setShippingChoice(23);
-  //   else if (shippingChoice === "twoday") setShippingChoice(14);
-  //   else setShippingChoice("FREE");
-  // };
-
-  // useEffect(() => {
-  //   console.log("shippingChoice: ", shippingChoice);
-  // }, [shippingChoice]);
+  // TODO - add a variable to hold state chosen back from state component
 
   return (
     <div className="checkout-shipping-container">
@@ -93,6 +79,7 @@ const ShippingForm: React.FC<ShippingFormProps> = ({ shippingChoiceCallback }: S
             <input type="text" id="state" className="form-input" />
           </div>
           <br /> */}
+        {/* TODO - Pass in a callback to return back a state */}
         <div className="form-item-container">
           <label className="form-label">State</label>
           <SelectState />
