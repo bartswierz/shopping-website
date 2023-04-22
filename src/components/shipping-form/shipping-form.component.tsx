@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import SelectState from "../select-state/select-state.component";
 import RadioButtons from "../radio-buttons/radio-buttons.component";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 
 const buttonSX = {
   backgroundColor: "#1de5fd",
@@ -27,6 +27,23 @@ interface ShippingFormProps {
 
 const ShippingForm: React.FC<ShippingFormProps> = ({ shippingChoiceCallback }: ShippingFormProps) => {
   // TODO - add a variable to hold state chosen back from state component
+  const [state, setState] = useState<string>("");
+
+  const stateHandler = (state: string) => {
+    console.log("State Picked: ", state);
+
+    setState(state);
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!state) {
+      alert("Please enter all required fields.");
+      return;
+    }
+
+    console.log("Shipping Form Completed: ", event.target);
+  };
 
   return (
     <div className="checkout-shipping-container">
@@ -34,7 +51,7 @@ const ShippingForm: React.FC<ShippingFormProps> = ({ shippingChoiceCallback }: S
       <h1 className="checkout-header">1. Shipping</h1>
 
       {/* Shipping Form */}
-      <form className="checkout-form-container">
+      <form className="checkout-form-container" onSubmit={handleSubmit}>
         <div className="form-item-container">
           <label className="form-label">
             First Name<span className="highlight">*</span>
@@ -73,16 +90,12 @@ const ShippingForm: React.FC<ShippingFormProps> = ({ shippingChoiceCallback }: S
         </div>
         <br />
 
-        {/* Change to a select/option with US states */}
-        {/* <div className="form-item-container">
-            <label className="form-label">State</label>
-            <input type="text" id="state" className="form-input" />
-          </div>
-          <br /> */}
         {/* TODO - Pass in a callback to return back a state */}
         <div className="form-item-container">
-          <label className="form-label">State</label>
-          <SelectState />
+          <label className="form-label">
+            State<span className="highlight">*</span>
+          </label>
+          <SelectState stateCallback={stateHandler} />
         </div>
         <br />
 
@@ -91,10 +104,8 @@ const ShippingForm: React.FC<ShippingFormProps> = ({ shippingChoiceCallback }: S
         </div>
 
         <div className="form-item-container">
-          <label className="form-label">
-            Phone<span className="highlight">*</span>
-          </label>
-          <input type="text" id="phone" className="form-input" required />
+          <label className="form-label">Phone</label>
+          <input type="text" id="phone" className="form-input" />
         </div>
         <br />
 
