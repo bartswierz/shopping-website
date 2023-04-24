@@ -55,6 +55,7 @@ interface CartItems {
   removeItemFromCart: (itemToRemove: ProductDetails) => void;
   updateCartItem: (cartItemToUpdate: ProductDetails, newQuantity: number) => void;
   updateCartCount: (numberOfItems: number) => void;
+  clearCart: () => void;
 }
 
 //Values we are accessing
@@ -67,6 +68,7 @@ export const CartContext = createContext<CartItems>({
   removeItemFromCart: () => {},
   updateCartItem: () => {},
   updateCartCount: () => {},
+  clearCart: () => {},
 });
 
 interface CartProviderProps {
@@ -92,6 +94,11 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProv
   const updateCartCount = (numberOfItems: number): void => {
     // setCartCount({ cartCount: cartCount + numberOfItems });
     setCartCount(cartCount + numberOfItems);
+  };
+
+  // TODO - Update RESET CART UPON SUCCESSFUL PURCHASE
+  const clearCart = (): void => {
+    setCartItems([]);
   };
 
   const updateCartItem = (cartItemToUpdate: ProductDetails, newQuantity: number): void => {
@@ -126,7 +133,17 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProv
   }, [cartCount, cartTotal, taxTotal]);
 
   // Passing our context values to access in child components
-  const value = { cartItems, cartCount, cartTotal, addItemToCart, removeItemFromCart, updateCartCount, updateCartItem, taxTotal };
+  const value = {
+    cartItems,
+    cartCount,
+    cartTotal,
+    addItemToCart,
+    removeItemFromCart,
+    updateCartCount,
+    updateCartItem,
+    taxTotal,
+    clearCart,
+  };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

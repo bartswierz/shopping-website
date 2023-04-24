@@ -1,11 +1,11 @@
-import React, { ChangeEvent, useState, useEffect } from "react";
+import React, { ChangeEvent, useState, useEffect, useContext } from "react";
 import { Button, Menu } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import "./payment-form.styles.scss";
 import { Navigate } from "react-router-dom";
-
+import { CartContext } from "../../contexts/cart.context";
 const expiryMonthOptions = ["", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
 
 const expiryYearOptions = [
@@ -52,6 +52,7 @@ const buttonSX = {
 };
 
 const PaymentForm: React.FC = () => {
+  const { clearCart } = useContext(CartContext);
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [cardNumber, setCardNumber] = useState<string>("");
@@ -189,6 +190,9 @@ const PaymentForm: React.FC = () => {
     console.log("VALIDATING INPUT FIELDS...");
     if (!isCardNumberInvalid && !isCardHolderNameInvalid && !isExpiryMonthInvalid && !isExpiryYearInvalid && !isCvcNumberInvalid) {
       console.log("Payment was successful, navigating user to Homepage...");
+
+      // CLEARS CART SO USER CAN START A NEW ORDER
+      clearCart();
 
       // THIS WILL NAVIGATE USER TO THE HOMEPAGE
       setNavigateToHomepage(true);
