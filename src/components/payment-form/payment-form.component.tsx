@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState, useEffect } from "react";
 import { Button, Menu } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -57,11 +57,50 @@ const PaymentForm: React.FC = () => {
   const [expiryMonth, setExpiryMonth] = useState<string>("");
   const [expiryYear, setExpiryYear] = useState<string>("");
   const [cvcNumber, setCvcNumber] = useState<string>("");
+  const [cardHolderName, setCardHolderName] = useState<string>("");
+
+  // Will use these with Material UI to display error textfield if any of these fail validation check
+  const [isCardNumberInvalid, setIsCardNumberInvalid] = useState<boolean>(true);
+  const [isCvcNumberInvalid, setIsCvcNumberInvalid] = useState<boolean>(true);
+  const [isCardHolderNameInvalid, setIsCardHolderNameInvalid] = useState<boolean>(true);
+  const [isExpiryMonthInvalid, setIsExpiryMonthInvalid] = useState<boolean>(true);
+  const [isExpiryYearInvalid, setIsExpiryYearInvalid] = useState<boolean>(true);
+
+  // CARDHOLDER NAME: REMOVE ERROR COLOR FROM TEXTFIELD IF INPUT IS CORRECT
+  useEffect(() => {
+    console.log("Validating Cardholder Name...");
+    validateInputFields(cardHolderName);
+  }, [cardHolderName]);
+
+  // CVC NUMBER: REMOVE ERROR COLOR FROM TEXTFIELD IF INPUT IS CORRECT
+  useEffect(() => {
+    console.log("Validating CVC Number...");
+    validateInputFields(cvcNumber);
+  }, [cvcNumber]);
+
+  // CARD NUMBER: REMOVE ERROR COLOR FROM TEXTFIELD IF INPUT IS CORRECT
+  useEffect(() => {
+    console.log("Validating Card Number...");
+    validateInputFields(cardNumber);
+  }, [cardNumber]);
+
+  // EXPIRY MONTH: REMOVE ERROR COLOR FROM TEXTFIELD IF INPUT IS CORRECT
+  useEffect(() => {
+    console.log("Validating Expiry Month...");
+    validateInputFields(expiryMonth);
+  }, [expiryMonth]);
+
+  // EXPIRY YEAR: REMOVE ERROR COLOR FROM TEXTFIELD IF INPUT IS CORRECT
+  useEffect(() => {
+    console.log("Validating Expiry Year...");
+    validateInputFields(expiryYear);
+  }, [expiryYear]);
 
   // HANDLE CARD NUMBER INPUT
   const cardNumberHandler = (event: ChangeEvent<HTMLInputElement>): void => {
     const inputCardNumber = event.target.value;
     console.log(inputCardNumber);
+
     // Remove any non-digit characters from the input
     const formattedCardNumber = inputCardNumber.replace(/\D/g, "");
 
@@ -84,6 +123,7 @@ const PaymentForm: React.FC = () => {
     setExpiryYear(event.target.value);
   };
 
+  // TODO - check to make sure user only inputs integers
   const cvcNumberHandler = (event: ChangeEvent<HTMLInputElement>): void => {
     console.log("cvc number: ", event.target.value);
 
@@ -91,6 +131,59 @@ const PaymentForm: React.FC = () => {
 
     // LIMIT CVC NUMBER TO 3-DIGITS
     if (inputCvcNumber.length <= 3) setCvcNumber(event.target.value);
+
+    // validateInputFields(cvcNumber);
+  };
+
+  // TODO - check to ensure user only inputs strings
+  const cardHolderNameHandler = (event: ChangeEvent<HTMLInputElement>): void => {
+    // console.log("cardholdername: ", event.target.value);
+    const inputName: string = event.target.value;
+
+    // REMOVE ALL INPUTS THAT ARE NOT CHARACTERS(NO #'S, !, /, *, ...)
+    const inputNameOnlyLetters: string = inputName.replace(/[^a-zA-Z ]/g, "");
+
+    // Split on the spaces in string, split() turns string into a string array
+    const inputNameSplit: string[] = inputNameOnlyLetters.split(" ");
+    console.log("inputNameSplit: ", inputNameSplit);
+
+    const formattedName: string = inputNameSplit.join(" ");
+    console.log("formattedName: ", formattedName);
+    setCardHolderName(formattedName);
+  };
+
+  // PASS IN STRING WHEN ONE OF THE FIVE INPUT FIELDS CHANGES, useEffect will invoke this function to check if input is valid, if it is, then we remove the error from the text field
+  const validateInputFields = (inputValue: string): void => {
+    switch (inputValue) {
+      case cardHolderName: {
+        // Split to check if user gave at least 2 names
+        const inputNameSplit: string[] = inputValue.split(" ");
+        // DID USER GIVE AT LEAST TWO STRINGS AND IS THE SECOND INDEX NOT ''? (PREVENTS 'John ' from passing) i.e. "John Doe ==== TRUE, John === false"
+        inputNameSplit.length >= 2 && inputNameSplit[1] !== "" ? setIsCardHolderNameInvalid(false) : setIsCardHolderNameInvalid(true);
+        break;
+      }
+      case cvcNumber: {
+        cvcNumber.length === 3 ? setIsCvcNumberInvalid(false) : setIsCvcNumberInvalid(true);
+        break;
+      }
+      case cardNumber: {
+        // 19 Because we are counting the three spaces between the 4 digits. i.e. '4444 4444 4444 4444'
+        cardNumber.length === 19 ? setIsCardNumberInvalid(false) : setIsCardNumberInvalid(true);
+        break;
+      }
+      case expiryMonth: {
+        expiryMonth !== "" ? setIsExpiryMonthInvalid(false) : setIsExpiryMonthInvalid(true);
+        break;
+      }
+      case expiryYear: {
+        expiryYear !== "" ? setIsExpiryYearInvalid(false) : setIsExpiryYearInvalid(true);
+        break;
+      }
+    }
+
+    // const inputNameSplit: string[] = inputValue.split(" ");
+    // if (inputNameSplit.length >= 2) return setIsCardHolderNameInvalid(false);
+    // return setIsCardHolderNameInvalid(true);
   };
 
   // TODO - Check that all 5 Fields were filled !== ""
@@ -99,7 +192,9 @@ const PaymentForm: React.FC = () => {
 
     event.preventDefault();
 
-    console.log("event2: ", event);
+    // TODO - add a check to see if all is___Invalid ALL FALSE? if they are all false then we know all text fields are correct
+    // validateCardHolderName();
+    console.log("event: ", event);
 
     //TODO - check if Card Number is 16 digits, CVC number is 3 digits, user chose expiry month AND year, user input cardholder name
     // if (result.error) {
@@ -137,6 +232,7 @@ const PaymentForm: React.FC = () => {
           onChange={cardNumberHandler}
           value={cardNumber}
           inputProps={{ maxLength: 20 }}
+          error={isCardNumberInvalid}
         />
 
         <div className="billing-textfields">
@@ -150,6 +246,7 @@ const PaymentForm: React.FC = () => {
             className="billing-flex-item"
             value={expiryMonth}
             onChange={expiryMonthHandler}
+            error={isExpiryMonthInvalid}
           >
             {expiryMonthOptions.map((option: string) => (
               <MenuItem key={option} value={option} selected={option === expiryYear}>
@@ -168,6 +265,7 @@ const PaymentForm: React.FC = () => {
             className="billing-flex-item"
             value={expiryYear}
             onChange={expiryYearHandler}
+            error={isExpiryYearInvalid}
           >
             {expiryYearOptions.map((option: string) => (
               <MenuItem key={option} value={option} selected={option === expiryYear}>
@@ -186,6 +284,7 @@ const PaymentForm: React.FC = () => {
             className="billing-flex-item"
             onChange={cvcNumberHandler}
             value={cvcNumber}
+            error={isCvcNumberInvalid}
           />
         </div>
 
@@ -197,6 +296,9 @@ const PaymentForm: React.FC = () => {
           multiline
           variant="filled"
           sx={{ width: "100%" }}
+          onChange={cardHolderNameHandler}
+          value={cardHolderName}
+          error={isCardHolderNameInvalid}
         />
 
         <div className="strip-button-container">
