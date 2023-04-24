@@ -114,28 +114,29 @@ const PaymentForm: React.FC = () => {
   };
 
   const expiryMonthHandler = (event: ChangeEvent<HTMLInputElement>): void => {
-    console.log("expiry month: ", event.target.value);
+    // console.log("expiry month: ", event.target.value);
     setExpiryMonth(event.target.value);
   };
 
   const expiryYearHandler = (event: ChangeEvent<HTMLInputElement>): void => {
-    console.log("expiry year: ", event.target.value);
+    // console.log("expiry year: ", event.target.value);
     setExpiryYear(event.target.value);
   };
 
-  // TODO - check to make sure user only inputs integers
   const cvcNumberHandler = (event: ChangeEvent<HTMLInputElement>): void => {
-    console.log("cvc number: ", event.target.value);
+    // console.log("cvc number: ", event.target.value);
+    const inputCvcNumber: string = event.target.value;
 
-    const inputCvcNumber = event.target.value;
+    // CHECKING TO SEE IF THE INPUT STRING ONLY CONSISTS OF NUMBERS 0-9
+    const isValidInput: boolean = /^[0-9]*$/.test(inputCvcNumber);
+
+    // IF USER INPUTS ANYTHING THAT ISN'T A DIGIT, WE WILL NOT PROCEED
+    if (!isValidInput) return;
 
     // LIMIT CVC NUMBER TO 3-DIGITS
     if (inputCvcNumber.length <= 3) setCvcNumber(event.target.value);
-
-    // validateInputFields(cvcNumber);
   };
 
-  // TODO - check to ensure user only inputs strings
   const cardHolderNameHandler = (event: ChangeEvent<HTMLInputElement>): void => {
     // console.log("cardholdername: ", event.target.value);
     const inputName: string = event.target.value;
@@ -180,28 +181,22 @@ const PaymentForm: React.FC = () => {
         break;
       }
     }
-
-    // const inputNameSplit: string[] = inputValue.split(" ");
-    // if (inputNameSplit.length >= 2) return setIsCardHolderNameInvalid(false);
-    // return setIsCardHolderNameInvalid(true);
   };
 
-  // TODO - Check that all 5 Fields were filled !== ""
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     // const handleSubmit = async (event) => {
-
     event.preventDefault();
 
     // TODO - add a check to see if all is___Invalid ALL FALSE? if they are all false then we know all text fields are correct
     // validateCardHolderName();
     console.log("event: ", event);
 
-    //TODO - check if Card Number is 16 digits, CVC number is 3 digits, user chose expiry month AND year, user input cardholder name
-    // if (result.error) {
-    //   setErrorMessage(result.error.message);
-    // } else {
-    //   setSuccessMessage("Payment succeeded!");
-    // }
+    console.log("VALIDATING IF FORM INPUTS ARE CORRECT...");
+    if (!isCardNumberInvalid && !isCardHolderNameInvalid && !isExpiryMonthInvalid && !isExpiryYearInvalid && !isCvcNumberInvalid) {
+      console.log("SUCCESS ALL FIELDS ARE CORRECT💥");
+    } else {
+      alert("ERROR! Please input correct fields.");
+    }
   };
 
   return (
