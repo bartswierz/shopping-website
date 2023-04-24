@@ -34,7 +34,8 @@ const Navigation = () => {
   // Check screen width to set navigation items for (mobile < 768px < desktop)
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // CHANGE TO MOBILE COMPONENT IF WIDTH LESS THAN 768 px
+      // setIsMobile(window.innerWidth <= 768); // CHANGE TO MOBILE COMPONENT IF WIDTH LESS THAN 768 px
+      setIsMobile(window.innerWidth <= 767.98); // CHANGE TO MOBILE COMPONENT IF WIDTH LESS THAN 768 px
     };
     window.addEventListener("resize", handleResize);
     handleResize();

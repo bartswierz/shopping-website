@@ -60,6 +60,14 @@ $activeColor: #1ccbde;
     padding-right: 1.5rem;
     padding-left: 1.5rem;
 
+    // Glass Navigation Effect
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(59, 59, 59, 0.37);
+    backdrop-filter: blur(5.5px);
+    -webkit-backdrop-filter: blur(5.5px);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
     .brand-logo-container {
       display: flex;
       align-items: center;
