@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { Button, Menu } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -50,11 +50,48 @@ const buttonSX = {
   color: "#444",
 };
 
-export const PaymentForm = () => {
-  const [errorMessage, setErrorMessage] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
-  const [expiryMonth, setExpiryMonth] = useState("");
-  const [expiryYear, setExpiryYear] = useState("");
+const PaymentForm: React.FC = () => {
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [successMessage, setSuccessMessage] = useState<string>("");
+  const [cardNumber, setCardNumber] = useState<string>("");
+  const [expiryMonth, setExpiryMonth] = useState<string>("");
+  const [expiryYear, setExpiryYear] = useState<string>("");
+  const [cvcNumber, setCvcNumber] = useState<string>("");
+
+  // HANDLE CARD NUMBER INPUT
+  const cardNumberHandler = (event: ChangeEvent<HTMLInputElement>): void => {
+    const inputCardNumber = event.target.value;
+    console.log(inputCardNumber);
+    // Remove any non-digit characters from the input
+    const formattedCardNumber = inputCardNumber.replace(/\D/g, "");
+
+    // Check if the input has a length of 16 or less
+    if (formattedCardNumber.length <= 16) {
+      //ADDS A SPACE EVERY 4 DIGITS - "4444 4444 4444 4444"
+      const formattedWithSpaces = formattedCardNumber.replace(/(\d{1,4})/g, "$1 ").trim();
+
+      setCardNumber(formattedWithSpaces);
+    }
+  };
+
+  const expiryMonthHandler = (event: ChangeEvent<HTMLInputElement>): void => {
+    console.log("expiry month: ", event.target.value);
+    setExpiryMonth(event.target.value);
+  };
+
+  const expiryYearHandler = (event: ChangeEvent<HTMLInputElement>): void => {
+    console.log("expiry year: ", event.target.value);
+    setExpiryYear(event.target.value);
+  };
+
+  const cvcNumberHandler = (event: ChangeEvent<HTMLInputElement>): void => {
+    console.log("cvc number: ", event.target.value);
+
+    const inputCvcNumber = event.target.value;
+
+    // LIMIT CVC NUMBER TO 3-DIGITS
+    if (inputCvcNumber.length <= 3) setCvcNumber(event.target.value);
+  };
 
   // TODO - Check that all 5 Fields were filled !== ""
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -64,6 +101,7 @@ export const PaymentForm = () => {
 
     console.log("event2: ", event);
 
+    //TODO - check if Card Number is 16 digits, CVC number is 3 digits, user chose expiry month AND year, user input cardholder name
     // if (result.error) {
     //   setErrorMessage(result.error.message);
     // } else {
@@ -96,6 +134,9 @@ export const PaymentForm = () => {
           multiline
           variant="filled"
           sx={{ width: "100%" }}
+          onChange={cardNumberHandler}
+          value={cardNumber}
+          inputProps={{ maxLength: 20 }}
         />
 
         <div className="billing-textfields">
@@ -108,6 +149,7 @@ export const PaymentForm = () => {
             variant="filled"
             className="billing-flex-item"
             value={expiryMonth}
+            onChange={expiryMonthHandler}
           >
             {expiryMonthOptions.map((option: string) => (
               <MenuItem key={option} value={option} selected={option === expiryYear}>
@@ -125,6 +167,7 @@ export const PaymentForm = () => {
             variant="filled"
             className="billing-flex-item"
             value={expiryYear}
+            onChange={expiryYearHandler}
           >
             {expiryYearOptions.map((option: string) => (
               <MenuItem key={option} value={option} selected={option === expiryYear}>
@@ -134,7 +177,16 @@ export const PaymentForm = () => {
           </TextField>
 
           {/* CVC NUMBER */}
-          <TextField id="filled-textarea" label="CVC" placeholder="333" multiline variant="filled" className="billing-flex-item" />
+          <TextField
+            id="filled-textarea"
+            label="CVC"
+            placeholder="333"
+            multiline
+            variant="filled"
+            className="billing-flex-item"
+            onChange={cvcNumberHandler}
+            value={cvcNumber}
+          />
         </div>
 
         {/* CARDHOLDER NAME */}
@@ -158,44 +210,3 @@ export const PaymentForm = () => {
 };
 
 export default PaymentForm;
-
-// import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-
-// import { Button } from "@mui/material";
-// import { Form } from "react-router-dom";
-
-// const PaymentForm = () => {
-//   const stripe = useStripe();
-//   const elements = useElements();
-
-//   // Form submission
-//   const paymentHandler = async (e) => {
-//     e.preventDefault();
-
-//     // GUARD: IF NO stripe instance or NO element instance
-//     if (!stripe || !elements) {
-//       return;
-//     }
-
-//     // Route to app URL
-//     const response = await fetch("/.netlify/functions/create-payment-intent", {
-//       method: "post",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({ amount: 10000 }),
-//     }).then((res) => res.json());
-
-//     console.log(response);
-//   };
-
-//   return (
-//     <form onSubmit={paymentHandler}>
-//       <p>Credit Card Payment: </p>
-//       <CardElement />
-//       <Button>Confirm Payment</Button>
-//     </form>
-//   );
-// };
-
-// export default PaymentForm;
