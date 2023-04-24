@@ -20,10 +20,16 @@ $fontColor: #333;
   min-height: 80vh;
   margin: 0 auto;
   color: $fontColor;
+  margin-bottom: 5rem;
 
   overflow: hidden;
   // margin-bottom: 50px;
 
+  .checkout-shipping-payment-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+  }
   /**************************************************************/
   // Additional Content - right side - Summary, In Your Cart, Shipping & Delivery
   .checkout-side-container {

@@ -4,6 +4,7 @@ import CostSummary from "../../checkout-summary/checkout-summary.component";
 import CheckoutCart from "../../checkout-cart/checkout-cart.component";
 import CheckoutDelivery from "../../checkout-delivery/checkout-delivery.component";
 import { useEffect, useState } from "react";
+import StripePaymentForm from "../../payment-form/payment-form.component";
 
 // Contains all Information for the checkout page
 const Checkout: React.FC = () => {
@@ -20,8 +21,11 @@ const Checkout: React.FC = () => {
 
   return (
     <div className="checkout-container">
-      <ShippingForm shippingChoiceCallback={shippingChoiceHandler} />
-      {/* <div>BILLING/STRIPE PAYMENT GOES HERE</div> */}
+      <div className="checkout-shipping-payment-container">
+        <ShippingForm shippingChoiceCallback={shippingChoiceHandler} />
+        {/* TODO - Add conditional to ONLY display payment IF user completes inputting information into ShippingForm component */}
+        <StripePaymentForm />
+      </div>
       <div className="checkout-side-container">
         <CostSummary shippingChoice={shippingChoice} />
         <CheckoutCart />

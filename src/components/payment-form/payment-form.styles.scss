@@ -1,0 +1,111 @@
+$headerColor: rgb(42, 42, 42);
+$borderColor: #e1e1e1;
+// $primaryColor: #7c00f9;
+// $hoverColor: #7200e4;
+$size: 1.6rem;
+$fontColor: #333;
+$paymentBorderColor: rgb(184, 184, 184);
+// Switch to this color on Dark Mode
+// $primaryColor: #1de5fd;
+// For better contrast on Light mode
+$primaryColor: #13737d;
+// $primaryLightColor: #13737d;
+
+$hoverColor: #1bd1e5;
+$activeColor: #1ccbde;
+
+.stripe-payment-container {
+  min-width: 42rem;
+  font-size: 1.6rem;
+
+  .stripe-header {
+    color: white;
+    font-size: 2rem;
+    padding: 0.8rem;
+
+    background-color: $headerColor;
+    height: 4rem;
+  }
+
+  .stripe-payment-form-container {
+    border: 10px solid $borderColor;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .stripe-card-details-container {
+      // border: 2px solid #333;
+
+      .stripe-card-number-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+
+        .card-number-element-container {
+          background-color: #fff;
+          border: 1px solid $paymentBorderColor;
+          height: 2.5rem;
+          padding: 4px;
+        }
+      }
+
+      .stripe-expiry-cvc-container {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+
+        .stripe-expiry-container {
+          width: 48%;
+
+          .card-expiry-element-container {
+            background-color: #fff;
+            border: 1px solid $paymentBorderColor;
+            height: 2.5rem;
+            padding: 4px;
+            border-radius: 4px;
+          }
+        }
+
+        .stripe-cvc-container {
+          width: 48%;
+          display: flex;
+          flex-direction: column;
+
+          .card-cvc-element-container {
+            background-color: #fff;
+            border: 1px solid $paymentBorderColor;
+            padding: 4px;
+            height: 2.5rem;
+            border-radius: 4px;
+          }
+        }
+      }
+
+      .stripe-card-name-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        input.card-holder-name-container {
+          height: 2.5rem;
+          border: 1px solid $paymentBorderColor;
+          border-radius: 4px;
+          padding: 4px;
+
+          &:focus {
+            outline: none;
+            // border: 2px solid $primaryColor;
+            // border: 2px solid $primaryColor;
+          }
+        }
+      }
+    }
+
+    .strip-button-container {
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+}
