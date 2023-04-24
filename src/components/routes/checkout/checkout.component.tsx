@@ -23,7 +23,7 @@ const Checkout: React.FC = () => {
     <div className="checkout-container">
       <div className="checkout-shipping-payment-container">
         <ShippingForm shippingChoiceCallback={shippingChoiceHandler} />
-        {/* TODO - Add conditional to ONLY display payment IF user completes inputting information into ShippingForm component */}
+        {/* TODO - Disable Billing Until User Completes Shipping Form */}
         <PaymentForm />
       </div>
       <div className="checkout-side-container">
