@@ -23,9 +23,10 @@ const buttonSX = {
 
 interface ShippingFormProps {
   shippingChoiceCallback: (choice: string) => void;
+  shippingFormCallback: () => void;
 }
 
-const ShippingForm: React.FC<ShippingFormProps> = ({ shippingChoiceCallback }: ShippingFormProps) => {
+const ShippingForm: React.FC<ShippingFormProps> = ({ shippingChoiceCallback, shippingFormCallback }: ShippingFormProps) => {
   // TODO - add a variable to hold state chosen back from state component
   const [state, setState] = useState<string>("");
 
@@ -42,6 +43,8 @@ const ShippingForm: React.FC<ShippingFormProps> = ({ shippingChoiceCallback }: S
       return;
     }
 
+    // Call function in checkout to display billing section
+    shippingFormCallback();
     console.log("Shipping Form Completed: ", event.target);
   };
 
