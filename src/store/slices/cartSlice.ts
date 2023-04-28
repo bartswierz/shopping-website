@@ -40,6 +40,7 @@ export const cartSlice = createSlice({
     // TODO - all of our context functions here
     addItemToCart: (state: CartSlice, action: PayloadAction<ProductDetails>) => {
       console.log("DISPATCH - addItemToCart: ", action);
+      console.log("cartItems: ", state.cartItems);
       // your addToCart function code here
       // Passing in an item with all ProductDetails Information
       const itemToAdd = action.payload;
@@ -62,23 +63,41 @@ export const cartSlice = createSlice({
     removeItemFromCart: (state: CartSlice, action: PayloadAction<ProductDetails>) => {
       // your removeFromCart function code here
       // Passing in itemToRemove - filter and create new list WITHOUT this one item
+      const itemToRemove = action.payload;
+      const newCartItems = state.cartItems.filter((item) => item.id !== itemToRemove.id);
+
+      state.cartItems = newCartItems;
     },
     updateCartCount: (state: CartSlice, action: PayloadAction<number>) => {
       console.log("DISPATCH - updateCartCount: ", action);
+      // const addItem = action.payload;
       // your updateCartCount function code here
+      // state.cartCount += addItem;
       state.cartCount += action.payload;
     },
     updateCartItem: (state: CartSlice, action: PayloadAction<{ cartItemToUpdate: ProductDetails; newQuantity: number }>) => {
       // your updateCartItem function code here
+      // const newQuantity = action.payload;
+      const cartItemToUpdate = action.payload.cartItemToUpdate;
+      const newQuantity = action.payload.newQuantity;
+      const updatedCartItems = state.cartItems.map((cartItem: ProductDetails) =>
+        cartItem.id === cartItemToUpdate.id ? { ...cartItem, quantity: newQuantity } : cartItem
+      );
+
+      state.cartItems = updatedCartItems;
     },
     clearCart: (state: CartSlice) => {
+      // RESET CART TO EMPTY - PART OF GLOBAL RESET
       // your clearCart function code here
+      console.log("DISPATCH - clearCart: ", state.cartItems);
+      state.cartItems = [];
+      console.log("after reset: ", state.cartItems);
     },
   },
 });
 
 //TODO - add our reducer function in here, we will call these using useSelector()
 // Action creators are generated for each case reducer function
-export const { addItemToCart, updateCartCount } = cartSlice.actions;
+export const { addItemToCart, updateCartCount, clearCart, updateCartItem, removeItemFromCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

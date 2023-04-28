@@ -6,18 +6,41 @@ import RemoveBtn from "../../../assets/trash-outline.svg";
 import DecreaseIcon from "../../../assets/chevron-back-outline.svg";
 import IncreaseIcon from "../../../assets/chevron-forward-outline.svg";
 
+// Redux
+import { useSelector, useDispatch } from "react-redux";
+import type { RootState } from "../../../store/store";
+import { removeItemFromCart, updateCartItem } from "../../../store/slices/cartSlice";
+
 const Cart: React.FC = () => {
-  const { cartItems, removeItemFromCart, cartCount, cartTotal, taxTotal, updateCartCount, updateCartItem } = useContext(CartContext);
+  const cartCount = useSelector((state: RootState) => state.cart.cartCount);
+  const cartItems = useSelector((state: RootState) => state.cart.cartItems);
+  const cartTotal = useSelector((state: RootState) => state.cart.cartTotal);
+  const taxTotal = useSelector((state: RootState) => state.cart.taxTotal);
+
+  const dispatch = useDispatch();
+  /* TODO - Update these to use Redux 
+    cartItems - DONE
+    cartCount - DONE 
+    cartTotal - DONE
+    taxTotal - DONE
+    removeItemFromCart 
+    updateCartCount 
+    updateCartItem
+  */
+  // const { cartItems, removeItemFromCart, cartCount, cartTotal, taxTotal, updateCartCount, updateCartItem } = useContext(CartContext);
 
   // REMOVE AN ITEM FROM THE CART
   const removeItem = (itemToRemove: ProductDetails): void => {
     // console.log("removeItem, idToRemove: ", itemToRemove);
-    removeItemFromCart(itemToRemove);
+    // const itemToRemove = action.payload in our redux
+    dispatch(removeItemFromCart(itemToRemove));
   };
 
   // INCREASE/DECREASE QUANTITY OF AN ITEM INSIDE THE CART
-  const updateCart = (itemToUpdate: ProductDetails, newQuantity: number): void => {
-    updateCartItem(itemToUpdate, newQuantity);
+  // const updateCart = (itemToUpdate: ProductDetails, newQuantity: number): void => {
+  const updateCart = (cartItemToUpdate: ProductDetails, newQuantity: number): void => {
+    // updateCartItem(itemToUpdate, newQuantity);
+    dispatch(updateCartItem({ cartItemToUpdate, newQuantity }));
   };
 
   return (

@@ -7,6 +7,11 @@ import "./payment-form.styles.scss";
 import { Navigate } from "react-router-dom";
 import { CartContext } from "../../contexts/cart.context";
 
+// Redux
+import { useSelector, useDispatch } from "react-redux";
+import type { RootState } from "../../store/store";
+import { clearCart } from "../../store/slices/cartSlice";
+
 const expiryMonthOptions = ["", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
 
 const expiryYearOptions = [
@@ -53,7 +58,10 @@ const buttonSX = {
 };
 
 const PaymentForm: React.FC = () => {
-  const { clearCart } = useContext(CartContext);
+  // TODO - Replace context to Redux
+  // const { clearCart } = useContext(CartContext);
+  const dispatch = useDispatch();
+
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [cardNumber, setCardNumber] = useState<string>("");
@@ -192,8 +200,9 @@ const PaymentForm: React.FC = () => {
     if (!isCardNumberInvalid && !isCardHolderNameInvalid && !isExpiryMonthInvalid && !isExpiryYearInvalid && !isCvcNumberInvalid) {
       console.log("Payment was successful, navigating user to Homepage...");
 
-      // CLEARS CART SO USER CAN START A NEW ORDER
-      clearCart();
+      // RESET: CLEARS CART SO USER CAN START A NEW ORDER
+      // clearCart();
+      dispatch(clearCart());
 
       // THIS WILL NAVIGATE USER TO THE HOMEPAGE
       setNavigateToHomepage(true);
