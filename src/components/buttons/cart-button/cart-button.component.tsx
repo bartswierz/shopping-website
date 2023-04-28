@@ -3,6 +3,10 @@ import "./cart-button.styles.scss";
 import { CartContext } from "../../../contexts/cart.context";
 import { useContext } from "react";
 import { Product } from "../../product-card-desktop/product-card-desktop.component";
+import { useSelector, useDispatch } from "react-redux";
+import type { RootState } from "../../../store/store";
+import { addItemToCart, updateCartCount } from "../../../store/slices/cartSlice";
+
 // $primaryColor: #1de5fd;
 // $hoverColor: #1bd1e5;
 // $activeColor: #1ccbde;
@@ -56,8 +60,16 @@ interface CartButtonProps {
 }
 
 const CartButton: React.FC<CartButtonProps> = ({ product, color, size }: CartButtonProps) => {
-  const { addItemToCart, cartItems, cartCount, updateCartCount } = useContext(CartContext);
+  /* TODO - replace this with our REDUX cartSlice - COMPLETE
+  -to get cartItems, cartCount -> use useSelector to access
+  -addItemToCart, updateCartCount -> reducer methods
+  */
+  // const { addItemToCart, cartItems, cartCount, updateCartCount } = useContext(CartContext);
 
+  const cartCount = useSelector((state: RootState) => state.cart.cartCount);
+  console.log("REDUX - cartCount: ", cartCount);
+
+  const dispatch = useDispatch();
   // Adds the item to our CartItems array within our Cart Context
   // const handleClick = (product, quantity = 1, color, size, resetOptionsHandler) => {
   //resetOptionsHandler will change color/size back to default
@@ -71,10 +83,15 @@ const CartButton: React.FC<CartButtonProps> = ({ product, color, size }: CartBut
       /*Passing custom id to prevent incorrect behavior with add/remove buttons within cart
        */
       const itemToAdd: ItemToAdd = { ...product, id: cartItemId, quantity: 1, color, size };
-      addItemToCart(itemToAdd);
+      // TODO - previous send to context
+      // addItemToCart(itemToAdd);
+      dispatch(addItemToCart(itemToAdd));
 
+      //TODO - previous - modify this to dispatch to redux
       //Passing the quantity value of our item to update our current cart count inside cart context using a reducer
-      updateCartCount(1);
+      // updateCartCount(1);
+
+      dispatch(updateCartCount(1));
     } else {
       alert("Please select a size and color.");
     }
