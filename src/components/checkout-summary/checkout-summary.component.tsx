@@ -1,6 +1,10 @@
 import "./checkout-summary.styles.scss";
-import { useContext } from "react";
-import { CartContext } from "../../contexts/cart.context";
+
+// TODO - convert from cart context to redux
+// import { useContext } from "react";
+// import { CartContext } from "../../contexts/cart.context";
+import type { RootState } from "../../store/store";
+import { useDispatch, useSelector } from "react-redux";
 
 export const formatNumber = (numToParse: number | string): string => {
   if (typeof numToParse === "string") return parseFloat(numToParse).toFixed(2);
@@ -14,7 +18,8 @@ interface CostSummaryProps {
 }
 
 const CostSummary = ({ shippingChoice }: CostSummaryProps) => {
-  const { cartTotal, taxTotal } = useContext(CartContext);
+  // const { cartTotal, taxTotal } = useContext(CartContext);
+  const { cartTotal, taxTotal } = useSelector((state: RootState) => state.cart);
 
   // FORMAT USER'S CHOICE TO UPDATE SHIPPING & HANDLING COST(FREE, $14.00, $23.00)
   const shippingCost = (shippingChoice: number): string => {

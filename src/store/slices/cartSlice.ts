@@ -90,10 +90,13 @@ export const cartSlice = createSlice({
 
       state.cartCount = newCartCount;
     },
-    clearCart: (state: CartSlice) => {
-      // SET CART TO EMPTY UPON SUCCESSFUL PAYMENT
+    globalResetCart: (state: CartSlice) => {
+      // RESETTING CART STORE VALUES TO DEFAULT UPON SUCCESSFUL PAYMENT
       console.log("DISPATCHED - clearCart");
       state.cartItems = [];
+      state.cartTotal = 0;
+      state.taxTotal = 0;
+      state.cartCount = 0;
     },
     updateTotal: (state: CartSlice) => {
       console.log("DISPATCHED - updateTotal");
@@ -111,6 +114,6 @@ export const cartSlice = createSlice({
 });
 
 // EXPORTING ALL REDUCERS WE CAN USE VIA "DISPATCH" IN OUR APP
-export const { addItemToCart, updateCartCount, clearCart, updateCartItem, removeItemFromCart, updateTotal } = cartSlice.actions;
+export const { addItemToCart, updateCartCount, globalResetCart, updateCartItem, removeItemFromCart, updateTotal } = cartSlice.actions;
 
 export default cartSlice.reducer;

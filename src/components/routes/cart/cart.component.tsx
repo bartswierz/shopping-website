@@ -10,10 +10,8 @@ import type { RootState } from "../../../store/store";
 import { removeItemFromCart, updateCartItem, updateTotal, ProductDetails } from "../../../store/slices/cartSlice";
 
 const Cart: React.FC = () => {
-  const cartCount = useSelector((state: RootState) => state.cart.cartCount);
-  const cartItems = useSelector((state: RootState) => state.cart.cartItems);
-  const cartTotal = useSelector((state: RootState) => state.cart.cartTotal);
-  const taxTotal = useSelector((state: RootState) => state.cart.taxTotal);
+  // DESTRUCTING VALUES FROM CART INITIAL STATE
+  const { cartCount, cartItems, cartTotal, taxTotal } = useSelector((state: RootState) => state.cart);
 
   const dispatch = useDispatch();
 
