@@ -1,7 +1,7 @@
 import "./cart.styles.scss";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { CartContext, ProductDetails } from "../../../contexts/cart.context";
+// import { ProductDetails } from "../../../contexts/cart.context";
 import RemoveBtn from "../../../assets/trash-outline.svg";
 import DecreaseIcon from "../../../assets/chevron-back-outline.svg";
 import IncreaseIcon from "../../../assets/chevron-forward-outline.svg";
@@ -9,7 +9,7 @@ import IncreaseIcon from "../../../assets/chevron-forward-outline.svg";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../../store/store";
-import { removeItemFromCart, updateCartItem } from "../../../store/slices/cartSlice";
+import { removeItemFromCart, updateCartItem, ProductDetails } from "../../../store/slices/cartSlice";
 
 const Cart: React.FC = () => {
   const cartCount = useSelector((state: RootState) => state.cart.cartCount);
@@ -18,28 +18,15 @@ const Cart: React.FC = () => {
   const taxTotal = useSelector((state: RootState) => state.cart.taxTotal);
 
   const dispatch = useDispatch();
-  /* TODO - Update these to use Redux 
-    cartItems - DONE
-    cartCount - DONE 
-    cartTotal - DONE
-    taxTotal - DONE
-    removeItemFromCart 
-    updateCartCount 
-    updateCartItem
-  */
-  // const { cartItems, removeItemFromCart, cartCount, cartTotal, taxTotal, updateCartCount, updateCartItem } = useContext(CartContext);
 
   // REMOVE AN ITEM FROM THE CART
   const removeItem = (itemToRemove: ProductDetails): void => {
     // console.log("removeItem, idToRemove: ", itemToRemove);
-    // const itemToRemove = action.payload in our redux
     dispatch(removeItemFromCart(itemToRemove));
   };
 
   // INCREASE/DECREASE QUANTITY OF AN ITEM INSIDE THE CART
-  // const updateCart = (itemToUpdate: ProductDetails, newQuantity: number): void => {
   const updateCart = (cartItemToUpdate: ProductDetails, newQuantity: number): void => {
-    // updateCartItem(itemToUpdate, newQuantity);
     dispatch(updateCartItem({ cartItemToUpdate, newQuantity }));
   };
 

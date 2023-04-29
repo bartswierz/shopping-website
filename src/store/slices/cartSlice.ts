@@ -1,6 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-// TODO - ProductDetails Interface
 export interface ProductDetails {
   brandName: string;
   color: string;
@@ -16,7 +15,6 @@ export interface ProductDetails {
   totalReviews: number;
 }
 
-//TODO - interface for initialState
 export interface CartSlice {
   cartItems: ProductDetails[];
   cartCount: number;
@@ -24,9 +22,7 @@ export interface CartSlice {
   taxTotal: number;
 }
 
-// This is the CURRENT STATE OF THE REDUX SLICE
 const initialState: CartSlice = {
-  // TODO - cart variables here
   cartItems: [],
   cartCount: 0,
   cartTotal: 0,
@@ -37,67 +33,72 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    // TODO - all of our context functions here
     addItemToCart: (state: CartSlice, action: PayloadAction<ProductDetails>) => {
-      console.log("DISPATCH - addItemToCart: ", action);
-      console.log("cartItems: ", state.cartItems);
-      // your addToCart function code here
-      // Passing in an item with all ProductDetails Information
-      const itemToAdd = action.payload;
-      const alreadyInCart = state.cartItems.find(
+      console.log("DISPATCHING - addItemToCart");
+      const itemToAdd: ProductDetails = action.payload;
+
+      // CHECKING IF ITEM ALREADY EXISTS IN OUR CART
+      const alreadyInCart: ProductDetails | undefined = state.cartItems.find(
         (cartItem: ProductDetails) =>
           cartItem.id === itemToAdd.id && cartItem.color === itemToAdd.color && cartItem.size === itemToAdd.size
       );
 
-      //if in cart then increase its quanity
+      // ITEM EXISTS, UPDATE THE QUANTITY OF THE ITEM IN "CARTITEMS[]"
       if (alreadyInCart) {
-        // If it exists, update quantity by adding the quantity from itemToAdd to our existing quantity, else return cartItem unchanged
-        state.cartItems.map((cartItem) =>
+        const updatedList: ProductDetails[] = state.cartItems.map((cartItem) =>
           cartItem.id === itemToAdd.id ? { ...cartItem, quantity: cartItem.quantity + itemToAdd.quantity } : cartItem
         );
-      }
 
-      // Return a new array containing our current cartItems and Add the new item object to the end
-      state.cartItems = [...state.cartItems, { ...itemToAdd }];
+        state.cartItems = updatedList;
+      } else {
+        // ITEM DOES NOT EXIST IN CART, ADD IT TO THE END OF THE "CARTITEMS[]"
+        state.cartItems = [...state.cartItems, { ...itemToAdd }];
+      }
     },
     removeItemFromCart: (state: CartSlice, action: PayloadAction<ProductDetails>) => {
-      // your removeFromCart function code here
-      // Passing in itemToRemove - filter and create new list WITHOUT this one item
-      const itemToRemove = action.payload;
-      const newCartItems = state.cartItems.filter((item) => item.id !== itemToRemove.id);
+      console.log("DISPATCHING - removeItemFromCart");
+      const itemToRemove: ProductDetails = action.payload;
 
-      state.cartItems = newCartItems;
+      // CREATING NEW CARTITEMS[] WITHOUT THE MATCHED ITEM
+      const updatedCartItems: ProductDetails[] = state.cartItems.filter((item) => item.id !== itemToRemove.id);
+
+      state.cartItems = updatedCartItems;
+
+      // UPDATING CART COUNT
+      const updatedCartCount: number = state.cartItems.reduce((totalItems, currentItem) => totalItems + currentItem.quantity, 0);
+
+      state.cartCount = updatedCartCount;
     },
     updateCartCount: (state: CartSlice, action: PayloadAction<number>) => {
-      console.log("DISPATCH - updateCartCount: ", action);
-      // const addItem = action.payload;
-      // your updateCartCount function code here
-      // state.cartCount += addItem;
+      console.log("DISPATCHING - updateCartCount");
+      // INCREASE CART COUNT BY 1 WHEN USER CLICKS "ADD TO CART" BUTTON
       state.cartCount += action.payload;
     },
     updateCartItem: (state: CartSlice, action: PayloadAction<{ cartItemToUpdate: ProductDetails; newQuantity: number }>) => {
-      // your updateCartItem function code here
-      // const newQuantity = action.payload;
-      const cartItemToUpdate = action.payload.cartItemToUpdate;
-      const newQuantity = action.payload.newQuantity;
-      const updatedCartItems = state.cartItems.map((cartItem: ProductDetails) =>
+      console.log("DISPATCHING - updateCartItem");
+      //INCREASE/DECREASE OUR CART COUNT BY 1
+      const { cartItemToUpdate, newQuantity } = action.payload;
+
+      //MAP THROUGH cartItems[] AND UPDATE FOUND ITEM QUANTITY BY -1 | 1
+      const updatedCartItems: ProductDetails[] = state.cartItems.map((cartItem: ProductDetails) =>
         cartItem.id === cartItemToUpdate.id ? { ...cartItem, quantity: newQuantity } : cartItem
       );
 
       state.cartItems = updatedCartItems;
+
+      const newCartCount: number = state.cartItems.reduce((totalItems, currentItem) => totalItems + currentItem.quantity, 0);
+
+      state.cartCount = newCartCount;
     },
     clearCart: (state: CartSlice) => {
-      // RESET CART TO EMPTY - PART OF GLOBAL RESET
-      // your clearCart function code here
-      console.log("DISPATCH - clearCart: ", state.cartItems);
+      // SET CART TO EMPTY UPON SUCCESSFUL PAYMENT
+      console.log("DISPATCHING - clearCart");
       state.cartItems = [];
-      console.log("after reset: ", state.cartItems);
     },
   },
 });
 
-//TODO - add our reducer function in here, we will call these using useSelector()
-// Action creators are generated for each case reducer function
+// EXPORTING ALL REDUCERS WE CAN USE VIA "DISPATCH" IN OUR APP
 export const { addItemToCart, updateCartCount, clearCart, updateCartItem, removeItemFromCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

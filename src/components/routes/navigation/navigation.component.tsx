@@ -14,19 +14,18 @@ import { IconContext } from "react-icons/lib";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import LoginRoundedIcon from "@mui/icons-material/LoginRounded";
 import CreditCardRoundedIcon from "@mui/icons-material/CreditCardRounded";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../../store/store";
 
 // Testing logo Icon
 import BrandLogo from "../../../assets/brand-logo.png";
 import NavLogo from "../../../assets/nav-logo.png";
 
-// interface CurrentUser {}
-
 const Navigation = () => {
-  const { cartCount } = useContext(CartContext);
+  const cartCount = useSelector((state: RootState) => state.cart.cartCount);
 
   // Will be used for authentication/authorizing user using firebase
   const { currentUser, setCurrentUser } = useContext(UserContext);
-
   // console.log("CURRENT USER: ", currentUser);
 
   const [isMobile, setIsMobile] = useState(false);
