@@ -1,7 +1,5 @@
 import "./cart.styles.scss";
-import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import { ProductDetails } from "../../../contexts/cart.context";
 import RemoveBtn from "../../../assets/trash-outline.svg";
 import DecreaseIcon from "../../../assets/chevron-back-outline.svg";
 import IncreaseIcon from "../../../assets/chevron-forward-outline.svg";
@@ -9,7 +7,7 @@ import IncreaseIcon from "../../../assets/chevron-forward-outline.svg";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../../store/store";
-import { removeItemFromCart, updateCartItem, ProductDetails } from "../../../store/slices/cartSlice";
+import { removeItemFromCart, updateCartItem, updateTotal, ProductDetails } from "../../../store/slices/cartSlice";
 
 const Cart: React.FC = () => {
   const cartCount = useSelector((state: RootState) => state.cart.cartCount);
@@ -23,11 +21,17 @@ const Cart: React.FC = () => {
   const removeItem = (itemToRemove: ProductDetails): void => {
     // console.log("removeItem, idToRemove: ", itemToRemove);
     dispatch(removeItemFromCart(itemToRemove));
+
+    // UPDATING TOTAL COST & TAX
+    dispatch(updateTotal());
   };
 
   // INCREASE/DECREASE QUANTITY OF AN ITEM INSIDE THE CART
   const updateCart = (cartItemToUpdate: ProductDetails, newQuantity: number): void => {
     dispatch(updateCartItem({ cartItemToUpdate, newQuantity }));
+
+    // UPDATING TOTAL COST & TAX
+    dispatch(updateTotal());
   };
 
   return (

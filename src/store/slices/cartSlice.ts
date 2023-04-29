@@ -34,7 +34,7 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addItemToCart: (state: CartSlice, action: PayloadAction<ProductDetails>) => {
-      console.log("DISPATCHING - addItemToCart");
+      console.log("DISPATCHED - addItemToCart");
       const itemToAdd: ProductDetails = action.payload;
 
       // CHECKING IF ITEM ALREADY EXISTS IN OUR CART
@@ -56,7 +56,7 @@ export const cartSlice = createSlice({
       }
     },
     removeItemFromCart: (state: CartSlice, action: PayloadAction<ProductDetails>) => {
-      console.log("DISPATCHING - removeItemFromCart");
+      console.log("DISPATCHED - removeItemFromCart");
       const itemToRemove: ProductDetails = action.payload;
 
       // CREATING NEW CARTITEMS[] WITHOUT THE MATCHED ITEM
@@ -70,12 +70,12 @@ export const cartSlice = createSlice({
       state.cartCount = updatedCartCount;
     },
     updateCartCount: (state: CartSlice, action: PayloadAction<number>) => {
-      console.log("DISPATCHING - updateCartCount");
+      console.log("DISPATCHED - updateCartCount");
       // INCREASE CART COUNT BY 1 WHEN USER CLICKS "ADD TO CART" BUTTON
       state.cartCount += action.payload;
     },
     updateCartItem: (state: CartSlice, action: PayloadAction<{ cartItemToUpdate: ProductDetails; newQuantity: number }>) => {
-      console.log("DISPATCHING - updateCartItem");
+      console.log("DISPATCHED - updateCartItem");
       //INCREASE/DECREASE OUR CART COUNT BY 1
       const { cartItemToUpdate, newQuantity } = action.payload;
 
@@ -92,13 +92,25 @@ export const cartSlice = createSlice({
     },
     clearCart: (state: CartSlice) => {
       // SET CART TO EMPTY UPON SUCCESSFUL PAYMENT
-      console.log("DISPATCHING - clearCart");
+      console.log("DISPATCHED - clearCart");
       state.cartItems = [];
+    },
+    updateTotal: (state: CartSlice) => {
+      console.log("DISPATCHED - updateTotal");
+      // USING REDUCE() TO ADD UP ALL COSTS FOR TOTAL
+      const updatedCartTotal: number = state.cartItems.reduce(
+        (totalCost, currentItem) => totalCost + currentItem.discountPrice * currentItem.quantity,
+        0
+      );
+
+      // UPDATING CART & TAX TOTAL(10%)
+      state.cartTotal = updatedCartTotal;
+      state.taxTotal = state.cartTotal * 0.1;
     },
   },
 });
 
 // EXPORTING ALL REDUCERS WE CAN USE VIA "DISPATCH" IN OUR APP
-export const { addItemToCart, updateCartCount, clearCart, updateCartItem, removeItemFromCart } = cartSlice.actions;
+export const { addItemToCart, updateCartCount, clearCart, updateCartItem, removeItemFromCart, updateTotal } = cartSlice.actions;
 
 export default cartSlice.reducer;

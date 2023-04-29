@@ -3,11 +3,12 @@ import ShippingForm from "../../shipping-form/shipping-form.component";
 import CostSummary from "../../checkout-summary/checkout-summary.component";
 import CheckoutCart from "../../checkout-cart/checkout-cart.component";
 import CheckoutDelivery from "../../checkout-delivery/checkout-delivery.component";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PaymentForm from "../../payment-form/payment-form.component";
 
 // Contains all Information for the checkout page
 const Checkout: React.FC = () => {
+  // TODO - SIMPLIFY THIS TO LIFT THE STATE - PASS IN OUR STATE/SETSTATE AS PROPS TO USE WITHIN SHIPPING FORM
   const [shippingChoice, setShippingChoice] = useState<number>(0);
   const [isShippingFormDone, setIsShippingFormDone] = useState<boolean>(false);
 

@@ -2,7 +2,7 @@ import Button from "@mui/material/Button";
 import "./cart-button.styles.scss";
 import { Product } from "../../product-card-desktop/product-card-desktop.component";
 import { useDispatch } from "react-redux";
-import { addItemToCart, updateCartCount } from "../../../store/slices/cartSlice";
+import { addItemToCart, updateCartCount, updateTotal } from "../../../store/slices/cartSlice";
 
 // $primaryColor: #1de5fd;
 // $hoverColor: #1bd1e5;
@@ -71,6 +71,9 @@ const CartButton: React.FC<CartButtonProps> = ({ product, color, size }: CartBut
 
       //UPDATING CART COUNT BY 1
       dispatch(updateCartCount(1));
+
+      // UPDATING TOTAL COST & TAX
+      dispatch(updateTotal());
     } else {
       alert("Please select a size and color.");
     }
