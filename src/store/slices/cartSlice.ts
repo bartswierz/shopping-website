@@ -92,7 +92,7 @@ export const cartSlice = createSlice({
     },
     globalResetCart: (state: CartSlice) => {
       // RESETTING CART STORE VALUES TO DEFAULT UPON SUCCESSFUL PAYMENT
-      console.log("DISPATCHED - clearCart");
+      console.log("DISPATCHED - globalResetCart");
       state.cartItems = [];
       state.cartTotal = 0;
       state.taxTotal = 0;

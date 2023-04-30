@@ -1,17 +1,35 @@
 import "./App.scss";
 import { Routes, Route } from "react-router-dom";
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Navigation from "./components/routes/navigation/navigation.component";
 import Homepage from "./components/routes/homepage/homepage.component";
 import Checkout from "./components/routes/checkout/checkout.component";
 import Cart from "./components/routes/cart/cart.component";
 import Authentication from "./components/routes/authentication/authentication.component";
-import { CategoriesContext } from "./contexts/categories.context";
 import ProductCardDesktop from "./components/product-card-desktop/product-card-desktop.component";
 import ProductCardMobile from "./components/product-card-mobile/product-card-mobile.component";
 
-const App = () => {
+import { useSelector, useDispatch } from "react-redux";
+import type { RootState } from "./store/store";
+import { fetchCategories, CategoriesMap } from "./store/slices/categoriesSlice";
+import CircularProgress from "@mui/material/CircularProgress";
+import { AsyncThunkAction, Dispatch, AnyAction } from "@reduxjs/toolkit";
+
+const App: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const dispatch = useDispatch();
+
+  const categoriesMap = useSelector((state: RootState) => state.categories.categoriesMap);
+  const isLoading = useSelector((state: RootState) => state.categories.isLoading);
+
+  useEffect(() => {
+    // @ts-ignore
+    dispatch(fetchCategories());
+  }, []);
+
+  // CATEGORIESMAP CONTAINS ALL SHOE DATA FROM FIREBASE DB
+  // const { categoriesMap } = useContext(CategoriesContext);
+  // console.log("categoriesMap: ", categoriesMap);
 
   useEffect(() => {
     const handleResize = () => {
@@ -25,9 +43,10 @@ const App = () => {
     };
   }, []);
 
-  // CATEGORIESMAP CONTAINS ALL SHOE DATA FROM FIREBASE DB
-  const { categoriesMap } = useContext(CategoriesContext);
-  // console.log("categoriesMap: ", categoriesMap);
+  // While our async thunk function is fetching our data from Firebase, we will render a loading icon on screen
+  if (isLoading) {
+    return <CircularProgress style={{ position: "fixed", top: "50%", left: "50%" }} />;
+  }
 
   return (
     <Routes>
@@ -49,7 +68,11 @@ const App = () => {
         <Route
           path="work"
           element={
-            isMobile ? <ProductCardMobile products={categoriesMap.work} /> : <ProductCardDesktop products={categoriesMap.work} />
+            isMobile && isLoading ? (
+              <ProductCardMobile products={categoriesMap.work} />
+            ) : (
+              <ProductCardDesktop products={categoriesMap.work} />
+            )
           }
         />
         <Route
@@ -80,3 +103,21 @@ const App = () => {
 };
 
 export default App;
+function dispatch(
+  arg0: AsyncThunkAction<
+    CategoriesMap,
+    void,
+    {
+      state?: unknown;
+      dispatch?: Dispatch<AnyAction> | undefined;
+      extra?: unknown;
+      rejectValue?: unknown;
+      serializedErrorType?: unknown;
+      pendingMeta?: unknown;
+      fulfilledMeta?: unknown;
+      rejectedMeta?: unknown;
+    }
+  >
+) {
+  throw new Error("Function not implemented.");
+}

@@ -31,7 +31,7 @@ const ShippingForm: React.FC<ShippingFormProps> = ({ shippingChoiceCallback, shi
   const [state, setState] = useState<string>("");
 
   const stateHandler = (state: string) => {
-    console.log("State Picked: ", state);
+    // console.log("State Picked: ", state);
 
     setState(state);
   };

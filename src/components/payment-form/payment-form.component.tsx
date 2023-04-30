@@ -96,7 +96,7 @@ const PaymentForm: React.FC = () => {
 
   // EXPIRY MONTH: REMOVE ERROR COLOR FROM TEXTFIELD IF INPUT IS CORRECT
   useEffect(() => {
-    console.log("Validating Expiry Month...");
+    // console.log("Validating Expiry Month...");
     validateInputFields(expiryMonth);
   }, [expiryMonth]);
 
@@ -180,7 +180,7 @@ const PaymentForm: React.FC = () => {
         break;
       }
       case expiryMonth: {
-        console.log("expiryMonth: ", expiryMonth[0]);
+        // console.log("expiryMonth: ", expiryMonth[0]);
         expiryMonth !== "" ? setIsExpiryMonthInvalid(false) : setIsExpiryMonthInvalid(true);
         break;
       }

@@ -36,7 +36,7 @@ const SelectColor: React.FC<SelectColorProps> = ({ onChange, setColor }: SelectC
 
     // Checking if user chose color before updating state of color
     if (color !== "Color" && color !== "") {
-      console.log("Color Picked: ", color);
+      // console.log("Color Picked: ", color);
       setColor(color);
 
       // onChange(event.target.value);
