@@ -9,10 +9,11 @@ https://alpha-footwear.netlify.app/
  
 * React
 * TypeScript
+* Firebase
+* Redux
 * SCSS
-* Firebase
 * Material UI
-* Firebase
+
 
 ## Features ##
 Feature  | Description
@@ -27,11 +28,5 @@ Shipping Form | Checkout page includes a shipment form that asks user for name, 
 Cost Summary | A cost summary overview is displayed within the Checkout page showing the user the following information: Subtotal , Shipping & Handling Cost, Taxes, and Total Cost.
 Cart View Component | Checkout page includes a cart component that displayed the Product Arrival Date(Earliest: 3 Days from current date and Latest: 8 Days after current date). This component also includes an "edit cart" link that navigates the user back to the cart page.
 Shipping & Delivery Disclaimer | Checkout page includes a small Shipping & Delivery component notifying the user that Alpha Clothing only delivers during business days(Monday-Friday).
-
-## Future Features ##
-Feature  | Description
-------------- | -------------
-Create Account   | User will be able to create an account for quicker checkout and other future benefits
-Database Storage | Firebase will be implemented for Account information storage and possibly product information
-Account Authentication | Google Authentication will be implemented for account authentication
-Billing Page | Billing Page will be added as the second step after user fills out the shipping information within the Checkout page
+Sign In/Create Account | User can create an account via Google Sign In, or create an account. User choice will authenticate them using Firebase by matching their user id.
+Credit Card Payment | Credit Card Payment Section added once user fills out the shipping form.
