@@ -49,7 +49,7 @@ const initialState: CategoriesSlice = {
 export const fetchCategories = createAsyncThunk("categories/fetchCategories", async () => {
   // @ts-ignore
   const categoriesMap: CategoriesMap = await getCategoriesAndDocuments();
-  console.log("Fetched categories: ", categoriesMap);
+  // console.log("Fetched categories: ", categoriesMap);
   return categoriesMap;
 });
 
@@ -61,13 +61,13 @@ export const categoriesSlice = createSlice({
     builder
       .addCase(fetchCategories.pending, (state) => {
         // WILL DISPLAY LOADING ICON WHILE APP IS BUSY FETCHING DATA FROM FIREBASE DB
-        console.log("Fetching data from Firebase DB...");
+        // console.log("Fetching data from Firebase DB...");
         state.isLoading = true;
       })
       .addCase(fetchCategories.fulfilled, (state, action) => {
         // COMPLETED FETCHING DATA FROM FIREBASE
         state.categoriesMap = action.payload;
-        console.log("Finished fetching data: ", state.categoriesMap);
+        // console.log("Finished fetching data: ", state.categoriesMap);
         state.isLoading = false;
         state.error = null;
       })
